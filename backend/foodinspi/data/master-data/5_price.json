@@ -1,0 +1,12 @@
+[
+    {
+        "model": "food.Price",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "price_eur": "1.49",
+            "retailer": 1,
+            "package": 1
+        }
+    }
+]

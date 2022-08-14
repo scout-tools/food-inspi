@@ -1,0 +1,72 @@
+[
+    {
+        "model": "food.RecipeItem",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "recipe": 1,
+            "portion": 3,
+            "quantity": 1
+        }
+    },
+    {
+        "model": "food.RecipeItem",
+        "pk": 2,
+        "fields": {
+            "id": 2,
+            "recipe": 1,
+            "portion": 12,
+            "quantity": 125
+        }
+    },
+    {
+        "model": "food.RecipeItem",
+        "pk": 3,
+        "fields": {
+            "id": 3,
+            "recipe": 1,
+            "portion": 4,
+            "quantity": 15
+        }
+    },
+    {
+        "model": "food.RecipeItem",
+        "pk": 4,
+        "fields": {
+            "id": 4,
+            "recipe": 1,
+            "portion": 11,
+            "quantity": 1
+        }
+    },
+    {
+        "model": "food.RecipeItem",
+        "pk": 5,
+        "fields": {
+            "id": 5,
+            "recipe": 1,
+            "portion": 6,
+            "quantity": 0.5
+        }
+    },
+    {
+        "model": "food.RecipeItem",
+        "pk": 6,
+        "fields": {
+            "id": 6,
+            "recipe": 1,
+            "portion": 7,
+            "quantity": 33
+        }
+    },
+    {
+        "model": "food.RecipeItem",
+        "pk": 7,
+        "fields": {
+            "id": 7,
+            "recipe": 1,
+            "portion": 9,
+            "quantity": 2
+        }
+    }
+]

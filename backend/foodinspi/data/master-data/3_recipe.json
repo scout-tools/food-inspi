@@ -1,0 +1,10 @@
+[
+    {
+        "model": "food.Recipe",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "name": "Nudeln mit Tomatensoße"
+        }
+    }
+]

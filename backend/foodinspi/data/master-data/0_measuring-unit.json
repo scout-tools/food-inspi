@@ -1,0 +1,123 @@
+[
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "name": "EL",
+            "description": "Esslöffel",
+            "quantity": 15,
+            "unit": "ml"
+        }
+    },
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 2,
+        "fields": {
+            "id": 2,
+            "name": "TL",
+            "description": "Teelöffel",
+            "quantity": 5,
+            "unit": "ml"
+        }
+    },
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 3,
+        "fields": {
+            "id": 3,
+            "name": "g",
+            "description": "Gramm",
+            "quantity": 1,
+            "unit": "g"
+        }
+    },
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 4,
+        "fields": {
+            "id": 4,
+            "name": "Kg",
+            "description": "Kilogramm",
+            "quantity": 1000,
+            "unit": "g"
+        }
+    },
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 5,
+        "fields": {
+            "id": 5,
+            "name": "ml",
+            "description": "Milliliter",
+            "quantity": 1,
+            "unit": "ml"
+        }
+    },
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 6,
+        "fields": {
+            "id": 6,
+            "name": "l",
+            "description": "Liter",
+            "quantity": 1000,
+            "unit": "ml"
+        }
+    },
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 7,
+        "fields": {
+            "id": 7,
+            "name": "Msp",
+            "description": "Messerspitze",
+            "quantity": 2,
+            "unit": "ml"
+        }
+    },
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 8,
+        "fields": {
+            "id": 8,
+            "name": "n.B.",
+            "description": "nach Belieben",
+            "quantity": 1,
+            "unit": "g"
+        }
+    },
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 9,
+        "fields": {
+            "id": 9,
+            "name": "Ta",
+            "description": "Tasse",
+            "quantity": 150,
+            "unit": "ml"
+        }
+    },
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 10,
+        "fields": {
+            "id": 10,
+            "name": "Pr",
+            "description": "Prise",
+            "quantity": 2,
+            "unit": "ml"
+        }
+    },
+    {
+        "model": "food.MeasuringUnit",
+        "pk": 11,
+        "fields": {
+            "id": 11,
+            "name": "Sp",
+            "description": "Spitzer",
+            "quantity": 10,
+            "unit": "ml"
+        }
+    }
+]

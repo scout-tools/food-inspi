@@ -1,0 +1,12 @@
+[
+    {
+        "model": "food.Package",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "name": "4er Tomatenpaket",
+            "portion": 3,
+            "quantity": 4
+        }
+    }
+]
