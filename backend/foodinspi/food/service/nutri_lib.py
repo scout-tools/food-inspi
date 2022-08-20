@@ -1,4 +1,4 @@
-class Nutri: 
+class Nutri:
     def get_nutri_table(self):
         return {
             "energy_kj": {
@@ -183,19 +183,18 @@ class Nutri:
     def get_nutri_items(self):
         return ['energy_kj', 'sugar_g', 'fibre_g', 'protein_g', 'sodium_mg', 'fruit_factor', 'saturated_fatty_acids_g']
 
-
     def get_points(self, item, physical_viscosity, value):
-        get_nutri_table_data =  self.get_nutri_table()
+        get_nutri_table_data = self.get_nutri_table()
         nutri_array = get_nutri_table_data[item][physical_viscosity]
         for row in nutri_array:
             if ((row[0] <= value) and (row[1] >= value)):
                 return row[2]
-        return 0;
+        return 0
 
     def get_nutri_class(self, physical_viscosity, value):
-        get_nutri_table_data =  self.get_nutri_table()
+        get_nutri_table_data = self.get_nutri_table()
         nutri_array = get_nutri_table_data['nutriClass'][physical_viscosity]
         for row in nutri_array:
             if ((row[0] <= value) and (row[1] >= value)):
                 return row[2]
-        return 0;
+        return 0
