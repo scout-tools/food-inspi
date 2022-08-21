@@ -13,7 +13,6 @@ class FoodClassification:
             9: "Süßes und Getränke"
         }
         first_digit = str(ndb_number)[:1]
-        print()
         return codes[int(first_digit, 10)]
 
     def get_minor_class(self, ndb_number):

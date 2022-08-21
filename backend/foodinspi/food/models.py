@@ -318,7 +318,6 @@ def save_recipe(sender, instance: RecipeItem, **kwargs):
 # pylint: disable=unused-argument
 @receiver(pre_save, sender=Ingredient)
 def save_recipe(sender, instance: Ingredient, **kwargs):
-    print('pre_save')
     import requests
     import json
     if instance.fdc_id:
@@ -387,9 +386,7 @@ def post_save_recipe(sender, instance, created, **kwargs):
         nutri_items = NutriClass.get_nutri_items()
         nutri_points = 0
         for item in nutri_items:
-            print(item)
             value = instance._meta.get_field(item).value_from_object(instance)
-            print(value)
             temp_points = NutriClass.get_points(
                 item, physical_viscosity, value)
             nutri_points = temp_points + nutri_points

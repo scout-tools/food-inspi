@@ -31,15 +31,12 @@ class RecipeModule:
             recipe_item.save()
 
         recipe_set = food_models.Recipe.objects.filter(id=recipe_id).first()
-        print(recipe_set)
 
         recipe_item_set = food_models.RecipeItem.objects.filter(
             recipe=recipe_id)
 
         recipe_weight_g = recipe_item_set.aggregate(
             sum=Sum('weight_g'))['sum'] or 0
-
-        print(recipe_weight_g)
 
         for recipe_item in recipe_item_set:
             recipe_item.weight_recipe_factor = round(
@@ -48,5 +45,4 @@ class RecipeModule:
                 recipe_item.portion.ingredient.nutri_points * recipe_item.weight_recipe_factor, 1)
             recipe_item.nutri_class = NutriClass.get_nutri_class(
                 'solid', recipe_item.portion.ingredient.nutri_points)
-            print(recipe_item.nutri_points)
             recipe_item.save()
