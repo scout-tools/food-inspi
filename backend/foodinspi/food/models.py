@@ -93,7 +93,7 @@ class Ingredient(TimeStampMixin, NutrientsMixin):
         choices=PhysicalViscosityChoices.choices,
         default=PhysicalViscosityChoices.SOLID,
     )
-    tags = models.ManyToManyField(Tag, related_name='tags', blank=True)
+    tags = models.ManyToManyField(Tag, related_name='IngredientTags', blank=True)
     fdc_id = models.IntegerField(null=True, blank=True)
 
     # readonly
@@ -155,6 +155,7 @@ class Portion(TimeStampMixin, NutrientsMixin):
 class Recipe(TimeStampMixin, NutrientsMixin):
     name = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255, blank=True)
+    tags = models.ManyToManyField(Tag, related_name='RecipeTags', blank=True)
 
     # readonly
     nutri_class = models.FloatField(null=True, blank=True)
@@ -164,7 +165,7 @@ class Recipe(TimeStampMixin, NutrientsMixin):
     def get_sum(self, name, items):
         if (items[f'{name}__sum']):
             return round(items[f'{name}__sum'], 0)
-        return 0
+        return 0.1
 
     def save(self, *args, **kwargs):
         NutriClass = Nutri()
@@ -336,8 +337,11 @@ def save_recipe(sender, instance: Ingredient, **kwargs):
             instance.sodium_mg = 0
             instance.carbohydrate_g = 0
             instance.fibre_g = 0
-            instance.ndb_number = dict_data['ndbNumber']
-            instance.major_class = dict_data['foodCategory']['description']
+            if 'ndbNumber' in dict_data:
+                instance.ndb_number = dict_data['ndbNumber']
+
+            if 'foodCategory' in dict_data:
+                instance.major_class = dict_data['foodCategory']['description']
 
             for item in nutri_list:
                 if item['type'] == 'FoodNutrient':

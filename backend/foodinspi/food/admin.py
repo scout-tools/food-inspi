@@ -48,23 +48,17 @@ class IngredientAdmin(admin.ModelAdmin):
     readonly_fields = (
         'nutri_points',
         'nutri_class',
-        'energy_kj',
-        'protein_g',
-        'fat_g',
-        'saturated_fatty_acids_g',
-        'sugar_g',
-        'sodium_mg',
-        'carbohydrate_g',
-        'fibre_g',
         'fruit_factor',
         'ndb_number',
         'major_class',)
-    search_fields = ['tags']
+    search_fields = ['name']
     list_display = (
         'name',
         'description',
+        'nutri_points',
+        'major_class',
     )
-    list_filter = ('name',)
+    list_filter = ('major_class', 'nutri_class',)
 
     inlines = [
         PortionInline,
@@ -106,7 +100,16 @@ class RecipeAdmin(admin.ModelAdmin):
         'fibre_g',
         'fruit_factor',
     )
-
+    list_display = (
+        'name',
+        'weight_g',
+        'energy_kj',
+        'carbohydrate_g',
+        'fat_g',
+        'protein_g',
+        'fibre_g',
+        'nutri_class',
+    )
     inlines = [
         RecipeItemInline,
     ]
