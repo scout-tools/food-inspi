@@ -1,5 +1,2008 @@
 [
   {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2022-08-27T17:09:41.831Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"recipe item\", \"object\": \" - 125.0 x Vollkornnudeln in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \" - 100.0 x Tomate in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \" - 10.0 x Oliven\\u00f6l in ml / 1.0 ml\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \" - 1.0 x Gem\\u00fcsezwiebel / 40.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \" - 30.0 x Parmesan in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \" - 2.0 x Basilikumblatt / 6.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2022-08-27T17:11:35.095Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 80.0 x Reis, Wild in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 100.0 x Ananas, Konserven, abgetropft in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 0.25 x Pfirsich, Dose / 240.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 2.0 x Sojaso\\u00dfe in EL / 1.0 EL\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 3.0 x Tomatemark in EL / 1.0 EL\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 3.0 x Balsamic Essig in EL / 1.0 EL\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2022-08-27T17:11:55.270Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Pesto und Tomaten",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2022-08-27T17:14:04.231Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 150.0 x Kartoffel in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 100.0 x Bohne, Kidney in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 40.0 x M\\u00f6hre in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 50.0 x Mais in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 30.0 x Speisest\\u00e4rke in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 50.0 x Tomatemark in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 1.0 x Gem\\u00fcsezwiebel / 40.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2022-08-27T17:14:08.366Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2022-08-27T17:14:10.850Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2022-08-27T17:14:13.937Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Pesto und Tomaten",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2022-08-27T17:14:24.155Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Pesto und Tomaten",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Nudeln mit Pesto und Tomaten - 150.0 x Tomate in g / 1.0 g\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2022-08-27T17:14:27.436Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2022-08-27T17:15:00.943Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Pesto und Tomaten",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"recipe item\", \"object\": \"Nudeln mit Pesto und Tomaten - 50.0 x Emmentaler in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2022-08-27T17:15:43.183Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 100.0 x Reis, Wild in g / 1.0 g\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+      "action_time": "2022-08-27T17:16:02.844Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Pesto und Tomaten",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Nudeln mit Pesto und Tomaten - 20.0 x Emmentaler in g / 1.0 g\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+      "action_time": "2022-08-27T17:16:07.581Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Pesto und Tomaten",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+      "action_time": "2022-08-27T17:16:19.081Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Pesto und Tomaten",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Nudeln mit Pesto und Tomaten - 20.0 x Parmesan in g / 1.0 g\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+      "action_time": "2022-08-27T17:16:23.278Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Pesto und Tomaten",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+      "action_time": "2022-08-27T17:16:27.911Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+      "action_time": "2022-08-27T17:16:31.280Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+      "action_time": "2022-08-27T17:16:34.748Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+      "action_time": "2022-08-27T17:18:21.453Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "Käsesätzle",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"K\\u00e4ses\\u00e4tzle - 30.0 x Emmentaler in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"K\\u00e4ses\\u00e4tzle - 30.0 x Cheddar K\\u00e4se in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"K\\u00e4ses\\u00e4tzle - 150.0 x Sp\\u00e4tzle in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"K\\u00e4ses\\u00e4tzle - 30.0 x Morzarella in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"K\\u00e4ses\\u00e4tzle - 1.0 x Gem\\u00fcsezwiebel / 40.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+      "action_time": "2022-08-27T17:18:27.677Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "Käsesätzle",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+      "action_time": "2022-08-27T17:18:30.614Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "Käsesätzle",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+      "action_time": "2022-08-27T17:19:13.895Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "Käsesätzle",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"K\\u00e4ses\\u00e4tzle - 20.0 x Emmentaler in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"K\\u00e4ses\\u00e4tzle - 20.0 x Cheddar K\\u00e4se in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"K\\u00e4ses\\u00e4tzle - 20.0 x Morzarella in g / 1.0 g\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+      "action_time": "2022-08-27T17:19:18.561Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "Käsesätzle",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+      "action_time": "2022-08-27T23:23:21.965Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 5.0 x Speisest\\u00e4rke in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 15.0 x Tomatemark in g / 1.0 g\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+      "action_time": "2022-08-27T23:25:07.833Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 70.0 x Thunfisch in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+      "action_time": "2022-08-27T23:25:12.745Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+      "action_time": "2022-08-27T23:25:19.755Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+      "action_time": "2022-08-27T23:26:32.889Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+      "action_time": "2022-08-27T23:26:43.379Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 100.0 x Reis in g / 1.0 g\", \"fields\": [\"Portion\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+      "action_time": "2022-08-27T23:26:47.702Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+      "action_time": "2022-08-27T23:27:06.517Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 100.0 x Reis, Wild in g / 1.0 g\", \"fields\": [\"Portion\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+      "action_time": "2022-08-27T23:27:10.986Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+      "action_time": "2022-08-27T23:27:14.088Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+      "action_time": "2022-08-27T23:27:25.294Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 100.0 x Reis in g / 1.0 g\", \"fields\": [\"Portion\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+      "action_time": "2022-08-27T23:27:35.061Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+      "action_time": "2022-08-28T00:02:51.920Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "5",
+      "object_repr": "Trolls Reis",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Trolls Reis - 40.0 x Schokolade 80% in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Trolls Reis - 125.0 x Sp\\u00e4tzle in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Trolls Reis - 50.0 x Reis in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+      "action_time": "2022-08-28T00:02:55.737Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "5",
+      "object_repr": "Trolls Reis",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+      "action_time": "2022-08-28T00:03:19.983Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "5",
+      "object_repr": "Trolls Reis",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+      "action_time": "2022-08-28T00:03:52.192Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "5",
+      "object_repr": "Trolls Reis",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Trolls Reis - 50.0 x Schokolade in g / 1.0 g\", \"fields\": [\"Portion\", \"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+      "action_time": "2022-08-28T00:03:55.793Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "5",
+      "object_repr": "Trolls Reis",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+      "action_time": "2022-08-28T00:03:58.191Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "5",
+      "object_repr": "Trolls Reis",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+      "action_time": "2022-08-28T13:29:10.399Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "5",
+      "object_repr": "Trolls Reis",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+      "action_time": "2022-08-28T13:32:09.756Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "Einfache Käsespätzle",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+      "action_time": "2022-08-28T13:33:12.975Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Reis mit S\\u00fc\\u00df Saurer So\\u00dfe - 85.0 x H\\u00e4hnchenfleisch in g / 1.0 g\", \"fields\": [\"Portion\", \"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+      "action_time": "2022-08-28T13:33:19.444Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+      "action_time": "2022-08-28T13:33:22.833Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Reis mit Süß Saurer Soße",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+      "action_time": "2022-08-28T13:34:37.758Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 70.0 x Reis in g / 1.0 g\", \"fields\": [\"Portion\", \"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+      "action_time": "2022-08-28T13:39:59.980Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[{\"deleted\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 70.0 x Reis in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+      "action_time": "2022-08-28T13:44:29.350Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 30.0 x Sojaflocken in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 120.0 x Tomate in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 40.0 x Paprika in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 0.5 x Speisest\\u00e4rke in EL / 1.0 EL\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 10.0 x Tomatemark in g / 1.0 g\"}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 40.0 x Mais in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"deleted\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 40.0 x M\\u00f6hre in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+      "action_time": "2022-08-28T13:44:34.280Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+      "action_time": "2022-08-28T13:44:38.574Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+      "action_time": "2022-08-28T13:58:02.522Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[{\"deleted\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 5.0 x Speisest\\u00e4rke in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+      "action_time": "2022-08-28T14:10:29.204Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "4",
+      "object_repr": "Einfache Käsespätzle",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Einfache K\\u00e4sesp\\u00e4tzle - 50.0 x Emmentaler in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Einfache K\\u00e4sesp\\u00e4tzle - 125.0 x Sp\\u00e4tzle in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Einfache K\\u00e4sesp\\u00e4tzle - 1.5 x Gem\\u00fcsezwiebel / 40.0 g\", \"fields\": [\"Quantity\"]}}, {\"deleted\": {\"name\": \"recipe item\", \"object\": \"Einfache K\\u00e4sesp\\u00e4tzle - 20.0 x Cheddar K\\u00e4se in g / 1.0 g\"}}, {\"deleted\": {\"name\": \"recipe item\", \"object\": \"Einfache K\\u00e4sesp\\u00e4tzle - 20.0 x Morzarella in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+      "action_time": "2022-08-28T14:29:23.810Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 0.5 x Knoblauchzehe / 4.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 100.0 x Gem\\u00fcsebr\\u00fche in ml / 1.0 ml\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 5.0 x \\u00d6l, Raps in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 60.0 x Reis in g / 1.0 g\"}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 115.0 x Bohne, Kidney in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 60.0 x Mais in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 0.7 x Gem\\u00fcsezwiebel / 40.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 150.0 x Tomate in g / 1.0 g\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+      "action_time": "2022-08-28T14:29:28.970Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+      "action_time": "2022-08-28T14:29:31.727Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+      "action_time": "2022-08-28T14:31:52.622Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 100.0 x Bohne, Kidney in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 50.0 x Mais in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 130.0 x Tomate in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 50.0 x Paprika in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Chilli sin Carne - 60.0 x Gem\\u00fcsebr\\u00fche in ml / 1.0 ml\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+      "action_time": "2022-08-28T14:31:55.998Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+      "action_time": "2022-08-28T14:31:59.235Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Chilli sin Carne",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+      "action_time": "2022-08-28T14:34:59.189Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Käse und Tomaten",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+      "action_time": "2022-08-28T14:35:02.369Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Käse und Tomaten",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+      "action_time": "2022-08-28T14:45:25.234Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "127",
+      "object_repr": "Zucchini - ",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+      "action_time": "2022-08-28T14:46:33.505Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "127",
+      "object_repr": "Zucchini - ",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"portion\", \"object\": \"Zucchini, klein / 125.0 g\"}}, {\"added\": {\"name\": \"portion\", \"object\": \"Zucchini, gro\\u00df / 250.0 g\"}}, {\"added\": {\"name\": \"portion\", \"object\": \"Zucchini, mittel / 200.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+      "action_time": "2022-08-28T14:47:05.031Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "127",
+      "object_repr": "Zucchini - ",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+      "action_time": "2022-08-28T14:47:34.523Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "127",
+      "object_repr": "Zucchini - ",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+      "action_time": "2022-08-28T14:48:26.942Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "127",
+      "object_repr": "Zucchini - ",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+      "action_time": "2022-08-28T14:48:51.030Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "6",
+      "object_repr": "Zucchini-Zitronen-Nudeln",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Zucchini-Zitronen-Nudeln - 125.0 x Nudeln in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Zucchini-Zitronen-Nudeln - 1.0 x Salz in EL / 1.0 EL\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Zucchini-Zitronen-Nudeln - 1.0 x Zitronensaft in EL / 1.0 EL\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Zucchini-Zitronen-Nudeln - 40.0 x Parmesan in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+      "action_time": "2022-08-28T14:49:52.430Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "6",
+      "object_repr": "Zucchini-Zitronen-Nudeln",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"recipe item\", \"object\": \"Zucchini-Zitronen-Nudeln - 1.0 x Zucchini, klein / 125.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Zucchini-Zitronen-Nudeln - 0.5 x Knoblauchzehe / 4.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Zucchini-Zitronen-Nudeln - 5.0 x Salz in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Zucchini-Zitronen-Nudeln - 5.0 x Pfeffer, Schwarz in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+      "action_time": "2022-08-28T14:50:11.229Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "6",
+      "object_repr": "Zucchini-Zitronen-Nudeln",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+      "action_time": "2022-08-28T14:50:15.031Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "6",
+      "object_repr": "Zucchini-Zitronen-Nudeln",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+      "action_time": "2022-08-28T15:05:04.153Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "128",
+      "object_repr": "Oregano - ",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+      "action_time": "2022-08-28T15:06:10.106Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "128",
+      "object_repr": "Oregano - ",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+      "action_time": "2022-08-28T15:06:12.096Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "128",
+      "object_repr": "Oregano - ",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+      "action_time": "2022-08-28T15:08:41.384Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Käse und Tomaten",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"recipe item\", \"object\": \"Nudeln mit K\\u00e4se und Tomaten - 5.0 x Oregano in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+      "action_time": "2022-08-28T15:08:58.051Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Nudeln mit Käse und Tomaten",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+      "action_time": "2022-08-28T15:16:45.583Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "7",
+      "object_repr": "Bandnudeln mit Gorgonzolasauce",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Bandnudeln mit Gorgonzolasauce - 125.0 x Nudeln in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Bandnudeln mit Gorgonzolasauce - 2.0 x Speisest\\u00e4rke in EL / 1.0 EL\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Bandnudeln mit Gorgonzolasauce - 30.0 x Milch in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Bandnudeln mit Gorgonzolasauce - 1.0 x Zitronensaft in EL / 1.0 EL\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Bandnudeln mit Gorgonzolasauce - 25.0 x Gorgonzolaa in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Bandnudeln mit Gorgonzolasauce - 30.0 x Zwiebeln in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Bandnudeln mit Gorgonzolasauce - 50.0 x Spinat in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+      "action_time": "2022-08-28T15:16:50.191Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "7",
+      "object_repr": "Bandnudeln mit Gorgonzolasauce",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+      "action_time": "2022-08-28T15:16:57.509Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "7",
+      "object_repr": "Bandnudeln mit Gorgonzolasauce",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+      "action_time": "2022-08-28T15:22:27.529Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "129",
+      "object_repr": "Pinienkerne - ",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+      "action_time": "2022-08-28T15:22:48.593Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "129",
+      "object_repr": "Pinienkerne - ",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+      "action_time": "2022-08-28T15:26:25.029Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "130",
+      "object_repr": "Saure Sahne - ",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+      "action_time": "2022-08-28T15:31:03.678Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "8",
+      "object_repr": "Spaghetti al pesto",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Spaghetti al pesto - 125.0 x Nudeln in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Spaghetti al pesto - 1.0 x Salz in TL / 1.0 TL\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Spaghetti al pesto - 1.0 x Pinienkerne in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Spaghetti al pesto - 1.0 x Basilikum in EL / 1.0 EL\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+      "action_time": "2022-08-28T15:33:03.266Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "8",
+      "object_repr": "Spaghetti al pesto",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"recipe item\", \"object\": \"Spaghetti al pesto - 25.0 x Saure Sahne in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Spaghetti al pesto - 30.0 x Milch in g / 1.0 g\"}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Spaghetti al pesto - 1.0 x Knoblauchzehe / 4.0 g\"}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Spaghetti al pesto - 8.0 x Pinienkerne in g / 1.0 g\", \"fields\": [\"Quantity\"]}}, {\"changed\": {\"name\": \"recipe item\", \"object\": \"Spaghetti al pesto - 2.0 x Basilikumblatt / 6.0 g\", \"fields\": [\"Portion\", \"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+      "action_time": "2022-08-28T15:33:10.816Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "8",
+      "object_repr": "Spaghetti al pesto",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 85,
+    "fields": {
+      "action_time": "2022-08-28T15:33:14.012Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "8",
+      "object_repr": "Spaghetti al pesto",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 86,
+    "fields": {
+      "action_time": "2022-08-28T16:55:34.278Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "131",
+      "object_repr": "Milka Alpenmilch - ",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 87,
+    "fields": {
+      "action_time": "2022-08-28T16:56:00.465Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokolade",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Schokolade - 450.0 x Milka Alpenmilch in g / 1.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 88,
+    "fields": {
+      "action_time": "2022-08-28T16:56:10.397Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokoladen Abendessen",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 89,
+    "fields": {
+      "action_time": "2022-08-28T16:56:13.797Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokoladen Abendessen",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 90,
+    "fields": {
+      "action_time": "2022-08-28T16:56:29.285Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokoladen Abendessen",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Schokoladen Abendessen - 350.0 x Milka Alpenmilch in g / 1.0 g\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 91,
+    "fields": {
+      "action_time": "2022-08-28T16:56:32.758Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokoladen Abendessen",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 92,
+    "fields": {
+      "action_time": "2022-08-28T16:56:35.695Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokoladen Abendessen",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 93,
+    "fields": {
+      "action_time": "2022-08-28T16:57:07.810Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokoladen Abendessen",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Schokoladen Abendessen - 200.0 x Milka Alpenmilch in g / 1.0 g\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 94,
+    "fields": {
+      "action_time": "2022-08-28T16:57:11.263Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokoladen Abendessen",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 95,
+    "fields": {
+      "action_time": "2022-08-28T16:57:23.933Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokoladen Abendessen",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"recipe item\", \"object\": \"Schokoladen Abendessen - 150.0 x Milka Alpenmilch in g / 1.0 g\", \"fields\": [\"Quantity\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 96,
+    "fields": {
+      "action_time": "2022-08-28T16:57:27.413Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokoladen Abendessen",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 97,
+    "fields": {
+      "action_time": "2022-08-28T16:58:53.499Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "10",
+      "object_repr": "Apfel Mahlzeit",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"recipe item\", \"object\": \"Apfel Mahlzeit - 3.0 x Apfel St\\u00fcck / 200.0 g\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 98,
+    "fields": {
+      "action_time": "2022-08-28T16:59:02.170Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "9",
+      "object_repr": "Schokoladen Mahlzeit",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 99,
+    "fields": {
+      "action_time": "2022-08-28T16:59:06.229Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "10",
+      "object_repr": "Apfel Mahlzeit",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 100,
+    "fields": {
+      "action_time": "2022-08-28T16:59:09.364Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "10",
+      "object_repr": "Apfel Mahlzeit",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 101,
+    "fields": {
+      "action_time": "2022-08-28T16:59:12.608Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "10",
+      "object_repr": "Apfel Mahlzeit",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 4,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 5,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 6,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add ingredient",
+      "content_type": 7,
+      "codename": "add_ingredient"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change ingredient",
+      "content_type": 7,
+      "codename": "change_ingredient"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete ingredient",
+      "content_type": 7,
+      "codename": "delete_ingredient"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view ingredient",
+      "content_type": 7,
+      "codename": "view_ingredient"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add measuring unit",
+      "content_type": 8,
+      "codename": "add_measuringunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change measuring unit",
+      "content_type": 8,
+      "codename": "change_measuringunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete measuring unit",
+      "content_type": 8,
+      "codename": "delete_measuringunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view measuring unit",
+      "content_type": 8,
+      "codename": "view_measuringunit"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add package",
+      "content_type": 9,
+      "codename": "add_package"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change package",
+      "content_type": 9,
+      "codename": "change_package"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete package",
+      "content_type": 9,
+      "codename": "delete_package"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view package",
+      "content_type": 9,
+      "codename": "view_package"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add portion",
+      "content_type": 10,
+      "codename": "add_portion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change portion",
+      "content_type": 10,
+      "codename": "change_portion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete portion",
+      "content_type": 10,
+      "codename": "delete_portion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view portion",
+      "content_type": 10,
+      "codename": "view_portion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add recipe",
+      "content_type": 11,
+      "codename": "add_recipe"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change recipe",
+      "content_type": 11,
+      "codename": "change_recipe"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete recipe",
+      "content_type": 11,
+      "codename": "delete_recipe"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view recipe",
+      "content_type": 11,
+      "codename": "view_recipe"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can add retailer",
+      "content_type": 12,
+      "codename": "add_retailer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can change retailer",
+      "content_type": 12,
+      "codename": "change_retailer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+      "name": "Can delete retailer",
+      "content_type": 12,
+      "codename": "delete_retailer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+      "name": "Can view retailer",
+      "content_type": 12,
+      "codename": "view_retailer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can add tag category",
+      "content_type": 13,
+      "codename": "add_tagcategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can change tag category",
+      "content_type": 13,
+      "codename": "change_tagcategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can delete tag category",
+      "content_type": 13,
+      "codename": "delete_tagcategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+      "name": "Can view tag category",
+      "content_type": 13,
+      "codename": "view_tagcategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+      "name": "Can add tag",
+      "content_type": 14,
+      "codename": "add_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+      "name": "Can change tag",
+      "content_type": 14,
+      "codename": "change_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+      "name": "Can delete tag",
+      "content_type": 14,
+      "codename": "delete_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+      "name": "Can view tag",
+      "content_type": 14,
+      "codename": "view_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+      "name": "Can add recipe item",
+      "content_type": 15,
+      "codename": "add_recipeitem"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+      "name": "Can change recipe item",
+      "content_type": 15,
+      "codename": "change_recipeitem"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+      "name": "Can delete recipe item",
+      "content_type": 15,
+      "codename": "delete_recipeitem"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+      "name": "Can view recipe item",
+      "content_type": 15,
+      "codename": "view_recipeitem"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+      "name": "Can add price",
+      "content_type": 16,
+      "codename": "add_price"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+      "name": "Can change price",
+      "content_type": 16,
+      "codename": "change_price"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+      "name": "Can delete price",
+      "content_type": 16,
+      "codename": "delete_price"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+      "name": "Can view price",
+      "content_type": 16,
+      "codename": "view_price"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$ZqEEhFpxUcdyUjGtU9zdbR$mUgwKzBpHyrjXf8AYgHS/4qvAap7vOwk7MKXoQ5RH7o=",
+      "last_login": "2022-08-28T13:25:12.850Z",
+      "is_superuser": true,
+      "username": "robert_admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2022-08-27T17:06:43.785Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": { "app_label": "admin", "model": "logentry" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": { "app_label": "auth", "model": "permission" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": { "app_label": "auth", "model": "group" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": { "app_label": "auth", "model": "user" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": { "app_label": "contenttypes", "model": "contenttype" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": { "app_label": "sessions", "model": "session" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": { "app_label": "food", "model": "ingredient" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": { "app_label": "food", "model": "measuringunit" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": { "app_label": "food", "model": "package" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": { "app_label": "food", "model": "portion" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": { "app_label": "food", "model": "recipe" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": { "app_label": "food", "model": "retailer" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": { "app_label": "food", "model": "tagcategory" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": { "app_label": "food", "model": "tag" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": { "app_label": "food", "model": "recipeitem" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": { "app_label": "food", "model": "price" }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "lsw7fwrghd4ueirxh0c7dk30eikqciqr",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2hBoYACX7j0DmYFBqgaS0q6Md9cmXej2v_f-S0Tc1hq3wUucszgLLU6_G2F6cNtBvmO7dZl6W5eZ5K7Igw557Zmfl8P9O6g46rdGRcwaLFMoMNnAVLwD1mgYCjrnrfLWG1C2OO8MJQ8qTCkDJiomBPH-APDpN_0:1oSIHo:1dyUfy9s3oy3ZNSmLWXHFTA-7H4-PK_qYOUGQaparag",
+      "expire_date": "2022-09-11T13:25:12.851Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "scybpwfip57nwh3oz47xbt0igxmpv3xb",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2hBoYACX7j0DmYFBqgaS0q6Md9cmXej2v_f-S0Tc1hq3wUucszgLLU6_G2F6cNtBvmO7dZl6W5eZ5K7Igw557Zmfl8P9O6g46rdGRcwaLFMoMNnAVLwD1mgYCjrnrfLWG1C2OO8MJQ8qTCkDJiomBPH-APDpN_0:1oRzGw:pyb47qETD31jw40YBmh1DQEQ2uQgwoPc46RwFNEEdX0",
+      "expire_date": "2022-09-10T17:07:02.147Z"
+    }
+  },
+  {
     "model": "food.measuringunit",
     "pk": 1,
     "fields": {
@@ -338,7 +2341,7 @@
     "pk": 1,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:29:27.169Z",
+      "updated_at": "2022-08-28T21:00:53.215Z",
       "energy_kj": 111.0,
       "protein_g": 0.83,
       "fat_g": 0.63,
@@ -353,7 +2356,7 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 321360,
-      "nutri_points": -1,
+      "nutri_points": -2,
       "nutri_class": 1.0,
       "ndb_number": 100147,
       "major_class": "Vegetables and Vegetable Products",
@@ -365,7 +2368,7 @@
     "pk": 3,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:28:00.160Z",
+      "updated_at": "2022-08-28T21:00:53.216Z",
       "energy_kj": 1136.0,
       "protein_g": 1.81,
       "fat_g": 0.15,
@@ -392,7 +2395,7 @@
     "pk": 4,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T17:53:51.625Z",
+      "updated_at": "2022-08-28T21:00:53.217Z",
       "energy_kj": 262.0,
       "protein_g": 0.1484375,
       "fat_g": 0.1625,
@@ -419,7 +2422,7 @@
     "pk": 5,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T22:08:59.922Z",
+      "updated_at": "2022-08-28T21:00:53.217Z",
       "energy_kj": 0.0,
       "protein_g": 0.0,
       "fat_g": 0.0,
@@ -446,7 +2449,7 @@
     "pk": 7,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:25:25.261Z",
+      "updated_at": "2022-08-28T21:00:53.218Z",
       "energy_kj": 1763.0,
       "protein_g": 5.79,
       "fat_g": 14.3,
@@ -473,7 +2476,7 @@
     "pk": 8,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:23:11.384Z",
+      "updated_at": "2022-08-28T21:00:53.218Z",
       "energy_kj": 1013.0,
       "protein_g": 3.99,
       "fat_g": 1.24,
@@ -500,7 +2503,7 @@
     "pk": 9,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:21:39.827Z",
+      "updated_at": "2022-08-28T21:00:53.219Z",
       "energy_kj": 3415.0,
       "protein_g": 0.0,
       "fat_g": 99.1,
@@ -527,7 +2530,7 @@
     "pk": 10,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:20:46.830Z",
+      "updated_at": "2022-08-28T21:00:53.219Z",
       "energy_kj": 90.0,
       "protein_g": 0.35,
       "fat_g": 0.24,
@@ -554,7 +2557,7 @@
     "pk": 11,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T18:36:41.613Z",
+      "updated_at": "2022-08-28T21:00:53.220Z",
       "energy_kj": 1066.0,
       "protein_g": 0.04,
       "fat_g": 0.06,
@@ -581,7 +2584,7 @@
     "pk": 12,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:19:35.542Z",
+      "updated_at": "2022-08-28T21:00:53.221Z",
       "energy_kj": 1451.0,
       "protein_g": 3.33,
       "fat_g": 33.49,
@@ -608,7 +2611,7 @@
     "pk": 14,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:07:41.071Z",
+      "updated_at": "2022-08-28T21:00:53.221Z",
       "energy_kj": 1521.0,
       "protein_g": 13.04,
       "fat_g": 1.51,
@@ -635,7 +2638,7 @@
     "pk": 15,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:06:36.662Z",
+      "updated_at": "2022-08-28T21:00:53.222Z",
       "energy_kj": 1443.0,
       "protein_g": 13.87,
       "fat_g": 2.93,
@@ -662,7 +2665,7 @@
     "pk": 17,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:00:34.791Z",
+      "updated_at": "2022-08-28T21:00:53.222Z",
       "energy_kj": 656.0,
       "protein_g": 2.0,
       "fat_g": 14.66,
@@ -689,7 +2692,7 @@
     "pk": 18,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:17:45.145Z",
+      "updated_at": "2022-08-28T21:00:53.223Z",
       "energy_kj": 0.0,
       "protein_g": 0.0,
       "fat_g": 0.0,
@@ -716,7 +2719,7 @@
     "pk": 19,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T18:40:11.327Z",
+      "updated_at": "2022-08-28T21:00:53.224Z",
       "energy_kj": 94.0,
       "protein_g": 3.15,
       "fat_g": 0.64,
@@ -743,7 +2746,7 @@
     "pk": 20,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:16:56.537Z",
+      "updated_at": "2022-08-28T21:00:53.224Z",
       "energy_kj": 2497.0,
       "protein_g": 12.12,
       "fat_g": 53.03,
@@ -758,7 +2761,7 @@
       "physical_density": 1.5,
       "physical_viscosity": "solid",
       "fdc_id": 168597,
-      "nutri_points": 11,
+      "nutri_points": 14,
       "nutri_class": 4.0,
       "ndb_number": 12588,
       "major_class": "Nut and Seed Products",
@@ -770,7 +2773,7 @@
     "pk": 21,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:16:07.957Z",
+      "updated_at": "2022-08-28T21:00:53.225Z",
       "energy_kj": 144.0,
       "protein_g": 0.89,
       "fat_g": 0.13,
@@ -797,7 +2800,7 @@
     "pk": 22,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T17:33:44.242Z",
+      "updated_at": "2022-08-28T21:00:53.226Z",
       "energy_kj": 1726.0,
       "protein_g": 29.6,
       "fat_g": 28.0,
@@ -824,7 +2827,7 @@
     "pk": 23,
     "fields": {
       "created_at": null,
-      "updated_at": "2022-08-20T20:13:26.151Z",
+      "updated_at": "2022-08-28T21:00:53.226Z",
       "energy_kj": 586.0,
       "protein_g": 6.62,
       "fat_g": 0.38,
@@ -851,7 +2854,7 @@
     "pk": 24,
     "fields": {
       "created_at": "2022-08-19T23:01:55.958Z",
-      "updated_at": "2022-08-20T20:15:44.786Z",
+      "updated_at": "2022-08-28T21:00:53.227Z",
       "energy_kj": 152.0,
       "protein_g": 0.07,
       "fat_g": 0.02,
@@ -878,7 +2881,7 @@
     "pk": 25,
     "fields": {
       "created_at": "2022-08-20T08:07:49.950Z",
-      "updated_at": "2022-08-20T20:12:13.572Z",
+      "updated_at": "2022-08-28T21:00:53.228Z",
       "energy_kj": 2239.0,
       "protein_g": 4.88,
       "fat_g": 31.28,
@@ -893,8 +2896,8 @@
       "physical_density": 1.3,
       "physical_viscosity": "solid",
       "fdc_id": 170271,
-      "nutri_points": 24,
-      "nutri_class": 5.0,
+      "nutri_points": 18,
+      "nutri_class": 4.0,
       "ndb_number": 19902,
       "major_class": "Sweets",
       "tags": []
@@ -905,7 +2908,7 @@
     "pk": 26,
     "fields": {
       "created_at": "2022-08-20T08:10:32.945Z",
-      "updated_at": "2022-08-20T18:43:11.975Z",
+      "updated_at": "2022-08-28T21:00:53.228Z",
       "energy_kj": 1369.0,
       "protein_g": 20.75,
       "fat_g": 27.68,
@@ -932,7 +2935,7 @@
     "pk": 27,
     "fields": {
       "created_at": "2022-08-20T08:11:20.124Z",
-      "updated_at": "2022-08-20T17:22:29.906Z",
+      "updated_at": "2022-08-28T21:00:53.229Z",
       "energy_kj": 1230.0,
       "protein_g": 19.8,
       "fat_g": 24.26,
@@ -959,7 +2962,7 @@
     "pk": 28,
     "fields": {
       "created_at": "2022-08-20T08:12:01.163Z",
-      "updated_at": "2022-08-20T17:22:11.004Z",
+      "updated_at": "2022-08-28T21:00:53.230Z",
       "energy_kj": 1086.0,
       "protein_g": 14.21,
       "fat_g": 21.49,
@@ -986,7 +2989,7 @@
     "pk": 29,
     "fields": {
       "created_at": "2022-08-20T08:12:33.356Z",
-      "updated_at": "2022-08-20T17:22:00.381Z",
+      "updated_at": "2022-08-28T21:00:53.230Z",
       "energy_kj": 1460.0,
       "protein_g": 24.94,
       "fat_g": 27.44,
@@ -1013,7 +3016,7 @@
     "pk": 30,
     "fields": {
       "created_at": "2022-08-20T08:17:12.601Z",
-      "updated_at": "2022-08-20T17:21:54.367Z",
+      "updated_at": "2022-08-28T21:00:53.231Z",
       "energy_kj": 41.0,
       "protein_g": 0.59,
       "fat_g": 0.16,
@@ -1040,7 +3043,7 @@
     "pk": 31,
     "fields": {
       "created_at": "2022-08-20T08:19:47.408Z",
-      "updated_at": "2022-08-20T17:21:48.122Z",
+      "updated_at": "2022-08-28T21:00:53.231Z",
       "energy_kj": 402.0,
       "protein_g": 11.12,
       "fat_g": 4.3,
@@ -1067,7 +3070,7 @@
     "pk": 32,
     "fields": {
       "created_at": "2022-08-20T08:23:22.508Z",
-      "updated_at": "2022-08-20T17:21:37.899Z",
+      "updated_at": "2022-08-28T21:00:53.232Z",
       "energy_kj": 250.0,
       "protein_g": 3.47,
       "fat_g": 3.25,
@@ -1094,7 +3097,7 @@
     "pk": 33,
     "fields": {
       "created_at": "2022-08-20T08:27:00.831Z",
-      "updated_at": "2022-08-20T17:21:32.341Z",
+      "updated_at": "2022-08-28T21:00:53.232Z",
       "energy_kj": 2788.0,
       "protein_g": 0.96,
       "fat_g": 74.85,
@@ -1121,7 +3124,7 @@
     "pk": 34,
     "fields": {
       "created_at": "2022-08-20T08:35:15.012Z",
-      "updated_at": "2022-08-20T17:21:13.454Z",
+      "updated_at": "2022-08-28T21:00:53.233Z",
       "energy_kj": 976.0,
       "protein_g": 0.37,
       "fat_g": 22.22,
@@ -1148,7 +3151,7 @@
     "pk": 35,
     "fields": {
       "created_at": "2022-08-20T08:51:59.990Z",
-      "updated_at": "2022-08-20T18:13:28.627Z",
+      "updated_at": "2022-08-28T21:00:53.234Z",
       "energy_kj": 1517.0,
       "protein_g": 15.1,
       "fat_g": 2.73,
@@ -1175,7 +3178,7 @@
     "pk": 36,
     "fields": {
       "created_at": "2022-08-20T08:57:19.540Z",
-      "updated_at": "2022-08-20T18:13:07.250Z",
+      "updated_at": "2022-08-28T21:00:53.234Z",
       "energy_kj": 1488.0,
       "protein_g": 14.3,
       "fat_g": 1.65,
@@ -1202,7 +3205,7 @@
     "pk": 37,
     "fields": {
       "created_at": "2022-08-20T17:37:10.240Z",
-      "updated_at": "2022-08-20T18:47:14.814Z",
+      "updated_at": "2022-08-28T21:00:53.235Z",
       "energy_kj": 0.0,
       "protein_g": 0.0,
       "fat_g": 82.2,
@@ -1229,7 +3232,7 @@
     "pk": 38,
     "fields": {
       "created_at": "2022-08-20T17:38:50.839Z",
-      "updated_at": "2022-08-20T17:39:26.040Z",
+      "updated_at": "2022-08-28T21:00:53.235Z",
       "energy_kj": 1673.0,
       "protein_g": 23.3,
       "fat_g": 34.0,
@@ -1256,7 +3259,7 @@
     "pk": 39,
     "fields": {
       "created_at": "2022-08-20T17:40:01.434Z",
-      "updated_at": "2022-08-20T17:40:02.874Z",
+      "updated_at": "2022-08-28T21:00:53.236Z",
       "energy_kj": 246.0,
       "protein_g": 3.27,
       "fat_g": 3.2,
@@ -1283,7 +3286,7 @@
     "pk": 40,
     "fields": {
       "created_at": "2022-08-20T17:41:08.394Z",
-      "updated_at": "2022-08-20T17:41:27.384Z",
+      "updated_at": "2022-08-28T21:00:53.237Z",
       "energy_kj": 176.0,
       "protein_g": 3.38,
       "fat_g": 0.95,
@@ -1310,7 +3313,7 @@
     "pk": 41,
     "fields": {
       "created_at": "2022-08-20T17:41:49.500Z",
-      "updated_at": "2022-08-20T20:15:32.418Z",
+      "updated_at": "2022-08-28T21:00:53.237Z",
       "energy_kj": 607.0,
       "protein_g": 12.4,
       "fat_g": 9.96,
@@ -1337,7 +3340,7 @@
     "pk": 42,
     "fields": {
       "created_at": "2022-08-20T17:43:02.611Z",
-      "updated_at": "2022-08-20T17:43:14.696Z",
+      "updated_at": "2022-08-28T21:00:53.238Z",
       "energy_kj": 250.0,
       "protein_g": 4.25,
       "fat_g": 3.38,
@@ -1364,7 +3367,7 @@
     "pk": 43,
     "fields": {
       "created_at": "2022-08-20T17:44:12.962Z",
-      "updated_at": "2022-08-20T17:44:14.865Z",
+      "updated_at": "2022-08-28T21:00:53.238Z",
       "energy_kj": 0.0,
       "protein_g": 0.0,
       "fat_g": 0.0,
@@ -1379,8 +3382,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 748278,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": 6,
+      "nutri_class": 3.0,
       "ndb_number": 4582,
       "major_class": "Fats and Oils",
       "tags": []
@@ -1391,7 +3394,7 @@
     "pk": 44,
     "fields": {
       "created_at": "2022-08-20T17:45:04.579Z",
-      "updated_at": "2022-08-20T17:45:05.889Z",
+      "updated_at": "2022-08-28T21:00:53.239Z",
       "energy_kj": 681.0,
       "protein_g": 32.1,
       "fat_g": 3.24,
@@ -1418,7 +3421,7 @@
     "pk": 45,
     "fields": {
       "created_at": "2022-08-20T17:45:52.223Z",
-      "updated_at": "2022-08-20T17:45:53.746Z",
+      "updated_at": "2022-08-28T21:00:53.239Z",
       "energy_kj": 496.0,
       "protein_g": 19.6,
       "fat_g": 3.68,
@@ -1445,7 +3448,7 @@
     "pk": 46,
     "fields": {
       "created_at": "2022-08-20T17:46:07.203Z",
-      "updated_at": "2022-08-20T18:39:22.888Z",
+      "updated_at": "2022-08-28T21:00:53.240Z",
       "energy_kj": 398.0,
       "protein_g": 0.74,
       "fat_g": 0.29,
@@ -1472,7 +3475,7 @@
     "pk": 47,
     "fields": {
       "created_at": "2022-08-20T17:46:53.938Z",
-      "updated_at": "2022-08-20T17:46:59.791Z",
+      "updated_at": "2022-08-28T21:00:53.241Z",
       "energy_kj": 1021.0,
       "protein_g": 3.3,
       "fat_g": 0.92,
@@ -1487,8 +3490,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 746768,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": -4,
+      "nutri_class": 1.0,
       "ndb_number": 9094,
       "major_class": "Fruits and Fruit Juices",
       "tags": []
@@ -1499,7 +3502,7 @@
     "pk": 48,
     "fields": {
       "created_at": "2022-08-20T17:47:49.031Z",
-      "updated_at": "2022-08-20T17:47:50.054Z",
+      "updated_at": "2022-08-28T21:00:53.241Z",
       "energy_kj": 258.0,
       "protein_g": 0.703125,
       "fat_g": 0.3063,
@@ -1526,7 +3529,7 @@
     "pk": 49,
     "fields": {
       "created_at": "2022-08-20T17:48:16.260Z",
-      "updated_at": "2022-08-20T17:48:19.749Z",
+      "updated_at": "2022-08-28T21:00:53.242Z",
       "energy_kj": 238.0,
       "protein_g": 1.06,
       "fat_g": 0.44,
@@ -1553,7 +3556,7 @@
     "pk": 50,
     "fields": {
       "created_at": "2022-08-20T17:48:45.615Z",
-      "updated_at": "2022-08-20T17:48:46.839Z",
+      "updated_at": "2022-08-28T21:00:53.242Z",
       "energy_kj": 139.0,
       "protein_g": 0.82,
       "fat_g": 0.18,
@@ -1580,7 +3583,7 @@
     "pk": 51,
     "fields": {
       "created_at": "2022-08-20T17:49:11.261Z",
-      "updated_at": "2022-08-20T20:31:43.152Z",
+      "updated_at": "2022-08-28T21:00:53.243Z",
       "energy_kj": 189.0,
       "protein_g": 0.8125,
       "fat_g": 0.3563,
@@ -1607,7 +3610,7 @@
     "pk": 52,
     "fields": {
       "created_at": "2022-08-20T17:49:30.512Z",
-      "updated_at": "2022-08-20T17:49:35.429Z",
+      "updated_at": "2022-08-28T21:00:53.243Z",
       "energy_kj": 193.0,
       "protein_g": 0.91,
       "fat_g": 0.15,
@@ -1622,8 +3625,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 746771,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": -2,
+      "nutri_class": 1.0,
       "ndb_number": 9202,
       "major_class": "Fruits and Fruit Juices",
       "tags": []
@@ -1634,7 +3637,7 @@
     "pk": 53,
     "fields": {
       "created_at": "2022-08-20T17:50:05.153Z",
-      "updated_at": "2022-08-20T17:50:06.381Z",
+      "updated_at": "2022-08-28T21:00:53.244Z",
       "energy_kj": 160.0,
       "protein_g": 1.06,
       "fat_g": 0.28,
@@ -1661,7 +3664,7 @@
     "pk": 54,
     "fields": {
       "created_at": "2022-08-20T17:50:47.113Z",
-      "updated_at": "2022-08-20T18:40:57.931Z",
+      "updated_at": "2022-08-28T21:00:53.245Z",
       "energy_kj": 234.0,
       "protein_g": 0.38,
       "fat_g": 0.16,
@@ -1688,7 +3691,7 @@
     "pk": 55,
     "fields": {
       "created_at": "2022-08-20T17:50:59.912Z",
-      "updated_at": "2022-08-20T18:35:23.960Z",
+      "updated_at": "2022-08-28T21:00:53.245Z",
       "energy_kj": 197.0,
       "protein_g": 0.0859375,
       "fat_g": 0.2863,
@@ -1715,7 +3718,7 @@
     "pk": 56,
     "fields": {
       "created_at": "2022-08-20T17:51:36.693Z",
-      "updated_at": "2022-08-20T17:51:38.687Z",
+      "updated_at": "2022-08-28T21:00:53.246Z",
       "energy_kj": 148.0,
       "protein_g": 0.640625,
       "fat_g": 0.22,
@@ -1742,7 +3745,7 @@
     "pk": 57,
     "fields": {
       "created_at": "2022-08-20T17:51:54.695Z",
-      "updated_at": "2022-08-20T17:51:56.740Z",
+      "updated_at": "2022-08-28T21:00:53.246Z",
       "energy_kj": 234.0,
       "protein_g": 1.008125,
       "fat_g": 0.1875,
@@ -1769,7 +3772,7 @@
     "pk": 58,
     "fields": {
       "created_at": "2022-08-20T17:51:54.910Z",
-      "updated_at": "2022-08-20T17:51:57.707Z",
+      "updated_at": "2022-08-28T21:00:53.247Z",
       "energy_kj": 234.0,
       "protein_g": 1.008125,
       "fat_g": 0.1875,
@@ -1796,7 +3799,7 @@
     "pk": 59,
     "fields": {
       "created_at": "2022-08-20T17:52:28.439Z",
-      "updated_at": "2022-08-20T17:52:37.333Z",
+      "updated_at": "2022-08-28T21:00:53.248Z",
       "energy_kj": 172.0,
       "protein_g": 0.91,
       "fat_g": 0.27,
@@ -1823,7 +3826,7 @@
     "pk": 60,
     "fields": {
       "created_at": "2022-08-20T17:54:25.372Z",
-      "updated_at": "2022-08-20T20:31:34.313Z",
+      "updated_at": "2022-08-28T21:00:53.249Z",
       "energy_kj": 144.0,
       "protein_g": 2.92,
       "fat_g": 1.49,
@@ -1838,8 +3841,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 323505,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": -5,
+      "nutri_class": 1.0,
       "ndb_number": 11233,
       "major_class": "Vegetables and Vegetable Products",
       "tags": []
@@ -1850,7 +3853,7 @@
     "pk": 61,
     "fields": {
       "created_at": "2022-08-20T17:55:11.509Z",
-      "updated_at": "2022-08-20T20:31:24.829Z",
+      "updated_at": "2022-08-28T21:00:53.249Z",
       "energy_kj": 193.0,
       "protein_g": 0.94125,
       "fat_g": 0.3506,
@@ -1865,8 +3868,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 2258586,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": -3,
+      "nutri_class": 1.0,
       "ndb_number": 11124,
       "major_class": "Vegetables and Vegetable Products",
       "tags": []
@@ -1877,7 +3880,7 @@
     "pk": 62,
     "fields": {
       "created_at": "2022-08-20T17:55:49.763Z",
-      "updated_at": "2022-08-20T18:44:06.674Z",
+      "updated_at": "2022-08-28T21:00:53.250Z",
       "energy_kj": 127.0,
       "protein_g": 2.57,
       "fat_g": 0.34,
@@ -1904,7 +3907,7 @@
     "pk": 63,
     "fields": {
       "created_at": "2022-08-20T17:56:22.144Z",
-      "updated_at": "2022-08-20T17:56:24.524Z",
+      "updated_at": "2022-08-28T21:00:53.250Z",
       "energy_kj": 86.0,
       "protein_g": 1.04,
       "fat_g": 0.39,
@@ -1931,7 +3934,7 @@
     "pk": 64,
     "fields": {
       "created_at": "2022-08-20T17:57:05.460Z",
-      "updated_at": "2022-08-20T17:57:28.475Z",
+      "updated_at": "2022-08-28T21:00:53.251Z",
       "energy_kj": 2050.0,
       "protein_g": 40.9,
       "fat_g": 36.5,
@@ -1946,8 +3949,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 749420,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": 21,
+      "nutri_class": 5.0,
       "ndb_number": 10896,
       "major_class": "Pork Products",
       "tags": []
@@ -1958,7 +3961,7 @@
     "pk": 65,
     "fields": {
       "created_at": "2022-08-20T17:57:41.902Z",
-      "updated_at": "2022-08-20T17:57:50.363Z",
+      "updated_at": "2022-08-28T21:00:53.252Z",
       "energy_kj": 533.0,
       "protein_g": 1.15,
       "fat_g": 12.9,
@@ -1985,7 +3988,7 @@
     "pk": 66,
     "fields": {
       "created_at": "2022-08-20T17:58:11.965Z",
-      "updated_at": "2022-08-20T17:58:13.743Z",
+      "updated_at": "2022-08-28T21:00:53.252Z",
       "energy_kj": 180.0,
       "protein_g": 2.414375,
       "fat_g": 0.195,
@@ -2012,7 +4015,7 @@
     "pk": 67,
     "fields": {
       "created_at": "2022-08-20T17:59:05.599Z",
-      "updated_at": "2022-08-20T17:59:12.409Z",
+      "updated_at": "2022-08-28T21:00:53.253Z",
       "energy_kj": 70.0,
       "protein_g": 1.24,
       "fat_g": 0.26,
@@ -2027,8 +4030,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 746769,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": -1,
+      "nutri_class": 1.0,
       "ndb_number": 11251,
       "major_class": "Vegetables and Vegetable Products",
       "tags": []
@@ -2039,7 +4042,7 @@
     "pk": 68,
     "fields": {
       "created_at": "2022-08-20T18:00:27.749Z",
-      "updated_at": "2022-08-20T18:00:29.457Z",
+      "updated_at": "2022-08-28T21:00:53.253Z",
       "energy_kj": 90.0,
       "protein_g": 0.715,
       "fat_g": 0.1063,
@@ -2066,7 +4069,7 @@
     "pk": 69,
     "fields": {
       "created_at": "2022-08-20T18:01:40.140Z",
-      "updated_at": "2022-08-20T18:01:42.380Z",
+      "updated_at": "2022-08-28T21:00:53.254Z",
       "energy_kj": 111.0,
       "protein_g": 2.90625,
       "fat_g": 0.6044,
@@ -2093,7 +4096,7 @@
     "pk": 70,
     "fields": {
       "created_at": "2022-08-20T18:01:54.569Z",
-      "updated_at": "2022-08-20T20:08:39.627Z",
+      "updated_at": "2022-08-28T21:00:53.255Z",
       "energy_kj": 94.0,
       "protein_g": 0.859375,
       "fat_g": 0.2875,
@@ -2120,7 +4123,7 @@
     "pk": 71,
     "fields": {
       "created_at": "2022-08-20T18:02:47.940Z",
-      "updated_at": "2022-08-20T18:02:58.389Z",
+      "updated_at": "2022-08-28T21:00:53.255Z",
       "energy_kj": 49.0,
       "protein_g": 0.48,
       "fat_g": 0.43,
@@ -2135,8 +4138,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 324653,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": 7,
+      "nutri_class": 3.0,
       "ndb_number": 11937,
       "major_class": "Vegetables and Vegetable Products",
       "tags": []
@@ -2147,7 +4150,7 @@
     "pk": 72,
     "fields": {
       "created_at": "2022-08-20T18:03:07.573Z",
-      "updated_at": "2022-08-20T18:03:13.082Z",
+      "updated_at": "2022-08-28T21:00:53.256Z",
       "energy_kj": 480.0,
       "protein_g": 1.11,
       "fat_g": 0.55,
@@ -2162,8 +4165,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 747693,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": 11,
+      "nutri_class": 4.0,
       "ndb_number": 11966,
       "major_class": "Vegetables and Vegetable Products",
       "tags": []
@@ -2174,7 +4177,7 @@
     "pk": 73,
     "fields": {
       "created_at": "2022-08-20T18:03:30.938Z",
-      "updated_at": "2022-08-20T18:03:33.231Z",
+      "updated_at": "2022-08-28T21:00:53.256Z",
       "energy_kj": 2644.0,
       "protein_g": 20.78734,
       "fat_g": 53.04,
@@ -2201,7 +4204,7 @@
     "pk": 74,
     "fields": {
       "created_at": "2022-08-20T18:05:11.149Z",
-      "updated_at": "2022-08-20T18:05:13.703Z",
+      "updated_at": "2022-08-28T21:00:53.257Z",
       "energy_kj": 2234.0,
       "protein_g": 18.0359,
       "fat_g": 37.28,
@@ -2228,7 +4231,7 @@
     "pk": 75,
     "fields": {
       "created_at": "2022-08-20T18:05:39.426Z",
-      "updated_at": "2022-08-20T18:05:40.760Z",
+      "updated_at": "2022-08-28T21:00:53.258Z",
       "energy_kj": 2509.0,
       "protein_g": 21.0,
       "fat_g": 56.1,
@@ -2255,7 +4258,7 @@
     "pk": 76,
     "fields": {
       "created_at": "2022-08-20T18:06:16.763Z",
-      "updated_at": "2022-08-20T18:06:24.539Z",
+      "updated_at": "2022-08-28T21:00:53.258Z",
       "energy_kj": 2542.0,
       "protein_g": 20.4,
       "fat_g": 57.8,
@@ -2282,7 +4285,7 @@
     "pk": 77,
     "fields": {
       "created_at": "2022-08-20T18:06:55.708Z",
-      "updated_at": "2022-08-20T18:06:57.020Z",
+      "updated_at": "2022-08-28T21:00:53.259Z",
       "energy_kj": 594.0,
       "protein_g": 22.7,
       "fat_g": 5.32,
@@ -2309,7 +4312,7 @@
     "pk": 78,
     "fields": {
       "created_at": "2022-08-20T18:07:16.514Z",
-      "updated_at": "2022-08-20T18:07:26.334Z",
+      "updated_at": "2022-08-28T21:00:53.259Z",
       "energy_kj": 57.0,
       "protein_g": 0.5546875,
       "fat_g": 1.221,
@@ -2324,7 +4327,7 @@
       "physical_density": 1.0,
       "physical_viscosity": "beverage",
       "fdc_id": 1999631,
-      "nutri_points": 0,
+      "nutri_points": 2,
       "nutri_class": 2.0,
       "ndb_number": 14091,
       "major_class": "Beverages",
@@ -2336,7 +4339,7 @@
     "pk": 79,
     "fields": {
       "created_at": "2022-08-20T18:07:58.594Z",
-      "updated_at": "2022-08-20T20:08:30.311Z",
+      "updated_at": "2022-08-28T21:00:53.260Z",
       "energy_kj": 303.0,
       "protein_g": 16.3,
       "fat_g": 0.45,
@@ -2363,7 +4366,7 @@
     "pk": 80,
     "fields": {
       "created_at": "2022-08-20T18:09:01.922Z",
-      "updated_at": "2022-08-20T18:09:39.764Z",
+      "updated_at": "2022-08-28T21:00:53.260Z",
       "energy_kj": 369.0,
       "protein_g": 19.0,
       "fat_g": 0.94,
@@ -2390,7 +4393,7 @@
     "pk": 81,
     "fields": {
       "created_at": "2022-08-20T18:09:58.079Z",
-      "updated_at": "2022-08-20T18:10:00.739Z",
+      "updated_at": "2022-08-28T21:00:53.261Z",
       "energy_kj": 2587.0,
       "protein_g": 23.99124,
       "fat_g": 49.43,
@@ -2417,7 +4420,7 @@
     "pk": 82,
     "fields": {
       "created_at": "2022-08-20T18:11:45.124Z",
-      "updated_at": "2022-08-20T18:11:46.955Z",
+      "updated_at": "2022-08-28T21:00:53.262Z",
       "energy_kj": 1488.0,
       "protein_g": 14.475,
       "fat_g": 2.543,
@@ -2444,7 +4447,7 @@
     "pk": 83,
     "fields": {
       "created_at": "2022-08-20T18:13:46.086Z",
-      "updated_at": "2022-08-20T18:45:54.874Z",
+      "updated_at": "2022-08-28T21:00:53.262Z",
       "energy_kj": 1041.0,
       "protein_g": 12.3,
       "fat_g": 3.55,
@@ -2459,8 +4462,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 335240,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": -3,
+      "nutri_class": 1.0,
       "ndb_number": 18075,
       "major_class": "Baked Products",
       "tags": []
@@ -2471,7 +4474,7 @@
     "pk": 84,
     "fields": {
       "created_at": "2022-08-20T18:14:09.443Z",
-      "updated_at": "2022-08-20T18:45:28.191Z",
+      "updated_at": "2022-08-28T21:00:53.263Z",
       "energy_kj": 1107.0,
       "protein_g": 9.43,
       "fat_g": 3.59,
@@ -2498,7 +4501,7 @@
     "pk": 85,
     "fields": {
       "created_at": "2022-08-20T18:14:32.715Z",
-      "updated_at": "2022-08-20T18:14:34.095Z",
+      "updated_at": "2022-08-28T21:00:53.263Z",
       "energy_kj": 1578.0,
       "protein_g": 0.0,
       "fat_g": 0.32,
@@ -2525,7 +4528,7 @@
     "pk": 86,
     "fields": {
       "created_at": "2022-08-20T18:14:58.528Z",
-      "updated_at": "2022-08-20T18:42:23.085Z",
+      "updated_at": "2022-08-28T21:00:53.264Z",
       "energy_kj": 0.0,
       "protein_g": 24.4,
       "fat_g": 1.45,
@@ -2552,7 +4555,7 @@
     "pk": 87,
     "fields": {
       "created_at": "2022-08-20T18:15:16.667Z",
-      "updated_at": "2022-08-20T22:30:50.581Z",
+      "updated_at": "2022-08-28T21:00:53.265Z",
       "energy_kj": 0.0,
       "protein_g": 25.9,
       "fat_g": 1.31,
@@ -2579,7 +4582,7 @@
     "pk": 88,
     "fields": {
       "created_at": "2022-08-20T18:15:53.135Z",
-      "updated_at": "2022-08-20T18:15:54.760Z",
+      "updated_at": "2022-08-28T21:00:53.265Z",
       "energy_kj": 156.0,
       "protein_g": 3.546875,
       "fat_g": 2.125,
@@ -2606,7 +4609,7 @@
     "pk": 89,
     "fields": {
       "created_at": "2022-08-20T18:16:10.984Z",
-      "updated_at": "2022-08-20T18:16:12.276Z",
+      "updated_at": "2022-08-28T21:00:53.266Z",
       "energy_kj": 939.0,
       "protein_g": 7.35,
       "fat_g": 17.1,
@@ -2633,7 +4636,7 @@
     "pk": 90,
     "fields": {
       "created_at": "2022-08-20T18:19:16.271Z",
-      "updated_at": "2022-08-20T18:19:17.966Z",
+      "updated_at": "2022-08-28T21:00:53.266Z",
       "energy_kj": 0.0,
       "protein_g": 0.0,
       "fat_g": 0.0,
@@ -2660,7 +4663,7 @@
     "pk": 91,
     "fields": {
       "created_at": "2022-08-20T18:19:48.241Z",
-      "updated_at": "2022-08-20T21:53:57.088Z",
+      "updated_at": "2022-08-28T21:00:53.267Z",
       "energy_kj": 180.0,
       "protein_g": 0.94,
       "fat_g": 0.1,
@@ -2687,7 +4690,7 @@
     "pk": 92,
     "fields": {
       "created_at": "2022-08-20T18:20:18.142Z",
-      "updated_at": "2022-08-20T18:20:19.827Z",
+      "updated_at": "2022-08-28T21:00:53.267Z",
       "energy_kj": 1492.0,
       "protein_g": 6.2,
       "fat_g": 1.74,
@@ -2702,8 +4705,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 790276,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": -3,
+      "nutri_class": 1.0,
       "ndb_number": 100251,
       "major_class": "Cereal Grains and Pasta",
       "tags": []
@@ -2714,7 +4717,7 @@
     "pk": 93,
     "fields": {
       "created_at": "2022-08-20T18:21:02.977Z",
-      "updated_at": "2022-08-20T18:21:07.602Z",
+      "updated_at": "2022-08-28T21:00:53.268Z",
       "energy_kj": 74.0,
       "protein_g": 0.84,
       "fat_g": 0.5,
@@ -2741,7 +4744,7 @@
     "pk": 95,
     "fields": {
       "created_at": "2022-08-20T18:22:21.620Z",
-      "updated_at": "2022-08-20T18:22:24.592Z",
+      "updated_at": "2022-08-28T21:00:53.269Z",
       "energy_kj": 1419.0,
       "protein_g": 19.3,
       "fat_g": 28.1,
@@ -2768,7 +4771,7 @@
     "pk": 96,
     "fields": {
       "created_at": "2022-08-20T18:23:12.908Z",
-      "updated_at": "2022-08-20T18:23:14.634Z",
+      "updated_at": "2022-08-28T21:00:53.269Z",
       "energy_kj": 131.0,
       "protein_g": 0.0,
       "fat_g": 0.3375,
@@ -2795,7 +4798,7 @@
     "pk": 97,
     "fields": {
       "created_at": "2022-08-20T18:25:57.707Z",
-      "updated_at": "2022-08-20T18:25:58.883Z",
+      "updated_at": "2022-08-28T21:00:53.270Z",
       "energy_kj": 328.0,
       "protein_g": 0.89875,
       "fat_g": 0.2325,
@@ -2822,7 +4825,7 @@
     "pk": 98,
     "fields": {
       "created_at": "2022-08-20T18:26:14.279Z",
-      "updated_at": "2022-08-20T18:26:16.432Z",
+      "updated_at": "2022-08-28T21:00:53.270Z",
       "energy_kj": 348.0,
       "protein_g": 0.914375,
       "fat_g": 0.1638,
@@ -2837,7 +4840,7 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 2263890,
-      "nutri_points": 0,
+      "nutri_points": 1,
       "nutri_class": 2.0,
       "ndb_number": 100279,
       "major_class": "Fruits and Fruit Juices",
@@ -2849,7 +4852,7 @@
     "pk": 99,
     "fields": {
       "created_at": "2022-08-20T18:26:53.393Z",
-      "updated_at": "2022-08-20T18:26:54.723Z",
+      "updated_at": "2022-08-28T21:00:53.271Z",
       "energy_kj": 197.0,
       "protein_g": 0.796875,
       "fat_g": 2.749,
@@ -2876,7 +4879,7 @@
     "pk": 100,
     "fields": {
       "created_at": "2022-08-20T18:27:44.921Z",
-      "updated_at": "2022-08-20T18:27:46.031Z",
+      "updated_at": "2022-08-28T21:00:53.272Z",
       "energy_kj": 1595.0,
       "protein_g": 13.16875,
       "fat_g": 6.309,
@@ -2903,7 +4906,7 @@
     "pk": 101,
     "fields": {
       "created_at": "2022-08-20T18:28:00.407Z",
-      "updated_at": "2022-08-20T18:28:01.966Z",
+      "updated_at": "2022-08-28T21:00:53.272Z",
       "energy_kj": 2550.0,
       "protein_g": 26.24375,
       "fat_g": 50.23,
@@ -2930,7 +4933,7 @@
     "pk": 102,
     "fields": {
       "created_at": "2022-08-20T18:28:19.326Z",
-      "updated_at": "2022-08-20T18:28:22.688Z",
+      "updated_at": "2022-08-28T21:00:53.273Z",
       "energy_kj": 2858.0,
       "protein_g": 19.7054,
       "fat_g": 62.4,
@@ -2945,8 +4948,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 2262073,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": 6,
+      "nutri_class": 3.0,
       "ndb_number": 100271,
       "major_class": "Nut and Seed Products",
       "tags": []
@@ -2957,7 +4960,7 @@
     "pk": 103,
     "fields": {
       "created_at": "2022-08-20T18:28:43.597Z",
-      "updated_at": "2022-08-20T18:28:46.161Z",
+      "updated_at": "2022-08-28T21:00:53.273Z",
       "energy_kj": 168.0,
       "protein_g": 0.5703125,
       "fat_g": 0.2669,
@@ -2984,7 +4987,7 @@
     "pk": 104,
     "fields": {
       "created_at": "2022-08-20T19:22:21.048Z",
-      "updated_at": "2022-08-20T20:08:04.210Z",
+      "updated_at": "2022-08-28T21:00:53.274Z",
       "energy_kj": 1464.0,
       "protein_g": 14.73,
       "fat_g": 1.08,
@@ -3011,7 +5014,7 @@
     "pk": 105,
     "fields": {
       "created_at": "2022-08-20T19:23:17.930Z",
-      "updated_at": "2022-08-20T19:23:18.950Z",
+      "updated_at": "2022-08-28T21:00:53.274Z",
       "energy_kj": 1517.0,
       "protein_g": 6.81,
       "fat_g": 0.55,
@@ -3038,7 +5041,7 @@
     "pk": 106,
     "fields": {
       "created_at": "2022-08-20T20:12:44.795Z",
-      "updated_at": "2022-08-20T20:12:46.026Z",
+      "updated_at": "2022-08-28T21:00:53.275Z",
       "energy_kj": 2452.0,
       "protein_g": 7.79,
       "fat_g": 42.63,
@@ -3065,7 +5068,7 @@
     "pk": 107,
     "fields": {
       "created_at": "2022-08-20T20:23:55.374Z",
-      "updated_at": "2022-08-20T20:23:56.425Z",
+      "updated_at": "2022-08-28T21:00:53.276Z",
       "energy_kj": 1029.0,
       "protein_g": 10.39,
       "fat_g": 3.26,
@@ -3092,7 +5095,7 @@
     "pk": 108,
     "fields": {
       "created_at": "2022-08-20T20:52:11.556Z",
-      "updated_at": "2022-08-20T20:52:12.576Z",
+      "updated_at": "2022-08-28T21:00:53.276Z",
       "energy_kj": 246.0,
       "protein_g": 0.51,
       "fat_g": 0.11,
@@ -3107,7 +5110,7 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 167767,
-      "nutri_points": 0,
+      "nutri_points": 2,
       "nutri_class": 2.0,
       "ndb_number": 9354,
       "major_class": "Fruits and Fruit Juices",
@@ -3119,7 +5122,7 @@
     "pk": 109,
     "fields": {
       "created_at": "2022-08-20T20:53:04.492Z",
-      "updated_at": "2022-08-20T20:53:25.082Z",
+      "updated_at": "2022-08-28T21:00:53.277Z",
       "energy_kj": 1492.0,
       "protein_g": 6.2,
       "fat_g": 1.74,
@@ -3146,7 +5149,7 @@
     "pk": 110,
     "fields": {
       "created_at": "2022-08-20T20:54:44.333Z",
-      "updated_at": "2022-08-20T23:03:53.742Z",
+      "updated_at": "2022-08-28T21:00:53.278Z",
       "energy_kj": 0.0,
       "protein_g": 0.0,
       "fat_g": 0.0,
@@ -3173,7 +5176,7 @@
     "pk": 111,
     "fields": {
       "created_at": "2022-08-20T20:55:56.735Z",
-      "updated_at": "2022-08-20T20:55:58.216Z",
+      "updated_at": "2022-08-28T21:00:53.278Z",
       "energy_kj": 336.0,
       "protein_g": 4.32,
       "fat_g": 0.47,
@@ -3188,8 +5191,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 170459,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": -3,
+      "nutri_class": 1.0,
       "ndb_number": 11546,
       "major_class": "Vegetables and Vegetable Products",
       "tags": []
@@ -3200,7 +5203,7 @@
     "pk": 112,
     "fields": {
       "created_at": "2022-08-20T20:57:10.468Z",
-      "updated_at": "2022-08-20T20:57:11.349Z",
+      "updated_at": "2022-08-28T21:00:53.279Z",
       "energy_kj": 361.0,
       "protein_g": 0.49,
       "fat_g": 0.0,
@@ -3227,7 +5230,7 @@
     "pk": 113,
     "fields": {
       "created_at": "2022-08-20T20:59:15.504Z",
-      "updated_at": "2022-08-20T20:59:16.526Z",
+      "updated_at": "2022-08-28T21:00:53.279Z",
       "energy_kj": 295.0,
       "protein_g": 0.52,
       "fat_g": 0.18,
@@ -3254,7 +5257,7 @@
     "pk": 114,
     "fields": {
       "created_at": "2022-08-20T21:12:29.428Z",
-      "updated_at": "2022-08-20T21:55:18.345Z",
+      "updated_at": "2022-08-28T21:00:53.280Z",
       "energy_kj": 1341.0,
       "protein_g": 51.46,
       "fat_g": 1.22,
@@ -3281,7 +5284,7 @@
     "pk": 115,
     "fields": {
       "created_at": "2022-08-20T21:26:08.852Z",
-      "updated_at": "2022-08-20T23:03:44.268Z",
+      "updated_at": "2022-08-28T21:00:53.281Z",
       "energy_kj": 709.0,
       "protein_g": 7.33,
       "fat_g": 4.67,
@@ -3308,7 +5311,7 @@
     "pk": 116,
     "fields": {
       "created_at": "2022-08-20T21:29:38.355Z",
-      "updated_at": "2022-08-20T21:30:04.036Z",
+      "updated_at": "2022-08-28T21:00:53.281Z",
       "energy_kj": 1222.0,
       "protein_g": 23.7,
       "fat_g": 20.4,
@@ -3323,8 +5326,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 329370,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": 15,
+      "nutri_class": 4.0,
       "ndb_number": 1029,
       "major_class": "Dairy and Egg Products",
       "tags": []
@@ -3335,7 +5338,7 @@
     "pk": 117,
     "fields": {
       "created_at": "2022-08-20T21:30:52.272Z",
-      "updated_at": "2022-08-20T21:34:28.218Z",
+      "updated_at": "2022-08-28T21:00:53.282Z",
       "energy_kj": 1611.0,
       "protein_g": 27.0,
       "fat_g": 31.0,
@@ -3362,7 +5365,7 @@
     "pk": 118,
     "fields": {
       "created_at": "2022-08-20T21:44:02.846Z",
-      "updated_at": "2022-08-20T21:44:03.989Z",
+      "updated_at": "2022-08-28T21:00:53.282Z",
       "energy_kj": 25.0,
       "protein_g": 0.23,
       "fat_g": 0.07,
@@ -3377,8 +5380,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 171180,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": 3,
+      "nutri_class": 3.0,
       "ndb_number": 6615,
       "major_class": "Soups, Sauces, and Gravies",
       "tags": []
@@ -3389,7 +5392,7 @@
     "pk": 119,
     "fields": {
       "created_at": "2022-08-20T21:49:00.347Z",
-      "updated_at": "2022-08-20T21:53:12.786Z",
+      "updated_at": "2022-08-28T21:00:53.283Z",
       "energy_kj": 1394.0,
       "protein_g": 2.84,
       "fat_g": 36.08,
@@ -3404,8 +5407,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 170859,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": 13,
+      "nutri_class": 4.0,
       "ndb_number": 1053,
       "major_class": "Dairy and Egg Products",
       "tags": []
@@ -3416,7 +5419,7 @@
     "pk": 120,
     "fields": {
       "created_at": "2022-08-20T21:49:48.767Z",
-      "updated_at": "2022-08-20T21:49:49.900Z",
+      "updated_at": "2022-08-28T21:00:53.283Z",
       "energy_kj": 1447.0,
       "protein_g": 21.4,
       "fat_g": 28.74,
@@ -3443,7 +5446,7 @@
     "pk": 121,
     "fields": {
       "created_at": "2022-08-20T22:22:26.350Z",
-      "updated_at": "2022-08-20T22:22:44.683Z",
+      "updated_at": "2022-08-28T21:00:53.284Z",
       "energy_kj": 238.0,
       "protein_g": 2.57,
       "fat_g": 0.1,
@@ -3458,8 +5461,8 @@
       "physical_density": 1.0,
       "physical_viscosity": "solid",
       "fdc_id": 170032,
-      "nutri_points": 0,
-      "nutri_class": 2.0,
+      "nutri_points": -3,
+      "nutri_class": 1.0,
       "ndb_number": 11362,
       "major_class": "Vegetables and Vegetable Products",
       "tags": []
@@ -3470,7 +5473,7 @@
     "pk": 122,
     "fields": {
       "created_at": "2022-08-20T22:26:40.890Z",
-      "updated_at": "2022-08-20T22:31:16.414Z",
+      "updated_at": "2022-08-28T21:00:53.285Z",
       "energy_kj": 1496.0,
       "protein_g": 9.42,
       "fat_g": 4.74,
@@ -3497,7 +5500,7 @@
     "pk": 123,
     "fields": {
       "created_at": "2022-08-20T22:34:52.017Z",
-      "updated_at": "2022-08-20T22:34:53.355Z",
+      "updated_at": "2022-08-28T21:00:53.285Z",
       "energy_kj": 172.0,
       "protein_g": 2.49,
       "fat_g": 0.51,
@@ -3524,7 +5527,7 @@
     "pk": 124,
     "fields": {
       "created_at": "2022-08-20T23:24:21.902Z",
-      "updated_at": "2022-08-20T23:25:19.762Z",
+      "updated_at": "2022-08-28T21:00:53.286Z",
       "energy_kj": 202.0,
       "protein_g": 5.3,
       "fat_g": 2.1,
@@ -3551,7 +5554,7 @@
     "pk": 125,
     "fields": {
       "created_at": "2022-08-20T23:25:38.051Z",
-      "updated_at": "2022-08-20T23:25:51.039Z",
+      "updated_at": "2022-08-28T21:00:53.286Z",
       "energy_kj": 1271.0,
       "protein_g": 0.09,
       "fat_g": 0.45,
@@ -3578,7 +5581,7 @@
     "pk": 126,
     "fields": {
       "created_at": "2022-08-20T23:27:23.799Z",
-      "updated_at": "2022-08-20T23:27:24.909Z",
+      "updated_at": "2022-08-28T21:00:53.287Z",
       "energy_kj": 1181.0,
       "protein_g": 0.06,
       "fat_g": 0.06,
@@ -3597,6 +5600,141 @@
       "nutri_class": 3.0,
       "ndb_number": 2050,
       "major_class": "Spices and Herbs",
+      "tags": []
+    }
+  },
+  {
+    "model": "food.ingredient",
+    "pk": 127,
+    "fields": {
+      "created_at": "2022-08-28T14:45:24.038Z",
+      "updated_at": "2022-08-28T14:48:26.935Z",
+      "energy_kj": 70.0,
+      "protein_g": 1.21,
+      "fat_g": 0.32,
+      "saturated_fatty_acids_g": 0.084,
+      "sugar_g": 2.5,
+      "sodium_mg": 8.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 3.11,
+      "fibre_g": 1.0,
+      "name": "Zucchini",
+      "description": "",
+      "physical_density": 1.0,
+      "physical_viscosity": "solid",
+      "fdc_id": 169291,
+      "nutri_points": -1,
+      "nutri_class": 1.0,
+      "ndb_number": 11477,
+      "major_class": "Vegetables and Vegetable Products",
+      "tags": []
+    }
+  },
+  {
+    "model": "food.ingredient",
+    "pk": 128,
+    "fields": {
+      "created_at": "2022-08-28T15:05:02.803Z",
+      "updated_at": "2022-08-28T15:06:12.090Z",
+      "energy_kj": 1086.0,
+      "protein_g": 9.0,
+      "fat_g": 4.28,
+      "saturated_fatty_acids_g": 1.551,
+      "sugar_g": 4.09,
+      "sodium_mg": 25.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 68.92,
+      "fibre_g": 42.5,
+      "name": "Oregano",
+      "description": "",
+      "physical_density": 1.0,
+      "physical_viscosity": "solid",
+      "fdc_id": 171328,
+      "nutri_points": -6,
+      "nutri_class": 1.0,
+      "ndb_number": 2027,
+      "major_class": "Spices and Herbs",
+      "tags": []
+    }
+  },
+  {
+    "model": "food.ingredient",
+    "pk": 129,
+    "fields": {
+      "created_at": "2022-08-28T15:22:26.397Z",
+      "updated_at": "2022-08-28T15:22:48.590Z",
+      "energy_kj": 2759.0,
+      "protein_g": 13.69,
+      "fat_g": 68.37,
+      "saturated_fatty_acids_g": 4.899,
+      "sugar_g": 3.59,
+      "sodium_mg": 2.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 13.08,
+      "fibre_g": 3.7,
+      "name": "Pinienkerne",
+      "description": "",
+      "physical_density": 1.0,
+      "physical_viscosity": "solid",
+      "fdc_id": 170591,
+      "nutri_points": 4,
+      "nutri_class": 3.0,
+      "ndb_number": 12147,
+      "major_class": "Nut and Seed Products",
+      "tags": []
+    }
+  },
+  {
+    "model": "food.ingredient",
+    "pk": 130,
+    "fields": {
+      "created_at": "2022-08-28T15:26:23.769Z",
+      "updated_at": "2022-08-28T15:26:25.021Z",
+      "energy_kj": 812.0,
+      "protein_g": 2.44,
+      "fat_g": 19.35,
+      "saturated_fatty_acids_g": 10.14,
+      "sugar_g": 3.41,
+      "sodium_mg": 31.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 4.63,
+      "fibre_g": 0.0,
+      "name": "Saure Sahne",
+      "description": "",
+      "physical_density": 1.0,
+      "physical_viscosity": "solid",
+      "fdc_id": 171257,
+      "nutri_points": 11,
+      "nutri_class": 4.0,
+      "ndb_number": 1056,
+      "major_class": "Dairy and Egg Products",
+      "tags": []
+    }
+  },
+  {
+    "model": "food.ingredient",
+    "pk": 131,
+    "fields": {
+      "created_at": "2022-08-28T16:55:34.275Z",
+      "updated_at": "2022-08-28T16:55:34.276Z",
+      "energy_kj": 2251.0,
+      "protein_g": 6.5,
+      "fat_g": 31.0,
+      "saturated_fatty_acids_g": 19.0,
+      "sugar_g": 55.0,
+      "sodium_mg": 140.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 57.0,
+      "fibre_g": 2.3,
+      "name": "Milka Alpenmilch",
+      "description": "",
+      "physical_density": 1.0,
+      "physical_viscosity": "solid",
+      "fdc_id": null,
+      "nutri_points": 25,
+      "nutri_class": 5.0,
+      "ndb_number": null,
+      "major_class": null,
       "tags": []
     }
   },
@@ -5442,6 +7580,29 @@
   },
   {
     "model": "food.portion",
+    "pk": 81,
+    "fields": {
+      "created_at": "2022-08-27T17:06:30.948Z",
+      "updated_at": "2022-08-27T17:06:30.948Z",
+      "energy_kj": 15.78,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 0.01,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.0,
+      "fibre_g": 0.0,
+      "name": "Zucker, raffiniert in g",
+      "measuring_unit": 3,
+      "ingredient": 85,
+      "quantity": 1.0,
+      "rank": 1,
+      "weight_g": 1.0
+    }
+  },
+  {
+    "model": "food.portion",
     "pk": 82,
     "fields": {
       "created_at": "2022-08-20T18:22:24.594Z",
@@ -7071,6 +9232,1771 @@
       "quantity": 1.0,
       "rank": 1,
       "weight_g": 1.0
+    }
+  },
+  {
+    "model": "food.portion",
+    "pk": 153,
+    "fields": {
+      "created_at": "2022-08-28T14:45:25.228Z",
+      "updated_at": "2022-08-28T14:45:25.228Z",
+      "energy_kj": 0.7,
+      "protein_g": 0.01,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.03,
+      "sodium_mg": 0.08,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.03,
+      "fibre_g": 0.01,
+      "name": "Zucchini in g",
+      "measuring_unit": 3,
+      "ingredient": 127,
+      "quantity": 1.0,
+      "rank": 1,
+      "weight_g": 1.0
+    }
+  },
+  {
+    "model": "food.portion",
+    "pk": 154,
+    "fields": {
+      "created_at": "2022-08-28T14:46:33.500Z",
+      "updated_at": "2022-08-28T14:46:33.500Z",
+      "energy_kj": 87.5,
+      "protein_g": 1.51,
+      "fat_g": 0.4,
+      "saturated_fatty_acids_g": 0.1,
+      "sugar_g": 3.12,
+      "sodium_mg": 10.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 3.89,
+      "fibre_g": 1.25,
+      "name": "Zucchini, klein",
+      "measuring_unit": 3,
+      "ingredient": 127,
+      "quantity": 125.0,
+      "rank": 2,
+      "weight_g": 125.0
+    }
+  },
+  {
+    "model": "food.portion",
+    "pk": 155,
+    "fields": {
+      "created_at": "2022-08-28T14:46:33.502Z",
+      "updated_at": "2022-08-28T14:46:33.502Z",
+      "energy_kj": 175.0,
+      "protein_g": 3.02,
+      "fat_g": 0.8,
+      "saturated_fatty_acids_g": 0.21,
+      "sugar_g": 6.25,
+      "sodium_mg": 20.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 7.78,
+      "fibre_g": 2.5,
+      "name": "Zucchini, groß",
+      "measuring_unit": 3,
+      "ingredient": 127,
+      "quantity": 250.0,
+      "rank": 3,
+      "weight_g": 250.0
+    }
+  },
+  {
+    "model": "food.portion",
+    "pk": 156,
+    "fields": {
+      "created_at": "2022-08-28T14:46:33.503Z",
+      "updated_at": "2022-08-28T14:46:33.503Z",
+      "energy_kj": 140.0,
+      "protein_g": 2.42,
+      "fat_g": 0.64,
+      "saturated_fatty_acids_g": 0.17,
+      "sugar_g": 5.0,
+      "sodium_mg": 16.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 6.22,
+      "fibre_g": 2.0,
+      "name": "Zucchini, mittel",
+      "measuring_unit": 3,
+      "ingredient": 127,
+      "quantity": 200.0,
+      "rank": 4,
+      "weight_g": 200.0
+    }
+  },
+  {
+    "model": "food.portion",
+    "pk": 157,
+    "fields": {
+      "created_at": "2022-08-28T15:05:04.150Z",
+      "updated_at": "2022-08-28T15:05:04.150Z",
+      "energy_kj": 10.86,
+      "protein_g": 0.09,
+      "fat_g": 0.04,
+      "saturated_fatty_acids_g": 0.02,
+      "sugar_g": 0.04,
+      "sodium_mg": 0.25,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.69,
+      "fibre_g": 0.42,
+      "name": "Oregano in g",
+      "measuring_unit": 3,
+      "ingredient": 128,
+      "quantity": 1.0,
+      "rank": 1,
+      "weight_g": 1.0
+    }
+  },
+  {
+    "model": "food.portion",
+    "pk": 158,
+    "fields": {
+      "created_at": "2022-08-28T15:22:27.525Z",
+      "updated_at": "2022-08-28T15:22:27.525Z",
+      "energy_kj": 27.59,
+      "protein_g": 0.14,
+      "fat_g": 0.68,
+      "saturated_fatty_acids_g": 0.05,
+      "sugar_g": 0.04,
+      "sodium_mg": 0.02,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.13,
+      "fibre_g": 0.04,
+      "name": "Pinienkerne in g",
+      "measuring_unit": 3,
+      "ingredient": 129,
+      "quantity": 1.0,
+      "rank": 1,
+      "weight_g": 1.0
+    }
+  },
+  {
+    "model": "food.portion",
+    "pk": 159,
+    "fields": {
+      "created_at": "2022-08-28T15:26:25.025Z",
+      "updated_at": "2022-08-28T15:26:25.025Z",
+      "energy_kj": 8.12,
+      "protein_g": 0.02,
+      "fat_g": 0.19,
+      "saturated_fatty_acids_g": 0.1,
+      "sugar_g": 0.03,
+      "sodium_mg": 0.31,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.05,
+      "fibre_g": 0.0,
+      "name": "Saure Sahne in g",
+      "measuring_unit": 3,
+      "ingredient": 130,
+      "quantity": 1.0,
+      "rank": 1,
+      "weight_g": 1.0
+    }
+  },
+  {
+    "model": "food.portion",
+    "pk": 160,
+    "fields": {
+      "created_at": "2022-08-28T16:55:34.277Z",
+      "updated_at": "2022-08-28T16:55:34.277Z",
+      "energy_kj": 22.51,
+      "protein_g": 0.07,
+      "fat_g": 0.31,
+      "saturated_fatty_acids_g": 0.19,
+      "sugar_g": 0.55,
+      "sodium_mg": 1.4,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.57,
+      "fibre_g": 0.02,
+      "name": "Milka Alpenmilch in g",
+      "measuring_unit": 3,
+      "ingredient": 131,
+      "quantity": 1.0,
+      "rank": 1,
+      "weight_g": 1.0
+    }
+  },
+  {
+    "model": "food.recipe",
+    "pk": 1,
+    "fields": {
+      "created_at": "2022-08-27T17:09:41.821Z",
+      "updated_at": "2022-08-28T15:08:58.020Z",
+      "energy_kj": 2977.0,
+      "protein_g": 16.0,
+      "fat_g": 21.0,
+      "saturated_fatty_acids_g": 8.0,
+      "sugar_g": 8.0,
+      "sodium_mg": 48.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 89.0,
+      "fibre_g": 21.0,
+      "name": "Nudeln mit Käse und Tomaten",
+      "description": "",
+      "nutri_class": 1.0,
+      "nutri_points": -1.0,
+      "weight_g": 380.0,
+      "tags": []
+    }
+  },
+  {
+    "model": "food.recipe",
+    "pk": 2,
+    "fields": {
+      "created_at": "2022-08-27T17:11:35.084Z",
+      "updated_at": "2022-08-28T13:33:22.808Z",
+      "energy_kj": 2832.0,
+      "protein_g": 38.0,
+      "fat_g": 4.0,
+      "saturated_fatty_acids_g": 1.0,
+      "sugar_g": 35.0,
+      "sodium_mg": 88.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 125.0,
+      "fibre_g": 7.0,
+      "name": "Reis mit Süß Saurer Soße",
+      "description": "",
+      "nutri_class": 2.0,
+      "nutri_points": 1.0,
+      "weight_g": 465.0,
+      "tags": []
+    }
+  },
+  {
+    "model": "food.recipe",
+    "pk": 3,
+    "fields": {
+      "created_at": "2022-08-27T17:14:04.221Z",
+      "updated_at": "2022-08-28T14:31:59.206Z",
+      "energy_kj": 2480.0,
+      "protein_g": 54.0,
+      "fat_g": 5.0,
+      "saturated_fatty_acids_g": 1.0,
+      "sugar_g": 14.0,
+      "sodium_mg": 231.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 119.0,
+      "fibre_g": 15.0,
+      "name": "Chilli sin Carne",
+      "description": "",
+      "nutri_class": 1.0,
+      "nutri_points": -2.0,
+      "weight_g": 548.0,
+      "tags": []
+    }
+  },
+  {
+    "model": "food.recipe",
+    "pk": 4,
+    "fields": {
+      "created_at": "2022-08-27T17:18:21.446Z",
+      "updated_at": "2022-08-28T14:10:29.185Z",
+      "energy_kj": 2033.0,
+      "protein_g": 26.0,
+      "fat_g": 25.0,
+      "saturated_fatty_acids_g": 11.0,
+      "sugar_g": 2.0,
+      "sodium_mg": 798.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 44.0,
+      "fibre_g": 2.0,
+      "name": "Einfache Käsespätzle",
+      "description": "",
+      "nutri_class": 3.0,
+      "nutri_points": 6.0,
+      "weight_g": 250.0,
+      "tags": []
+    }
+  },
+  {
+    "model": "food.recipe",
+    "pk": 6,
+    "fields": {
+      "created_at": "2022-08-28T14:48:51.020Z",
+      "updated_at": "2022-08-28T14:50:15.005Z",
+      "energy_kj": 2706.0,
+      "protein_g": 19.0,
+      "fat_g": 15.0,
+      "saturated_fatty_acids_g": 7.0,
+      "sugar_g": 8.0,
+      "sodium_mg": 13565.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 104.0,
+      "fibre_g": 6.0,
+      "name": "Zucchini-Zitronen-Nudeln",
+      "description": "",
+      "nutri_class": 2.0,
+      "nutri_points": 0.0,
+      "weight_g": 347.0,
+      "tags": []
+    }
+  },
+  {
+    "model": "food.recipe",
+    "pk": 7,
+    "fields": {
+      "created_at": "2022-08-28T15:16:45.575Z",
+      "updated_at": "2022-08-28T15:16:57.482Z",
+      "energy_kj": 2904.0,
+      "protein_g": 26.0,
+      "fat_g": 12.0,
+      "saturated_fatty_acids_g": 5.0,
+      "sugar_g": 6.0,
+      "sodium_mg": 359.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 125.0,
+      "fibre_g": 7.0,
+      "name": "Bandnudeln mit Gorgonzolasauce",
+      "description": "",
+      "nutri_class": 1.0,
+      "nutri_points": -1.0,
+      "weight_g": 305.0,
+      "tags": []
+    }
+  },
+  {
+    "model": "food.recipe",
+    "pk": 8,
+    "fields": {
+      "created_at": "2022-08-28T15:31:03.669Z",
+      "updated_at": "2022-08-28T15:33:13.990Z",
+      "energy_kj": 2433.0,
+      "protein_g": 19.0,
+      "fat_g": 14.0,
+      "saturated_fatty_acids_g": 4.0,
+      "sugar_g": 5.0,
+      "sodium_mg": 3897.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 99.0,
+      "fibre_g": 4.0,
+      "name": "Spaghetti al pesto",
+      "description": "",
+      "nutri_class": 1.0,
+      "nutri_points": -1.0,
+      "weight_g": 214.0,
+      "tags": []
+    }
+  },
+  {
+    "model": "food.recipe",
+    "pk": 9,
+    "fields": {
+      "created_at": "2022-08-28T16:56:00.459Z",
+      "updated_at": "2022-08-28T16:59:02.161Z",
+      "energy_kj": 3376.0,
+      "protein_g": 10.0,
+      "fat_g": 46.0,
+      "saturated_fatty_acids_g": 28.0,
+      "sugar_g": 82.0,
+      "sodium_mg": 210.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 86.0,
+      "fibre_g": 3.0,
+      "name": "Schokoladen Mahlzeit",
+      "description": "",
+      "nutri_class": 5.0,
+      "nutri_points": 25.0,
+      "weight_g": 150.0,
+      "tags": []
+    }
+  },
+  {
+    "model": "food.recipe",
+    "pk": 10,
+    "fields": {
+      "created_at": "2022-08-28T16:58:53.493Z",
+      "updated_at": "2022-08-28T16:59:12.599Z",
+      "energy_kj": 1572.0,
+      "protein_g": 1.0,
+      "fat_g": 1.0,
+      "saturated_fatty_acids_g": 0.1,
+      "sugar_g": 80.0,
+      "sodium_mg": 6.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 94.0,
+      "fibre_g": 12.0,
+      "name": "Apfel Mahlzeit",
+      "description": "",
+      "nutri_class": 2.0,
+      "nutri_points": 0.1,
+      "weight_g": 600.0,
+      "tags": []
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 1,
+    "fields": {
+      "created_at": "2022-08-27T17:09:41.825Z",
+      "updated_at": "2022-08-28T15:08:58.039Z",
+      "energy_kj": 1796.25,
+      "protein_g": 7.5,
+      "fat_g": 1.25,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 1.25,
+      "sodium_mg": 1.25,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 75.0,
+      "fibre_g": 16.25,
+      "recipe": 1,
+      "portion": 12,
+      "quantity": 125.0,
+      "weight_g": 125.0,
+      "weight_recipe_factor": 0.329,
+      "nutri_points": -2.0,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 2,
+    "fields": {
+      "created_at": "2022-08-27T17:09:41.826Z",
+      "updated_at": "2022-08-28T15:08:58.040Z",
+      "energy_kj": 120.0,
+      "protein_g": 1.5,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 4.5,
+      "sodium_mg": 7.5,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 6.0,
+      "fibre_g": 1.5,
+      "recipe": 1,
+      "portion": 1,
+      "quantity": 150.0,
+      "weight_g": 150.0,
+      "weight_recipe_factor": 0.395,
+      "nutri_points": -0.8,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 3,
+    "fields": {
+      "created_at": "2022-08-27T17:09:41.827Z",
+      "updated_at": "2022-08-28T15:08:58.042Z",
+      "energy_kj": 285.4,
+      "protein_g": 0.0,
+      "fat_g": 7.6,
+      "saturated_fatty_acids_g": 1.1,
+      "sugar_g": 0.0,
+      "sodium_mg": 0.2,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.0,
+      "fibre_g": 0.0,
+      "recipe": 1,
+      "portion": 4,
+      "quantity": 10.0,
+      "weight_g": 8.0,
+      "weight_recipe_factor": 0.021,
+      "nutri_points": 0.2,
+      "nutri_class": 3.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 4,
+    "fields": {
+      "created_at": "2022-08-27T17:09:41.827Z",
+      "updated_at": "2022-08-28T15:08:58.043Z",
+      "energy_kj": 68.0,
+      "protein_g": 0.44,
+      "fat_g": 0.04,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 1.68,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 3.6,
+      "fibre_g": 0.68,
+      "recipe": 1,
+      "portion": 6,
+      "quantity": 1.0,
+      "weight_g": 40.0,
+      "weight_recipe_factor": 0.105,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 5,
+    "fields": {
+      "created_at": "2022-08-27T17:09:41.828Z",
+      "updated_at": "2022-08-28T15:08:58.045Z",
+      "energy_kj": 320.0,
+      "protein_g": 0.2,
+      "fat_g": 5.8,
+      "saturated_fatty_acids_g": 3.4,
+      "sugar_g": 0.2,
+      "sodium_mg": 0.8,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.8,
+      "fibre_g": 0.0,
+      "recipe": 1,
+      "portion": 7,
+      "quantity": 20.0,
+      "weight_g": 20.0,
+      "weight_recipe_factor": 0.053,
+      "nutri_points": 1.1,
+      "nutri_class": 5.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 6,
+    "fields": {
+      "created_at": "2022-08-27T17:09:41.829Z",
+      "updated_at": "2022-08-28T15:08:58.046Z",
+      "energy_kj": 10.56,
+      "protein_g": 0.38,
+      "fat_g": 0.08,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.04,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.36,
+      "fibre_g": 0.2,
+      "recipe": 1,
+      "portion": 9,
+      "quantity": 2.0,
+      "weight_g": 12.0,
+      "weight_recipe_factor": 0.032,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 7,
+    "fields": {
+      "created_at": "2022-08-27T17:11:35.088Z",
+      "updated_at": "2022-08-28T13:33:22.823Z",
+      "energy_kj": 1517.0,
+      "protein_g": 7.0,
+      "fat_g": 1.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 7.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 82.0,
+      "fibre_g": 3.0,
+      "recipe": 2,
+      "portion": 109,
+      "quantity": 100.0,
+      "weight_g": 100.0,
+      "weight_recipe_factor": 0.215,
+      "nutri_points": 0.4,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 8,
+    "fields": {
+      "created_at": "2022-08-27T17:11:35.089Z",
+      "updated_at": "2022-08-28T13:33:22.824Z",
+      "energy_kj": 246.0,
+      "protein_g": 1.0,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 14.0,
+      "sodium_mg": 1.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 16.0,
+      "fibre_g": 1.0,
+      "recipe": 2,
+      "portion": 128,
+      "quantity": 100.0,
+      "weight_g": 100.0,
+      "weight_recipe_factor": 0.215,
+      "nutri_points": 0.4,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 9,
+    "fields": {
+      "created_at": "2022-08-27T17:11:35.090Z",
+      "updated_at": "2022-08-28T13:33:22.826Z",
+      "energy_kj": 177.0,
+      "protein_g": 0.31,
+      "fat_g": 0.11,
+      "saturated_fatty_acids_g": 0.01,
+      "sugar_g": 8.79,
+      "sodium_mg": 3.6,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 11.06,
+      "fibre_g": 0.72,
+      "recipe": 2,
+      "portion": 138,
+      "quantity": 0.25,
+      "weight_g": 60.0,
+      "weight_recipe_factor": 0.129,
+      "nutri_points": 0.3,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 10,
+    "fields": {
+      "created_at": "2022-08-27T17:11:35.091Z",
+      "updated_at": "2022-08-28T13:33:22.827Z",
+      "energy_kj": 0.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.0,
+      "fibre_g": 0.0,
+      "recipe": 2,
+      "portion": 132,
+      "quantity": 2.0,
+      "weight_g": 30.0,
+      "weight_recipe_factor": 0.065,
+      "nutri_points": 0.0,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 11,
+    "fields": {
+      "created_at": "2022-08-27T17:11:35.092Z",
+      "updated_at": "2022-08-28T13:33:22.829Z",
+      "energy_kj": 151.2,
+      "protein_g": 1.95,
+      "fat_g": 0.21,
+      "saturated_fatty_acids_g": 0.03,
+      "sugar_g": 5.49,
+      "sodium_mg": 26.55,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 8.52,
+      "fibre_g": 1.83,
+      "recipe": 2,
+      "portion": 134,
+      "quantity": 3.0,
+      "weight_g": 45.0,
+      "weight_recipe_factor": 0.097,
+      "nutri_points": -0.3,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 12,
+    "fields": {
+      "created_at": "2022-08-27T17:11:35.092Z",
+      "updated_at": "2022-08-28T13:33:22.831Z",
+      "energy_kj": 162.45,
+      "protein_g": 0.21,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 6.72,
+      "sodium_mg": 10.35,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 7.65,
+      "fibre_g": 0.0,
+      "recipe": 2,
+      "portion": 136,
+      "quantity": 3.0,
+      "weight_g": 45.0,
+      "weight_recipe_factor": 0.097,
+      "nutri_points": 0.4,
+      "nutri_class": 3.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 14,
+    "fields": {
+      "created_at": "2022-08-27T17:14:04.225Z",
+      "updated_at": "2022-08-28T14:31:59.222Z",
+      "energy_kj": 0.0,
+      "protein_g": 26.0,
+      "fat_g": 1.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.0,
+      "fibre_g": 4.0,
+      "recipe": 3,
+      "portion": 74,
+      "quantity": 100.0,
+      "weight_g": 100.0,
+      "weight_recipe_factor": 0.182,
+      "nutri_points": -1.6,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 16,
+    "fields": {
+      "created_at": "2022-08-27T17:14:04.227Z",
+      "updated_at": "2022-08-28T14:31:59.223Z",
+      "energy_kj": 748.0,
+      "protein_g": 4.5,
+      "fat_g": 2.5,
+      "saturated_fatty_acids_g": 0.5,
+      "sugar_g": 0.0,
+      "sodium_mg": 17.5,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 37.0,
+      "fibre_g": 0.0,
+      "recipe": 3,
+      "portion": 148,
+      "quantity": 50.0,
+      "weight_g": 50.0,
+      "weight_recipe_factor": 0.091,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 18,
+    "fields": {
+      "created_at": "2022-08-27T17:14:04.228Z",
+      "updated_at": "2022-08-28T14:31:59.224Z",
+      "energy_kj": 50.4,
+      "protein_g": 0.6,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 1.8,
+      "sodium_mg": 8.85,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 2.85,
+      "fibre_g": 0.6,
+      "recipe": 3,
+      "portion": 133,
+      "quantity": 15.0,
+      "weight_g": 15.0,
+      "weight_recipe_factor": 0.027,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 19,
+    "fields": {
+      "created_at": "2022-08-27T17:14:04.229Z",
+      "updated_at": "2022-08-28T14:31:59.225Z",
+      "energy_kj": 47.6,
+      "protein_g": 0.31,
+      "fat_g": 0.03,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 1.18,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 2.52,
+      "fibre_g": 0.48,
+      "recipe": 3,
+      "portion": 6,
+      "quantity": 0.7,
+      "weight_g": 28.0,
+      "weight_recipe_factor": 0.051,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 20,
+    "fields": {
+      "created_at": "2022-08-27T17:15:00.942Z",
+      "updated_at": "2022-08-28T15:08:58.048Z",
+      "energy_kj": 322.2,
+      "protein_g": 5.4,
+      "fat_g": 6.2,
+      "saturated_fatty_acids_g": 3.6,
+      "sugar_g": 0.0,
+      "sodium_mg": 37.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.2,
+      "fibre_g": 0.0,
+      "recipe": 1,
+      "portion": 142,
+      "quantity": 20.0,
+      "weight_g": 20.0,
+      "weight_recipe_factor": 0.053,
+      "nutri_points": 0.6,
+      "nutri_class": 4.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 21,
+    "fields": {
+      "created_at": "2022-08-27T17:18:21.449Z",
+      "updated_at": "2022-08-28T14:10:29.201Z",
+      "energy_kj": 805.5,
+      "protein_g": 13.5,
+      "fat_g": 15.5,
+      "saturated_fatty_acids_g": 9.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 92.5,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.5,
+      "fibre_g": 0.0,
+      "recipe": 4,
+      "portion": 142,
+      "quantity": 50.0,
+      "weight_g": 50.0,
+      "weight_recipe_factor": 0.2,
+      "nutri_points": 2.2,
+      "nutri_class": 4.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 23,
+    "fields": {
+      "created_at": "2022-08-27T17:18:21.450Z",
+      "updated_at": "2022-08-28T14:10:29.202Z",
+      "energy_kj": 886.25,
+      "protein_g": 8.75,
+      "fat_g": 6.25,
+      "saturated_fatty_acids_g": 1.25,
+      "sugar_g": 0.0,
+      "sodium_mg": 408.75,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 32.5,
+      "fibre_g": 1.25,
+      "recipe": 4,
+      "portion": 140,
+      "quantity": 125.0,
+      "weight_g": 125.0,
+      "weight_recipe_factor": 0.5,
+      "nutri_points": 2.5,
+      "nutri_class": 3.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 25,
+    "fields": {
+      "created_at": "2022-08-27T17:18:21.452Z",
+      "updated_at": "2022-08-28T14:10:29.203Z",
+      "energy_kj": 102.0,
+      "protein_g": 0.66,
+      "fat_g": 0.06,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 2.52,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 5.4,
+      "fibre_g": 1.02,
+      "recipe": 4,
+      "portion": 6,
+      "quantity": 1.5,
+      "weight_g": 60.0,
+      "weight_recipe_factor": 0.24,
+      "nutri_points": -0.2,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 26,
+    "fields": {
+      "created_at": "2022-08-27T23:25:07.832Z",
+      "updated_at": "2022-08-28T13:33:22.832Z",
+      "energy_kj": 578.85,
+      "protein_g": 27.2,
+      "fat_g": 2.55,
+      "saturated_fatty_acids_g": 0.85,
+      "sugar_g": 0.0,
+      "sodium_mg": 39.95,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.0,
+      "fibre_g": 0.0,
+      "recipe": 2,
+      "portion": 29,
+      "quantity": 85.0,
+      "weight_g": 85.0,
+      "weight_recipe_factor": 0.183,
+      "nutri_points": -0.4,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 30,
+    "fields": {
+      "created_at": "2022-08-28T13:44:29.345Z",
+      "updated_at": "2022-08-28T14:31:59.226Z",
+      "energy_kj": 402.3,
+      "protein_g": 15.3,
+      "fat_g": 0.3,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 4.8,
+      "sodium_mg": 6.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 10.2,
+      "fibre_g": 5.1,
+      "recipe": 3,
+      "portion": 139,
+      "quantity": 30.0,
+      "weight_g": 30.0,
+      "weight_recipe_factor": 0.055,
+      "nutri_points": -0.2,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 31,
+    "fields": {
+      "created_at": "2022-08-28T13:44:29.346Z",
+      "updated_at": "2022-08-28T14:31:59.227Z",
+      "energy_kj": 104.0,
+      "protein_g": 1.3,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 3.9,
+      "sodium_mg": 6.5,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 5.2,
+      "fibre_g": 1.3,
+      "recipe": 3,
+      "portion": 1,
+      "quantity": 130.0,
+      "weight_g": 130.0,
+      "weight_recipe_factor": 0.237,
+      "nutri_points": -0.5,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 32,
+    "fields": {
+      "created_at": "2022-08-28T13:44:29.347Z",
+      "updated_at": "2022-08-28T14:31:59.228Z",
+      "energy_kj": 45.0,
+      "protein_g": 0.5,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 2.5,
+      "fibre_g": 0.5,
+      "recipe": 3,
+      "portion": 55,
+      "quantity": 50.0,
+      "weight_g": 50.0,
+      "weight_recipe_factor": 0.091,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 33,
+    "fields": {
+      "created_at": "2022-08-28T13:44:29.347Z",
+      "updated_at": "2022-08-28T14:31:59.229Z",
+      "energy_kj": 111.9,
+      "protein_g": 0.47,
+      "fat_g": 0.13,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 6.06,
+      "fibre_g": 0.33,
+      "recipe": 3,
+      "portion": 130,
+      "quantity": 0.5,
+      "weight_g": 7.5,
+      "weight_recipe_factor": 0.014,
+      "nutri_points": 0.0,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 34,
+    "fields": {
+      "created_at": "2022-08-28T13:44:29.348Z",
+      "updated_at": "2022-08-28T14:31:59.230Z",
+      "energy_kj": 33.6,
+      "protein_g": 0.4,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 1.2,
+      "sodium_mg": 5.9,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.9,
+      "fibre_g": 0.4,
+      "recipe": 3,
+      "portion": 133,
+      "quantity": 10.0,
+      "weight_g": 10.0,
+      "weight_recipe_factor": 0.018,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 35,
+    "fields": {
+      "created_at": "2022-08-28T14:29:23.807Z",
+      "updated_at": "2022-08-28T14:31:59.230Z",
+      "energy_kj": 11.86,
+      "protein_g": 0.12,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.17,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.57,
+      "fibre_g": 0.04,
+      "recipe": 3,
+      "portion": 11,
+      "quantity": 0.5,
+      "weight_g": 2.0,
+      "weight_recipe_factor": 0.004,
+      "nutri_points": 0.0,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 36,
+    "fields": {
+      "created_at": "2022-08-28T14:29:23.807Z",
+      "updated_at": "2022-08-28T14:31:59.232Z",
+      "energy_kj": 15.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.6,
+      "sodium_mg": 181.8,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.6,
+      "fibre_g": 0.0,
+      "recipe": 3,
+      "portion": 144,
+      "quantity": 60.0,
+      "weight_g": 60.0,
+      "weight_recipe_factor": 0.109,
+      "nutri_points": 0.3,
+      "nutri_class": 3.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 37,
+    "fields": {
+      "created_at": "2022-08-28T14:29:23.808Z",
+      "updated_at": "2022-08-28T14:31:59.233Z",
+      "energy_kj": 0.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.35,
+      "sugar_g": 0.0,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.0,
+      "fibre_g": 0.0,
+      "recipe": 3,
+      "portion": 28,
+      "quantity": 5.0,
+      "weight_g": 5.0,
+      "weight_recipe_factor": 0.009,
+      "nutri_points": 0.1,
+      "nutri_class": 3.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 38,
+    "fields": {
+      "created_at": "2022-08-28T14:29:23.808Z",
+      "updated_at": "2022-08-28T14:31:59.234Z",
+      "energy_kj": 910.2,
+      "protein_g": 4.2,
+      "fat_g": 0.6,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 4.2,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 49.2,
+      "fibre_g": 1.8,
+      "recipe": 3,
+      "portion": 109,
+      "quantity": 60.0,
+      "weight_g": 60.0,
+      "weight_recipe_factor": 0.109,
+      "nutri_points": 0.2,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 39,
+    "fields": {
+      "created_at": "2022-08-28T14:48:51.025Z",
+      "updated_at": "2022-08-28T14:50:15.020Z",
+      "energy_kj": 1901.25,
+      "protein_g": 16.25,
+      "fat_g": 2.5,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 3.75,
+      "sodium_mg": 7.5,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 93.75,
+      "fibre_g": 3.75,
+      "recipe": 6,
+      "portion": 110,
+      "quantity": 125.0,
+      "weight_g": 125.0,
+      "weight_recipe_factor": 0.36,
+      "nutri_points": -1.4,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 40,
+    "fields": {
+      "created_at": "2022-08-28T14:48:51.026Z",
+      "updated_at": "2022-08-28T14:50:15.022Z",
+      "energy_kj": 0.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 11610.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.0,
+      "fibre_g": 0.0,
+      "recipe": 6,
+      "portion": 125,
+      "quantity": 1.0,
+      "weight_g": 30.0,
+      "weight_recipe_factor": 0.086,
+      "nutri_points": 0.0,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 41,
+    "fields": {
+      "created_at": "2022-08-28T14:48:51.027Z",
+      "updated_at": "2022-08-28T14:50:15.023Z",
+      "energy_kj": 13.5,
+      "protein_g": 0.05,
+      "fat_g": 0.04,
+      "saturated_fatty_acids_g": 0.01,
+      "sugar_g": 0.38,
+      "sodium_mg": 0.15,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.03,
+      "fibre_g": 0.04,
+      "recipe": 6,
+      "portion": 118,
+      "quantity": 1.0,
+      "weight_g": 15.0,
+      "weight_recipe_factor": 0.043,
+      "nutri_points": 0.0,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 42,
+    "fields": {
+      "created_at": "2022-08-28T14:48:51.028Z",
+      "updated_at": "2022-08-28T14:50:15.024Z",
+      "energy_kj": 640.0,
+      "protein_g": 0.4,
+      "fat_g": 11.6,
+      "saturated_fatty_acids_g": 6.8,
+      "sugar_g": 0.4,
+      "sodium_mg": 1.6,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.6,
+      "fibre_g": 0.0,
+      "recipe": 6,
+      "portion": 7,
+      "quantity": 40.0,
+      "weight_g": 40.0,
+      "weight_recipe_factor": 0.115,
+      "nutri_points": 2.3,
+      "nutri_class": 5.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 43,
+    "fields": {
+      "created_at": "2022-08-28T14:49:52.426Z",
+      "updated_at": "2022-08-28T14:50:15.026Z",
+      "energy_kj": 87.5,
+      "protein_g": 1.51,
+      "fat_g": 0.4,
+      "saturated_fatty_acids_g": 0.1,
+      "sugar_g": 3.12,
+      "sodium_mg": 10.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 3.89,
+      "fibre_g": 1.25,
+      "recipe": 6,
+      "portion": 154,
+      "quantity": 1.0,
+      "weight_g": 125.0,
+      "weight_recipe_factor": 0.36,
+      "nutri_points": -0.4,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 44,
+    "fields": {
+      "created_at": "2022-08-28T14:49:52.427Z",
+      "updated_at": "2022-08-28T14:50:15.027Z",
+      "energy_kj": 11.86,
+      "protein_g": 0.12,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.17,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.57,
+      "fibre_g": 0.04,
+      "recipe": 6,
+      "portion": 11,
+      "quantity": 0.5,
+      "weight_g": 2.0,
+      "weight_recipe_factor": 0.006,
+      "nutri_points": 0.0,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 45,
+    "fields": {
+      "created_at": "2022-08-28T14:49:52.428Z",
+      "updated_at": "2022-08-28T14:50:15.029Z",
+      "energy_kj": 0.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 1935.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.0,
+      "fibre_g": 0.0,
+      "recipe": 6,
+      "portion": 124,
+      "quantity": 5.0,
+      "weight_g": 5.0,
+      "weight_recipe_factor": 0.014,
+      "nutri_points": 0.0,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 46,
+    "fields": {
+      "created_at": "2022-08-28T14:49:52.428Z",
+      "updated_at": "2022-08-28T14:50:15.030Z",
+      "energy_kj": 51.45,
+      "protein_g": 0.5,
+      "fat_g": 0.15,
+      "saturated_fatty_acids_g": 0.05,
+      "sugar_g": 0.05,
+      "sodium_mg": 1.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 3.2,
+      "fibre_g": 1.25,
+      "recipe": 6,
+      "portion": 122,
+      "quantity": 5.0,
+      "weight_g": 5.0,
+      "weight_recipe_factor": 0.014,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 47,
+    "fields": {
+      "created_at": "2022-08-28T15:08:41.383Z",
+      "updated_at": "2022-08-28T15:08:58.050Z",
+      "energy_kj": 54.3,
+      "protein_g": 0.45,
+      "fat_g": 0.2,
+      "saturated_fatty_acids_g": 0.1,
+      "sugar_g": 0.2,
+      "sodium_mg": 1.25,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 3.45,
+      "fibre_g": 2.1,
+      "recipe": 1,
+      "portion": 157,
+      "quantity": 5.0,
+      "weight_g": 5.0,
+      "weight_recipe_factor": 0.013,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 48,
+    "fields": {
+      "created_at": "2022-08-28T15:16:45.579Z",
+      "updated_at": "2022-08-28T15:16:57.498Z",
+      "energy_kj": 1901.25,
+      "protein_g": 16.25,
+      "fat_g": 2.5,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 3.75,
+      "sodium_mg": 7.5,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 93.75,
+      "fibre_g": 3.75,
+      "recipe": 7,
+      "portion": 110,
+      "quantity": 125.0,
+      "weight_g": 125.0,
+      "weight_recipe_factor": 0.41,
+      "nutri_points": -1.6,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 49,
+    "fields": {
+      "created_at": "2022-08-28T15:16:45.579Z",
+      "updated_at": "2022-08-28T15:16:57.500Z",
+      "energy_kj": 447.6,
+      "protein_g": 1.86,
+      "fat_g": 0.52,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 24.24,
+      "fibre_g": 1.3,
+      "recipe": 7,
+      "portion": 130,
+      "quantity": 2.0,
+      "weight_g": 30.0,
+      "weight_recipe_factor": 0.098,
+      "nutri_points": -0.3,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 50,
+    "fields": {
+      "created_at": "2022-08-28T15:16:45.580Z",
+      "updated_at": "2022-08-28T15:16:57.501Z",
+      "energy_kj": 73.8,
+      "protein_g": 0.9,
+      "fat_g": 0.9,
+      "saturated_fatty_acids_g": 0.6,
+      "sugar_g": 0.0,
+      "sodium_mg": 11.4,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.5,
+      "fibre_g": 0.0,
+      "recipe": 7,
+      "portion": 24,
+      "quantity": 30.0,
+      "weight_g": 30.0,
+      "weight_recipe_factor": 0.098,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 51,
+    "fields": {
+      "created_at": "2022-08-28T15:16:45.580Z",
+      "updated_at": "2022-08-28T15:16:57.503Z",
+      "energy_kj": 13.5,
+      "protein_g": 0.05,
+      "fat_g": 0.04,
+      "saturated_fatty_acids_g": 0.01,
+      "sugar_g": 0.38,
+      "sodium_mg": 0.15,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.03,
+      "fibre_g": 0.04,
+      "recipe": 7,
+      "portion": 118,
+      "quantity": 1.0,
+      "weight_g": 15.0,
+      "weight_recipe_factor": 0.049,
+      "nutri_points": 0.0,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 52,
+    "fields": {
+      "created_at": "2022-08-28T15:16:45.580Z",
+      "updated_at": "2022-08-28T15:16:57.504Z",
+      "energy_kj": 361.75,
+      "protein_g": 5.25,
+      "fat_g": 7.25,
+      "saturated_fatty_acids_g": 4.75,
+      "sugar_g": 0.25,
+      "sodium_mg": 286.5,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.5,
+      "fibre_g": 0.0,
+      "recipe": 7,
+      "portion": 146,
+      "quantity": 25.0,
+      "weight_g": 25.0,
+      "weight_recipe_factor": 0.082,
+      "nutri_points": 1.6,
+      "nutri_class": 5.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 53,
+    "fields": {
+      "created_at": "2022-08-28T15:16:45.581Z",
+      "updated_at": "2022-08-28T15:16:57.506Z",
+      "energy_kj": 51.0,
+      "protein_g": 0.3,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 1.2,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 2.7,
+      "fibre_g": 0.6,
+      "recipe": 7,
+      "portion": 5,
+      "quantity": 30.0,
+      "weight_g": 30.0,
+      "weight_recipe_factor": 0.098,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 54,
+    "fields": {
+      "created_at": "2022-08-28T15:16:45.581Z",
+      "updated_at": "2022-08-28T15:16:57.508Z",
+      "energy_kj": 55.5,
+      "protein_g": 1.5,
+      "fat_g": 0.5,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 53.5,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.5,
+      "fibre_g": 1.0,
+      "recipe": 7,
+      "portion": 56,
+      "quantity": 50.0,
+      "weight_g": 50.0,
+      "weight_recipe_factor": 0.164,
+      "nutri_points": -0.2,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 55,
+    "fields": {
+      "created_at": "2022-08-28T15:31:03.673Z",
+      "updated_at": "2022-08-28T15:33:14.004Z",
+      "energy_kj": 1901.25,
+      "protein_g": 16.25,
+      "fat_g": 2.5,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 3.75,
+      "sodium_mg": 7.5,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 93.75,
+      "fibre_g": 3.75,
+      "recipe": 8,
+      "portion": 110,
+      "quantity": 125.0,
+      "weight_g": 125.0,
+      "weight_recipe_factor": 0.584,
+      "nutri_points": -2.3,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 56,
+    "fields": {
+      "created_at": "2022-08-28T15:31:03.675Z",
+      "updated_at": "2022-08-28T15:33:14.005Z",
+      "energy_kj": 0.0,
+      "protein_g": 0.0,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.0,
+      "sodium_mg": 3870.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.0,
+      "fibre_g": 0.0,
+      "recipe": 8,
+      "portion": 126,
+      "quantity": 1.0,
+      "weight_g": 10.0,
+      "weight_recipe_factor": 0.047,
+      "nutri_points": 0.0,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 57,
+    "fields": {
+      "created_at": "2022-08-28T15:31:03.675Z",
+      "updated_at": "2022-08-28T15:33:14.006Z",
+      "energy_kj": 220.72,
+      "protein_g": 1.12,
+      "fat_g": 5.44,
+      "saturated_fatty_acids_g": 0.4,
+      "sugar_g": 0.32,
+      "sodium_mg": 0.16,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.04,
+      "fibre_g": 0.32,
+      "recipe": 8,
+      "portion": 158,
+      "quantity": 8.0,
+      "weight_g": 8.0,
+      "weight_recipe_factor": 0.037,
+      "nutri_points": 0.1,
+      "nutri_class": 3.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 58,
+    "fields": {
+      "created_at": "2022-08-28T15:31:03.676Z",
+      "updated_at": "2022-08-28T15:33:14.008Z",
+      "energy_kj": 10.56,
+      "protein_g": 0.38,
+      "fat_g": 0.08,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.04,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 0.36,
+      "fibre_g": 0.2,
+      "recipe": 8,
+      "portion": 9,
+      "quantity": 2.0,
+      "weight_g": 12.0,
+      "weight_recipe_factor": 0.056,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 59,
+    "fields": {
+      "created_at": "2022-08-28T15:33:03.263Z",
+      "updated_at": "2022-08-28T15:33:14.009Z",
+      "energy_kj": 203.0,
+      "protein_g": 0.5,
+      "fat_g": 4.75,
+      "saturated_fatty_acids_g": 2.5,
+      "sugar_g": 0.75,
+      "sodium_mg": 7.75,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.25,
+      "fibre_g": 0.0,
+      "recipe": 8,
+      "portion": 159,
+      "quantity": 25.0,
+      "weight_g": 25.0,
+      "weight_recipe_factor": 0.117,
+      "nutri_points": 1.3,
+      "nutri_class": 4.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 60,
+    "fields": {
+      "created_at": "2022-08-28T15:33:03.264Z",
+      "updated_at": "2022-08-28T15:33:14.010Z",
+      "energy_kj": 73.8,
+      "protein_g": 0.9,
+      "fat_g": 0.9,
+      "saturated_fatty_acids_g": 0.6,
+      "sugar_g": 0.0,
+      "sodium_mg": 11.4,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.5,
+      "fibre_g": 0.0,
+      "recipe": 8,
+      "portion": 24,
+      "quantity": 30.0,
+      "weight_g": 30.0,
+      "weight_recipe_factor": 0.14,
+      "nutri_points": -0.1,
+      "nutri_class": 1.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 61,
+    "fields": {
+      "created_at": "2022-08-28T15:33:03.264Z",
+      "updated_at": "2022-08-28T15:33:14.011Z",
+      "energy_kj": 23.72,
+      "protein_g": 0.24,
+      "fat_g": 0.0,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 0.34,
+      "sodium_mg": 0.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 1.14,
+      "fibre_g": 0.07,
+      "recipe": 8,
+      "portion": 11,
+      "quantity": 1.0,
+      "weight_g": 4.0,
+      "weight_recipe_factor": 0.019,
+      "nutri_points": 0.0,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 62,
+    "fields": {
+      "created_at": "2022-08-28T16:56:00.464Z",
+      "updated_at": "2022-08-28T16:59:02.168Z",
+      "energy_kj": 3376.5,
+      "protein_g": 10.5,
+      "fat_g": 46.5,
+      "saturated_fatty_acids_g": 28.5,
+      "sugar_g": 82.5,
+      "sodium_mg": 210.0,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 85.5,
+      "fibre_g": 3.0,
+      "recipe": 9,
+      "portion": 160,
+      "quantity": 150.0,
+      "weight_g": 150.0,
+      "weight_recipe_factor": 1.0,
+      "nutri_points": 25.0,
+      "nutri_class": 5.0
+    }
+  },
+  {
+    "model": "food.recipeitem",
+    "pk": 63,
+    "fields": {
+      "created_at": "2022-08-28T16:58:53.498Z",
+      "updated_at": "2022-08-28T16:59:12.606Z",
+      "energy_kj": 1572.0,
+      "protein_g": 0.9,
+      "fat_g": 0.99,
+      "saturated_fatty_acids_g": 0.0,
+      "sugar_g": 79.98,
+      "sodium_mg": 6.09,
+      "fruit_factor": 0.0,
+      "carbohydrate_g": 93.9,
+      "fibre_g": 12.45,
+      "recipe": 10,
+      "portion": 46,
+      "quantity": 3.0,
+      "weight_g": 600.0,
+      "weight_recipe_factor": 1.0,
+      "nutri_points": 0.0,
+      "nutri_class": 2.0
+    }
+  },
+  {
+    "model": "food.retailer",
+    "pk": 1,
+    "fields": {
+      "created_at": null,
+      "updated_at": null,
+      "name": "Rewe",
+      "description": ""
+    }
+  },
+  {
+    "model": "food.retailer",
+    "pk": 2,
+    "fields": {
+      "created_at": null,
+      "updated_at": null,
+      "name": "Penny",
+      "description": ""
+    }
+  },
+  {
+    "model": "food.retailer",
+    "pk": 3,
+    "fields": {
+      "created_at": null,
+      "updated_at": null,
+      "name": "Lidl",
+      "description": ""
+    }
+  },
+  {
+    "model": "food.package",
+    "pk": 1,
+    "fields": {
+      "created_at": null,
+      "updated_at": null,
+      "name": "4er Tomatenpaket",
+      "portion": 3,
+      "quality": "brand",
+      "weight_package_g": 0.0
+    }
+  },
+  {
+    "model": "food.price",
+    "pk": 1,
+    "fields": {
+      "created_at": null,
+      "updated_at": null,
+      "price_eur": 1.49,
+      "retailer": 1,
+      "package": 1,
+      "price_per_kg": 1.0
     }
   }
 ]

@@ -206,7 +206,7 @@ class Recipe(TimeStampMixin, NutrientsMixin):
 
 class RecipeItem(TimeStampMixin, NutrientsMixin):
     recipe = models.ForeignKey(
-        Recipe, on_delete=models.PROTECT, blank=True, null=True)
+        Recipe, on_delete=models.CASCADE, blank=True, null=True)
     portion = models.ForeignKey(Portion, on_delete=models.PROTECT)
     quantity = models.FloatField(default=1)
     # readonly
@@ -320,7 +320,7 @@ def save_recipe(sender, instance: RecipeItem, **kwargs):
 def save_recipe(sender, instance: Ingredient, **kwargs):
     import requests
     import json
-    if instance.fdc_id:
+    if instance.fdc_id and not instance.energy_kj:
         API_URL = "https://api.nal.usda.gov/fdc/v1/food"
         API_KEY = "?api_key=wrSx9QbtEeaZb3LHWXzm4egDf2uiBPdOEmGsc9tT"
 

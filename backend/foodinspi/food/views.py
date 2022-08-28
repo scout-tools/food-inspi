@@ -32,8 +32,11 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class IngredientViewSet(viewsets.ModelViewSet):
-    queryset = food_models.Ingredient.objects.all()
+    queryset = food_models.Ingredient.objects.all().order_by('name')
     serializer_class = food_serializers.IngredientSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ['name']
+    search_fields = ['name']
 
 
 class RecipeItemViewSet(viewsets.ReadOnlyModelViewSet):
@@ -57,5 +60,8 @@ class PackageViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class PortionViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = food_models.Portion.objects.all()
+    queryset = food_models.Portion.objects.all().order_by('name')
     serializer_class = food_serializers.PortionSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ['name']
+    search_fields = ['name']
