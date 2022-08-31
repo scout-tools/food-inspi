@@ -5,6 +5,7 @@ from django.dispatch import receiver
 
 from food.service.nutri_lib import Nutri
 from food.service.recipe_logic import RecipeModule
+from food.service.hint import HintModule
 
 
 class TimeStampMixin(models.Model):
@@ -14,17 +15,51 @@ class TimeStampMixin(models.Model):
     class Meta:
         abstract = True
 
+class FoodMajorClasses(models.TextChoices):
+    BACKED = 'Baked Products', 'Backwaren'
+    BEEF = 'Beef Products', 'Ringfleisch'
+    BEVERRAGES = 'Beverages', 'Getränk'
+    PASTA = 'Cereal Grains and Pasta', 'Nudeln und Getreide '
+    EGG = 'Dairy and Egg Products', 'Milch und Ei'
+    FATS = 'Fats and Oils', 'Fette und and Öl'
+    FISH = 'Finfish and Shellfish Products', 'Meeresfrücht und Fisch'
+    FRUIT = 'Fruits and Fruit Juices', 'Früchte'
+    LEGUNE = 'Legumes and Legume Products', 'Hülsenfrüchte'
+    NUTS = 'Nut and Seed Products', 'Nuß und Samen'
+    PORK = 'Pork Products', 'Schweinefleisch'
+    POULTRY = 'Poultry Products', 'Geflügel'
+    SAUSAGES = 'Sausages and Luncheon Meats', 'Wurst'
+    SOUPS = 'Soups, Sauces, and Gravies', 'Suppe oder Soße'
+    SPICES = 'Spices and Herbs', 'Gewürzt'
+    SWEETS = 'Sweets', 'Süßigkeit'
+    VEGETABLES = 'Vegetables and Vegetable Products', 'Gemüse'
+    UNDEFINED = 'undefined', 'unbekannt'
 
 class NutrientsMixin(models.Model):
     energy_kj = models.FloatField(default=0)
     protein_g = models.FloatField(default=0)
     fat_g = models.FloatField(default=0)
-    saturated_fatty_acids_g = models.FloatField(default=0)
+    fat_sat_g = models.FloatField(default=0)
     sugar_g = models.FloatField(default=0)
     sodium_mg = models.FloatField(default=0)
+    salt_g = models.FloatField(default=0)
     fruit_factor = models.FloatField(default=0, blank=True)
     carbohydrate_g = models.FloatField(default=0)
     fibre_g = models.FloatField(default=0)
+    fructose_g = models.FloatField(default=0)
+    lactose_g = models.FloatField(default=0)
+
+    class Meta:
+        abstract = True
+
+
+class NutriPointsMixin(models.Model):
+    nutri_points_energy_kj = models.FloatField(default=0)
+    nutri_points_protein_g = models.FloatField(default=0)
+    nutri_points_fat_sat_g = models.FloatField(default=0)
+    nutri_points_sugar_g = models.FloatField(default=0)
+    nutri_points_sodium_mg = models.FloatField(default=0)
+    nutri_points_fibre_g = models.FloatField(default=0)
 
     class Meta:
         abstract = True
@@ -80,7 +115,7 @@ class Tag(TimeStampMixin):
         return self.__str__()
 
 
-class Ingredient(TimeStampMixin, NutrientsMixin):
+class Ingredient(TimeStampMixin, NutrientsMixin, NutriPointsMixin):
     class PhysicalViscosityChoices(models.TextChoices):
         SOLID = 'solid', 'Essen'
         BEVERAGE = 'beverage', 'Getränk'
@@ -95,12 +130,16 @@ class Ingredient(TimeStampMixin, NutrientsMixin):
     )
     tags = models.ManyToManyField(Tag, related_name='IngredientTags', blank=True)
     fdc_id = models.IntegerField(null=True, blank=True)
+    major_class = models.CharField(
+        max_length=60,
+        choices=FoodMajorClasses.choices,
+        default=FoodMajorClasses.UNDEFINED
+    )
 
     # readonly
     nutri_points = models.IntegerField(null=True, blank=True)
     nutri_class = models.FloatField(null=True, blank=True)
     ndb_number = models.IntegerField(null=True, blank=True)
-    major_class = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return f'{self.name} - {self.description}'
@@ -134,8 +173,8 @@ class Portion(TimeStampMixin, NutrientsMixin):
         self.protein_g = round(
             self.ingredient.protein_g * self.weight_g / 100, 2)
         self.fat_g = round(self.ingredient.fat_g * self.weight_g / 100, 2)
-        self.saturated_fatty_acids_g = round(
-            self.ingredient.saturated_fatty_acids_g * self.weight_g / 100, 2)
+        self.fat_sat_g = round(
+            self.ingredient.fat_sat_g * self.weight_g / 100, 2)
         self.sugar_g = round(self.ingredient.sugar_g * self.weight_g / 100, 2)
         self.sodium_mg = round(
             self.ingredient.sodium_mg * self.weight_g / 100, 2)
@@ -151,51 +190,49 @@ class Portion(TimeStampMixin, NutrientsMixin):
     def __repr__(self):
         return self.__str__()
 
+class Hint(TimeStampMixin):
 
-class Recipe(TimeStampMixin, NutrientsMixin):
-    name = models.CharField(max_length=255, blank=True)
-    description = models.CharField(max_length=255, blank=True)
-    tags = models.ManyToManyField(Tag, related_name='RecipeTags', blank=True)
+    class HintLevel(models.TextChoices):
+        INFO = 'info', 'Info'
+        WARNING = 'warn', 'Achtung'
+        ERROR = 'error', 'Fehler'
 
-    # readonly
-    nutri_class = models.FloatField(null=True, blank=True)
-    nutri_points = models.FloatField(null=True, blank=True)
-    weight_g = models.FloatField(default=1)
+    class MinMaxLevel(models.TextChoices):
+        MAX = 'max', 'Maximal'
+        MIN = 'min', 'Minimal'
 
-    def get_sum(self, name, items):
-        if (items[f'{name}__sum']):
-            return round(items[f'{name}__sum'], 0)
-        return 0.1
+    class ParameterChoice(models.TextChoices):
+        weight_g = 'weight_g', 'weight_g'
+        energy_kj = 'energy_kj', 'energy_kj'
+        protein_g = 'protein_g', 'protein_g'
+        fat_g = 'fat_g', 'fat_g'
+        fat_sat_g = 'fat_sat_g', 'fat_sat_g'
+        sugar_g = 'sugar_g', 'sugar_g'
+        sodium_mg = 'sodium_mg', 'sodium_mg'
+        salt_g = 'salt_g', 'salt_g'
+        carbohydrate_g = 'carbohydrate_g', 'carbohydrate_g'
+        fibre_g = 'fibre_g', 'fibre_g'
+        nutri_points = 'nutri_points', 'nutri_points'
+        nutri_class = 'nutri_class', 'nutri_class'
 
-    def save(self, *args, **kwargs):
-        NutriClass = Nutri()
-        items = RecipeItem.objects.filter(recipe=self.id).aggregate(
-            Sum('weight_g'),
-            Sum('energy_kj'),
-            Sum('protein_g'),
-            Sum('fat_g'),
-            Sum('saturated_fatty_acids_g'),
-            Sum('sugar_g'),
-            Sum('sodium_mg'),
-            Sum('carbohydrate_g'),
-            Sum('fibre_g'),
-            Sum('nutri_points'),
-        )
-
-        self.weight_g = self.get_sum('weight_g', items)
-        self.nutri_points = self.get_sum('nutri_points', items)
-        self.nutri_class = NutriClass.get_nutri_class(
-            'solid', self.nutri_points)
-        self.energy_kj = self.get_sum('energy_kj', items)
-        self.protein_g = self.get_sum('protein_g', items)
-        self.fat_g = self.get_sum('fat_g', items)
-        self.saturated_fatty_acids_g = self.get_sum(
-            'saturated_fatty_acids_g', items)
-        self.sugar_g = self.get_sum('sugar_g', items)
-        self.sodium_mg = self.get_sum('sodium_mg', items)
-        self.carbohydrate_g = self.get_sum('carbohydrate_g', items)
-        self.fibre_g = self.get_sum('fibre_g', items)
-        super(Recipe, self).save(*args, **kwargs)
+    name = models.CharField(max_length=20, blank=True)
+    description = models.CharField(max_length=1000, blank=True)
+    value = models.FloatField(default=1)
+    hint_level = models.CharField(
+        max_length=10,
+        choices=HintLevel.choices,
+        default=HintLevel.INFO,
+    )
+    min_max = models.CharField(
+        max_length=10,
+        choices=MinMaxLevel.choices,
+        default=MinMaxLevel.MIN,
+    )
+    parameter = models.CharField(
+        max_length=23,
+        choices=ParameterChoice.choices,
+        default=ParameterChoice.weight_g,
+    )
 
     def __str__(self):
         return self.name
@@ -203,8 +240,47 @@ class Recipe(TimeStampMixin, NutrientsMixin):
     def __repr__(self):
         return self.__str__()
 
+class MealType(models.TextChoices):
+    BREAKFAST = 'breakfast', 'Frühstück'
+    LUNCH = 'lunch', 'Hauptmahlzeit'
+    SNACK = 'snack', 'Snack'
+    DESSERT = 'desert', 'Nachtisch'
+    STARTER = 'starter', 'Vorspeise'
 
-class RecipeItem(TimeStampMixin, NutrientsMixin):
+class Recipe(TimeStampMixin, NutrientsMixin):
+    name = models.CharField(max_length=255, blank=True)
+    description = models.CharField(max_length=255, blank=True)
+    tags = models.ManyToManyField(Tag, related_name='RecipeTags', blank=True)
+    meal_type = models.CharField(
+        max_length=10,
+        choices=MealType.choices,
+        default=MealType.LUNCH)
+
+    # readonly
+    nutri_class = models.FloatField(null=True, blank=True)
+    nutri_points = models.FloatField(null=True, blank=True)
+    weight_g = models.FloatField(default=1)
+    hints = models.ManyToManyField(Hint)
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.__str__()
+
+    def save(self, *args, **kwargs):
+        RecipeClass = RecipeModule()
+        HintClass = HintModule()
+
+        RecipeClass.recipe_sums(self)
+        RecipeClass.recalculate_recipe_items(self)
+        RecipeClass.recipe_nutri(self)
+
+        HintClass.add_hints(self)
+
+        super(Recipe, self).save(*args, **kwargs)
+
+class RecipeItem(TimeStampMixin, NutrientsMixin, NutriPointsMixin):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, blank=True, null=True)
     portion = models.ForeignKey(Portion, on_delete=models.PROTECT)
@@ -221,6 +297,33 @@ class RecipeItem(TimeStampMixin, NutrientsMixin):
     def __repr__(self):
         return self.__str__()
 
+    def save(self, *args, **kwargs):
+        RecipeClass = RecipeModule()
+        HintClass = HintModule()
+
+        RecipeClass.update_recipe_item_nutritons(self)
+        super(RecipeItem, self).save(*args, **kwargs)
+
+        RecipeClass.recipe_sums(self.recipe)
+        RecipeClass.recalculate_recipe_items(self.recipe)
+        RecipeClass.recipe_nutri(self.recipe)
+
+        HintClass.add_hints(self.recipe)
+
+
+    def delete(self, *args, **kwargs):
+        RecipeClass = RecipeModule()
+        HintClass = HintModule()
+
+        RecipeClass.update_recipe_item_nutritons(self)
+        super(RecipeItem, self).delete(*args, **kwargs)
+
+        RecipeClass.recipe_sums(self.recipe)
+        RecipeClass.recalculate_recipe_items(self.recipe)
+        RecipeClass.recipe_nutri(self.recipe)
+
+        HintClass.add_hints(self.recipe)
+
 
 class Retailer(TimeStampMixin):
     name = models.CharField(max_length=255, blank=True)
@@ -234,7 +337,7 @@ class Retailer(TimeStampMixin):
 
 
 class Package(TimeStampMixin):
-    class BrandQuantityChoises(models.TextChoices):
+    class BrandQualityChoises(models.TextChoices):
         OWN = 'own', 'Eigenmarke'
         BRAND = 'brand', 'Marke'
         PREMIUM = 'premium', 'Premium'
@@ -243,9 +346,10 @@ class Package(TimeStampMixin):
     portion = models.ForeignKey(Portion, on_delete=models.PROTECT, null=True)
     quality = models.CharField(
         max_length=10,
-        choices=BrandQuantityChoises.choices,
-        default=BrandQuantityChoises.BRAND,
+        choices=BrandQualityChoises.choices,
+        default=BrandQualityChoises.BRAND,
     )
+    quantity = models.FloatField(default=0)
     # readonly
     weight_package_g = models.FloatField(default=0, blank=True)
 
@@ -282,45 +386,11 @@ class Price(TimeStampMixin):
 
 
 # pylint: disable=unused-argument
-@receiver(post_save, sender=Recipe)
-def save_recipe(sender, instance: Recipe, **kwargs):
-    RecipeClass = RecipeModule()
-    RecipeClass.recalculate_recipe(instance.id)
-
-
-# pylint: disable=unused-argument
-@receiver(pre_save, sender=RecipeItem)
-def save_recipe(sender, instance: RecipeItem, **kwargs):
-    NutriClass = Nutri()
-    instance.weight_g = round(instance.portion.weight_g * instance.quantity, 2)
-    instance.energy_kj = round(
-        instance.portion.energy_kj * instance.quantity, 2)
-    instance.protein_g = round(
-        instance.portion.protein_g * instance.quantity, 2)
-    instance.fat_g = round(instance.portion.fat_g * instance.quantity, 2)
-    instance.saturated_fatty_acids_g = round(
-        instance.portion.saturated_fatty_acids_g * instance.quantity, 2)
-    instance.sugar_g = round(instance.portion.sugar_g * instance.quantity, 2)
-    instance.sodium_mg = round(
-        instance.portion.sodium_mg * instance.quantity, 2)
-    instance.carbohydrate_g = round(
-        instance.portion.carbohydrate_g * instance.quantity, 2)
-    instance.fibre_g = round(instance.portion.fibre_g * instance.quantity, 2)
-
-    instance.weight_recipe_factor = round(
-        instance.weight_g / instance.recipe.weight_g, 3)
-    instance.nutri_points = round(
-        instance.portion.ingredient.nutri_points * instance.weight_recipe_factor, 1)
-    instance.nutri_class = NutriClass.get_nutri_class(
-        'solid', instance.portion.ingredient.nutri_points)
-
-
-# pylint: disable=unused-argument
 @receiver(pre_save, sender=Ingredient)
 def save_recipe(sender, instance: Ingredient, **kwargs):
     import requests
     import json
-    if instance.fdc_id and not instance.energy_kj:
+    if instance.fdc_id and instance.energy_kj < 1:
         API_URL = "https://api.nal.usda.gov/fdc/v1/food"
         API_KEY = "?api_key=wrSx9QbtEeaZb3LHWXzm4egDf2uiBPdOEmGsc9tT"
 
@@ -330,7 +400,7 @@ def save_recipe(sender, instance: Ingredient, **kwargs):
             nutri_list = dict_data['foodNutrients']
             instance.energy_kj = 0
             instance.protein_g = 0
-            instance.saturated_fatty_acids_g = 0
+            instance.fat_sat_g = 0
             instance.fat_g = 0
             instance.sugar_g = 0
             instance.sodium_mg = 0
@@ -357,7 +427,7 @@ def save_recipe(sender, instance: Ingredient, **kwargs):
                         instance.protein_g = item['amount']
 
                     if (nutrient['id'] == 1258):
-                        instance.saturated_fatty_acids_g = item['amount']
+                        instance.fat_sat_g = item['amount']
 
                     if (nutrient['id'] == 2000):
                         instance.sugar_g = item['amount']
@@ -367,13 +437,19 @@ def save_recipe(sender, instance: Ingredient, **kwargs):
 
                     if (nutrient['id'] == 1093):
                         instance.sodium_mg = item['amount']
-                        instance.sodium_mg = item['amount']
+                        instance.salt_g = item['amount'] * 2.5 / 1000
 
                     if (nutrient['id'] == 1005):
                         instance.carbohydrate_g = item['amount']
 
                     if (nutrient['id'] == 1079):
                         instance.fibre_g = item['amount']
+
+                    if (nutrient['id'] == 1012):
+                        instance.fructose_g = item['amount']
+
+                    if (nutrient['id'] == 1013):
+                        instance.lactose_g = item['amount']
 
 # pylint: disable=unused-argument
 
@@ -389,6 +465,7 @@ def post_save_recipe(sender, instance, created, **kwargs):
             value = instance._meta.get_field(item).value_from_object(instance)
             temp_points = NutriClass.get_points(
                 item, physical_viscosity, value)
+            setattr(instance, f"nutri_points_{item}", temp_points)
             nutri_points = temp_points + nutri_points
 
         instance.nutri_points = nutri_points

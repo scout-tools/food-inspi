@@ -135,7 +135,7 @@ class Nutri:
                     [0.80, 10000, -10]
                 ]
             },
-            "saturated_fatty_acids_g": {
+            "fat_sat_g": {
                 "solid": [
                     [-10000, 1, 0],
                     [1, 2, 1],
@@ -181,7 +181,7 @@ class Nutri:
         }
 
     def get_nutri_items(self):
-        return ['energy_kj', 'sugar_g', 'fibre_g', 'protein_g', 'sodium_mg', 'fruit_factor', 'saturated_fatty_acids_g']
+        return ['energy_kj', 'sugar_g', 'fibre_g', 'protein_g', 'sodium_mg', 'fruit_factor', 'fat_sat_g']
 
     def get_points(self, item, physical_viscosity, value):
         get_nutri_table_data = self.get_nutri_table()
