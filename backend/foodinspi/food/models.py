@@ -276,9 +276,9 @@ class Recipe(TimeStampMixin, NutrientsMixin):
         RecipeClass.recalculate_recipe_items(self)
         RecipeClass.recipe_nutri(self)
 
-        HintClass.add_hints(self)
-
         super(Recipe, self).save(*args, **kwargs)
+
+        HintClass.add_hints(self)
 
 class RecipeItem(TimeStampMixin, NutrientsMixin, NutriPointsMixin):
     recipe = models.ForeignKey(

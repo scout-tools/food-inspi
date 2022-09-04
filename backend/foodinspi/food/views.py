@@ -60,7 +60,7 @@ class PackageViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class PortionViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = food_models.Portion.objects.all().order_by('name')
+    queryset = food_models.Portion.objects.all().order_by('rank').order_by('name')
     serializer_class = food_serializers.PortionSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['name']
