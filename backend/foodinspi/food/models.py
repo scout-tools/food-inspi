@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from food.service.nutri_lib import Nutri
 from food.service.recipe_logic import RecipeModule
 from food.service.hint import HintModule
+from food.service.price_logic import PriceModule
 
 
 class TimeStampMixin(models.Model):
@@ -158,6 +159,7 @@ class Portion(TimeStampMixin, NutrientsMixin):
     rank = models.IntegerField(default=1)
     # readonly
     weight_g = models.FloatField(blank=True, null=True)
+    price_per_kg = models.FloatField(default=0)
 
     def save(self, *args, **kwargs):
         is_g = self.measuring_unit.unit == 'g'
@@ -189,6 +191,8 @@ class Portion(TimeStampMixin, NutrientsMixin):
 
     def __repr__(self):
         return self.__str__()
+    class Meta:
+            ordering = ('name',)
 
 class Hint(TimeStampMixin):
 
@@ -261,6 +265,8 @@ class Recipe(TimeStampMixin, NutrientsMixin):
     nutri_points = models.FloatField(null=True, blank=True)
     weight_g = models.FloatField(default=1)
     hints = models.ManyToManyField(Hint)
+    price_per_kg = models.FloatField(default=0)
+    price = models.FloatField(default=0, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -290,6 +296,8 @@ class RecipeItem(TimeStampMixin, NutrientsMixin, NutriPointsMixin):
     weight_recipe_factor = models.FloatField(blank=True, null=True)
     nutri_points = models.FloatField(blank=True, null=True)
     nutri_class = models.FloatField(null=True, blank=True)
+    price_per_kg = models.FloatField(default=0)
+    price = models.FloatField(default=0, null=True, blank=True)
 
     def __str__(self):
         return f'{self.recipe} - {self.quantity} x {self.portion}'
@@ -302,6 +310,7 @@ class RecipeItem(TimeStampMixin, NutrientsMixin, NutriPointsMixin):
         HintClass = HintModule()
 
         RecipeClass.update_recipe_item_nutritons(self)
+        self.price = round(self.price_per_kg * self.weight_g / 1000, 2)
         super(RecipeItem, self).save(*args, **kwargs)
 
         RecipeClass.recipe_sums(self.recipe)
@@ -309,6 +318,7 @@ class RecipeItem(TimeStampMixin, NutrientsMixin, NutriPointsMixin):
         RecipeClass.recipe_nutri(self.recipe)
 
         HintClass.add_hints(self.recipe)
+
 
 
     def delete(self, *args, **kwargs):
@@ -352,6 +362,7 @@ class Package(TimeStampMixin):
     quantity = models.FloatField(default=0)
     # readonly
     weight_package_g = models.FloatField(default=0, blank=True)
+    price_per_kg = models.FloatField(default=0)
 
     def save(self, *args, **kwargs):
         self.weight_package_g = self.quantity * self.portion.weight_g
@@ -362,6 +373,9 @@ class Package(TimeStampMixin):
 
     def __repr__(self):
         return self.__str__()
+
+    class Meta:
+            ordering = ('name',)
 
 
 class Price(TimeStampMixin):
@@ -374,8 +388,10 @@ class Price(TimeStampMixin):
     price_per_kg = models.FloatField(default=1)
 
     def save(self, *args, **kwargs):
+        PriceClass = PriceModule()
         self.price_per_kg = round(
             self.price_eur / (self.package.weight_package_g / 1000), 2)
+        PriceClass.setPriceInPackage(self)
         super(Price, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -452,8 +468,6 @@ def save_recipe(sender, instance: Ingredient, **kwargs):
                         instance.lactose_g = item['amount']
 
 # pylint: disable=unused-argument
-
-
 @receiver(post_save, sender=Ingredient)
 def post_save_recipe(sender, instance, created, **kwargs):
     if not getattr(instance, 'processed', False):

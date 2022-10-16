@@ -26,7 +26,6 @@ class RecipeModule:
                 'solid', recipe_item.portion.ingredient.nutri_points)
 
             for nutri_item in self._get_nutri_items():
-                print(nutri_item)
                 temp_nutri_value = recipe_item.portion.ingredient._meta.get_field(f"nutri_points_{nutri_item}").value_from_object(recipe_item.portion.ingredient)
                 setattr(recipe_item, f"nutri_points_{nutri_item}", round(
                     temp_nutri_value * weight_recipe_factor, 1))
@@ -63,9 +62,9 @@ class RecipeModule:
         instance.fibre_g = round(
             instance.portion.fibre_g * instance.quantity, 2)
 
-    def get_sum(self, name, items):
+    def get_sum(self, name, items, round_digit=0):
         if (items[f'{name}__sum']):
-            return round(items[f'{name}__sum'], 0)
+            return round(items[f'{name}__sum'], round_digit)
         return 0.1
 
     def recipe_sums(self, instance):
@@ -79,8 +78,10 @@ class RecipeModule:
             Sum('sodium_mg'),
             Sum('carbohydrate_g'),
             Sum('fibre_g'),
+            Sum('price'),
         )
 
+        price = self.get_sum('price', items, 2)
         weight_g = self.get_sum('weight_g', items)
         energy_kj = self.get_sum('energy_kj', items)
         protein_g = self.get_sum('protein_g', items)
@@ -93,6 +94,7 @@ class RecipeModule:
         fibre_g = self.get_sum('fibre_g', items)
 
         food_models.Recipe.objects.filter(id=instance.id).update(
+            price=price,
             weight_g=weight_g,
             energy_kj=energy_kj,
             protein_g=protein_g,

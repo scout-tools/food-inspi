@@ -6,7 +6,6 @@ from django.contrib import admin
 from django.contrib.auth.models import User, Group
 
 
-
 admin.site.register(MeasuringUnit)
 admin.site.register(Tag)
 admin.site.register(TagCategory)
@@ -14,6 +13,7 @@ admin.site.register(TagCategory)
 
 class PortionInline(admin.TabularInline):
     model = Portion
+    ordering = ['name']
     readonly_fields = (
         'weight_g',
         'energy_kj',
@@ -28,7 +28,8 @@ class PortionInline(admin.TabularInline):
         'salt_g',
         'fructose_g',
         'lactose_g',
-)
+        'price_per_kg',
+    )
 
 
 @admin.register(Ingredient)
@@ -44,8 +45,9 @@ class IngredientAdmin(admin.ModelAdmin):
         'nutri_points_fibre_g',
         'nutri_points_fat_sat_g',
         'nutri_points_protein_g',
-        )
+    )
     search_fields = ['name']
+    ordering = ['name']
     list_display = (
         'name',
         'description',
@@ -84,11 +86,14 @@ class RecipeItemInline(admin.TabularInline):
         'nutri_points_fat_sat_g',
         'nutri_points_protein_g',
         'fruit_factor',
+        'price_per_kg',
+        'price',
     )
 
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
+    ordering = ['name']
     readonly_fields = (
         'hints',
         'nutri_class',
@@ -105,7 +110,8 @@ class RecipeAdmin(admin.ModelAdmin):
         'fruit_factor',
         'salt_g',
         'fructose_g',
-        'lactose_g'
+        'lactose_g',
+        'price',
     )
     list_display = (
         'name',
@@ -116,6 +122,7 @@ class RecipeAdmin(admin.ModelAdmin):
         'protein_g',
         'fibre_g',
         'nutri_class',
+        'price',
         'get_hints'
     )
     list_filter = ('meal_type',)
@@ -137,7 +144,10 @@ class PriceInline(admin.TabularInline):
 
 @admin.register(Package)
 class PackageAdmin(admin.ModelAdmin):
-    readonly_fields = ('weight_package_g',)
+    ordering = ['portion']
+    readonly_fields = (
+        'weight_package_g',
+        'price_per_kg',)
 
     inlines = [
         PriceInline,
@@ -146,4 +156,11 @@ class PackageAdmin(admin.ModelAdmin):
 
 admin.site.register(Retailer)
 
-admin.site.register(Hint)
+
+@admin.register(Hint)
+class EventModuleAdmin(admin.ModelAdmin):
+    search_fields = ['name', 'description',]
+    list_display = ('name', 'description', 'parameter',
+                    'min_max', 'value', 'hint_level',)
+    search_fields = ('name', 'description',)
+    list_filter = ('parameter',)
