@@ -85,17 +85,17 @@
                       :key="item.name"
                       :to="{ name: item.linkName, params: { id: 1 } }"
                       :class="[
-                        item.current
+                        item.linkName === currentRoute
                           ? 'bg-gray-100 text-gray-900'
                           : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                         'group flex items-center px-2 py-2 text-base font-medium rounded-md',
                       ]"
-                      :aria-current="item.current ? 'page' : undefined"
+                      :aria-current="item.linkName === currentRoute ? 'page' : undefined"
                     >
                       <component
                         :is="item.icon"
                         :class="[
-                          item.current
+                          item.linkName === currentRoute
                             ? 'text-gray-500'
                             : 'text-gray-400 group-hover:text-gray-500',
                           'mr-4 h-6 w-6',
@@ -126,6 +126,13 @@
                         text-gray-600
                         hover:bg-gray-50 hover:text-gray-900
                       "
+                      :class="[
+                          item.linkName === currentRoute
+                            ? 'bg-gray-200 text-gray-900'
+                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                          'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                        ]"
+                        :aria-current="item.linkName === currentRoute ? 'page' : undefined"
                     >
                       <component
                         :is="item.icon"
@@ -181,17 +188,17 @@
                   :key="item.name"
                   :to="{ name: item.linkName, params: { id: 1 } }"
                   :class="[
-                    item.current
+                    currentRoute.includes(item.route)
                       ? 'bg-gray-200 text-gray-900'
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                     'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
                   ]"
-                  :aria-current="item.current ? 'page' : undefined"
+                  :aria-current="currentRoute.includes(item.route) ? 'page' : undefined"
                 >
                   <component
                     :is="item.icon"
                     :class="[
-                      item.current
+                      currentRoute.includes(item.route)
                         ? 'text-gray-500'
                         : 'text-gray-400 group-hover:text-gray-500',
                       'mr-3 flex-shrink-0 h-6 w-6',
@@ -219,6 +226,13 @@
                     text-gray-600
                     hover:bg-gray-50 hover:text-gray-900
                   "
+                 :class="[
+                    currentRoute.includes(item.route)
+                      ? 'bg-gray-200 text-gray-900'
+                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                  ]"
+                  :aria-current="currentRoute.includes(item.route) ? 'page' : undefined"
                 >
                   <component
                     :is="item.icon"
@@ -255,8 +269,8 @@
         >
           <div>
             <img
-              class="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=500"
+              class="h-12 w-auto"
+              src="./../assets/logo.png"
               alt="Your Company"
             />
           </div>
@@ -330,32 +344,38 @@ const route = useRoute();
 const secondaryNavigation = [
   {
     name: "Hintergründe",
-    linkName: "faqMain",
+    linkName: "FaqMain",
     icon: MagnifyingGlassCircleIcon,
+    route: 'faq'
   },
-  { name: "Einstellungen", linkName: "settingsMain", icon: CogIcon },
+  { name: "Einstellungen", linkName: "SettingsMain", route: 'settings', icon: CogIcon },
 ];
 const sidebarOpen = ref(false);
 
+
 const currentRoute = computed(() => {
-  return route.name;
+  return route.fullPath
+;
 });
 
 const navigation = [
   {
     name: "Dashboard",
-    linkName: "dashboardMain",
+    linkName: "DashboardMain",
     icon: HomeIcon,
+    route: 'dashboard'
   },
   {
     name: "Rezept",
-    linkName: "recipeMain",
+    linkName: "RecipesMain",
     icon: Bars3Icon,
+    route: 'recipe'
   },
   {
     name: "Zutaten",
-    linkName: "ingredientMain",
+    linkName: "IngredientMain",
     icon: MagnifyingGlassCircleIcon,
+    route: 'ingredient'
   },
 ];
 </script>

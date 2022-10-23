@@ -18,6 +18,15 @@ export const useRecipeStore = defineStore("recipe", {
         console.log(error);
       }
     },
+    async fetchRecipeById(id: number) {
+      try {
+        const response = await RecipeApi.fetchById(id);
+        this._recipeDetail = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
   },
   getters: {
     recipes: (state) => {

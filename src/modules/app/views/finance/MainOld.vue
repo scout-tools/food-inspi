@@ -14,7 +14,7 @@
         </p>
       </header>
       <main>
-        <div class="p-4 mx-auto prose md:px-6 prose-indigo sm:rounded-md">
+        <div class="p-4 mx-auto prose md:px-6 prose-blue sm:rounded-md">
           <HelloWorld msg="Hello World Component" />
 
           <h2>Template Project Features</h2>

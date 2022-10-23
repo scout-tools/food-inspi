@@ -1,14 +1,14 @@
 export default [
   {
     path: "/settings",
-    name: "settings",
-    redirect: { name: "settingsMain" },
-    component: () => import(/* webpackChunkName: "settings" */ "@/modules/settings/views/Main.vue"),
+    name: "Settings",
+    redirect: { name: "SettingsMain" },
+    component: () => import(/* webpackChunkName: "Settings" */ "@/modules/settings/views/Main.vue"),
     children: [
       {
         path: "main",
-        name: "settingsMain",
-        component: () => import(/* webpackChunkName: "settingsMain" */ "@/modules/settings/views/Main.vue"),
+        name: "SettingsMain",
+        component: () => import(/* webpackChunkName: "SettingsMain" */ "@/modules/settings/views/Main.vue"),
       },
     ],
   },

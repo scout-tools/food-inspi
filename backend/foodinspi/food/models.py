@@ -152,9 +152,9 @@ class Ingredient(TimeStampMixin, NutrientsMixin, NutriPointsMixin):
 class Portion(TimeStampMixin, NutrientsMixin):
     name = models.CharField(max_length=255)
     measuring_unit = models.ForeignKey(
-        MeasuringUnit, on_delete=models.PROTECT, blank=True, null=True, default=3)
+        MeasuringUnit, on_delete=models.PROTECT, blank=True, null=True)
     ingredient = models.ForeignKey(
-        Ingredient, on_delete=models.PROTECT, default=1)
+        Ingredient, on_delete=models.PROTECT)
     quantity = models.FloatField(default=1)
     rank = models.IntegerField(default=1)
     # readonly
@@ -192,7 +192,7 @@ class Portion(TimeStampMixin, NutrientsMixin):
     def __repr__(self):
         return self.__str__()
     class Meta:
-            ordering = ('name',)
+        ordering = ('name',)
 
 class Hint(TimeStampMixin):
 
@@ -288,8 +288,8 @@ class Recipe(TimeStampMixin, NutrientsMixin):
 
 class RecipeItem(TimeStampMixin, NutrientsMixin, NutriPointsMixin):
     recipe = models.ForeignKey(
-        Recipe, on_delete=models.CASCADE, blank=True, null=True)
-    portion = models.ForeignKey(Portion, on_delete=models.PROTECT)
+        Recipe, on_delete=models.CASCADE, blank=True, null=True, related_name='recipe_items')
+    portion = models.ForeignKey(Portion, on_delete=models.PROTECT, related_name='recipe_items')
     quantity = models.FloatField(default=1)
     # readonly
     weight_g = models.FloatField(blank=True, null=True)

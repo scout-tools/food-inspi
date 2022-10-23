@@ -1,6 +1,8 @@
 <template>
   <div class="flex h-full">
-    <LeftNav><router-view /></LeftNav>
+    <LeftNav>
+      <router-view />
+    </LeftNav>
   </div>
 </template>
 
@@ -40,38 +42,4 @@ import { useRoute } from "vue-router";
 
 import LeftNav from "@/modules/nav/components/LeftNav.vue";
 
-const route = useRoute();
-
-const sidebarOpen = ref(false);
-
-const currentRoute = computed(() => {
-  return route.name;
-});
-
-const navigation = [
-  {
-    name: "Dashboard",
-    linkName: "dashboardMain",
-    icon: HomeIcon,
-  },
-  {
-    name: "Rezept",
-    linkName: "recipeMain",
-    icon: Bars3Icon,
-  },
-  {
-    name: "Zutaten",
-    linkName: "ingredientNutrients",
-    icon: MagnifyingGlassCircleIcon,
-  },
-];
-
-const secondaryNavigation = [
-  {
-    name: "Hintergründe",
-    linkName: "faqMain",
-    icon: MagnifyingGlassCircleIcon,
-  },
-  { name: "Einstellungen", linkName: "settingsMain", icon: CogIcon },
-];
 </script>

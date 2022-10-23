@@ -41,33 +41,87 @@ class IngredientSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class RecipeItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = food_models.RecipeItem
-        fields = '__all__'
-
-
-class RecipeSerializer(serializers.ModelSerializer):
-    hints = food_serializers.HintSerializer(many=True)
-    tags = food_serializers.TagSerializer(many=True)
-
-    class Meta:
-        model = food_models.Recipe
-        fields = '__all__'
-
-
-class RetailerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = food_models.Retailer
-        fields = '__all__'
-
-
 class PortionSerializer(serializers.ModelSerializer):
     ingredient = food_serializers.IngredientSerializer()
     measuring_unit = food_serializers.MeasuringUnitSerializer()
     class Meta:
         model = food_models.Portion
         fields = '__all__'
+
+class RecipeItemSerializer(serializers.ModelSerializer):
+    portion = PortionSerializer(many=False, read_only=True)
+    class Meta:
+        model = food_models.RecipeItem
+        fields = (
+            'nutri_class',
+            'nutri_points',
+            'weight_g',
+            'price_per_kg',
+            'price',
+            'quantity',
+            'portion',
+            'energy_kj',
+            'protein_g',
+            'fat_g',
+            'fat_sat_g',
+            'sugar_g',
+            'sodium_mg',
+            'salt_g',
+            'fruit_factor',
+            'carbohydrate_g',
+            'fibre_g',
+            'fructose_g',
+            'lactose_g',
+            'nutri_points_energy_kj',
+            'nutri_points_protein_g',
+            'nutri_points_fat_sat_g',
+            'nutri_points_sugar_g',
+            'nutri_points_sodium_mg',
+            'nutri_points_fibre_g',
+        )
+
+
+class RecipeSerializer(serializers.ModelSerializer):
+    hints = food_serializers.HintSerializer(many=True)
+    tags = food_serializers.TagSerializer(many=True)
+    recipe_items = RecipeItemSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = food_models.Recipe
+        fields = (
+            'id',
+            'name',
+            'description',
+            'tags',
+            'meal_type',
+            'nutri_class',
+            'nutri_points',
+            'weight_g',
+            'hints',
+            'price_per_kg',
+            'price',
+            'recipe_items',
+            'tags',
+            'hints',
+            'energy_kj',
+            'protein_g',
+            'fat_g',
+            'fat_sat_g',
+            'sugar_g',
+            'sodium_mg',
+            'salt_g',
+            'fruit_factor',
+            'carbohydrate_g',
+            'fibre_g',
+            'fructose_g',
+            'lactose_g',
+        )
+
+class RetailerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = food_models.Retailer
+        fields = '__all__'
+
 
 
 class PackageSerializer(serializers.ModelSerializer):

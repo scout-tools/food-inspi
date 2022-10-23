@@ -1,9 +1,9 @@
 from django.db.models import Q, QuerySet
-from django_filters import CharFilter
+from django_filters import CharFilter, NumberFilter
 from django_filters.rest_framework import DjangoFilterBackend, FilterSet
 from rest_framework import viewsets, status
 from rest_framework.exceptions import PermissionDenied, NotFound
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
@@ -31,10 +31,17 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = food_serializers.TagSerializer
 
 
+class IngredientFilter(FilterSet):
+    nutri_class = NumberFilter(field_name='nutri_class')
+    physical_viscosity = CharFilter(field_name='physical_viscosity')
+
 class IngredientViewSet(viewsets.ModelViewSet):
-    queryset = food_models.Ingredient.objects.all().order_by('name')
+    queryset = food_models.Ingredient.objects.all()
     serializer_class = food_serializers.IngredientSerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_class = IngredientFilter
+    ordering = ['name']
+    ordering_fields = ['name', 'created_at', 'nutri_points']
     filterset_fields = ['name']
     search_fields = ['name']
 

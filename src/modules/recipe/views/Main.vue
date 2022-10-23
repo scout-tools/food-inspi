@@ -1,14 +1,27 @@
 <template>
-  <div class="ma-10 sm:py-6 lg:px-64">
-    <div class="sm:flex sm:items-center"> 
-      <div class="lg:pa-64" >
+  <div class="2xl:px-64">
+    <List
+      :name="'Rezepte'"
+      :items="recipes"
+      :searchValue="searchValue"
+      :sortOptions="sortOptions"
+      :filters="filters"
+      :buttonList="buttonList"
+      mainPageLink="RecipesMain"
+      detailPageLink="RecipeCreate"
+    />
+  </div>
+  <!-- <div class="ma-10 sm:py-6 2xl:px-64">
+    <div class="px-4 sm:flex sm:items-center">
+      <div>
         <h1 class="text-xl font-semibold text-gray-900">Rezepte</h1>
         <p class="mt-2 text-sm text-gray-700">
           Hier siehst du eine Übersicht über alle Rezepte
         </p>
       </div>
-      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+      <div class="px-4 mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
         <button
+        @click="onRecipeClicked"
           type="button"
           class="
             inline-flex
@@ -35,7 +48,7 @@
         </button>
       </div>
     </div>
-    <div class="mt-8 flex flex-col">
+    <div class="px-4 mt-8 flex flex-col">
       <div class="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle">
           <div class="shadow-sm ring-1 ring-black ring-opacity-5">
@@ -103,10 +116,12 @@
                       'relative whitespace-nowrap py-4 pr-4 pl-3 text-right text-sm font-medium sm:pr-6 lg:pr-8',
                     ]"
                   >
-                    <a href="#" class="text-blue-600 hover:text-blue-900"
-                      >Anzeigen<span class="sr-only"
-                        >, {{ person.name }}</span
-                      ></a
+                    <router-link
+                      :to="{ name: 'RecipeDetail', params: { id: person.id } }"
+                      class="text-blue-600 hover:text-blue-900"
+                    >
+                      Anzeigen
+                      </router-link
                     >
                   </td>
                 </tr>
@@ -116,20 +131,67 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script setup>
-import { onMounted, computed } from "vue";
+import List from "@/components/base/list/Main.vue";
+
+import { onMounted, computed, watch } from "vue";
 import { useRecipeStore } from "@/modules/recipe/store/index.ts";
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const recipeStore = useRecipeStore();
-
 const recipes = computed(() => {
   return recipeStore.recipes;
 });
 
+function onRecipeClicked() {
+  debugger;
+  router.replace({ name: 'RecipeCreate' })
+}
+
+  watch(() => () => {
+    console.log(`MyCoolComponent - watch route.name changed to`);
+    // Do something here...
+
+  // Optionally you can set immediate: true config for the watcher to run on init
+  }, { immediate: true, deep: true });
+
 onMounted(() => {
   recipeStore.fetchRecipes();
 });
+
+const sortOptions = [
+  { name: "A-Z", value: "alpha", current: true },
+  { name: "Neuste", value: "-created_at", current: false },
+  { name: "Gesund", value: "nutri_points", current: false },
+];
+
+const filters = [
+  {
+    id: "nutri_class",
+    name: "Nutri Score",
+    options: [
+      { value: "1", label: "Klasse A", checked: false },
+      { value: "2", label: "Klasse B", checked: false },
+      { value: "3", label: "Klasse C", checked: false },
+      { value: "4", label: "Klasse D", checked: false },
+      { value: "5", label: "Klasse E", checked: false },
+    ],
+  },
+  {
+    id: "physical_viscosity",
+    name: "Festigkeit",
+    options: [
+      { value: "beverage", label: "Flüssig", checked: false },
+      { value: "solid", label: "Fest", checked: false },
+    ],
+  },
+];
+const buttonList = [
+  { name: 'Neues Rezept', linkName: 'RecipeCreate' },
+]
 </script>

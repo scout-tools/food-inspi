@@ -3,7 +3,10 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ['./index.html', './src/**/*.{vue,ts}'],
+  content: [
+    './index.html',
+    './src/**/*.{vue,ts}',
+],
   theme: {
     extend: {
         fontFamily: {

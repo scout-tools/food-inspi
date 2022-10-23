@@ -1,14 +1,14 @@
 export default [
   {
     path: "/dashboard",
-    name: "dashboard",
-    redirect: { name: "dashboardMain" },
-    component: () => import(/* webpackChunkName: "dashboard" */ "@/modules/dashboard/views/Main.vue"),
+    name: "Dashboard",
+    redirect: { name: "DashboardMain" },
+    component: () => import(/* webpackChunkName: "Dashboard" */ "@/modules/dashboard/views/Main.vue"),
     children: [
       {
         path: "main",
-        name: "dashboardMain",
-        component: () => import(/* webpackChunkName: "dashboardMain" */ "@/modules/dashboard/views/Main.vue"),
+        name: "DashboardMain",
+        component: () => import(/* webpackChunkName: "DashboardMain" */ "@/modules/dashboard/views/Main.vue"),
       },
     ],
   },
