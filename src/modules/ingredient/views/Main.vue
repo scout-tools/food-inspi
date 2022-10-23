@@ -9,7 +9,33 @@
       :buttonList="buttonList"
       mainPageLink="IngredientMain"
       detailPageLink="IngredientNutrients"
-    />
+    >
+      <template #listitem="{ item }">
+        <div class="flex min-w-0 flex-1 items-center">
+          <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+            <div>
+              <p class="truncate text-sm font-medium text-blue-600">
+                {{ item.name }}
+              </p>
+              <p class="mt-2 flex items-center text-sm text-gray-500">
+                <TagIcon
+                  class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                  aria-hidden="true"
+                />
+                <span class="truncate">{{ item.majorClass }}</span>
+              </p>
+            </div>
+            <div class="hidden md:block">
+              <div>
+                <p class="mt-1 flex items-center text-sm text-gray-500">
+                  <NutriSlim :nutriClass="item.nutriClass" />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </List>
   </div>
 </template>
 
@@ -85,10 +111,9 @@ import { useRoute } from "vue-router";
 
 const router = useRouter();
 
-import { onMounted, computed } from "vue";
-//import users store
+import { computed } from "vue";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
-// declare store variable
+
 const ingredientStore = useIngredientStore();
 
 const searchValue = ref();
@@ -113,7 +138,6 @@ function updateQuery () {
         if (!val) return acc
         return { ...acc, [key]: val }
   }, {})
-  console.log(query);
 }
 
 

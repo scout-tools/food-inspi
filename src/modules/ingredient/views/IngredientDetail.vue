@@ -27,27 +27,29 @@
             <TabList class="-mb-px flex space-x-8 px-4">
               <Tab
                 as="template"
-                v-for="category in tabs"
-                :key="category.name"
-                v-slot="{ selected }"
+                v-for="tab in tabs"
+                :key="tab.name"
               >
-                <button
-                  @click="onTabClicked(category.name)"
+                <router-link
+                  :to="{name: tab.linkName}"
+                  tag="button"
                   :class="[
-                    selected
+                    tab.selected
                       ? 'text-blue-600 border-blue-600'
                       : 'text-gray-900 border-transparent',
                     'flex-1 whitespace-nowrap border-b-2 py-4 px-1 text-base font-medium',
                   ]"
                 >
-                  {{ category.name }}
-                </button>
+                  {{ tab.name }}
+                </router-link>
               </Tab>
             </TabList>
           </div>
           <TabPanels as="template">
-            <Nutrients/>
-            <Portions/>
+            <router-view></router-view>
+            <router-view></router-view>
+            <!-- <Nutrients/>
+            <Portions/> -->
           </TabPanels>
         </TabGroup>
       </article>
@@ -56,7 +58,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import {
   Dialog,
@@ -112,11 +114,9 @@ const pages = computed(() => {
 ]
 });
 
-
-
 const tabs = [
-  { name: "Nährwerte", id: 1, current: true, route: 'IngredientNutrients', component: 'Nutrients' },
-  { name: "Portionen", id: 2, current: false, route: 'IngredientPortions', component: 'Portions' },
+  { name: "Nährwerte", id: 1, current: true, linkName: 'IngredientNutrients', component: 'Nutrients', selected: true },
+  { name: "Portionen", id: 2, current: false, linkName: 'IngredientPortions', component: 'Portions', selected: false },
 ];
 
 import { useRouter } from 'vue-router'
@@ -132,41 +132,26 @@ import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
 // declare store variable
 const ingredientStore = useIngredientStore();
 
-const searchValue = ref();
 
-const ingredients = computed(() => {
-  return ingredientStore.ingredients;
-});
 const ingredientDetail = computed(() => {
   return ingredientStore.ingredientDetail;
 });
-const portions = computed(() => {
-  return ingredientStore.portions;
-});
-function updateSearch() {
-  ingredientStore.fetchIngredients({search: searchValue.value});
-}
-function onIngredientClicked(id) {
-  ingredientStore.fetchIngredientById(id);
-  ingredientStore.fetchPortions({ ingredient__id: id });
-  router.push({
-    name: 'IngredientNutrients',
-    params: {
-      id,
-    }
-  })
-}
-function onTabClicked(selectedName) {
+const route = useRoute();
+
+watch(() => route, () => {
+  onTabClicked(route.name);
+}, { immediate: true, deep: true });
+
+
+function onTabClicked(selectedName: string) {
   tabs.forEach((tab) => {
-    if (selectedName === tab.name) {
+    if (selectedName === tab.linkName) {
       tab.selected = true
-      router.push({
-        name: tab.route,
-      })
+    } else {
+      tab.selected = false
     }
   });
 }
-const route = useRoute();
 
 onMounted(() => {
   const id = route.params.id
