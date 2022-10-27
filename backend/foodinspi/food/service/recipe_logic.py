@@ -39,7 +39,7 @@ class RecipeModule:
                     nutri_points_protein_g=recipe_item.nutri_points_protein_g,
                     nutri_points_fat_sat_g=recipe_item.nutri_points_fat_sat_g,
                     nutri_points_sugar_g=recipe_item.nutri_points_sugar_g,
-                    nutri_points_sodium_mg=recipe_item.nutri_points_sodium_mg,
+                    nutri_points_salt_g=recipe_item.nutri_points_salt_g,
                     nutri_points_fibre_g=recipe_item.nutri_points_fibre_g,
                 )
 

@@ -76,8 +76,10 @@ class RecipeItemSerializer(serializers.ModelSerializer):
             'nutri_points_protein_g',
             'nutri_points_fat_sat_g',
             'nutri_points_sugar_g',
-            'nutri_points_sodium_mg',
+            'nutri_points_salt_g',
             'nutri_points_fibre_g',
+            'created_at',
+            'updated_at',
         )
 
 
@@ -115,6 +117,8 @@ class RecipeSerializer(serializers.ModelSerializer):
             'fibre_g',
             'fructose_g',
             'lactose_g',
+            'created_at',
+            'updated_at',
         )
 
 class RetailerSerializer(serializers.ModelSerializer):

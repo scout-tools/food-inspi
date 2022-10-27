@@ -76,7 +76,7 @@
                   <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
                     <PopoverPanel class="absolute left-1/2 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0">
                       <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                        <div class="relative grid gap-6 bg-white px-3 py-4 sm:gap-8 sm:p-8">
+                        <div class="relative grid gap-6 bg-gray px-1 py-2 sm:gap-3 sm:p-3">
                           <router-link v-for="item in props.buttonList" :key="item.name" :to="{ name: item.linkName}" class="-m-1 block rounded-md p-1 transition duration-150 ease-in-out hover:bg-gray-50">
                             <p class="text-sm text-gray-900">{{ item.name }}</p>
                           </router-link>
@@ -577,7 +577,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watchEffect } from "vue";
 import {
   Dialog,
   DialogPanel,
@@ -636,7 +636,7 @@ import {
   MenuItems,
 } from "@headlessui/vue";
 
-import { computed, onBeforeMount } from "vue";
+import { computed, onBeforeMount, watch } from "vue";
 import { useRouter } from "vue-router";
 
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";

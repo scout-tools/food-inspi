@@ -51,9 +51,19 @@ class RecipeItemViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = food_serializers.RecipeItemSerializer
 
 
+class RecipeFilter(FilterSet):
+    nutri_class = NumberFilter(field_name='nutri_class')
+    physical_viscosity = CharFilter(field_name='physical_viscosity')
+
 class RecipeViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = food_models.Recipe.objects.all()
     serializer_class = food_serializers.RecipeSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_class = RecipeFilter
+    ordering = ['name']
+    ordering_fields = ['name', 'created_at', 'nutri_points']
+    filterset_fields = ['name']
+    search_fields = ['name']
 
 
 class RetailerViewSet(viewsets.ReadOnlyModelViewSet):

@@ -39,44 +39,35 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import List from "@/components/base/list/Main.vue";
 
-import {
-  ChevronLeftIcon,
-  TagIcon,
-  FunnelIcon,
-  MagnifyingGlassIcon,
-  PhoneIcon,
-} from "@heroicons/vue/20/solid";
+import { TagIcon } from "@heroicons/vue/20/solid";
 
 import { onMounted, computed, watch } from "vue";
 import { useRecipeStore } from "@/modules/recipe/store/index.ts";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
 
 const recipeStore = useRecipeStore();
 const recipes = computed(() => {
   return recipeStore.recipes;
 });
 
-function onRecipeClicked() {
-  router.replace({ name: "RecipeCreate" });
-}
+const route = useRoute();
 
 watch(
-  () => () => {
-    console.log(`MyCoolComponent - watch route.name changed to`);
-    // Do something here...
-
-    // Optionally you can set immediate: true config for the watcher to run on init
+  () => route.query,
+  () => {
+    updateSearch(route.query);
   },
   { immediate: true, deep: true }
 );
 
+function updateSearch(params) {
+  recipeStore.fetchRecipes(params);
+}
+
 onMounted(() => {
-  recipeStore.fetchRecipes();
+  recipeStore.fetchRecipes(route.query);
 });
 
 const sortOptions = [
@@ -107,4 +98,6 @@ const filters = [
   },
 ];
 const buttonList = [{ name: "Neues Rezept", linkName: "RecipeCreate" }];
+
+const searchValue = ref();
 </script>

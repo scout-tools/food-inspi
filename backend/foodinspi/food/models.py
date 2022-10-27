@@ -59,7 +59,7 @@ class NutriPointsMixin(models.Model):
     nutri_points_protein_g = models.FloatField(default=0)
     nutri_points_fat_sat_g = models.FloatField(default=0)
     nutri_points_sugar_g = models.FloatField(default=0)
-    nutri_points_sodium_mg = models.FloatField(default=0)
+    nutri_points_salt_g = models.FloatField(default=0)
     nutri_points_fibre_g = models.FloatField(default=0)
 
     class Meta:
@@ -152,9 +152,9 @@ class Ingredient(TimeStampMixin, NutrientsMixin, NutriPointsMixin):
 class Portion(TimeStampMixin, NutrientsMixin):
     name = models.CharField(max_length=255)
     measuring_unit = models.ForeignKey(
-        MeasuringUnit, on_delete=models.PROTECT, blank=True, null=True)
+        MeasuringUnit, on_delete=models.PROTECT, blank=True, null=True, default=3)
     ingredient = models.ForeignKey(
-        Ingredient, on_delete=models.PROTECT)
+        Ingredient, on_delete=models.PROTECT, default=1)
     quantity = models.FloatField(default=1)
     rank = models.IntegerField(default=1)
     # readonly

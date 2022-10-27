@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-64">
+  <div class="xl:px-64">
     <List
       :name="'Zutaten'"
       :items="ingredients"
@@ -39,79 +39,11 @@
   </div>
 </template>
 
-<script setup>
-import { ref, watch, watchEffect } from "vue";
-import {
-  Dialog,
-  DialogPanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
-  TransitionChild,
-  ComboboxOption,
-  Combobox,
-  ComboboxLabel,
-  ComboboxInput,
-  ComboboxOptions,
-  ComboboxButton,
-  TransitionRoot,
-} from "@headlessui/vue";
-import {
-  Bars3Icon,
-  CalendarIcon,
-  CogIcon,
-  HomeIcon,
-  MagnifyingGlassCircleIcon,
-  BarsArrowUpIcon,
-  MapIcon,
-  MegaphoneIcon,
-  SquaresPlusIcon,
-  ChevronDownIcon,
-  UserGroupIcon,
-  XMarkIcon,
-  CheckIcon,
-  ChevronUpDownIcon,
-} from "@heroicons/vue/24/outline";
-import { PlusIcon as PlusIconMini } from '@heroicons/vue/20/solid'
-import {
-  ChevronLeftIcon,
-  EnvelopeIcon,
-  FunnelIcon,
-  MagnifyingGlassIcon,
-  PhoneIcon,
-} from "@heroicons/vue/20/solid";
-
-import List from "./../../../components/base/list/Main.vue";
-
-const tabs = [
-  {
-    name: "Nährwerte",
-    id: 1,
-    current: true,
-    route: "IngredientNutrients",
-    component: "Nutrients",
-  },
-  {
-    name: "Portionen",
-    id: 2,
-    current: false,
-    route: "IngredientPortions",
-    component: "Portions",
-  },
-];
-
-import { useRouter } from "vue-router";
+<script setup lang="ts">
+import { ref, watch, onMounted, computed } from "vue";
+import { TagIcon } from "@heroicons/vue/20/solid";
+import List from "@/components/base/list/Main.vue";
 import { useRoute } from "vue-router";
-
-const router = useRouter();
-
-import { computed } from "vue";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
 
 const ingredientStore = useIngredientStore();
@@ -124,25 +56,20 @@ const ingredients = computed(() => {
   return ingredientStore.ingredients;
 });
 
+onMounted(() => {
+  ingredientStore.fetchIngredients(route.query);
+});
 
-watch(() => route.query, () => {
-  updateSearch(route.query);
-}, { immediate: true, deep: true });
+watch(
+  () => route.query,
+  () => {
+    updateSearch(route.query);
+  },
+  { immediate: true, deep: true }
+);
 
 function updateSearch(params) {
   ingredientStore.fetchIngredients(params);
-}
-
-function updateQuery () {
-  const query = Object.entries(this.filter).reduce((acc, [key, val]) => {
-        if (!val) return acc
-        return { ...acc, [key]: val }
-  }, {})
-}
-
-
-function onButtonClicked() {
-  console.log('Hallo ich wurde gedrückt. das war voll cool.')
 }
 
 const sortOptions = [
@@ -172,24 +99,5 @@ const filters = [
     ],
   },
 ];
-const buttonList = [
-  { name: 'Neue Zutat', linkName: 'IngredientCreate' },
-]
+const buttonList = [{ name: "Neue Zutat", linkName: "IngredientCreate" }];
 </script>
-
-<style scoped>
-.button {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.button1 {background-color: #4CAF50;} /* Green */
-.button2 {background-color: #008CBA;} /* Blue */
-</style>
