@@ -1,6 +1,15 @@
 <template>
+  <Breadcrumbs :pages="pages" />
   <main
-    class="relative h-screen z-40 flex-1 focus:outline-none overflow-y-auto"
+    class="
+      relative
+      h-screen
+      z-40
+      flex-1
+      focus:outline-none
+      overflow-y-auto
+      pb-12
+    "
   >
     <article class="flex-shrink-0 border border-gray-200 ma-12">
       <form class="space-y-8 divide-y px-3 py-4 divide-gray-200 xl:px-64">
@@ -16,427 +25,100 @@
               </p>
             </div>
             <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <div class="sm:col-span-3">
-                <label
-                  for="first-name"
-                  class="block text-sm font-medium text-gray-700"
-                  >First name</label
-                >
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    name="first-name"
-                    id="first-name"
-                    autocomplete="given-name"
-                    class="
-                      block
-                      w-full
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-500 focus:ring-indigo-500
-                      sm:text-sm
-                    "
-                  />
-                </div>
-              </div>
+              <Base
+                component="Text"
+                :label="'Name der Zutat (erforderlich)'"
+                techName="name"
+                v-model="state.name"
+                :errors="errors.name && errors.name.$errors"
+              />
+              <Base
+                component="TextArea"
+                :label="'Weiterer Beschreibener Text'"
+                techName="description"
+                v-model="state.description"
+                :errors="errors.description && errors.description.$errors"
+              />
+              <Base
+                component="Number"
+                :label="'Physikalische Dichte'"
+                techName="physicalDensity"
+                v-model="state['physicalDensity']"
+                :errors="errors.physicalDensity && errors.physicalDensity.$errors"
+                hint="Um Volumen in Gewicht umzurechnen."
+              />
 
-              <div class="sm:col-span-3">
-                <label
-                  for="last-name"
-                  class="block text-sm font-medium text-gray-700"
-                  >Last name</label
-                >
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    name="last-name"
-                    id="last-name"
-                    autocomplete="family-name"
-                    class="
-                      block
-                      w-full
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-500 focus:ring-indigo-500
-                      sm:text-sm
-                    "
-                  />
-                </div>
-              </div>
-
-              <div class="sm:col-span-4">
-                <label
-                  for="email"
-                  class="block text-sm font-medium text-gray-700"
-                  >Email address</label
-                >
-                <div class="mt-1">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autocomplete="email"
-                    class="
-                      block
-                      w-full
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-500 focus:ring-indigo-500
-                      sm:text-sm
-                    "
-                  />
-                </div>
-              </div>
-
-              <div class="sm:col-span-3">
-                <label
-                  for="country"
-                  class="block text-sm font-medium text-gray-700"
-                  >Country</label
-                >
-                <div class="mt-1">
-                  <select
-                    id="country"
-                    name="country"
-                    autocomplete="country-name"
-                    class="
-                      block
-                      w-full
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-500 focus:ring-indigo-500
-                      sm:text-sm
-                    "
-                  >
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="sm:col-span-6">
-                <label
-                  for="street-address"
-                  class="block text-sm font-medium text-gray-700"
-                  >Street address</label
-                >
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    name="street-address"
-                    id="street-address"
-                    autocomplete="street-address"
-                    class="
-                      block
-                      w-full
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-500 focus:ring-indigo-500
-                      sm:text-sm
-                    "
-                  />
-                </div>
-              </div>
-
-              <div class="sm:col-span-2">
-                <label
-                  for="city"
-                  class="block text-sm font-medium text-gray-700"
-                  >City</label
-                >
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    autocomplete="address-level2"
-                    class="
-                      block
-                      w-full
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-500 focus:ring-indigo-500
-                      sm:text-sm
-                    "
-                  />
-                </div>
-              </div>
-
-              <div class="sm:col-span-2">
-                <label
-                  for="region"
-                  class="block text-sm font-medium text-gray-700"
-                  >State / Province</label
-                >
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    name="region"
-                    id="region"
-                    autocomplete="address-level1"
-                    class="
-                      block
-                      w-full
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-500 focus:ring-indigo-500
-                      sm:text-sm
-                    "
-                  />
-                </div>
-              </div>
-
-              <div class="sm:col-span-2">
-                <label
-                  for="postal-code"
-                  class="block text-sm font-medium text-gray-700"
-                  >ZIP / Postal code</label
-                >
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    name="postal-code"
-                    id="postal-code"
-                    autocomplete="postal-code"
-                    class="
-                      block
-                      w-full
-                      rounded-md
-                      border-gray-300
-                      shadow-sm
-                      focus:border-indigo-500 focus:ring-indigo-500
-                      sm:text-sm
-                    "
-                  />
-                </div>
-              </div>
+              <Base
+                component="Radio"
+                :label="'Essen oder Getränk'"
+                techName="physicalViscosity"
+                hint="Für den Nutri Score"
+                v-model="state['physicalViscosity']"
+                :choices="[
+                  { id: 'solid', title: 'Essen' },
+                  { id: 'beverage', title: 'Getränk' },
+                ]"
+              />
+              <Base
+                component="Toggle"
+                techName="fdcEnabled"
+                v-model="fdcEnabled"
+                :label="'Mit Datenimport aus der FDC Datenbank?'"
+              />
+              <Base
+                v-if="fdcEnabled"
+                component="Text"
+                techName="fdcId"
+                v-model="state['fdcId']"
+                :label="'FDC-ID'"
+                hint="Füge hier die passende FDC-ID ein."
+                :errors="errors.fdcId && errors.fdcId.$errors"
+              />
             </div>
           </div>
 
-          <div class="pt-8">
+          <div v-if="!fdcEnabled" class="pt-8">
             <div>
               <h3 class="text-lg font-medium leading-6 text-gray-900">
-                Notifications
+                Inhaltsstoffe
               </h3>
               <p class="mt-1 text-sm text-gray-500">
-                We'll always let you know about important changes, but you pick
-                what else you want to hear about.
+                Wenn du keine FDC-ID hast, kannst du alles selbst eintragen.
               </p>
             </div>
-            <div class="mt-6">
-              <fieldset>
-                <legend class="sr-only">By Email</legend>
-                <div
-                  class="text-base font-medium text-gray-900"
-                  aria-hidden="true"
-                >
-                  By Email
-                </div>
-                <div class="mt-4 space-y-4">
-                  <div class="relative flex items-start">
-                    <div class="flex h-5 items-center">
-                      <input
-                        id="comments"
-                        name="comments"
-                        type="checkbox"
-                        class="
-                          h-4
-                          w-4
-                          rounded
-                          border-gray-300
-                          text-indigo-600
-                          focus:ring-indigo-500
-                        "
-                      />
-                    </div>
-                    <div class="ml-3 text-sm">
-                      <label for="comments" class="font-medium text-gray-700"
-                        >Comments</label
-                      >
-                      <p class="text-gray-500">
-                        Get notified when someones posts a comment on a posting.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="relative flex items-start">
-                    <div class="flex h-5 items-center">
-                      <input
-                        id="candidates"
-                        name="candidates"
-                        type="checkbox"
-                        class="
-                          h-4
-                          w-4
-                          rounded
-                          border-gray-300
-                          text-indigo-600
-                          focus:ring-indigo-500
-                        "
-                      />
-                    </div>
-                    <div class="ml-3 text-sm">
-                      <label for="candidates" class="font-medium text-gray-700"
-                        >Candidates</label
-                      >
-                      <p class="text-gray-500">
-                        Get notified when a candidate applies for a job.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="relative flex items-start">
-                    <div class="flex h-5 items-center">
-                      <input
-                        id="offers"
-                        name="offers"
-                        type="checkbox"
-                        class="
-                          h-4
-                          w-4
-                          rounded
-                          border-gray-300
-                          text-indigo-600
-                          focus:ring-indigo-500
-                        "
-                      />
-                    </div>
-                    <div class="ml-3 text-sm">
-                      <label for="offers" class="font-medium text-gray-700"
-                        >Offers</label
-                      >
-                      <p class="text-gray-500">
-                        Get notified when a candidate accepts or rejects an
-                        offer.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset class="mt-6">
-                <legend class="contents text-base font-medium text-gray-900">
-                  Push Notifications
-                </legend>
-                <p class="text-sm text-gray-500">
-                  These are delivered via SMS to your mobile phone.
-                </p>
-                <div class="mt-4 space-y-4">
-                  <div class="flex items-center">
-                    <input
-                      id="push-everything"
-                      name="push-notifications"
-                      type="radio"
-                      class="
-                        h-4
-                        w-4
-                        border-gray-300
-                        text-indigo-600
-                        focus:ring-indigo-500
-                      "
-                    />
-                    <label
-                      for="push-everything"
-                      class="ml-3 block text-sm font-medium text-gray-700"
-                      >Everything</label
-                    >
-                  </div>
-                  <div class="flex items-center">
-                    <input
-                      id="push-email"
-                      name="push-notifications"
-                      type="radio"
-                      class="
-                        h-4
-                        w-4
-                        border-gray-300
-                        text-indigo-600
-                        focus:ring-indigo-500
-                      "
-                    />
-                    <label
-                      for="push-email"
-                      class="ml-3 block text-sm font-medium text-gray-700"
-                      >Same as email</label
-                    >
-                  </div>
-                  <div class="flex items-center">
-                    <input
-                      id="push-nothing"
-                      name="push-notifications"
-                      type="radio"
-                      class="
-                        h-4
-                        w-4
-                        border-gray-300
-                        text-indigo-600
-                        focus:ring-indigo-500
-                      "
-                    />
-                    <label
-                      for="push-nothing"
-                      class="ml-3 block text-sm font-medium text-gray-700"
-                      >No push notifications</label
-                    >
-                  </div>
-                </div>
-              </fieldset>
+            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+              <Base
+                component="Text"
+                techName="majorClass"
+                v-model="state['majorClass']"
+                label="Hauptkategorie"
+                hint="Wähle eine Hauptkategorie für deine Zutat."
+                :errors="errors.majorClass && errors.majorClass.$errors"
+              />
+            </div>
+            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+              <Base
+                component="Number"
+                v-for="nutrient in nutrientList"
+                :key="nutrient.label"
+                :techName="nutrient.techName"
+                 v-model="state[nutrient.techName]"
+                :label="nutrient.label"
+                :hint="nutrient.hint"
+                :errors="errors[nutrient.techName] && errors[nutrient.techName].$errors"
+              />
             </div>
           </div>
         </div>
 
-        <div class="pt-5">
+        <div class="pt-5 pb-12">
           <div class="flex justify-end">
-            <button
-              type="button"
-              class="
-                rounded-md
-                border border-gray-300
-                bg-white
-                py-2
-                px-4
-                text-sm
-                font-medium
-                text-gray-700
-                shadow-sm
-                hover:bg-gray-50
-                focus:outline-none
-                focus:ring-2
-                focus:ring-indigo-500
-                focus:ring-offset-2
-              "
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              class="
-                ml-3
-                inline-flex
-                justify-center
-                rounded-md
-                border border-transparent
-                bg-indigo-600
-                py-2
-                px-4
-                text-sm
-                font-medium
-                text-white
-                shadow-sm
-                hover:bg-indigo-700
-                focus:outline-none
-                focus:ring-2
-                focus:ring-indigo-500
-                focus:ring-offset-2
-              "
-            >
-              Save
-            </button>
+            <PrimaryButton
+              @click="onButtonClicked"
+              label="Speichern"
+              :isLoading="isLoading"
+              
+            />
           </div>
         </div>
       </form>
@@ -446,7 +128,121 @@
 
 
 <script setup lang="ts">
-</script>
+import { reactive } from "vue";
+import Base from "@/components/field/Base.vue";
+import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
+import PrimaryButton from "@/components/button/Primary.vue";
+import Success from "@/modules/common/components/Success.vue";
+import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
 
-<style>
-</style>
+import { useVuelidate } from "@vuelidate/core";
+import { required, email, minLength, maxLength } from "@vuelidate/validators";
+
+const route = useRoute();
+
+const nutrientList = [
+  {
+    techName: "energyKj",
+    label: "Energie in Kilojoule (kJ)",
+  },
+  {
+    techName: "sugarG",
+    label: "Zucker in Gramm (g)",
+  },
+  {
+    techName: "fatSatG",
+    label: "gesät. Fettsäuren in Gramm (g)",
+  },
+  {
+    techName: "proteinG",
+    label: "Einweiß in Gramm (g)",
+  },
+  {
+    techName: "saltG",
+    label: "Salz in Gramm (g)",
+  },
+  {
+    techName: "fibreG",
+    label: "Balaststoffe in Gramm (g)",
+  },
+];
+
+const pages = computed(() => {
+  return [
+    { name: "Zutaten", link: "IngredientMain", current: false },
+    {
+      name: "Neue Zutat",
+      link: `IngredientCreate`,
+      current: true,
+    },
+  ];
+});
+
+const state = reactive({
+  name: null,
+  description: null,
+  physicalDensity: 1,
+  physicalViscosity: 'solid',
+  fdcId: 2262074,
+  // tags: null,
+  energyKj: null,
+  fatSatG: null,
+  fibreG: null,
+  proteinG: null,
+  saltG: null,
+  sugarG: null,
+  majorClass: 'undefined',
+});
+
+const rules = {
+  name: {
+    required,
+    minLength: minLength(5),
+  },
+  physicalDensity: { required },
+  fdcId: {
+    minLength: minLength(7),
+    maxLength: maxLength(9),
+  },
+};
+
+const v$ = useVuelidate(rules, state);
+
+const fdcEnabled = ref(true);
+const errors = ref([]);
+const isLoading = ref(false);
+
+const ingredientStore = useIngredientStore();
+
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+import { useCommonStore } from "@/modules/common/store/index.ts";
+const commonStore = useCommonStore();
+
+function onButtonClicked() {
+  v$.value.$validate();
+  errors.value = v$.value;
+  if (errors.value.$error) {
+    commonStore.showError("Bitte Felder überprüfen");
+    return;
+  }
+  isLoading.value = true;
+  ingredientStore.createIngredient(state).then((response) => {
+    if (response && response.status === 201) {
+      router.push({
+        name: "IngredientNutrients",
+        params: { id: response.data.id }
+      });
+      commonStore.showSuccess("Zutat erfolgreich angelegt");
+    }
+    else if(response && response.status === 400) {
+      commonStore.showSuccess(`Die Anfrage ist Fehlerhaft.${response.data}`);
+    } else {
+      console.log(response);
+    }
+  }).finally(() => {
+      isLoading.value = false;
+  });
+}
+</script>

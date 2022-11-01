@@ -113,6 +113,17 @@
                 >
                   Erstellt
                 </th>
+                <th
+                  class="
+                    bg-gray-50
+                    px-6
+                    py-3
+                    text-right text-sm
+                    font-semibold
+                    text-gray-900
+                  "
+                  scope="col"
+                ></th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
@@ -132,8 +143,11 @@
                   "
                 >
                   <div class="flex">
-                    <a
-                      :href="transaction.href"
+                    <router-link
+                      :to="{
+                        name: 'RecipeDetail',
+                        params: { id: transaction.id },
+                      }"
                       class="group inline-flex space-x-2 truncate text-sm"
                     >
                       <CircleStackIcon
@@ -151,7 +165,7 @@
                       >
                         {{ transaction.name }}
                       </p>
-                    </a>
+                    </router-link>
                   </div>
                 </td>
                 <td
@@ -165,6 +179,20 @@
                   <time :datetime="transaction.createdAt">{{
                     moment(transaction.createdAt).format("ll")
                   }}</time>
+                </td>
+                <td>
+                    <router-link
+                      :to="{
+                        name: 'RecipeDetail',
+                        params: { id: transaction.id },
+                      }"
+                      class="group inline-flex space-x-2 truncate text-sm"
+                    >
+                  <ChevronRightIcon
+                    class="h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                    </router-link>
                 </td>
               </tr>
             </tbody>
@@ -214,10 +242,7 @@
 <script setup lang="ts">
 import moment from "moment";
 
-import {
-  CircleStackIcon,
-  ChevronRightIcon,
-} from "@heroicons/vue/20/solid";
+import { CircleStackIcon, ChevronRightIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps({
   recipes: Array,

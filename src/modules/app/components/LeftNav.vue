@@ -72,11 +72,13 @@
             </TransitionChild>
             <div class="h-0 flex-1 overflow-y-auto pt-5 pb-4">
               <div class="flex flex-shrink-0 items-center px-4">
+                <router-link :to="{ name: 'RecipesMain' }">
                 <img
-                  class="h-8 w-auto"
+                  class="h-12 w-auto"
                   src="./../assets/logo.png"
-                  alt="Your Company"
+                  alt="Pfadfinderlilie"
                 />
+                </router-link>
               </div>
               <nav aria-label="Sidebar" class="mt-5">
                 <div class="space-y-1 px-2">
@@ -108,7 +110,7 @@
                   </router-link>
                 </div>
                 <hr class="my-5 border-t border-gray-200" aria-hidden="true" />
-                <div class="space-y-1 px-2">
+                <div class="px-2">
                   <router-link
                     v-for="item in secondaryNavigation"
                     :key="item.name"
@@ -149,6 +151,68 @@
                     />
                     {{ item.name }}
                   </router-link>
+                  <hr
+                    class="my-5 border-t border-gray-200"
+                    aria-hidden="true"
+                  />
+                  <button
+                    class="
+                      group
+                      flex
+                      items-center
+                      rounded-md
+                      px-2
+                      py-2
+                      text-base
+                      font-medium
+                      text-gray-600
+                      hover:bg-gray-50 hover:text-gray-900
+                    "
+                    v-if="!isAuth"
+                    @click="onLoginClicked"
+                  >
+                    <ArrowRightIcon
+                      class="
+                        mr-4
+                        h-6
+                        w-6
+                        flex-shrink-0
+                        text-gray-400
+                        group-hover:text-gray-500
+                      "
+                      aria-hidden="true"
+                    />
+                    Login
+                  </button>
+                  <button
+                    class="
+                      group
+                      flex
+                      items-center
+                      rounded-md
+                      px-2
+                      py-2
+                      text-base
+                      font-medium
+                      text-gray-600
+                      hover:bg-gray-50 hover:text-gray-900
+                    "
+                    v-if="isAuth"
+                    @click="onLogoutClicked"
+                  >
+                    <ArrowLeftIcon
+                      class="
+                        mr-4
+                        h-6
+                        w-6
+                        flex-shrink-0
+                        text-gray-400
+                        group-hover:text-gray-500
+                      "
+                      aria-hidden="true"
+                    />
+                    Logout
+                  </button>
                 </div>
               </nav>
             </div>
@@ -177,7 +241,7 @@
         <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
           <div class="flex flex-shrink-0 items-center px-4">
             <img
-              class="h-8 w-auto"
+              class="h-16 w-auto"
               src="./../assets/logo.png"
               alt="Your Company"
             />
@@ -216,7 +280,7 @@
               <router-link
                 v-for="item in secondaryNavigation"
                 :key="item.name"
-                :to="{ name: item.linkName, params: { id: 1 } }"
+                :to="{ name: item.linkName }"
                 class="
                   group
                   flex
@@ -253,6 +317,81 @@
                 />
                 {{ item.name }}
               </router-link>
+              <hr class="my-5 border-t border-gray-200" aria-hidden="true" />
+              <button
+                class="
+                  group
+                  flex
+                  items-center
+                  rounded-md
+                  px-2
+                  py-2
+                  text-sm
+                  font-medium
+                  text-gray-600
+                  hover:bg-gray-50 hover:text-gray-900
+                  group
+                  flex
+                  items-center
+                  px-2
+                  py-2
+                  text-sm
+                  font-medium
+                  rounded-md
+                "
+                v-if="!isAuth"
+                @click="onLoginClicked"
+              >
+                <ArrowRightIcon
+                  class="
+                    mr-3
+                    h-6
+                    w-6
+                    flex-shrink-0
+                    text-gray-400
+                    group-hover:text-gray-500
+                  "
+                  aria-hidden="true"
+                />
+                Login
+              </button>
+              <button
+                class="
+                  group
+                  flex
+                  items-center
+                  rounded-md
+                  px-2
+                  py-2
+                  text-sm
+                  font-medium
+                  text-gray-600
+                  hover:bg-gray-50 hover:text-gray-900
+                  group
+                  flex
+                  items-center
+                  px-2
+                  py-2
+                  text-sm
+                  font-medium
+                  rounded-md
+                "
+                v-if="isAuth"
+                @click="onLogoutClicked"
+              >
+                <ArrowLeftIcon
+                  class="
+                    mr-3
+                    h-6
+                    w-6
+                    flex-shrink-0
+                    text-gray-400
+                    group-hover:text-gray-500
+                  "
+                  aria-hidden="true"
+                />
+                Logout
+              </button>
             </div>
           </nav>
         </div>
@@ -305,7 +444,7 @@
         </div>
       </div>
     </div>
-    <div class="relative z-0 overflow-hidden">
+    <div class="relative z-0 overflow-auto">
       <slot></slot>
     </div>
   </div>
@@ -339,27 +478,48 @@ import {
   HomeIcon,
   MagnifyingGlassCircleIcon,
   XMarkIcon,
+  RocketLaunchIcon,
+  ScaleIcon,
+  ArrowRightIcon,
+  ArrowLeftIcon,
 } from "@heroicons/vue/24/outline";
 
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 
+import { useAuthStore } from "@/modules/auth/store/index.ts";
+const authStore = useAuthStore();
+
+function onLoginClicked() {
+  authStore.login();
+}
+function onLogoutClicked() {
+  authStore.logout();
+}
+
+const isAuth = computed(() => {
+  return authStore.isAuth;
+});
+
 const route = useRoute();
 
-const secondaryNavigation = [
-  {
-    name: "Hintergründe",
-    linkName: "FaqMain",
-    icon: MagnifyingGlassCircleIcon,
-    route: "faq",
-  },
-  {
-    name: "Einstellungen",
-    linkName: "Settings",
-    route: "settings",
-    icon: CogIcon,
-  },
-];
+const secondaryNavigation = computed(() => {
+  return [
+    {
+      name: "Hintergründe",
+      linkName: "FaqMain",
+      icon: MagnifyingGlassCircleIcon,
+      route: "faq",
+    },
+    {
+      name: "Einstellungen",
+      linkName: "Settings",
+      route: "settings",
+      icon: CogIcon,
+      isAuth: true,
+    },
+  ].filter(item => !item.isAuth || isAuth.value); 
+});
 const sidebarOpen = ref(false);
 
 const currentRoute = computed(() => {
@@ -374,6 +534,12 @@ const navigation = [
     route: "dashboard",
   },
   {
+    name: "Simulator",
+    linkName: "SimulatorStart",
+    icon: RocketLaunchIcon,
+    route: "simulator",
+  },
+  {
     name: "Rezept",
     linkName: "RecipesMain",
     icon: Bars3Icon,
@@ -384,6 +550,12 @@ const navigation = [
     linkName: "IngredientMain",
     icon: MagnifyingGlassCircleIcon,
     route: "ingredient",
+  },
+  {
+    name: "Hinweise",
+    linkName: "HintMain",
+    icon: ScaleIcon,
+    route: "hint",
   },
 ];
 </script>

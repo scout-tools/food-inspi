@@ -37,18 +37,18 @@ class FoodMajorClasses(models.TextChoices):
     UNDEFINED = 'undefined', 'unbekannt'
 
 class NutrientsMixin(models.Model):
-    energy_kj = models.FloatField(default=0)
-    protein_g = models.FloatField(default=0)
-    fat_g = models.FloatField(default=0)
-    fat_sat_g = models.FloatField(default=0)
-    sugar_g = models.FloatField(default=0)
-    sodium_mg = models.FloatField(default=0)
-    salt_g = models.FloatField(default=0)
-    fruit_factor = models.FloatField(default=0, blank=True)
-    carbohydrate_g = models.FloatField(default=0)
-    fibre_g = models.FloatField(default=0)
-    fructose_g = models.FloatField(default=0)
-    lactose_g = models.FloatField(default=0)
+    energy_kj = models.FloatField(default=0, blank=True, null=True)
+    protein_g = models.FloatField(default=0, blank=True, null=True)
+    fat_g = models.FloatField(default=0, blank=True, null=True)
+    fat_sat_g = models.FloatField(default=0, blank=True, null=True)
+    sugar_g = models.FloatField(default=0, blank=True, null=True)
+    sodium_mg = models.FloatField(default=0, blank=True, null=True)
+    salt_g = models.FloatField(default=0, blank=True, null=True)
+    fruit_factor = models.FloatField(default=0, blank=True, null=True)
+    carbohydrate_g = models.FloatField(default=0, blank=True, null=True)
+    fibre_g = models.FloatField(default=0, blank=True, null=True)
+    fructose_g = models.FloatField(default=0, blank=True, null=True)
+    lactose_g = models.FloatField(default=0, blank=True, null=True)
 
     class Meta:
         abstract = True
@@ -60,6 +60,7 @@ class NutriPointsMixin(models.Model):
     nutri_points_fat_sat_g = models.FloatField(default=0)
     nutri_points_sugar_g = models.FloatField(default=0)
     nutri_points_salt_g = models.FloatField(default=0)
+    nutri_points_sodium_mg = models.FloatField(default=0)
     nutri_points_fibre_g = models.FloatField(default=0)
 
     class Meta:
@@ -121,8 +122,8 @@ class Ingredient(TimeStampMixin, NutrientsMixin, NutriPointsMixin):
         SOLID = 'solid', 'Essen'
         BEVERAGE = 'beverage', 'Getränk'
 
-    name = models.CharField(max_length=255, blank=True)
-    description = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=40)
+    description = models.CharField(max_length=255, blank=True, null=True)
     physical_density = models.FloatField(default=1)
     physical_viscosity = models.CharField(
         max_length=10,
@@ -154,7 +155,7 @@ class Portion(TimeStampMixin, NutrientsMixin):
     measuring_unit = models.ForeignKey(
         MeasuringUnit, on_delete=models.PROTECT, blank=True, null=True, default=3)
     ingredient = models.ForeignKey(
-        Ingredient, on_delete=models.PROTECT, default=1)
+        Ingredient, on_delete=models.CASCADE, default=1)
     quantity = models.FloatField(default=1)
     rank = models.IntegerField(default=1)
     # readonly
@@ -251,20 +252,28 @@ class MealType(models.TextChoices):
     DESSERT = 'desert', 'Nachtisch'
     STARTER = 'starter', 'Vorspeise'
 
+class RecipeStatus(models.TextChoices):
+    Simulator = 'simulator', 'Simulator'
+    Verified = 'verified', 'Verified'
+    User = 'user', 'User'
+
 class Recipe(TimeStampMixin, NutrientsMixin):
-    name = models.CharField(max_length=255, blank=True)
-    description = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    description = models.CharField(max_length=255, null=True, blank=True)
     tags = models.ManyToManyField(Tag, related_name='RecipeTags', blank=True)
     meal_type = models.CharField(
         max_length=10,
         choices=MealType.choices,
         default=MealType.LUNCH)
-
+    status = models.CharField(
+        max_length=10,
+        choices=RecipeStatus.choices,
+        default=RecipeStatus.Simulator)
     # readonly
     nutri_class = models.FloatField(null=True, blank=True)
     nutri_points = models.FloatField(null=True, blank=True)
     weight_g = models.FloatField(default=1)
-    hints = models.ManyToManyField(Hint)
+    hints = models.ManyToManyField(Hint, blank=True)
     price_per_kg = models.FloatField(default=0)
     price = models.FloatField(default=0, null=True, blank=True)
 
@@ -406,7 +415,7 @@ class Price(TimeStampMixin):
 def save_recipe(sender, instance: Ingredient, **kwargs):
     import requests
     import json
-    if instance.fdc_id and instance.energy_kj < 1:
+    if instance.fdc_id and not instance.energy_kj:
         API_URL = "https://api.nal.usda.gov/fdc/v1/food"
         API_KEY = "?api_key=wrSx9QbtEeaZb3LHWXzm4egDf2uiBPdOEmGsc9tT"
 

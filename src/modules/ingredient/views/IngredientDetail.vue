@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="2xl:px-64 xl:px-30">
     <Breadcrumbs :pages="pages" />
     <main class="relative z-40 flex-1 focus:outline-none">
       <article v-if="ingredientDetail.name">
@@ -15,7 +15,7 @@
                     tab.selected
                       ? 'text-blue-600 border-blue-600'
                       : 'text-gray-900 border-transparent',
-                    'flex-1 whitespace-nowrap border-b-2 py-4 px-1 text-base font-medium',
+                    'flex-1 whitespace-nowrap border-b-2 py-4 px-1 text-base font-medium text-center',
                   ]"
                 >
                   {{ tab.name }}
@@ -24,6 +24,7 @@
             </TabList>
           </div>
           <TabPanels as="template">
+            <router-view></router-view>
             <router-view></router-view>
             <router-view></router-view>
           </TabPanels>
@@ -45,11 +46,10 @@ const route = useRoute();
 
 const pages = computed(() => {
   return [
-    { name: "Zutaten", link: "IngredientMain", current: false },
+    { name: "Zutaten", link: "IngredientMain" },
     {
       name: `${ingredientDetail.value.name}`,
-      link: `IngredientNutrients`,
-      current: true,
+      link: `IngredientNutrients`
     },
   ];
 });
@@ -58,7 +58,6 @@ const tabs = [
   {
     name: "Nährwerte",
     id: 1,
-    current: true,
     linkName: "IngredientNutrients",
     component: "Nutrients",
     selected: true,
@@ -66,9 +65,15 @@ const tabs = [
   {
     name: "Portionen",
     id: 2,
-    current: false,
     linkName: "IngredientPortions",
     component: "Portions",
+    selected: false,
+  },
+  {
+    name: "Preise",
+    id: 3,
+    linkName: "IngredientPrices",
+    component: "Price",
     selected: false,
   },
 ];

@@ -1,40 +1,26 @@
 <template>
-  <TabPanel class="space-y-12 px-4 py-6">
+  <TabPanel class="space-y-12 px-4 py-3">
     <div>
-      <div class="mt-5 border-t border-gray-200">
-        <div class="sm:flex sm:items-center">
-          <div class="sm:flex-auto">
-            <p class="mt-2 text-sm text-gray-700">
-              A list of all the users in your account including their name,
-              title, email and role.
+      <div class="mt-5">
+        <div
+          class="
+            px-4
+            sm:flex sm:items-center sm:justify-between sm:px-6
+            lg:px-8
+          "
+        >
+          <div class="min-w-0 flex-1">
+            <h3 class="text-lg font-medium text-gray-900">Portionen von {{ ingredientDetail.name }}</h3>
+            <p class="ml-3 max-w-2xl text-sm text-gray-500">
+              Mögliche Auswahlen für eine Zutat
             </p>
           </div>
-          <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-            <button
-              type="button"
-              class="
-                inline-flex
-                items-center
-                justify-center
-                rounded-md
-                border border-transparent
-                bg-blue-600
-                px-4
-                py-2
-                text-sm
-                font-medium
-                text-white
-                shadow-sm
-                hover:bg-blue-700
-                focus:outline-none
-                focus:ring-2
-                focus:ring-blue-500
-                focus:ring-offset-2
-                sm:w-auto
-              "
-            >
-              Portion hinzufügen
-            </button>
+          <div class="mt-4 flex-2 sm:mt-0 sm:ml-4">
+            <PrimaryButton
+              color="blue"
+              label="Portion hinzufügen"
+              @click="onNewPortionClicked"
+            />
           </div>
         </div>
         <div class="mt-8 flex flex-col">
@@ -87,19 +73,7 @@
                           text-gray-900
                         "
                       >
-                        Reihenfolge
-                      </th>
-                      <th
-                        scope="col"
-                        class="
-                          px-3
-                          py-3.5
-                          text-left text-sm
-                          font-semibold
-                          text-gray-900
-                        "
-                      >
-                        Role
+                        Prioität
                       </th>
                       <th
                         scope="col"
@@ -148,16 +122,6 @@
                       </td>
                       <td
                         class="
-                          whitespace-nowrap
-                          px-3
-                          py-4
-                          text-sm text-gray-500
-                        "
-                      >
-                        {{ person.role }}
-                      </td>
-                      <td
-                        class="
                           relative
                           whitespace-nowrap
                           py-4
@@ -169,10 +133,8 @@
                           lg:pr-8
                         "
                       >
-                        <a
-                          href="#"
-                          class="text-indigo-600 hover:text-indigo-900"
-                          >Edit<span class="sr-only"
+                        <a href="#" class="text-blue-600 hover:text-blue-900"
+                          >Bearbeiten<span class="sr-only"
                             >, {{ person.name }}</span
                           ></a
                         >
@@ -195,8 +157,8 @@ import { ref } from "vue";
 import { TabPanel } from "@headlessui/vue";
 import { useRoute } from "vue-router";
 import { onMounted, computed } from "vue";
-//import users store
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
+import PrimaryButton from "@/components/button/Primary.vue";
 
 const route = useRoute();
 const store = useIngredientStore();
@@ -204,6 +166,14 @@ const store = useIngredientStore();
 const portions = computed(() => {
   return store.portions;
 });
+
+const ingredientDetail = computed(() => {
+  return store.ingredientDetail;
+});
+
+function onNewPortionClicked() {
+}
+
 onMounted(() => {
   const id = route.params.id;
   store.fetchPortions({ ingredient__id: id });

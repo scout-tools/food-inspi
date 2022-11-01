@@ -6,7 +6,7 @@ from food.service.nutri_lib import Nutri
 class RecipeModule:
 
     def _get_nutri_items(self):
-        return ['energy_kj', 'sugar_g', 'fibre_g', 'protein_g', 'sodium_mg', 'fat_sat_g']
+        return ['energy_kj', 'sugar_g', 'fibre_g', 'protein_g', 'sodium_mg','salt_g', 'fat_sat_g']
 
     def recalculate_recipe_items(self, recipe):
         NutriClass = Nutri()

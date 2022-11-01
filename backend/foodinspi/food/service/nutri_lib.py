@@ -121,6 +121,34 @@ class Nutri:
                     [900, 10000, 10]
                 ]
             },
+            "salt_mg": {
+                "solid": [
+                    [-10000, 90, 0],
+                    [90, 180, 1],
+                    [180, 270, 2],
+                    [270, 360, 3],
+                    [360, 450, 4],
+                    [450, 540, 5],
+                    [540, 630, 6],
+                    [630, 720, 7],
+                    [720, 810, 8],
+                    [810, 900, 9],
+                    [900, 10000, 10]
+                ],
+                "beverage": [
+                    [-10000, 90, 0],
+                    [90, 180, 1],
+                    [180, 270, 2],
+                    [270, 360, 3],
+                    [360, 450, 4],
+                    [450, 540, 5],
+                    [540, 630, 6],
+                    [630, 720, 7],
+                    [720, 810, 8],
+                    [810, 900, 9],
+                    [900, 10000, 10]
+                ]
+            },
             "fruit_factor": {
                 "solid": [
                     [-10000, 40, 0],
@@ -181,7 +209,7 @@ class Nutri:
         }
 
     def get_nutri_items(self):
-        return ['energy_kj', 'sugar_g', 'fibre_g', 'protein_g', 'sodium_mg', 'fruit_factor', 'fat_sat_g']
+        return ['energy_kj', 'sugar_g', 'fibre_g', 'protein_g', 'sodium_mg' , 'fruit_factor', 'fat_sat_g']
 
     def get_points(self, item, physical_viscosity, value):
         get_nutri_table_data = self.get_nutri_table()

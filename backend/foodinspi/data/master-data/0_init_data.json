@@ -9668,7 +9668,8 @@
       "nutri_points": -2.0,
       "weight_g": 370.0,
       "tags": [],
-      "hints": []
+      "hints": [],
+      "status": "verified"
     }
   },
   {
@@ -9696,7 +9697,8 @@
       "nutri_points": 1.0,
       "weight_g": 465.0,
       "tags": [],
-      "hints": []
+      "hints": [],
+      "status": "verified"
     }
   },
   {
@@ -9724,7 +9726,8 @@
       "nutri_points": -2.0,
       "weight_g": 548.0,
       "tags": [],
-      "hints": []
+      "hints": [],
+      "status": "verified"
     }
   },
   {
@@ -9752,7 +9755,8 @@
       "nutri_points": 5.0,
       "weight_g": 246.0,
       "tags": [],
-      "hints": [2, 5]
+      "hints": [2, 5],
+      "status": "verified"
     }
   },
   {
@@ -9780,7 +9784,8 @@
       "nutri_points": 0.0,
       "weight_g": 347.0,
       "tags": [],
-      "hints": []
+      "hints": [],
+      "status": "verified"
     }
   },
   {
@@ -9808,7 +9813,8 @@
       "nutri_points": -1.0,
       "weight_g": 305.0,
       "tags": [],
-      "hints": []
+      "hints": [],
+      "status": "verified"
     }
   },
   {
@@ -9836,7 +9842,8 @@
       "nutri_points": -1.0,
       "weight_g": 214.0,
       "tags": [],
-      "hints": [2]
+      "hints": [2],
+      "status": "verified"
     }
   },
   {
@@ -9864,7 +9871,8 @@
       "nutri_points": 25.0,
       "weight_g": 200.0,
       "tags": [],
-      "hints": [1, 2, 5]
+      "hints": [1, 2, 5],
+      "status": "verified"
     }
   },
   {
@@ -9892,7 +9900,8 @@
       "nutri_points": 0.1,
       "weight_g": 1200.0,
       "tags": [],
-      "hints": [4]
+      "hints": [4],
+      "status": "verified"
     }
   },
   {
@@ -9920,7 +9929,8 @@
       "nutri_points": 10.0,
       "weight_g": 40.0,
       "tags": [],
-      "hints": [2, 4]
+      "hints": [2, 4],
+      "status": "verified"
     }
   },
   {

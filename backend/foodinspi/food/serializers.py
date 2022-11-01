@@ -47,12 +47,19 @@ class PortionSerializer(serializers.ModelSerializer):
     class Meta:
         model = food_models.Portion
         fields = '__all__'
+        
 
 class RecipeItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = food_models.RecipeItem
+        fields = '__all__'
+
+class RecipeItemReadSerializer(serializers.ModelSerializer):
     portion = PortionSerializer(many=False, read_only=True)
     class Meta:
         model = food_models.RecipeItem
         fields = (
+            'id',
             'nutri_class',
             'nutri_points',
             'weight_g',
@@ -84,9 +91,9 @@ class RecipeItemSerializer(serializers.ModelSerializer):
 
 
 class RecipeSerializer(serializers.ModelSerializer):
-    hints = food_serializers.HintSerializer(many=True)
-    tags = food_serializers.TagSerializer(many=True)
-    recipe_items = RecipeItemSerializer(many=True, read_only=True)
+    hints = food_serializers.HintSerializer(many=True, required=False)
+    tags = food_serializers.TagSerializer(many=True, required=False)
+    recipe_items = RecipeItemReadSerializer(many=True, read_only=True)
 
     class Meta:
         model = food_models.Recipe
@@ -117,6 +124,7 @@ class RecipeSerializer(serializers.ModelSerializer):
             'fibre_g',
             'fructose_g',
             'lactose_g',
+            'status',
             'created_at',
             'updated_at',
         )
@@ -125,7 +133,6 @@ class RetailerSerializer(serializers.ModelSerializer):
     class Meta:
         model = food_models.Retailer
         fields = '__all__'
-
 
 
 class PackageSerializer(serializers.ModelSerializer):

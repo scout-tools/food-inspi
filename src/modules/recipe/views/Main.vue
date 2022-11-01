@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-64">
+  <div class="2xl:px-64 xl:px-30">
     <List
       :name="'Rezepte'"
       :items="recipes"

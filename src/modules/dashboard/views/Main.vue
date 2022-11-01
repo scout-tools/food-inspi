@@ -1,7 +1,7 @@
 <template>
-  <div class="h-full">
+  <div class="h-full" >
     <div class="flex flex-1 flex-col 2xl:pa-64">
-      <main class="flex-1 pb-8">
+      <main class="relative h-screen flex-1 pb-8 overflow-y-auto" >
         <div class="mt-8">
           <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <h2 class="text-lg font-medium leading-6 text-gray-900">
@@ -42,7 +42,7 @@
                 <div class="bg-gray-50 px-5 py-3">
                   <div class="text-sm">
                     <router-link
-                      :to="{ name: card.href, params: { id: 1 } }"
+                      :to="{ name: card.href }"
                       class="font-medium text-blue-700 hover:text-blue-900"
                       >Anzeigen</router-link
                     >
@@ -68,7 +68,7 @@
           >
             Neuesten Rezepte
           </h2>
-          <RecipeList :recipes="recipes" />
+          <RecipeList :recipes="recipes.slice(0, 4)" />
         </div>
       </main>
     </div>
@@ -86,7 +86,7 @@ import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
 
 const recipeStore = useRecipeStore();
 const recipes = computed(() => {
-  return recipeStore.recipes.slice(0, 4);
+  return recipeStore.recipes;
 });
 
 const ingredientStore = useIngredientStore();
