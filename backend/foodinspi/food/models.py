@@ -278,7 +278,7 @@ class Recipe(TimeStampMixin, NutrientsMixin):
     price = models.FloatField(default=0, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     def __repr__(self):
         return self.__str__()

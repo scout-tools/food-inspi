@@ -26,7 +26,6 @@ const errors = ref([]);
 
 
 function onNextButtonClicked() {
-  debugger;
 }
 </script>
 
