@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import BaseField from "@/components/field/Base.vue";
-import StepFrame from "@/modules/recipe/components/StepFrame.vue";
+import StepFrame from "@/components/stepper/StepFrame.vue"
 
 import { useVuelidate } from "@vuelidate/core";
 import { required, minLength } from "@vuelidate/validators";
