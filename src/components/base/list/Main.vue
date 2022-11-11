@@ -67,8 +67,8 @@
                   "
                   placeholder="Suche"
                 />
-              </div>  
-              <ToolDropdown :buttonList="buttonList"/>
+              </div>
+              <ToolDropdown :buttonList="buttonList" />
             </div>
           </div>
         </div>
@@ -539,11 +539,19 @@
         <div
           class="overflow-hidden bg-white shadow sm:rounded-md overflow-scroll"
         >
-          <ul role="list" class="divide-y divide-gray-200">
+          <ul role="list" v-if="items.length" class="divide-y divide-gray-200">
             <li v-for="item in items" :key="item.id">
-              <a class="block hover:bg-gray-50">
+              <router-link
+                :to="{
+                  name: props.detailPageLink,
+                  params: {
+                    id: item.id,
+                  },
+                }"
+                class="block hover:bg-gray-50"
+              >
                 <div class="flex items-center px-4 py-4 sm:px-6">
-                <slot name="listitem" v-bind:item="item"></slot>
+                  <slot name="listitem" v-bind:item="item"></slot>
                   <button @click="onDetailPageClicked(item.id, detailPageLink)">
                     <ChevronRightIcon
                       class="h-5 w-5 text-gray-400"
@@ -551,7 +559,12 @@
                     />
                   </button>
                 </div>
-              </a>
+              </router-link>
+            </li>
+          </ul>
+          <ul v-else >
+            <li>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500 px-2 py-2">Bitte suche nach einer Gruppe</p>
             </li>
           </ul>
         </div>
@@ -623,8 +636,6 @@ import {
 import { computed, onBeforeMount, watch } from "vue";
 import { useRouter } from "vue-router";
 
-import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
-import NutriSlim from "@/components/score/NutriSlim.vue";
 import ToolDropdown from "@/components/base/list/components/ToolDropdown.vue";
 
 const props = defineProps({
@@ -695,10 +706,6 @@ function updateFilters(option, section) {
 
 const searchInput = ref("");
 
-const ingredientStore = useIngredientStore();
-const ingredients = computed(() => {
-  return ingredientStore.ingredients;
-});
 
 const activeSort = ref("A-Z");
 
@@ -716,5 +723,4 @@ function onDetailPageClicked(id) {
 }
 
 const open = ref(false);
-
 </script>

@@ -72,7 +72,7 @@
             </TransitionChild>
             <div class="h-0 flex-1 overflow-y-auto pt-5 pb-4">
               <div class="flex flex-shrink-0 items-center px-4">
-                <router-link :to="{ name: 'RecipesMain' }">
+                <router-link @click="onButtonClicked" :to="{ name: 'RecipesMain' }">
                 <img
                   class="h-12 w-auto"
                   src="./../assets/logo.png"
@@ -86,6 +86,7 @@
                     v-for="item in navigation"
                     :key="item.name"
                     :to="{ name: item.linkName, params: { id: 1 } }"
+                    @click="onButtonClicked"
                     :class="[
                       item.linkName === currentRoute
                         ? 'bg-gray-100 text-gray-900'
@@ -115,6 +116,7 @@
                     v-for="item in secondaryNavigation"
                     :key="item.name"
                     :to="{ name: item.linkName, params: { id: 1 } }"
+                    @click="onButtonClicked"
                     class="
                       group
                       flex
@@ -194,6 +196,7 @@
                 v-for="item in navigation"
                 :key="item.name"
                 :to="{ name: item.linkName, params: { id: 1 } }"
+                @click="onButtonClicked"
                 :class="[
                   currentRoute.includes(item.route)
                     ? 'bg-gray-200 text-gray-900'
@@ -223,6 +226,7 @@
                 v-for="item in secondaryNavigation"
                 :key="item.name"
                 :to="{ name: item.linkName }"
+                @click="onButtonClicked"
                 class="
                   group
                   flex
@@ -362,6 +366,10 @@ function onLoginClicked() {
 }
 function onLogoutClicked() {
   authStore.logout();
+}
+
+function onButtonClicked() {
+  sidebarOpen.value = false;
 }
 
 const isAuth = computed(() => {
