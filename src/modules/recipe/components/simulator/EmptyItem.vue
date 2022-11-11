@@ -1,5 +1,12 @@
 <template>
   <div class="text-center my-12">
+          <div class="object-center">
+          <img
+            class="h-40 mx-auto object-center w-auto"
+            src="./../../../../assets/logo.png"
+            alt="Your Company"
+          />
+        </div>
     <svg
       class="mx-auto h-12 w-12 text-gray-400"
       fill="none"

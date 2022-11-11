@@ -155,64 +155,6 @@
                     class="my-5 border-t border-gray-200"
                     aria-hidden="true"
                   />
-                  <button
-                    class="
-                      group
-                      flex
-                      items-center
-                      rounded-md
-                      px-2
-                      py-2
-                      text-base
-                      font-medium
-                      text-gray-600
-                      hover:bg-gray-50 hover:text-gray-900
-                    "
-                    v-if="!isAuth"
-                    @click="onLoginClicked"
-                  >
-                    <ArrowRightIcon
-                      class="
-                        mr-4
-                        h-6
-                        w-6
-                        flex-shrink-0
-                        text-gray-400
-                        group-hover:text-gray-500
-                      "
-                      aria-hidden="true"
-                    />
-                    Login
-                  </button>
-                  <button
-                    class="
-                      group
-                      flex
-                      items-center
-                      rounded-md
-                      px-2
-                      py-2
-                      text-base
-                      font-medium
-                      text-gray-600
-                      hover:bg-gray-50 hover:text-gray-900
-                    "
-                    v-if="isAuth"
-                    @click="onLogoutClicked"
-                  >
-                    <ArrowLeftIcon
-                      class="
-                        mr-4
-                        h-6
-                        w-6
-                        flex-shrink-0
-                        text-gray-400
-                        group-hover:text-gray-500
-                      "
-                      aria-hidden="true"
-                    />
-                    Logout
-                  </button>
                 </div>
               </nav>
             </div>
@@ -317,81 +259,6 @@
                 />
                 {{ item.name }}
               </router-link>
-              <hr class="my-5 border-t border-gray-200" aria-hidden="true" />
-              <button
-                class="
-                  group
-                  flex
-                  items-center
-                  rounded-md
-                  px-2
-                  py-2
-                  text-sm
-                  font-medium
-                  text-gray-600
-                  hover:bg-gray-50 hover:text-gray-900
-                  group
-                  flex
-                  items-center
-                  px-2
-                  py-2
-                  text-sm
-                  font-medium
-                  rounded-md
-                "
-                v-if="!isAuth"
-                @click="onLoginClicked"
-              >
-                <ArrowRightIcon
-                  class="
-                    mr-3
-                    h-6
-                    w-6
-                    flex-shrink-0
-                    text-gray-400
-                    group-hover:text-gray-500
-                  "
-                  aria-hidden="true"
-                />
-                Login
-              </button>
-              <button
-                class="
-                  group
-                  flex
-                  items-center
-                  rounded-md
-                  px-2
-                  py-2
-                  text-sm
-                  font-medium
-                  text-gray-600
-                  hover:bg-gray-50 hover:text-gray-900
-                  group
-                  flex
-                  items-center
-                  px-2
-                  py-2
-                  text-sm
-                  font-medium
-                  rounded-md
-                "
-                v-if="isAuth"
-                @click="onLogoutClicked"
-              >
-                <ArrowLeftIcon
-                  class="
-                    mr-3
-                    h-6
-                    w-6
-                    flex-shrink-0
-                    text-gray-400
-                    group-hover:text-gray-500
-                  "
-                  aria-hidden="true"
-                />
-                Logout
-              </button>
             </div>
           </nav>
         </div>
@@ -413,7 +280,7 @@
       >
         <div>
           <img
-            class="h-12 w-auto"
+            class="h-10 w-auto"
             src="./../assets/logo.png"
             alt="Your Company"
           />
@@ -484,10 +351,10 @@ import {
   ArrowLeftIcon,
 } from "@heroicons/vue/24/outline";
 
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 
-import { useAuthStore } from "@/modules/auth/store/index.ts";
+import { useAuthStore } from "@/modules/auth/store/index";
 const authStore = useAuthStore();
 
 function onLoginClicked() {
