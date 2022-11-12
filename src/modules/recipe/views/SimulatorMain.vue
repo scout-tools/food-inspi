@@ -1,9 +1,7 @@
 <template>
   <div class="2xl:px-64 xl:px-30">
   <div class="text-center">
-    <div class="2xl:px-64 xl:px-30">
       <h2 class="mt-2 text-lg font-medium text-gray-900">Simulator</h2>
-    </div>
   </div>
   <RecipeOverview
     :recipeItems="recipeDetail.recipeItems"

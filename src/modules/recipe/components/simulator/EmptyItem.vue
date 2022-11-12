@@ -23,9 +23,9 @@
       />
     </svg>
     <h3 class="mt-2 text-sm font-medium text-gray-900">
-      Leg los und füge deine Zutaten hinzu.
+      Lass deine Rezept von mir bewerten.
     </h3>
-    <p class="mt-1 text-sm text-gray-500">Simuliere dir dein Rezept.</p>
+    <p class="mt-1 text-sm text-gray-500">Füge jetzt deine Zutaten ein. Ich habe sicher einen Tipp für dich.</p>
     <div class="mt-6 mb-6">
       <button
         type="button"

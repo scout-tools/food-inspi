@@ -61,6 +61,8 @@
           Inhaltsstoffe
         </h3>
         <p class="mt-1 max-w-2xl text-sm text-gray-500">pro Person</p>
+      </div>
+      <div class="px-4 sm:px-6">
       <ListItem
         label="Engergie"
         :value="recipeDetail.energyKj"

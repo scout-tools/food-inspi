@@ -2,8 +2,8 @@ export default [
   {
     path: "/",
     name: "home",
-    redirect: { name: "DashboardMain" },
-    component: () => import(/* webpackChunkName: "home" */ "@/modules/dashboard/views/Main.vue"),
+    redirect: { name: "SimulatorStart" },
+    component: () => import(/* webpackChunkName: "SimulatorStart" */ "@/modules/recipe/views/SimulatorStart.vue"),
   },
   {
     path: '/404',

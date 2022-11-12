@@ -403,19 +403,13 @@ const currentRoute = computed(() => {
 
 const navigation = [
   {
-    name: "Dashboard",
-    linkName: "DashboardMain",
-    icon: HomeIcon,
-    route: "dashboard",
-  },
-  {
     name: "Simulator",
     linkName: "SimulatorStart",
     icon: RocketLaunchIcon,
     route: "simulator",
   },
   {
-    name: "Rezept",
+    name: "Rezepte",
     linkName: "RecipesMain",
     icon: Bars3Icon,
     route: "recipe",
@@ -427,7 +421,7 @@ const navigation = [
     route: "ingredient",
   },
   {
-    name: "Hinweise",
+    name: "Regeln",
     linkName: "HintMain",
     icon: ScaleIcon,
     route: "hint",

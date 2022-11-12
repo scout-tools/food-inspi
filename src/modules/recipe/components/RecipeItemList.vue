@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-64 xl:px-30 lg:px-15">
+  <div class="xl:px-64 xl:px-30 lg:px-15">
     <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
       <dd class="mt-1 text-sm text-gray-900 sm:col-span-3 sm:mt-0">
         <ul
@@ -14,8 +14,7 @@
             <div class="flex w-0 flex-1 items-center">
               <NutriSlim :nutriClass="item.nutriClass" />
               <span class="ml-2 w-0 flex-1 truncate"
-                >{{ item.quantity }} x {{ item.portion.name }} /
-                {{ item.quantity * item.portion.weightG }} g</span
+                >{{ getFormatedText(item) }}</span
               >
               <span
                 v-if="item.nutriPoints < -0.5"
@@ -73,4 +72,14 @@ const openRecipeItemUpdate = (reciptItem) => {
 const openRecipeItemAdd = () => {
   emit("openRecipeItemAdd");
 };
+
+function getFormatedText(item: Object) {
+  let text = ''
+  text = `${text} ${item?.quantity * item?.portion.weightG} g
+                ${item?.portion.ingredient.name } `
+  if (item.portion.measuringUnit.name !== 'g') {
+      text = `${text} / ${item?.quantity}  ${item?.portion.measuringUnit.name }`
+  }
+  return text
+}
 </script>

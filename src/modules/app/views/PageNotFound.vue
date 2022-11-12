@@ -41,7 +41,7 @@
             "
           >
             <router-link
-              :to="{ name: 'DashboardMain' }"
+              :to="{ name: 'SimulatorStart' }"
               class="
                 inline-flex
                 items-center
