@@ -185,7 +185,7 @@
         <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
           <div class="flex flex-shrink-0 items-center px-4">
             <img
-              class="h-16 w-auto"
+              class="h-30 w-auto mx-auto"
               src="./../assets/logo.png"
               alt="Your Company"
             />
@@ -285,7 +285,7 @@
         <div>
           <img
             class="h-10 w-auto"
-            src="./../assets/logo.png"
+            src="./../assets/inspi_food_kopf.png"
             alt="Your Company"
           />
         </div>

@@ -9,6 +9,7 @@
     :recipeItems="recipeDetail.recipeItems"
     @openRecipeItemUpdate="onOpenRecipeItemUpdate"
     @openRecipeItemAdd="openRecipeItemAdd"
+    isEditable="true"
   />
   <RecipeItemUpdate
     :open="openRecipeItemUpdate"

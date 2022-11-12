@@ -1,6 +1,6 @@
 <template>
   <div class="text-center my-12">
-          <div class="object-center">
+          <div class="object-center sm:hidden">
           <img
             class="h-40 mx-auto object-center w-auto"
             src="./../../../../assets/logo.png"

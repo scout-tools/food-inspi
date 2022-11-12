@@ -1,6 +1,5 @@
 {
   "globals": {
-    "EffectScope": true,
     "acceptHMRUpdate": true,
     "computed": true,
     "createApp": true,
@@ -10,13 +9,12 @@
     "defineComponent": true,
     "defineStore": true,
     "effectScope": true,
+    "EffectScope": true,
     "getActivePinia": true,
     "getCurrentInstance": true,
     "getCurrentScope": true,
     "h": true,
     "inject": true,
-    "isProxy": true,
-    "isReactive": true,
     "isReadonly": true,
     "isRef": true,
     "mapActions": true,
@@ -28,8 +26,6 @@
     "nextTick": true,
     "onActivated": true,
     "onBeforeMount": true,
-    "onBeforeRouteLeave": true,
-    "onBeforeRouteUpdate": true,
     "onBeforeUnmount": true,
     "onBeforeUpdate": true,
     "onDeactivated": true,
@@ -46,7 +42,6 @@
     "readonly": true,
     "ref": true,
     "resolveComponent": true,
-    "resolveDirective": true,
     "setActivePinia": true,
     "setMapStoreSuffix": true,
     "shallowReactive": true,
@@ -62,14 +57,11 @@
     "useCssModule": true,
     "useCssVars": true,
     "useHead": true,
-    "useLink": true,
     "useRoute": true,
     "useRouter": true,
     "useSlots": true,
     "useStore": true,
     "watch": true,
-    "watchEffect": true,
-    "watchPostEffect": true,
-    "watchSyncEffect": true
+    "watchEffect": true
   }
 }
