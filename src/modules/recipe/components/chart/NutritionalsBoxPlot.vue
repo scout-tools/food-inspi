@@ -53,7 +53,7 @@ const options = computed(() => {
     annotations: {
       points: [
         {
-          x: 5,
+          x: recipeDetail.value["fatSatG"],
           y: "Zucker",
           marker: {
             size: 6,
