@@ -48,7 +48,7 @@
           </div>
         </div>
         <apexchart
-          v-if="hasData()"
+          v-if="hasData"
           type="boxPlot"
           ref="boxPlotRef"
           :options="options"
@@ -71,6 +71,7 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 
 const boxPlotRef = ref(null);
+const isReady = ref(false);
 
 const pages = computed(() => {
   return [
@@ -82,9 +83,9 @@ const pages = computed(() => {
   ];
 });
 
-function hasData() {
-  return !!series?.value[0]?.data[0]?.y.length;
-}
+const hasData = computed(() => {
+  return !!series?.value[0]?.data[0]?.y.length && hint.value.value && isReady.value;
+});
 
 const snakeToCamel = (str) =>
   str
@@ -95,44 +96,45 @@ const snakeToCamel = (str) =>
 
 const options = {
   chart: {
-    width: '100%'
+    width: "100%",
   },
 };
 
 const series = computed(() => {
-  const array = recipes.value
-    .map((object) => object[snakeToCamel(hint.value.parameter)])
+  const array = recipes.value.map(
+    (object) => object[snakeToCamel(hint.value.parameter)]
+  );
   array.sort(function (a, b) {
     return a - b;
   });
 
   return [
     {
-      name: 'Verteilung',
-      type: 'boxPlot',
+      name: "Verteilung",
+      type: "boxPlot",
       data: [
         {
-          x: "t6",
+          x: "data",
           y: array,
         },
       ],
     },
     {
-      name: 'Ausreißer',
-      type: 'scatter',
+      name: "Ausreißer",
+      type: "scatter",
       data: [
         {
-          x: "t6",
+          x: "data",
           y: array,
         },
       ],
     },
     {
-      name: 'Regel',
-      type: 'scatter',
+      name: "Regel",
+      type: "scatter",
       data: [
         {
-          x: "t6",
+          x: "data",
           y: [hint.value.value],
         },
       ],
@@ -159,5 +161,8 @@ onMounted(() => {
   const id = route.params.id;
   hintStore.fetchHintById(id);
   recipeStore.fetchRecipes();
+  setTimeout(function () {
+    isReady.value = true;
+  }, 300);
 });
 </script>

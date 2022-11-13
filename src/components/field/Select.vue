@@ -1,4 +1,5 @@
 <template>
+  <div :class="`sm:col-span-${cols}`">
   <Combobox :disabled="disabled" as="div" :modelValue="modelValue" @update:modelValue="onSelectChanged"
     by="id">
     <ComboboxLabel class="block text-sm font-medium" :class="disabled ? 'text-gray-400':'text-gray-700'"
@@ -93,6 +94,7 @@
       </ComboboxOptions>
     </div>
   </Combobox>
+  </div>
 </template>
 
 <script setup>

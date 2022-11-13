@@ -25,8 +25,6 @@
           </div>
           <TabPanels as="template">
             <router-view></router-view>
-            <router-view></router-view>
-            <router-view></router-view>
           </TabPanels>
         </TabGroup>
       </article>

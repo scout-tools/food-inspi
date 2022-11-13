@@ -10,7 +10,9 @@
           "
         >
           <div class="min-w-0 flex-1">
-            <h3 class="text-lg font-medium text-gray-900">Portionen von {{ ingredientDetail.name }}</h3>
+            <h3 class="text-lg font-medium text-gray-900">
+              Preise von {{ ingredientDetail.name }}
+            </h3>
             <p class="ml-3 max-w-2xl text-sm text-gray-500">
               Mögliche Auswahlen für eine Zutat
             </p>
@@ -18,7 +20,7 @@
           <div class="mt-4 flex-2 sm:mt-0 sm:ml-4">
             <PrimaryButton
               color="blue"
-              label="Portion hinzufügen"
+              label="Preis hinzufügen"
               @click="onNewPortionClicked"
             />
           </div>
@@ -49,7 +51,7 @@
                           lg:pl-8
                         "
                       >
-                        Name der Portion
+                        Name des Packets
                       </th>
                       <th
                         scope="col"
@@ -61,7 +63,7 @@
                           text-gray-900
                         "
                       >
-                        Gewicht
+                        Preis
                       </th>
                       <th
                         scope="col"
@@ -73,7 +75,7 @@
                           text-gray-900
                         "
                       >
-                        Prioität
+                        Supermarkt
                       </th>
                       <th
                         scope="col"
@@ -84,7 +86,7 @@
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
-                    <tr v-for="person in portions" :key="person.email">
+                    <tr v-for="item in prices" :key="item.id">
                       <td
                         class="
                           whitespace-nowrap
@@ -98,27 +100,29 @@
                           lg:pl-8
                         "
                       >
-                        {{ person.name }}
+                        {{ item.package.name }} ({{
+                          item.package.portion.name
+                        }})
                       </td>
                       <td
                         class="
                           whitespace-nowrap
                           px-3
                           py-4
-                          text-sm text-gray-500
+                          text-sm text-gray-900
                         "
                       >
-                        {{ person.weightG }} g
+                        {{ item.priceEur }} € ({{ item.pricePerKg }} €/ Kg)
                       </td>
                       <td
                         class="
                           whitespace-nowrap
                           px-3
                           py-4
-                          text-sm text-gray-500
+                          text-sm text-gray-900
                         "
                       >
-                        {{ person.rank }}.
+                        {{ item.retailer.name }}
                       </td>
                       <td
                         class="
@@ -133,11 +137,12 @@
                           lg:pr-8
                         "
                       >
-                        <a href="#" class="text-blue-600 hover:text-blue-900"
-                          >Bearbeiten<span class="sr-only"
-                            >, {{ person.name }}</span
-                          ></a
+                        <button
+                          @click="onDeleteClicked"
+                          class="text-red-600 hover:text-red-900"
                         >
+                          löschen
+                        </button>
                       </td>
                     </tr>
                   </tbody>
@@ -156,15 +161,17 @@
 import { ref } from "vue";
 import { TabPanel } from "@headlessui/vue";
 import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import { onMounted, computed } from "vue";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
 import PrimaryButton from "@/components/button/Primary.vue";
 
 const route = useRoute();
+const router = useRouter();
 const store = useIngredientStore();
 
-const portions = computed(() => {
-  return store.portions;
+const prices = computed(() => {
+  return store.prices;
 });
 
 const ingredientDetail = computed(() => {
@@ -172,10 +179,13 @@ const ingredientDetail = computed(() => {
 });
 
 function onNewPortionClicked() {
+  router.push({ name: "PriceCreate" });
 }
 
-// onMounted(() => {
-//   const id = route.params.id;
-//   store.fetchPortions({ ingredient__id: id });
-// });
+function onDeleteClicked() {}
+
+onMounted(() => {
+  const id = route.params.id;
+  store.fetchPrices({ package__portion__ingredient__id: id });
+});
 </script>

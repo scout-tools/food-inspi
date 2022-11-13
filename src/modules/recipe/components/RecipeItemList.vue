@@ -1,5 +1,5 @@
 <template>
-  <div class="xl:px-64 xl:px-30 lg:px-15">
+  <div class="xl:px-30 xl:px-30 lg:px-5">
     <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
       <dd class="mt-1 text-sm text-gray-900 sm:col-span-3 sm:mt-0">
         <ul
@@ -75,7 +75,7 @@ const openRecipeItemAdd = () => {
 
 function getFormatedText(item: Object) {
   let text = ''
-  text = `${text} ${item?.quantity * item?.portion.weightG} g
+  text = `${text} ${Math.round(item?.quantity * item?.portion.weightG)} g
                 ${item?.portion.ingredient.name } `
   if (item.portion.measuringUnit.name !== 'g') {
       text = `${text} / ${item?.quantity}  ${item?.portion.measuringUnit.name }`

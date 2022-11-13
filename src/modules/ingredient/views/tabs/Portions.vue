@@ -133,10 +133,9 @@
                           lg:pr-8
                         "
                       >
-                        <a href="#" class="text-blue-600 hover:text-blue-900"
-                          >Bearbeiten<span class="sr-only"
-                            >, {{ person.name }}</span
-                          ></a
+                        <button @click="onDeleteClicked" class="text-red-600 hover:text-red-900"
+                          >löschen
+                          </button
                         >
                       </td>
                     </tr>
@@ -155,12 +154,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { TabPanel } from "@headlessui/vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { onMounted, computed } from "vue";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
 import PrimaryButton from "@/components/button/Primary.vue";
 
 const route = useRoute();
+const router = useRouter();
 const store = useIngredientStore();
 
 const portions = computed(() => {
@@ -172,6 +172,7 @@ const ingredientDetail = computed(() => {
 });
 
 function onNewPortionClicked() {
+  router.push({name: 'PortionCreate'})
 }
 
 onMounted(() => {

@@ -132,8 +132,17 @@ function onSaveClicked() {
           quantity: state.quantity,
         })
         .then((response2: any) => {
-          goToRecipe(recipeId);
-        });
+          recipeStore
+            .updateRecipeItem({
+              id: response2.data.id,
+              recipe: response2.data.recipe,
+              portion: response2.data.portion,
+              quantity: response2.data.quantity,
+            })
+        })
+          .then((response4: any) => {
+            goToRecipe(recipeId);
+          });
     });
   }
   // new
@@ -144,7 +153,16 @@ function onSaveClicked() {
         portion: state.portion?.id,
         quantity: state.quantity,
       })
-      .then((response2: any) => {
+        .then((response2: any) => {
+          recipeStore
+            .updateRecipeItem({
+              id: response2.data.id,
+              recipe: response2.data.recipe,
+              portion: response2.data.portion,
+              quantity: response2.data.quantity,
+            })
+        })
+      .then((response3: any) => {
         goToRecipe(recipeId);
       });
   }
@@ -157,6 +175,15 @@ function onSaveClicked() {
         portion: state.portion?.id,
         quantity: state.quantity,
       })
+        .then((response2: any) => {
+          recipeStore
+            .updateRecipeItem({
+              id: response2.data.id,
+              recipe: response2.data.recipe,
+              portion: response2.data.portion,
+              quantity: response2.data.quantity,
+            })
+        })
       .then((response2: any) => {
         goToRecipe(recipeId);
       });

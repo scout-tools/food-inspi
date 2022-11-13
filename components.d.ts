@@ -5,6 +5,7 @@
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Base: typeof import('./src/components/field/Base.vue')['default']
+    BaseItem: typeof import('./src/components/list/BaseItem.vue')['default']
     Basic: typeof import('./src/components/overlay/Basic.vue')['default']
     Delete: typeof import('./src/components/modal/Delete.vue')['default']
     Header: typeof import('./src/components/breadcrumbs/Header.vue')['default']

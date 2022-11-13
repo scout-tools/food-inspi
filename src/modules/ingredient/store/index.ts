@@ -2,8 +2,13 @@ import { defineStore } from "pinia";
 
 import IngredientApi from "@/modules/ingredient/services/ingredient";
 import PortionsApi from "@/modules/ingredient/services/portion";
+import PackageApi from "@/modules/ingredient/services/package";
+import PriceApi from "@/modules/ingredient/services/price";
+import RetailerApi from "@/modules/ingredient/services/retailer";
+import MeasuringUnitApi from "@/modules/ingredient/services/measuringUnit";
 
 import { useCommonStore } from "@/modules/common/store/index.ts";
+import measuringUnit from "../services/measuringUnit";
 const commonStore = useCommonStore();
 
 export const useIngredientStore = defineStore("ingredient", {
@@ -11,6 +16,10 @@ export const useIngredientStore = defineStore("ingredient", {
     _ingredients: [],
     _ingredientDetail: {},
     _portions: [],
+    _prices: [],
+    _packages: [],
+    _retailers: [],
+    _measuringUnits: [],
   }),
 
   actions: {
@@ -69,6 +78,64 @@ export const useIngredientStore = defineStore("ingredient", {
         console.log(error);
       }
     },
+    async createPortion(data: object) {
+      try {
+        return await PortionsApi.create(data);
+      } catch (error) {
+        if (error.response.status === 400) {
+          commonStore.showError(error.response.data);
+        } else if (error.response.status === 500) {
+          commonStore.showError('Schwerer Server Fehler');
+        }
+      }
+    },
+    async fetchPackages(params = {}) {
+      try {
+        const response = await PackageApi.fetchAll(params);
+        this._packages = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchPrices(params = {}) {
+      try {
+        const response = await PriceApi.fetchAll(params);
+        this._prices = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async createPrice(data: object) {
+      try {
+        return await PriceApi.create(data);
+      } catch (error) {
+        if (error.response.status === 400) {
+          commonStore.showError(error.response.data);
+        } else if (error.response.status === 500) {
+          commonStore.showError('Schwerer Server Fehler');
+        }
+      }
+    },
+    async fetchRetailers(params = {}) {
+      try {
+        const response = await RetailerApi.fetchAll(params);
+        this._retailers = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchMeasuringUnit(params = {}) {
+      try {
+        const response = await MeasuringUnitApi.fetchAll(params);
+        this._measuringUnits = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
   },
   getters: {
     ingredients: (state) => {
@@ -79,6 +146,18 @@ export const useIngredientStore = defineStore("ingredient", {
     },
     portions: (state) => {
       return state._portions;
+    },
+    packages: (state) => {
+      return state._packages;
+    },
+    prices: (state) => {
+      return state._prices;
+    },
+    retailers: (state) => {
+      return state._retailers;
+    },
+    measuringUnits: (state) => {
+      return state._measuringUnits;
     },
   },
 });

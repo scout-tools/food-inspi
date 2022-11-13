@@ -7,34 +7,49 @@ export default [
   {
     path: "/ingredient/:id",
     name: "IngredientDetail",
-    redirect: { name: 'IngredientNutrients', params: { id: 1}},
-    component: () => import(/* webpackChunkName: "IngredientDetail" */ "@/modules/ingredient/views/IngredientDetail.vue"),
+    redirect: { name: "IngredientNutrients", params: { id: 1 } },
+    component: () =>
+      import(/* webpackChunkName: "IngredientDetail" */ "@/modules/ingredient/views/IngredientDetail.vue"),
     children: [
       {
         path: "nutrients",
         name: "IngredientNutrients",
-        component: () => import(/* webpackChunkName: "IngredientNutrients" */ "@/modules/ingredient/views/tabs/Nutrients.vue"),
+        component: () =>
+          import(/* webpackChunkName: "IngredientNutrients" */ "@/modules/ingredient/views/tabs/Nutrients.vue"),
       },
       {
         path: "portions",
         name: "IngredientPortions",
-        component: () => import(/* webpackChunkName: "IngredientPortions" */ "@/modules/ingredient/views/tabs/Portions.vue"),
+        component: () =>
+          import(/* webpackChunkName: "IngredientPortions" */ "@/modules/ingredient/views/tabs/Portions.vue"),
+      },
+      {
+        path: "portions/create",
+        name: "PortionCreate",
+        component: () => import(/* webpackChunkName: "PortionCreate" */ "@/modules/ingredient/views/CreatePortion.vue"),
       },
       {
         path: "price",
         name: "IngredientPrices",
         component: () => import(/* webpackChunkName: "IngredientPrices" */ "@/modules/ingredient/views/tabs/Price.vue"),
       },
+      {
+        path: "price/create",
+        name: "PriceCreate",
+        component: () => import(/* webpackChunkName: "PriceCreate" */ "@/modules/ingredient/views/CreatePrice.vue"),
+      },
     ],
   },
   {
     path: "/ingredient/create",
     name: "IngredientCreate",
-    component: () => import(/* webpackChunkName: "IngredientCreate" */ "@/modules/ingredient/views/IngredientCreate.vue"),
+    component: () =>
+      import(/* webpackChunkName: "IngredientCreate" */ "@/modules/ingredient/views/IngredientCreate.vue"),
   },
   {
     path: "/ingredient/update/:id",
     name: "IngredientUpdate",
-    component: () => import(/* webpackChunkName: "IngredientUpdate" */ "@/modules/ingredient/views/IngredientUpdate.vue"),
+    component: () =>
+      import(/* webpackChunkName: "IngredientUpdate" */ "@/modules/ingredient/views/IngredientUpdate.vue"),
   },
 ];

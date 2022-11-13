@@ -1,6 +1,6 @@
 import axios from "axios";
 const BASE_URL = import.meta.env.VITE_APP_API;
-const SERVICE = 'food/portion'
+const SERVICE = 'food/price'
 
 export default {
 

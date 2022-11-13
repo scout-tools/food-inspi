@@ -63,24 +63,25 @@
         <p class="mt-1 max-w-2xl text-sm text-gray-500">pro Person</p>
       </div>
       <div class="px-4 sm:px-6">
-      <ListItem
-        label="Engergie"
-        :value="recipeDetail.energyKj"
-        unit="kJ"
-        :recipeItems="recipeItems"
-      />
-      <ListItem label="Ballaststoffe" :value="recipeDetail.fibreG" />
-      <ListItem label="gesä. Fettsäuren" :value="recipeDetail.fatSatG" />
-      <ListItem
-        label="Nutri Punkte"
-        :value="recipeDetail.nutriPoints"
-        unit="Punkte"
-      />
-      <ListItem label="Eiweiß" :value="recipeDetail.proteinG" />
-      <ListItem label="Gewicht" :value="recipeDetail.weightG" />
-      <ListItem label="Zucker" :value="recipeDetail.sugarG" />
-      <ListItem label="Salz" :value="recipeDetail.saltG" />
-            </div>
+        <ListItem
+          label="Engergie"
+          :value="recipeDetail.energyKj"
+          unit="kJ"
+          :recipeItems="recipeItems"
+        />
+        <ListItem label="Ballaststoffe" :value="recipeDetail.fibreG" />
+        <ListItem label="gesä. Fettsäuren" :value="recipeDetail.fatSatG" />
+        <ListItem
+          label="Nutri Punkte"
+          :value="recipeDetail.nutriPoints"
+          unit="Punkte"
+        />
+        <ListItem label="Eiweiß" :value="recipeDetail.proteinG" />
+        <ListItem label="Gewicht" :value="recipeDetail.weightG" />
+        <ListItem label="Zucker" :value="recipeDetail.sugarG" />
+        <ListItem label="Salz" :value="recipeDetail.saltG" />
+      </div>
+        <div><NutritionalsBoxPlot/></div>
     </div>
   </div>
 </template>
@@ -88,6 +89,7 @@
 <script setup lang="ts">
 import { onMounted, computed } from "vue";
 import RecipeItemList from "@/modules/recipe/components/RecipeItemList.vue";
+import NutritionalsBoxPlot from "@//modules/recipe/components/chart/NutritionalsBoxPlot.vue";
 import ListItem from "@/modules/recipe/components/ListItem.vue";
 import { useRoute } from "vue-router";
 import { useRecipeStore } from "@/modules/recipe/store/index.ts";
