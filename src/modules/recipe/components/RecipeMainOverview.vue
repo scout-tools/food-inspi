@@ -81,7 +81,7 @@
         <ListItem label="Zucker" :value="recipeDetail.sugarG" />
         <ListItem label="Salz" :value="recipeDetail.saltG" />
       </div>
-        <div><NutritionalsBoxPlot/></div>
+        <div class="px-4 py-4"><NutritionalsBoxPlot/></div>
     </div>
   </div>
 </template>

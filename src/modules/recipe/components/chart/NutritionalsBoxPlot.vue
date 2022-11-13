@@ -53,13 +53,13 @@ const options = computed(() => {
     annotations: {
       points: [
         {
-          x: recipeDetail.value["fatSatG"],
+          x: recipeDetail.value["sugarG"],
           y: "Zucker",
           marker: {
-            size: 6,
-            fillColor: "#fff",
-            strokeColor: "#2698FF",
-            radius: 2,
+            size: 10,
+            fillColor: "#F4D920",
+            strokeColor: "#000000",
+            radius: 20,
           },
           label: {
             offsetY: 0,
@@ -70,10 +70,10 @@ const options = computed(() => {
           x: recipeDetail.value["fatSatG"],
           y: "Gesät. Fettsäuren",
           marker: {
-            size: 6,
-            fillColor: "#fff",
-            strokeColor: "#2698FF",
-            radius: 2,
+            size: 10,
+            fillColor: "#F4D920",
+            strokeColor: "#000000",
+            radius: 20,
           },
           label: {
             offsetY: 0,
@@ -84,10 +84,10 @@ const options = computed(() => {
           x: recipeDetail.value["fibreG"],
           y: "Ballaststoffe",
           marker: {
-            size: 6,
-            fillColor: "#fff",
-            strokeColor: "#2698FF",
-            radius: 2,
+            size: 10,
+            fillColor: "#F4D920",
+            strokeColor: "#000000",
+            radius: 20,
           },
           label: {
             offsetY: 0,
@@ -98,14 +98,42 @@ const options = computed(() => {
           x: recipeDetail.value["proteinG"],
           y: "Eiweiß",
           marker: {
-            size: 6,
-            fillColor: "#fff",
-            strokeColor: "#2698FF",
-            radius: 2,
+            size: 10,
+            fillColor: "#F4D920",
+            strokeColor: "#000000",
+            radius: 20,
           },
           label: {
             offsetY: 0,
             text: "Aktueller Eiweiße",
+          },
+        },
+        {
+          x: recipeDetail.value["carbohydrateG"],
+          y: "Kohlenhydrate",
+          marker: {
+            size: 10,
+            fillColor: "#F4D920",
+            strokeColor: "#000000",
+            radius: 20,
+          },
+          label: {
+            offsetY: 0,
+            text: "Aktuelle Kohlenhydrate",
+          },
+        },
+        {
+          x: recipeDetail.value["saltG"],
+          y: "Salz",
+          marker: {
+            size: 10,
+            fillColor: "#F4D920",
+            strokeColor: "#000000",
+            radius: 20,
+          },
+          label: {
+            offsetY: 0,
+            text: "Aktuelles Salz",
           },
         },
       ],
@@ -142,8 +170,8 @@ const options = computed(() => {
       },
       boxPlot: {
         colors: {
-          upper: "#e9ecef",
-          lower: "#f8f9fa",
+          upper: "#668855",
+          lower: "#5170A5",
         },
       },
     },
@@ -152,7 +180,7 @@ const options = computed(() => {
       align: "left",
     },
     xaxis: {
-      max: 40,
+      max: 70,
     },
   };
 });
@@ -177,6 +205,16 @@ const series = computed(() => {
     return a - b;
   });
 
+const carbohydrateG = recipes.value.map((object) => object["carbohydrateG"]);
+  carbohydrateG.sort(function (a, b) {
+    return a - b;
+  });
+
+const saltG = recipes.value.map((object) => object["saltG"]);
+  saltG.sort(function (a, b) {
+    return a - b;
+  });
+
   return [
     {
       name: "Zielwert",
@@ -197,6 +235,14 @@ const series = computed(() => {
         {
           x: "Eiweiß",
           y: proteinG,
+        },
+        {
+          x: "Kohlenhydrate",
+          y: carbohydrateG,
+        },
+        {
+          x: "Salz",
+          y: saltG,
         },
       ],
     },
