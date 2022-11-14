@@ -1,11 +1,13 @@
 <template>
   <div class="text-center my-12">
     <div class="object-center sm:hidden">
-      <img
-        class="h-40 mx-auto object-center w-auto"
-        src="./../../../../assets/logo.png"
-        alt="Food Inspi"
-      />
+      <router-link :to="{ name: 'SimulatorStart' }">
+        <img
+          class="h-40 mx-auto object-center w-auto"
+          src="./../../../../assets/logo.png"
+          alt="Food Inspi"
+        />
+      </router-link>
     </div>
     <svg
       class="mx-auto invisible sm:visible h-12 w-12 text-gray-400"
@@ -75,8 +77,7 @@
                       py-3.5
                       pl-4
                       pr-3
-                      text-left text-sm
-                      text-gray-900
+                      text-left text-sm text-gray-900
                       sm:pl-6
                     "
                   >
@@ -95,8 +96,7 @@
                       py-4
                       pl-4
                       pr-3
-                      text-left
-                      text-sm
+                      text-left text-sm
                       font-medium
                       text-gray-900
                       sm:pl-6
@@ -116,7 +116,10 @@
                       sm:pr-6
                     "
                   >
-                    <button @click="onSimulateClicked(recipe.id)" class="text-indigo-600 hover:text-indigo-900">
+                    <button
+                      @click="onSimulateClicked(recipe.id)"
+                      class="text-indigo-600 hover:text-indigo-900"
+                    >
                       Simulieren
                     </button>
                   </td>
@@ -138,7 +141,6 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-
 const recipeStore = useRecipeStore();
 
 const recipes = computed(() => {
@@ -152,12 +154,12 @@ const onAddRecipeItem = () => {
 };
 
 async function onSimulateClicked(id) {
-  const response = await recipeStore.cloneRecipe(id)
+  const response = await recipeStore.cloneRecipe(id);
   if (response && response.status == 201) {
-      router.push({
-        name: "SimulatorMain",
-        params: { id: response.data.id }
-      });
+    router.push({
+      name: "SimulatorMain",
+      params: { id: response.data.id },
+    });
   }
 }
 

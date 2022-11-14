@@ -72,12 +72,15 @@
             </TransitionChild>
             <div class="h-0 flex-1 overflow-y-auto pt-5 pb-4">
               <div class="flex flex-shrink-0 items-center px-4">
-                <router-link @click="onButtonClicked" :to="{ name: 'RecipesMain' }">
-                <img
-                  class="h-12 w-auto"
-                  src="./../assets/logo.png"
-                  alt="Pfadfinderlilie"
-                />
+                <router-link
+                  @click="onButtonClicked"
+                  :to="{ name: 'SimulatorStart' }"
+                >
+                  <img
+                    class="h-12 w-auto"
+                    src="./../assets/logo.png"
+                    alt="Food Inspi"
+                  />
                 </router-link>
               </div>
               <nav aria-label="Sidebar" class="mt-5">
@@ -184,11 +187,13 @@
       >
         <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
           <div class="flex flex-shrink-0 items-center px-4">
-            <img
-              class="h-30 w-auto mx-auto"
-              src="./../assets/logo.png"
+            <router-link :to="{ name: 'SimulatorStart' }">
+              <img
+                class="h-30 w-auto mx-auto"
+                src="./../assets/logo.png"
               alt="Food Inspi"
-            />
+              />
+            </router-link>
           </div>
           <nav class="mt-5 flex-1" aria-label="Sidebar">
             <div class="space-y-1 px-2">
@@ -282,13 +287,13 @@
           py-1.5
         "
       >
-        <div>
+        <router-link :to="{ name: 'SimulatorStart' }">
           <img
             class="h-10 w-auto"
             src="./../assets/inspi_food_kopf.png"
             alt="Food Inspi"
           />
-        </div>
+        </router-link>
         <div>
           <button
             type="button"
@@ -393,7 +398,7 @@ const secondaryNavigation = computed(() => {
       icon: CogIcon,
       isAuth: true,
     },
-  ].filter(item => !item.isAuth || isAuth.value); 
+  ].filter((item) => !item.isAuth || isAuth.value);
 });
 const sidebarOpen = ref(false);
 
