@@ -110,6 +110,11 @@ export const useRecipeStore = defineStore("recipe", {
         return await RecipeItemApi.delete(id);
       } catch (error) {}
     },
+    async cloneRecipe(id: Number) {
+      try {
+        return await RecipeApi.clone(id);
+      } catch (error) {}
+    },
   },
   getters: {
     recipes: (state) => {

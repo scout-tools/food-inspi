@@ -25,4 +25,7 @@ export default {
   delete(id: any) {
     return axios.delete(`${BASE_URL}/${SERVICE}/${id}`)
   },
+  clone(id: any) {
+    return axios.post(`${BASE_URL}/${SERVICE}-clone/`, { id })
+  },
 };

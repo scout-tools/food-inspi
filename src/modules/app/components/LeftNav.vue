@@ -187,7 +187,7 @@
             <img
               class="h-30 w-auto mx-auto"
               src="./../assets/logo.png"
-              alt="Your Company"
+              alt="Food Inspi"
             />
           </div>
           <nav class="mt-5 flex-1" aria-label="Sidebar">
@@ -286,7 +286,7 @@
           <img
             class="h-10 w-auto"
             src="./../assets/inspi_food_kopf.png"
-            alt="Your Company"
+            alt="Food Inspi"
           />
         </div>
         <div>
