@@ -45,7 +45,7 @@
             <div class="hidden md:block">
               <component
                 class="h-7 w-7 flex-shrink-0"
-                :class="item.hintLevel === 'warn' ? 'text-green-500' : 'text-red-500'"
+                :class="item.hintLevel === 'warn' ? 'text-orange-500' : 'text-red-500'"
                 aria-hidden="true"
                 :is="item.hintLevel === 'warn' ? LightBulbIcon : ExclamationTriangleIcon"
               />
