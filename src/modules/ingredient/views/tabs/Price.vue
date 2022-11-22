@@ -138,7 +138,7 @@
                         "
                       >
                         <button
-                          @click="onDeleteClicked"
+                          @click="onDeleteClicked(item)"
                           class="text-red-600 hover:text-red-900"
                         >
                           löschen
@@ -153,6 +153,11 @@
         </div>
       </div>
     </div>
+    <DeleteModal
+      :open="openDeleteModal"
+      :callbackOnConfirm="onDeletePriceConfirmed"
+      :callbackOnCancel="cancelModal"
+    />
   </TabPanel>
 </template>
 
@@ -165,6 +170,9 @@ import { useRouter } from "vue-router";
 import { onMounted, computed } from "vue";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
 import PrimaryButton from "@/components/button/Primary.vue";
+import DeleteModal from "@/components/modal/Delete.vue";
+import { useCommonStore } from "@/modules/common/store/index.ts";
+const commonStore = useCommonStore();
 
 const route = useRoute();
 const router = useRouter();
@@ -182,7 +190,31 @@ function onNewPortionClicked() {
   router.push({ name: "PriceCreate" });
 }
 
-function onDeleteClicked() {}
+const openDeleteModal = ref(false);
+const selectedItem = ref();
+
+function onDeleteClicked(item) {
+  openDeleteModal.value = true;
+  selectedItem.value = item;
+}
+
+function onDeletePriceConfirmed() {
+  const id = selectedItem.value.id;
+  store.deletePrice(id).then(() => {
+    router.push({
+      name: "IngredientPrices",
+      params: {
+        id,
+      },
+    });
+    commonStore.showSuccess("Zutat erfolgreich gelöscht");
+    openDeleteModal.value = false;
+  });
+}
+
+function cancelModal() {
+  openDeleteModal.value = false;
+}
 
 onMounted(() => {
   const id = route.params.id;

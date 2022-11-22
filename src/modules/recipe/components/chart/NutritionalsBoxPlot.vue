@@ -63,7 +63,7 @@ const options = computed(() => {
           },
           label: {
             offsetY: 0,
-            text: "atueller Zucker",
+            text: "aktueller Zucker",
           },
         },
         {

@@ -118,6 +118,17 @@ export const useIngredientStore = defineStore("ingredient", {
         }
       }
     },
+    async deletePrice(data: object) {
+      try {
+        return await PriceApi.delete(data);
+      } catch (error) {
+        if (error.response.status === 400) {
+          commonStore.showError(error.response.data);
+        } else if (error.response.status === 500) {
+          commonStore.showError('Schwerer Server Fehler');
+        }
+      }
+    },
     async fetchRetailers(params = {}) {
       try {
         const response = await RetailerApi.fetchAll(params);

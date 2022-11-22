@@ -8,6 +8,7 @@
     @input="updateValue"
     @update:modelValue="updateValueDirekt"
     :errors="props.errors"
+    :options="{ currency: 'EUR' }"
   ></component>
 </template>
 
@@ -18,19 +19,39 @@ import Number from "@/components/field/Number.vue";
 import Radio from "@/components/field/Radio.vue";
 import Toggle from "@/components/field/Toggle.vue";
 import Select from "@/components/field/Select.vue";
+import AutoComplete from "@/components/field/AutoComplete.vue";
+import Currency from "@/components/field/Currency.vue";
 
-const components = { Text, TextArea, Number, Radio, Toggle, Select };
+const components = {
+  Text,
+  TextArea,
+  Number,
+  Radio,
+  Toggle,
+  Select,
+  AutoComplete,
+  Currency,
+};
 
 // I do NOT want to use [CompA, CompA] because my inputs are strings
-const componentTreeName = ["Text", "TextArea", "Number", "Radio", "Toggle", "Select"];
-const emit = defineEmits(['update:modelValue'])
+const componentTreeName = [
+  "Text",
+  "TextArea",
+  "Number",
+  "Radio",
+  "Toggle",
+  "Select",
+  "AutoComplete",
+  "Currency",
+];
+const emit = defineEmits(["update:modelValue"]);
 const updateValue = (event) => {
-    emit('update:modelValue', event.target.value)
-}
+  emit("update:modelValue", event.target.value);
+};
 
 const updateValueDirekt = (event) => {
-    emit('update:modelValue', event)
-}
+  emit("update:modelValue", event);
+};
 
 const props = defineProps({
   modelValue: { type: String, required: true },

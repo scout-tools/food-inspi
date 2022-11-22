@@ -27,6 +27,7 @@
               </div>
               <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-4">
                 <Base
+                  :cols="6"
                   component="Select"
                   techName="measuringUnit"
                   v-model="state['measuringUnit']"
@@ -36,6 +37,7 @@
                   :errors="errors.measuringUnit && errors.measuringUnit.$errors"
                 />
                 <Base
+                  :cols="6"
                   component="Number"
                   techName="quantity"
                   v-model="state['quantity']"
@@ -44,11 +46,12 @@
                   :errors="errors.quantity && errors.quantity.$errors"
                 />
                 <Base
+                  :cols="6"
                   component="Text"
                   techName="name"
                   v-model="state['name']"
                   :label="'Name (optional)'"
-                  hint="Wähle einen Portionsnamen aus.."
+                  hint="Wähle einen Portionsnamen aus. Sonst wird der generiert."
                   :errors="errors.name && errors.name.$errors"
                 />
               </div>

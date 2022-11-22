@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:col-span-3">
+  <div :class="`sm:col-span-${cols}`">
     <label
       for="about"
       class="block text-sm font-medium text-gray-700"

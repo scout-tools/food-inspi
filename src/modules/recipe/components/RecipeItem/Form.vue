@@ -1,47 +1,49 @@
 <template>
-  <BaseField
-    v-if="!isEdit"
-    component="Select"
-    label="Zutat"
-    techName="ingredient"
-    v-model="ingredient"
-    :items="ingredients"
-    :errors="errors.ingredient?.$errors"
-  />
-  <BaseField
-    component="Select"
-    v-model="state.portion"
-    techName="portion"
-    :disabled="!ingredient"
-    label="Portion"
-    :items="portions"
-    :errors="errors.portion?.$errors"
-  />
-  <BaseField
-    component="Number"
-    :label="'Anzahl'"
-    techName="quantity"
-    v-model="state.quantity"
-    :errors="errors.quantity?.$errors"
-  />
-  <PrimaryButton
-    @click="onSaveClicked"
-    :label="!isEdit ? 'Zutat hinzufügen' : 'Zutat bearbeiten'"
-  />
-  <PrimaryButton
-    v-if="isEdit"
-    class="mx-2 my-2"
-    @click="onDeleteClicked()"
-    color="red"
-    label="Zutat löschen"
-  />
+  <div>
+    <BaseField
+      v-if="!isEdit"
+      component="AutoComplete"
+      label="Zutat"
+      techName="ingredient"
+      v-model="ingredient"
+      :items="ingredients"
+      :errors="errors.ingredient?.$errors"
+    />
+    <BaseField
+      component="Select"
+      v-model="state.portion"
+      techName="portion"
+      :disabled="!ingredient"
+      label="Portion"
+      :items="portions"
+      :errors="errors.portion?.$errors"
+    />
+    <BaseField
+      component="Number"
+      :label="'Anzahl'"
+      techName="quantity"
+      v-model="state.quantity"
+      :errors="errors.quantity?.$errors"
+    />
+    <PrimaryButton
+      @click="onSaveClicked"
+      :label="!isEdit ? 'Zutat hinzufügen' : 'Zutat bearbeiten'"
+    />
+    <PrimaryButton
+      v-if="isEdit"
+      class="mx-2 my-2"
+      @click="onDeleteClicked()"
+      color="red"
+      label="Zutat löschen"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
 import { useCommonStore } from "@/modules/common/store/index.ts";
 const commonStore = useCommonStore();
 
-import { reactive } from "vue";
+import { reactive, onMounted, ref, watch, computed } from "vue";
 import BaseField from "@/components/field/Base.vue";
 import Select from "@/components/field/Select.vue";
 import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
@@ -98,9 +100,11 @@ const isEdit = computed(() => {
 watch(ingredientStore, (items) => {
   if (items && items.portions && items.portions.length) {
     if (props.reciptItem?.portion?.id) {
-      state.portion = items.portions.filter((item) => item.id === props.reciptItem.portion.id)[0];
+      state.portion = items.portions.filter(
+        (item) => item.id === props.reciptItem.portion.id
+      )[0];
     } else {
-      state.portion = items.portions[0]
+      state.portion = items.portions[0];
     }
   }
 });
@@ -132,17 +136,16 @@ function onSaveClicked() {
           quantity: state.quantity,
         })
         .then((response2: any) => {
-          recipeStore
-            .updateRecipeItem({
-              id: response2.data.id,
-              recipe: response2.data.recipe,
-              portion: response2.data.portion,
-              quantity: response2.data.quantity,
-            })
-        })
-          .then((response4: any) => {
-            goToRecipe(recipeId);
+          recipeStore.updateRecipeItem({
+            id: response2.data.id,
+            recipe: response2.data.recipe,
+            portion: response2.data.portion,
+            quantity: response2.data.quantity,
           });
+        })
+        .then((response4: any) => {
+          goToRecipe(recipeId);
+        });
     });
   }
   // new
@@ -153,15 +156,14 @@ function onSaveClicked() {
         portion: state.portion?.id,
         quantity: state.quantity,
       })
-        .then((response2: any) => {
-          recipeStore
-            .updateRecipeItem({
-              id: response2.data.id,
-              recipe: response2.data.recipe,
-              portion: response2.data.portion,
-              quantity: response2.data.quantity,
-            })
-        })
+      .then((response2: any) => {
+        recipeStore.updateRecipeItem({
+          id: response2.data.id,
+          recipe: response2.data.recipe,
+          portion: response2.data.portion,
+          quantity: response2.data.quantity,
+        });
+      })
       .then((response3: any) => {
         goToRecipe(recipeId);
       });
@@ -175,15 +177,14 @@ function onSaveClicked() {
         portion: state.portion?.id,
         quantity: state.quantity,
       })
-        .then((response2: any) => {
-          recipeStore
-            .updateRecipeItem({
-              id: response2.data.id,
-              recipe: response2.data.recipe,
-              portion: response2.data.portion,
-              quantity: response2.data.quantity,
-            })
-        })
+      .then((response2: any) => {
+        recipeStore.updateRecipeItem({
+          id: response2.data.id,
+          recipe: response2.data.recipe,
+          portion: response2.data.portion,
+          quantity: response2.data.quantity,
+        });
+      })
       .then((response2: any) => {
         goToRecipe(recipeId);
       });
@@ -197,7 +198,7 @@ function goToRecipe(recipeId: number) {
       id: recipeId,
     },
   });
-  if (router.currentRoute.value.name === 'SimulatorMain') {
+  if (router.currentRoute.value.name === "SimulatorMain") {
     router.go(router.currentRoute.value);
   }
 }
@@ -217,6 +218,6 @@ onMounted(() => {
     state.portion = null;
     state.quantity = 1;
   }
-  ingredientStore.fetchIngredients()
+  ingredientStore.fetchIngredients();
 });
 </script>

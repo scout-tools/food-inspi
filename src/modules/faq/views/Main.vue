@@ -34,11 +34,11 @@
       </div>
       <div class="mt-8">
         <h3 class="text-lg font-medium">
-          <a :href="action.href" class="focus:outline-none">
+          <router-link :to="{ name: action.link }" class="focus:outline-none">
             <!-- Extend touch target to entire panel -->
             <span class="absolute inset-0" aria-hidden="true" />
             {{ action.title }}
-          </a>
+          </router-link>
         </h3>
         <p class="mt-2 text-sm text-gray-500">
           Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit
@@ -83,46 +83,46 @@ import {
 
 const actions = [
   {
-    title: "Nutri",
-    href: "#",
+    title: "Gesund",
+    link: "FaqGesund",
     icon: ClockIcon,
     iconForeground: "text-teal-700",
     iconBackground: "bg-teal-50",
   },
-  {
-    title: "Grenzwerte",
-    href: "#",
-    icon: CheckBadgeIcon,
-    iconForeground: "text-purple-700",
-    iconBackground: "bg-purple-50",
-  },
-  {
-    title: "Einheiten",
-    href: "#",
-    icon: UsersIcon,
-    iconForeground: "text-sky-700",
-    iconBackground: "bg-sky-50",
-  },
-  {
-    title: "Preise",
-    href: "#",
-    icon: BanknotesIcon,
-    iconForeground: "text-yellow-700",
-    iconBackground: "bg-yellow-50",
-  },
+  // {
+  //   title: "Grenzwerte",
+  //   href: "#",
+  //   icon: CheckBadgeIcon,
+  //   iconForeground: "text-purple-700",
+  //   iconBackground: "bg-purple-50",
+  // },
+  // {
+  //   title: "Einheiten",
+  //   href: "#",
+  //   icon: UsersIcon,
+  //   iconForeground: "text-sky-700",
+  //   iconBackground: "bg-sky-50",
+  // },
+  // {
+  //   title: "Preise",
+  //   href: "#",
+  //   icon: BanknotesIcon,
+  //   iconForeground: "text-yellow-700",
+  //   iconBackground: "bg-yellow-50",
+  // },
   {
     title: "Norm-Portion",
-    href: "#",
+    link: "FaqNormPortion",
     icon: BanknotesIcon,
     iconForeground: "text-red-700",
     iconBackground: "bg-red-50",
   },
-  {
-    title: "Satt",
-    href: "#",
-    icon: BanknotesIcon,
-    iconForeground: "text-green-700",
-    iconBackground: "bg-green-50",
-  },
+  // {
+  //   title: "Satt",
+  //   href: "#",
+  //   icon: BanknotesIcon,
+  //   iconForeground: "text-green-700",
+  //   iconBackground: "bg-green-50",
+  // },
 ];
 </script>

@@ -8,6 +8,7 @@ import IngredientRouter from '@/modules/ingredient/router'
 import RecipeRouter from '@/modules/recipe/router'
 import SettingsRouter from '@/modules/settings/router'
 import AuthRouter from '@/modules/auth/router'
+import SupportMain from '@/modules/support/router'
 
 const routes = [
   ...AppRouter,
@@ -18,6 +19,7 @@ const routes = [
   ...RecipeRouter,
   ...SettingsRouter,
   ...AuthRouter,
+  ...SupportMain
 ]
 
 const router = createRouter({

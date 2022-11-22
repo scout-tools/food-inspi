@@ -9,7 +9,7 @@
         @input="updateValue"
         type="number"
         pattern="[0-9]+([\,|\.][0-9]+)?"
-        step="0.01"
+        step="1"
         class="
           block
           w-full
@@ -21,9 +21,6 @@
         "
       />
     </div>
-      <div v-if="hasError" class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-        <ExclamationCircleIcon class="h-5 w-5 text-red-500" aria-hidden="true" />
-      </div>
     <p class="mt-2 text-sm text-red-500" id="email-description">
       {{ props.errors[0] && props.errors[0].$message }}
     </p>
@@ -41,14 +38,14 @@ const props = defineProps({
   errors: { type: Array, required: false, default: [] },
   label: { type: String, required: true },
   hint: { type: String, required: false, default: null },
-  cols: { type: Number, required: false, default: 3}
+  cols: { type: Number, required: false, default: 3 },
 });
 
 const emit = defineEmits(["update:modelValue"]);
 
 const hasError = computed(() => {
   return props.errors[0] && props.errors.length;
-})
+});
 
 const updateValue = (event) => {
   emit("update:modelValue", event.target.value);

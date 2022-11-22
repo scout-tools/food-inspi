@@ -12,4 +12,14 @@ export default [
       },
     ],
   },
+  {
+    path: "/faq/norm-portion",
+    name: "FaqNormPortion",
+    component: () => import(/* webpackChunkName: "FaqNormPortion" */ "@/modules/faq/views/NormPortion.vue"),
+  },
+  {
+    path: "/faq/gesund",
+    name: "FaqGesund",
+    component: () => import(/* webpackChunkName: "FaqGesund" */ "@/modules/faq/views/Gesund.vue"),
+  },
 ];
