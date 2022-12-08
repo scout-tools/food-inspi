@@ -57,7 +57,7 @@
     </dl>
     <div class="overflow-hidden bg-white shadow sm:rounded-lg">
       <div class="px-4 py-5 sm:px-6">
-        <h3 class="text-lg font-medium leading-6 text-gray-900">
+        <h3 class="text-lg font-medium leading-6 text-blue-900">
           Inhaltsstoffe
         </h3>
         <p class="mt-1 max-w-2xl text-sm text-gray-500">pro Person</p>
@@ -79,6 +79,7 @@
         <ListItem label="Eiweiß" :value="recipeDetail.proteinG" />
         <ListItem label="Gewicht" :value="recipeDetail.weightG" />
         <ListItem label="Zucker" :value="recipeDetail.sugarG" />
+        <ListItem label="Kohlenhydrate" :value="recipeDetail.carbohydrateG" />
         <ListItem label="Salz" :value="recipeDetail.saltG" />
       </div>
         <div class="px-4 py-4"><NutritionalsBoxPlot/></div>

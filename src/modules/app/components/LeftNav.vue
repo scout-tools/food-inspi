@@ -88,7 +88,7 @@
                   <router-link
                     v-for="item in navigation"
                     :key="item.name"
-                    :to="{ name: item.linkName, params: { id: 1 } }"
+                    :to="{ name: item.linkName }"
                     @click="onButtonClicked"
                     :class="[
                       item.linkName === currentRoute
@@ -118,7 +118,7 @@
                   <router-link
                     v-for="item in secondaryNavigation"
                     :key="item.name"
-                    :to="{ name: item.linkName, params: { id: 1 } }"
+                    :to="{ name: item.linkName }"
                     @click="onButtonClicked"
                     class="
                       group
@@ -200,7 +200,7 @@
               <router-link
                 v-for="item in navigation"
                 :key="item.name"
-                :to="{ name: item.linkName, params: { id: 1 } }"
+                :to="{ name: item.linkName }"
                 @click="onButtonClicked"
                 :class="[
                   currentRoute.includes(item.route)
@@ -357,6 +357,7 @@ import {
   RocketLaunchIcon,
   ScaleIcon,
   ArrowRightIcon,
+  CalendarIcon,
   ArrowLeftIcon,
 } from "@heroicons/vue/24/outline";
 
@@ -430,6 +431,12 @@ const navigation = [
     linkName: "HintMain",
     icon: ScaleIcon,
     route: "hint",
+  },
+  {
+    name: "Planungen",
+    linkName: "MealDayStart",
+    icon: CalendarIcon,
+    route: "event",
   },
 ];
 </script>

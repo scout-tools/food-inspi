@@ -190,9 +190,7 @@ const rules = computed(() => {
       maxValue: maxValue(10000),
      },
   };
-  debugger;
   if (newPackage.value === false) {
-    debugger;
     // if billing is not the same as shipping, require it
     localRules.quantity = {
       required,
@@ -201,7 +199,6 @@ const rules = computed(() => {
       required,
     };
   } else {
-    debugger;
     localRules.package = {
       required,
     };
@@ -221,7 +218,6 @@ const commonStore = useCommonStore();
 function onButtonClicked() {
   v$.value.$validate();
   errors.value = v$.value;
-  debugger;
   if (errors.value.$error) {
     commonStore.showError("Bitte Felder überprüfen");
     return;

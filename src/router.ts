@@ -9,6 +9,7 @@ import RecipeRouter from '@/modules/recipe/router'
 import SettingsRouter from '@/modules/settings/router'
 import AuthRouter from '@/modules/auth/router'
 import SupportMain from '@/modules/support/router'
+import MealMain from '@/modules/meal/router'
 
 const routes = [
   ...AppRouter,
@@ -19,7 +20,8 @@ const routes = [
   ...RecipeRouter,
   ...SettingsRouter,
   ...AuthRouter,
-  ...SupportMain
+  ...SupportMain,
+  ...MealMain
 ]
 
 const router = createRouter({
