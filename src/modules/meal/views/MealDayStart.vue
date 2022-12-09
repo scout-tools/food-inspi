@@ -1,13 +1,11 @@
 <template>
   <div class="2xl:px-64 xl:px-30">
-  <div class="2xl:px-64 xl:px-30">
     <EmptyItem @onAddClicked="onEventAddClicked" />
     <EventAddEdit
       :open="openEventAddEdit"
       @close="onEventAddEditClose"
       header="Veranstaltung"
     />
-  </div>
   </div>
 </template>
 

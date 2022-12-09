@@ -102,9 +102,14 @@ const isEdit = computed(() => {
 
 
 function onDeleteClicked() {
+  let id = Number(route.params.id);
+  let eventDayId = Number(route.params.eventDayId);
+
   mealStore.deleteMeal(props.items.id).then((response) => {
-    let id = Number(route.params.id);
-    goToRecipe(id);
+        goToRecipe("EventDay", {
+          id,
+          eventDayId,
+        });
   });
 }
 
@@ -185,16 +190,18 @@ const router = useRouter();
 
 onMounted(() => {
   mealStore.fetchMealTypes()
-  if (isEdit.value) {
-    state.name = props.items?.name;
-    state.mealDay = props.items?.mealDay;
-    state.factor = props.items?.factor;
-    state.mealType = props.items?.mealType;
-  } else {
-    state.name = '';
-    state.mealDay = 1;
-    state.factor = 0.33;
-    state.mealType = mealTypes[0]
-  }
+  setTimeout(function () {
+    if (isEdit.value) {
+      state.name = props.items?.name;
+      state.mealDay = props.items?.mealDay;
+      state.factor = props.items?.factor;
+      state.mealType = mealTypes.value.filter(item => item.value === props.items?.mealType)[0];
+    } else {
+      state.name = '';
+      state.mealDay = 1;
+      state.factor = 0.33;
+      state.mealType = mealTypes[0]
+    }
+  }, 300);
 });
 </script>

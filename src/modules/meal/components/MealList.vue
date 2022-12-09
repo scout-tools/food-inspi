@@ -1,6 +1,6 @@
 <template>
   <li
-    class="bg-white px-4 py-6 shadow sm:rounded-lg sm:p-6"
+    class="bg-gray-50 px-4 py-6 shadow sm:rounded-lg sm:p-6"
   >
     <article :aria-labelledby="'props.meal-title-' + props.meal.id">
       <div>
@@ -104,8 +104,8 @@
           class="mt-1 truncate text-sm text-gray-500"
         >
           {{ mealItem.factor }} x {{ mealItem.recipe.name }} ({{ mealItem.energyKj }} kJ)
-          <button @click="onMenuItemUpdate(mealItem)">
-            Edit
+          <button class="font-medium text-blue-600 hover:text-blue-500" @click="onMenuItemUpdate(mealItem)">
+            bearbeiten
           </button>
         </p>
       <div class="mt-6 flex justify-between space-x-8">
@@ -116,10 +116,10 @@
                 meal: props.meal.id
               })"
               type="button"
-              class="inline-flex space-x-2 text-gray-400 hover:text-gray-500"
+              class="inline-flex font-medium text-blue-600 hover:text-blue-500"
             >
               <PlusIcon class="h-5 w-5" aria-hidden="true" />
-              <span class="font-medium text-gray-900"> Rezept zum Menü Hinzufügen</span>
+              <span> Rezept zum Menü Hinzufügen</span>
             </button>
           </span>
         </div>
@@ -149,6 +149,7 @@ import {
   PlusIcon,
   ShareIcon,
   StarIcon,
+  PencilIcon
 } from "@heroicons/vue/20/solid";
 import {
   ArrowTrendingUpIcon,

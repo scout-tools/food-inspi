@@ -1,13 +1,11 @@
 <template>
   <div class="2xl:px-64 xl:px-30">
-  <div class="2xl:px-64 xl:px-30">
     <EmptyItem @onAddRecipeItem="onAddRecipeItem" />
     <RecipeItemUpdate
       :open="openRecipeItemUpdate"
       @close="onRecipeItemUpdateClose"
       header="Zutat"
     />
-  </div>
   </div>
 </template>
 

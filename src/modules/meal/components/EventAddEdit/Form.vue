@@ -43,7 +43,6 @@ const commonStore = useCommonStore();
 import { reactive, onMounted, ref, watch, computed } from "vue";
 import BaseField from "@/components/field/Base.vue";
 import Select from "@/components/field/Select.vue";
-import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import PrimaryButton from "@/components/button/Primary.vue";
 import { useIngredientStore } from "@/modules/ingredient/store/index";
 import { useRecipeStore } from "@/modules/recipe/store/index";

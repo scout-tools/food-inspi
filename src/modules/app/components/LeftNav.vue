@@ -191,7 +191,7 @@
               <img
                 class="h-30 w-auto mx-auto"
                 src="./../assets/logo.png"
-              alt="Food Inspi"
+                alt="Food Inspi"
               />
             </router-link>
           </div>
@@ -393,6 +393,24 @@ const secondaryNavigation = computed(() => {
       route: "faq",
     },
     {
+      name: "Rezepte",
+      linkName: "RecipesMain",
+      icon: Bars3Icon,
+      route: "recipe",
+    },
+    {
+      name: "Zutaten",
+      linkName: "IngredientMain",
+      icon: MagnifyingGlassCircleIcon,
+      route: "ingredient",
+    },
+    {
+      name: "Regeln",
+      linkName: "HintMain",
+      icon: ScaleIcon,
+      route: "hint",
+    },
+    {
       name: "Einstellungen",
       linkName: "Settings",
       route: "settings",
@@ -413,24 +431,6 @@ const navigation = [
     linkName: "SimulatorStart",
     icon: RocketLaunchIcon,
     route: "simulator",
-  },
-  {
-    name: "Rezepte",
-    linkName: "RecipesMain",
-    icon: Bars3Icon,
-    route: "recipe",
-  },
-  {
-    name: "Zutaten",
-    linkName: "IngredientMain",
-    icon: MagnifyingGlassCircleIcon,
-    route: "ingredient",
-  },
-  {
-    name: "Regeln",
-    linkName: "HintMain",
-    icon: ScaleIcon,
-    route: "hint",
   },
   {
     name: "Planungen",

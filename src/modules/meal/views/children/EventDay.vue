@@ -78,7 +78,7 @@
       :open="openMealForm"
       @close="onMealFormClose"
       :items="mealData"
-      header="Neues Gericht hinzufügen"
+      header="Menü"
     />
     <MealItemAddEdit
       :open="openMealItemForm"
