@@ -15,7 +15,7 @@
           hover:border-gray-400
           focus:outline-none
           focus:ring-2
-          focus:ring-indigo-500
+          focus:ring-blue-500
           focus:ring-offset-2
         "
       >

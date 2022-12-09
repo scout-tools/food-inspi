@@ -2,6 +2,7 @@
   <div>
     <Breadcrumbs :pages="pages" />
     <div
+      v-if="!isShoppingRoute"
       class="
         mx-8
         my-4
@@ -11,15 +12,16 @@
       "
     >
       <div class="pb-5">
-        <h3 class="text-lg font-medium leading-6 text-gray-900">
-          Job Postings
+        <h3 class="text-sm font-medium leading-6 text-gray-900">
+          {{ props.event.name }}
         </h3>
         <p class="mt-2 max-w-4xl text-sm text-gray-500">
           Für {{ props.event.normPortions }} Normpersonen
         </p>
       </div>
-      <div class="mt-3 flex sm:mt-0 sm:ml-4">
+      <div v-if="!isShoppingRoute" class="mt-3 flex sm:mt-0 sm:ml-4">
           <router-link
+
             class="text-sm font-medium text-gray-500 hover:text-gray-700"
             :to="{ name: 'EventShoppingCart' }"
           >
@@ -140,7 +142,7 @@
 
     <main class="pt-8 pb-16">
       <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="px-4 sm:px-0">
+        <div class="px-0">
           <slot />
         </div>
       </div>
@@ -184,6 +186,9 @@ import {
 } from "@heroicons/vue/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 import { ref, watch, onMounted, computed } from "vue";
+import { useRoute } from "vue-router";
+
+
 
 import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 
@@ -203,6 +208,11 @@ function onDeleteClicked() {
 function onEditClicked(items) {
   emit("onEditClicked", items);
 }
+const route = useRoute();
+
+const isShoppingRoute = computed(() => {
+  return route.name === 'EventShoppingCart';
+});
 
 const pages = computed(() => {
   console.log({ id: props.event.id });
