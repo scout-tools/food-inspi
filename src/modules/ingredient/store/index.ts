@@ -89,6 +89,13 @@ export const useIngredientStore = defineStore("ingredient", {
         }
       }
     },
+    async deletePortion(data: object) {
+      try {
+        return await PortionsApi.delete(data);
+      } catch (error) {
+        commonStore.showError('Schwerer Server Fehler');
+      }
+    },
     async fetchPackages(params = {}) {
       try {
         const response = await PackageApi.fetchAll(params);

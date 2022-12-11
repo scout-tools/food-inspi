@@ -47,6 +47,15 @@
                 />
                 <Base
                   :cols="6"
+                  component="Number"
+                  techName="rank"
+                  v-model="state['rank']"
+                  :label="'Rangfolge'"
+                  hint="Wähle die Rangfolge/Relevanz dieser Prioität in der Liste."
+                  :errors="errors.rank && errors.rank.$errors"
+                />
+                <Base
+                  :cols="6"
                   component="Text"
                   techName="name"
                   v-model="state['name']"
@@ -119,6 +128,7 @@ const state = reactive({
   measuringUnit: 1,
   quantity: 1,
   name: null,
+  rank: 1,
 });
 
 const rules = {
@@ -129,6 +139,9 @@ const rules = {
     required,
   },
   quantity: {
+    required,
+  },
+  rank: {
     required,
   },
 };

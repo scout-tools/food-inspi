@@ -9,6 +9,7 @@ const commonStore = useCommonStore();
 export const useRecipeStore = defineStore("recipe", {
   state: () => ({
     _recipes: [],
+    _recipesVerified: [],
     _recipeDetail: {},
     _recipeItem: {},
     _createRecipeData: [{
@@ -32,6 +33,15 @@ export const useRecipeStore = defineStore("recipe", {
       try {
         const response = await RecipeApi.fetchAll(params);
         this._recipes = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchVerified(params = {}) {
+      try {
+        const response = await RecipeApi.fetchVerified(params);
+        this._recipesVerified = response.data;
       } catch (error) {
         alert(error);
         console.log(error);
@@ -119,6 +129,9 @@ export const useRecipeStore = defineStore("recipe", {
   getters: {
     recipes: (state) => {
       return state._recipes;
+    },
+    recipesVerified: (state) => {
+      return state._recipesVerified;
     },
     recipeDetail: (state) => {
       return state._recipeDetail;

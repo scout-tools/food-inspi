@@ -30,7 +30,7 @@ const hint = computed(() => {
 });
 
 const recipes = computed(() => {
-  return recipeStore.recipes;
+  return recipeStore.recipesVerified;
 });
 
 const recipeDetail = computed(() => {
@@ -45,7 +45,7 @@ onMounted(() => {
   const id = route.params.id;
   recipeStore.fetchRecipeById(id);
 
-  recipeStore.fetchRecipes();
+  recipeStore.fetchVerified();
 });
 
 const options = computed(() => {

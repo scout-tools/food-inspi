@@ -7,7 +7,7 @@
           {{ moment(getMealDay(event).date).format("LL") }}
         </h2>
         <h3 class="text-lg font-medium leading-6 text-gray-900 mx-4 my-2">
-          Tagesengerie: {{ getMealDay(event).energyKj }} kJ von 13.125 kJ
+          Tagesengerie: {{ getMealDay(event).energyKj }} kJ von 11.765 kJ
         </h3>
         <!-- <a
               href="#"

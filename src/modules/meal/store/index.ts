@@ -74,7 +74,6 @@ export const useMealStore = defineStore("meal", {
     },
     async deleteEvent(data: object) {
       try {
-        debugger;
         return await EventApi.delete(data);
       } catch (error) {
       }

@@ -84,7 +84,7 @@
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-gray-200 bg-white">
-                    <tr v-for="person in portions" :key="person.email">
+                    <tr v-for="portion in portions" :key="portion.email">
                       <td
                         class="
                           whitespace-nowrap
@@ -98,7 +98,7 @@
                           lg:pl-8
                         "
                       >
-                        {{ person.name }}
+                        {{ portion.name }}
                       </td>
                       <td
                         class="
@@ -108,7 +108,7 @@
                           text-sm text-gray-500
                         "
                       >
-                        {{ person.weightG }} g
+                        {{ portion.weightG }} g
                       </td>
                       <td
                         class="
@@ -118,7 +118,7 @@
                           text-sm text-gray-500
                         "
                       >
-                        {{ person.rank }}.
+                        {{ portion.rank }}.
                       </td>
                       <td
                         class="
@@ -133,7 +133,7 @@
                           lg:pr-8
                         "
                       >
-                        <button @click="onDeleteClicked" class="text-red-600 hover:text-red-900"
+                        <button @click="onDeleteClicked(portion)" class="text-red-600 hover:text-red-900"
                           >löschen
                           </button
                         >
@@ -147,6 +147,11 @@
         </div>
       </div>
     </div>
+    <DeleteModal
+      :open="openDeleteModal"
+      :callbackOnConfirm="deletePortion"
+      :callbackOnCancel="cancelModal"
+    />
   </TabPanel>
 </template>
 
@@ -158,6 +163,7 @@ import { useRoute, useRouter } from "vue-router";
 import { onMounted, computed } from "vue";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
 import PrimaryButton from "@/components/button/Primary.vue";
+import DeleteModal from "@/components/modal/Delete.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -173,6 +179,28 @@ const ingredientDetail = computed(() => {
 
 function onNewPortionClicked() {
   router.push({name: 'PortionCreate'})
+}
+
+const openDeleteModal = ref(false);
+
+const selectedItem = ref({})
+
+function onDeleteClicked(portion: object) {
+  openDeleteModal.value = true;
+  selectedItem.value = portion;
+}
+
+import { useCommonStore } from "@/modules/common/store/index.ts";
+const commonStore = useCommonStore();
+
+function deletePortion() {
+  store.deletePortion(selectedItem.value).then(() => {
+    router.go(router.currentRoute)
+  });
+}
+
+function cancelModal() {
+  openDeleteModal.value = false;
 }
 
 onMounted(() => {

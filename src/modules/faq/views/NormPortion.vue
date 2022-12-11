@@ -43,7 +43,7 @@ const pages = computed(() => {
 const ingredientStore = useIngredientStore();
 
 function getHeightByAge(age: number, genderId: number) {
-  return getMassByAge(age, genderId) + 100;
+  return Math.round(Math.sqrt(getMassByAge(age, genderId) / 22) * 100 / 100) // 22 ist BMI
 }
 
 function getMassByAge(age: number, genderId: number) {
@@ -281,16 +281,16 @@ const genders = [
 
 const activities = [
   {
-    name: "Schulung (x 1.5)",
-    value: 1.5,
+    name: "Schulung (x 1.4)",
+    value: 1.4,
   },
   {
-    name: "Zeltlager (x 2.0)",
-    value: 2,
+    name: "Zeltlager (x 1.8)",
+    value: 1.8,
   },
   {
-    name: "Wandern (x 2.5)",
-    value: 2.5,
+    name: "Wandern (x 2.2)",
+    value: 2.2,
   },
 ];
 

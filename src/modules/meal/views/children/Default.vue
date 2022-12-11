@@ -26,7 +26,7 @@
                           aria-hidden="true"
                         />
                         <span class="truncate"
-                          >{{ day.energyKj }} kJ / 14000 kJ</span
+                          >{{ day.energyKj }} kJ / 11000 kJ</span
                         >
                       </p>
                     </div>

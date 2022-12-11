@@ -9,7 +9,11 @@ export default {
       params: params,
     });
   },
-
+  fetchVerified(params: any) {
+    return axios.get(`${BASE_URL}/food/recipe-read-verified/`, {
+      params: params,
+    });
+  },
   fetchById(id: any) {
     return axios.get(`${BASE_URL}/${SERVICE}/${id}/`);
   },

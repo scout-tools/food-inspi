@@ -10,9 +10,9 @@
     <BaseField
       component="Number"
       label="Tagesaktor"
-      techName="factor"
-      v-model="state.factor"
-      :errors="errors.factor?.$errors"
+      techName="dayPartFactor"
+      v-model="state.dayPartFactor"
+      :errors="errors.dayPartFactor?.$errors"
     />
     <BaseField
       component="Select"
@@ -58,7 +58,7 @@ const state = reactive({
   mealType: {
     value: 'test',
   },
-  factor: 0.33,
+  dayPartFactor: 0.33,
 });
 
 
@@ -66,7 +66,7 @@ const rules = {
   name: {
     required,
   },
-  factor: {
+  dayPartFactor: {
     required,
   },
   mealType: {
@@ -141,7 +141,7 @@ function onSaveClicked() {
       .createMeal({
         name: state.name,
         mealDay: eventDayId,
-        factor: state.factor,
+        factor: state.dayPartFactor,
         mealType: state.mealType?.value,
       })
       .then((response3: any) => {
@@ -158,7 +158,7 @@ function onSaveClicked() {
         id: props.items?.id,
         name: state.name,
         mealDay: eventDayId,
-        factor: state.factor,
+        factor: state.dayPartFactor,
         mealType: state.mealType?.value,
       })
       .then((response2: any) => {
@@ -194,12 +194,12 @@ onMounted(() => {
     if (isEdit.value) {
       state.name = props.items?.name;
       state.mealDay = props.items?.mealDay;
-      state.factor = props.items?.factor;
+      state.dayPartFactor = props.items?.dayPartFactor;
       state.mealType = mealTypes.value.filter(item => item.value === props.items?.mealType)[0];
     } else {
       state.name = '';
       state.mealDay = 1;
-      state.factor = 0.33;
+      state.dayPartFactor = 0.33;
       state.mealType = mealTypes[0]
     }
   }, 300);

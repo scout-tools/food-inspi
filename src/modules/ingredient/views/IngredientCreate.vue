@@ -128,7 +128,7 @@
 
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, computed, useRoute, ref } from "vue";
 import Base from "@/components/field/Base.vue";
 import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import PrimaryButton from "@/components/button/Primary.vue";

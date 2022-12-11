@@ -194,7 +194,7 @@ import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 
 const getDailyFactor = computed(() => {
   if (props?.event?.mealDays?.length > 0) {
-    return props.event.mealDays[0].energyKj / 13125;
+    return props.event.mealDays[0].energyKj / 11765;
   }
   return 0;
 });

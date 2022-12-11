@@ -17,6 +17,9 @@
               <p class="truncate text-sm font-medium text-blue-600">
                 {{ item.name }}
               </p>
+              <p class="truncate text-sm font-medium text-gray-500">
+                {{ item.price }} €
+              </p>
               <p class="mt-2 flex items-center text-sm text-gray-500">
                 <TagIcon
                   class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"

@@ -45,9 +45,13 @@
         {{ normPersonEnergy }} kJ (enspricht das
         <b>{{ normPersonFactor.toFixed(1) }}</b> fache einer Norm-Portion.)
       </h2>
+      <h2>
+        {{ getMassByAge(state.age, gender?.value).toFixed(1) }} Kg
+        {{ getHeightByAge(state.age, gender?.value).toFixed(1) }} cm
+      </h2>
       <br />
-      <h1 class="py-2"><b>Norm-Person </b>Männlich, 15 Jahre, Zeltlager</h1>
-      <h2 class="py-2">{{ getEnergyPerDay(15, 1, 2) }} kJ</h2>
+      <h1 class="py-2"><b>Norm-Person </b>Männlich, 15 Jahre, {{ getHeightByAge(15, 1) }} cm, {{ getMassByAge(15, 1) }} Kg ,  Zeltlager</h1>
+      <h2 class="py-2">{{ getEnergyPerDay(15, 1, 1.8) }} kJ</h2>
     </div>
     <apexchart
       type="line"
@@ -86,18 +90,21 @@ const pages = computed(() => {
 const ingredientStore = useIngredientStore();
 
 function getHeightByAge(age: number, genderId: number) {
-  return getMassByAge(age, genderId) + 100;
+  const mass = getMassByAge(age, genderId)
+  const height = Math.sqrt(getMassByAge(age, genderId) / 24) * 100 // 24 ist BMI
+
+  return Math.round(height / 1 * 1);
 }
 
 function getMassByAge(age: number, genderId: number) {
-  let mass = 60;
+  let mass = 80;
   if (genderId === 1) {
     mass = 80;
     if (age <= 20) {
       mass = 75;
     }
     if (age <= 18) {
-      mass = 73;
+      mass = 72;
     }
     if (age <= 17) {
       mass = 70;
@@ -106,7 +113,7 @@ function getMassByAge(age: number, genderId: number) {
       mass = 66;
     }
     if (age <= 15) {
-      mass = 62;
+      mass = 61;
     }
     if (age <= 14) {
       mass = 55;
@@ -136,21 +143,21 @@ function getMassByAge(age: number, genderId: number) {
       mass = 22;
     }
   } else {
-    mass = 60;
+    mass = 65;
     if (age <= 17) {
-      mass = 59;
+      mass = 63;
     }
     if (age <= 16) {
-      mass = 58;
+      mass = 60;
     }
     if (age <= 15) {
-      mass = 57;
+      mass = 59;
     }
     if (age <= 14) {
-      mass = 54;
+      mass = 57;
     }
     if (age <= 13) {
-      mass = 50;
+      mass = 51;
     }
     if (age <= 12) {
       mass = 45;
@@ -174,7 +181,6 @@ function getMassByAge(age: number, genderId: number) {
       mass = 22;
     }
   }
-
   return mass;
 }
 
@@ -202,16 +208,20 @@ function getEnergyPerDay(
   energyKj = energyKj * 4.2;
 
   if (norm) {
-    output = Math.round((energyKj / getEnergyPerDay(15, 1, 2)) * 100) / 100;
+    output = Math.round((energyKj / getEnergyPerDay(15, 1, 1.8)) * 100) / 100;
   } else {
     output = energyKj;
   }
 
-  return output;
+  return Math.round(output * 100) / 100;
 }
 
 const normPersonEnergy = computed(() => {
-  return getEnergyPerDay(state.age, state.gender?.value, state.activity?.value);
+  return getEnergyPerDay(
+    state.age,
+    state.gender?.value,
+    state.activity?.value
+  );
 });
 
 const normPersonFactor = computed(() => {
@@ -299,11 +309,11 @@ const options = computed(() => {
 const series = [
   {
     name: "männlich",
-    data: ageArray.map((age) => getEnergyPerDay(age, 1, 2, true)),
+    data: ageArray.map((age) => getEnergyPerDay(age, 1, 1.8, true)),
   },
   {
     name: "weiblich",
-    data: ageArray.map((age) => getEnergyPerDay(age, 2, 2, true)),
+    data: ageArray.map((age) => getEnergyPerDay(age, 2, 1.8, true)),
   },
 ];
 
@@ -324,16 +334,16 @@ const genders = [
 
 const activities = [
   {
-    name: "Schulung (x 1.5)",
-    value: 1.5,
+    name: "Schulung (x 1.4)",
+    value: 1.4,
   },
   {
-    name: "Zeltlager (x 2.0)",
-    value: 2,
+    name: "Zeltlager (x 1.8)",
+    value: 1.8,
   },
   {
-    name: "Wandern (x 2.5)",
-    value: 2.5,
+    name: "Wandern (x 2.2)",
+    value: 2.2,
   },
 ];
 

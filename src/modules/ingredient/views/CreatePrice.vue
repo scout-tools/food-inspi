@@ -168,7 +168,7 @@ const retailers = computed(() => {
 });
 
 const priceState = reactive({
-  priceEur: 1.99,
+  priceEur: 0,
   retailer: null,
   package: null,
   name: "",
