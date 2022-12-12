@@ -109,7 +109,7 @@
         <p
           v-for="mealItem in props.meal.mealItems"
           :key="mealItem.id"
-          class="mt-1 truncate text-sm text-gray-500"
+          class="mt-1 text-sm text-gray-500"
         >
           {{ mealItem.factor }} x {{ mealItem.recipe.name }} ({{ mealItem.energyKj }} kJ)
           <button class="font-medium text-blue-600 hover:text-blue-500" @click="onMenuItemUpdate(mealItem)">

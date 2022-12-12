@@ -9,6 +9,11 @@ export default {
       params: params,
     });
   },
+  fetchSmall(params: any) {
+    return axios.get(`${BASE_URL}/${SERVICE}-read-small/`, {
+      params: params,
+    });
+  },
   fetchById(id: any) {
     return axios.get(`${BASE_URL}/${SERVICE}-read/${id}/`);
   },

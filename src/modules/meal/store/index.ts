@@ -41,6 +41,15 @@ export const useMealStore = defineStore("meal", {
         console.log(error);
       }
     },
+    async fetchEventsSmall(params = {}) {
+      try {
+        const response = await EventApi.fetchSmall(params);
+        this._events = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
     async fetchEventById(id: number) {
       try {
         const response = await EventApi.fetchById(id);
