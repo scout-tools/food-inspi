@@ -1,13 +1,22 @@
 <template>
   <div class="mx-auto mt-6 max-w-5xl px-4 sm:px-6 lg:px-8">
-    <div class="bg-white px-4 py-5 sm:px-6">
+    <div class="bg-white px-4 py-1 sm:px-6">
       <div class="min-w-0 flex-1">
-        <h2 class="text-lg font-medium leading-6 text-gray-900 mx-4 my-2">
+        <h2 class="text-lg font-medium leading-6 text-gray-900 mx-4">
           Tag: {{ moment(getMealDay(event).date).format("dddd") }} -
           {{ moment(getMealDay(event).date).format("LL") }}
         </h2>
         <h3 class="text-lg font-medium leading-6 text-gray-900 mx-4 my-2">
-          Tagesengerie: {{ getMealDay(event).energyKj }} kJ von 11.765 kJ
+          Tagesengerie: {{ event.energyKj }} kJ von 11.765 kJ
+        </h3>
+        <h3 class="text-lg font-medium leading-6 text-gray-900 mx-4 my-2">
+          Tagespreis: {{ event.priceEur }} €
+        </h3>
+        <h3 class="text-lg font-medium leading-6 text-gray-900 mx-4 my-2">
+          Gewicht: {{ event.weightG/1000 }} Kg
+        </h3>
+        <h3 class="text-lg font-medium leading-6 text-gray-900 mx-4 my-2">
+          Nutri: {{ event.nutriPoints }} Punkte
         </h3>
         <!-- <a
               href="#"

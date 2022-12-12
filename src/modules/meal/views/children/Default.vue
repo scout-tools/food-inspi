@@ -29,6 +29,24 @@
                           >{{ day.energyKj }} kJ / 11000 kJ</span
                         >
                       </p>
+                      <p class="mt-2 flex items-center text-sm text-gray-500">
+                        <HeartIcon
+                          class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                          aria-hidden="true"
+                        />
+                        <span class="truncate"
+                          >{{ day.nutriPoints }} Nutri</span
+                        >
+                      </p>
+                      <p class="mt-2 flex items-center text-sm text-gray-500">
+                        <CurrencyEuroIcon
+                          class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                          aria-hidden="true"
+                        />
+                        <span class="truncate"
+                          >{{ day.priceEur }} €</span
+                        >
+                      </p>
                     </div>
                     <div class="hidden md:block">
                       <div>
@@ -81,6 +99,8 @@ import {
   BoltIcon,
   CheckCircleIcon,
   ChevronRightIcon,
+  CurrencyEuroIcon,
+  HeartIcon,
 } from "@heroicons/vue/20/solid";
 
 const sidebarOpen = ref(false);

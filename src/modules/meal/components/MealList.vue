@@ -18,12 +18,20 @@
               font-medium
               text-green-800
             "
-            >{{ props.meal.getMealTypeDisplay }}</span
+            >{{ props.meal.getMealTypeDisplay }}
+          </span
           >
-            <p class="text-sm text-gray-500">
-              <!-- <a :href="props.meal.href" class="hover:underline">
-                <time :datetime="props.meal.datetime">{{ props.meal.date }}</time>
-              </a> -->
+            <p class="px-3 text-sm text-gray-500">
+              {{ props.meal.dayPartFactor * 100 }} % Soll-Tagesbedarf
+            </p>
+            <p class="px-3 text-sm text-gray-500">
+              {{ (props.meal.priceEur).toFixed(2) }} € Einkaufspreis
+            </p>
+            <p class="px-3 text-sm text-gray-500">
+              {{ (props.meal.weightG/1000).toFixed(2) }} Kg Trockengewicht
+            </p>
+            <p class="px-3 text-sm text-gray-500">
+              {{ (props.meal.nutriPoints).toFixed(0) }} Nutri Punkte
             </p>
           </div>
           <div class="flex flex-shrink-0 self-center">

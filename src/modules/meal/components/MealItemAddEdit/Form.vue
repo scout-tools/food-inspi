@@ -12,8 +12,8 @@
       component="Number"
       label="Portion als Faktor"
       techName="factor"
-      v-model="state.factor"
-      :errors="errors.factor?.$errors"
+      v-model="state.dayPartFactor"
+      :errors="errors.dayPartFactor?.$errors"
     />
     <PrimaryButton
       @click="onSaveClicked"

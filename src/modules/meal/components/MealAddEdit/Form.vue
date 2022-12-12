@@ -141,7 +141,7 @@ function onSaveClicked() {
       .createMeal({
         name: state.name,
         mealDay: eventDayId,
-        factor: state.dayPartFactor,
+        dayPartFactor: Number(state.dayPartFactor),
         mealType: state.mealType?.value,
       })
       .then((response3: any) => {
@@ -158,7 +158,7 @@ function onSaveClicked() {
         id: props.items?.id,
         name: state.name,
         mealDay: eventDayId,
-        factor: state.dayPartFactor,
+        dayPartFactor: Number(state.dayPartFactor),
         mealType: state.mealType?.value,
       })
       .then((response2: any) => {
