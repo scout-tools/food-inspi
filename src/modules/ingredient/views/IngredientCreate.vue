@@ -128,12 +128,13 @@
 
 
 <script setup lang="ts">
-import { reactive, computed, useRoute, ref } from "vue";
+import { reactive, computed, ref } from "vue";
 import Base from "@/components/field/Base.vue";
 import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import PrimaryButton from "@/components/button/Primary.vue";
 import Success from "@/modules/common/components/Success.vue";
-import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
+import { useIngredientStore } from "@/modules/ingredient/store/index";
+import { useRoute } from "vue-router";
 
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";

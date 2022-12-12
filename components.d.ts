@@ -8,7 +8,6 @@ declare module '@vue/runtime-core' {
     Base: typeof import('./src/components/field/Base.vue')['default']
     BaseItem: typeof import('./src/components/list/BaseItem.vue')['default']
     Basic: typeof import('./src/components/overlay/Basic.vue')['default']
-    Choise: typeof import('./src/components/field/Choise.vue')['default']
     Currency: typeof import('./src/components/field/Currency.vue')['default']
     Date: typeof import('./src/components/field/Date.vue')['default']
     Delete: typeof import('./src/components/modal/Delete.vue')['default']
