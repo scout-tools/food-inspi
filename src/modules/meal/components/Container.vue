@@ -12,10 +12,10 @@
       "
     >
       <div class="pb-5">
-        <h3 class="text-sm font-medium leading-6 text-gray-900">
+        <h3 class="text-2xl font-bold leading-6 text-gray-900">
           {{ props.event.name }}
         </h3>
-        <p class="mt-2 max-w-4xl text-sm text-gray-500">
+        <p class="mt-2 max-w-4xl text-lg text-gray-500">
           Für {{ props.event.normPortions }} Normpersonen
         </p>
       </div>

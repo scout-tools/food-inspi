@@ -1,76 +1,42 @@
 <template>
   <div class="mx-auto mt-6 max-w-5xl px-4 sm:px-6 lg:px-8">
-    <div class="bg-white px-4 py-1 sm:px-6">
-      <div class="min-w-0 flex-1">
-        <h2 class="text-lg font-medium leading-6 text-gray-900 mx-4">
-          Tag: {{ moment(getMealDay(event).date).format("dddd") }} -
-          {{ moment(getMealDay(event).date).format("LL") }}
-        </h2>
-        <h3 class="text-lg font-medium leading-6 text-gray-900 mx-4 my-2">
-          Tagesengerie: {{ event.energyKj }} kJ von 11.765 kJ
-        </h3>
-        <h3 class="text-lg font-medium leading-6 text-gray-900 mx-4 my-2">
-          Tagespreis: {{ event.priceEur }} €
-        </h3>
-        <h3 class="text-lg font-medium leading-6 text-gray-900 mx-4 my-2">
-          Gewicht: {{ event.weightG/1000 }} Kg
-        </h3>
-        <h3 class="text-lg font-medium leading-6 text-gray-900 mx-4 my-2">
-          Nutri: {{ event.nutriPoints }} Punkte
-        </h3>
-        <!-- <a
-              href="#"
-              class="
-                relative
-                inline-flex
-                items-center
-                rounded-l-md
-                border border-gray-300
-                bg-white
-                px-4
-                py-2
-                text-sm
-                font-medium
-                text-gray-500
-                hover:bg-gray-50
-                focus:z-10
-                focus:border-blue-600
-                focus:outline-none
-                focus:ring-1
-                focus:ring-blue-600
-              "
-            >
-              <span class="sr-only">Next</span>
-              <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
-            </a>
-            <a
-              href="#"
-              class="
-                relative
-                -ml-px
-                inline-flex
-                items-center
-                rounded-r-md
-                border border-gray-300
-                bg-white
-                px-4
-                py-2
-                text-sm
-                font-medium
-                text-gray-500
-                hover:bg-gray-50
-                focus:z-10
-                focus:border-blue-600
-                focus:outline-none
-                focus:ring-1
-                focus:ring-blue-600
-              "
-            >
-              <span class="sr-only">Previous</span>
-              <ChevronRightIcon class="h-5 w-5" aria-hidden="true" />
-            </a> -->
+  <div class="bg-gray-50 pt-4 sm:pt-4">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl text-center">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Tagesübersicht</h2>
+        <p class="mt-3 text-lg text-gray-500 sm:mt-4">{{ moment(getMealDay(event).date).format("dddd") }} - {{ moment(getMealDay(event).date).format("LL") }}</p>
       </div>
     </div>
+    <div class="mt-10 bg-white pb-12 sm:pb-16">
+      <div class="relative">
+        <div class="absolute inset-0 h-1/2 bg-gray-50" />
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-4xl">
+            <dl class="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-4">
+              <div class="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r">
+                <dt class="order-1 mt-2 text-sm font-medium leading-6 text-gray-500">Tagesenergie</dt>
+                <dd class="order-0 text-2xl font-bold tracking-tight text-blue-600">{{ ((event.energyKj/11765)*100).toFixed(0) }} %</dd>
+                <dd class="order-2 text-sm tracking-tight text-blue-500">{{ event.energyKj }} kJ</dd>
+
+              </div>
+              <div class="flex flex-col border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r">
+                <dt class="order-2 mt-2 text-sm font-medium leading-6 text-gray-500">Tagespreis</dt>
+                <dd class="order-1 text-2xl font-bold tracking-tight text-blue-600">{{ event.priceEur }} €</dd>
+              </div>
+              <div class="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
+                <dt class="order-2 mt-2 text-sm font-medium leading-6 text-gray-500">Gewicht</dt>
+                <dd class="order-1 text-2xl font-bold tracking-tight text-blue-600">{{ event.weightG/1000 }} Kg</dd>
+              </div>
+              <div class="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
+                <dt class="order-2 mt-2 text-sm font-medium leading-6 text-gray-500">Nutri-Punkt</dt>
+                <dd class="order-1 text-2xl font-bold tracking-tight text-blue-600">{{ (event.nutriPoints) }}</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     <ul role="list" class="grid grid-cols-1 gap-6">
       <MealList
         class="my-2 mx-2"
