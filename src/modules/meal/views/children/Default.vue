@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="day in event.mealDays" :key="day.id">
+    <div>
       <div class="overflow-hidden bg-white shadow sm:rounded-md">
         <ul role="list" class="divide-y divide-gray-200">
           <li v-for="day in event.mealDays" :key="day.id">
@@ -26,7 +26,7 @@
                           aria-hidden="true"
                         />
                         <span class="truncate"
-                          >{{ day.energyKj }} kJ / 11000 kJ</span
+                          > {{ (day.energyKj/11595 * 100).toFixed(0)}} % ({{ day.energyKj }} kJ / 11.595 kJ)</span
                         >
                       </p>
                       <p class="mt-2 flex items-center text-sm text-gray-500">
@@ -34,9 +34,11 @@
                           class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                           aria-hidden="true"
                         />
-                        <span class="truncate"
-                          >{{ day.nutriPoints }} Nutri</span
-                        >
+                        <div>
+                          <p class="mt-1 flex items-center text-sm text-gray-500">
+                            <NutriSlim :nutriClass="day.nutriClass" />
+                          </p>
+                        </div>
                       </p>
                       <p class="mt-2 flex items-center text-sm text-gray-500">
                         <CurrencyEuroIcon
@@ -58,7 +60,7 @@
                         </p>
                         <p class="mt-2 flex items-center text-sm text-gray-500">
                           <CheckCircleIcon
-                            class="mr-1.5 h-5 w-5 flex-shrink-0 text-green-400"
+                            class="mr-1.5 h-5 w-5 flex-shrink-0 text-green-600"
                             aria-hidden="true"
                           />
                           {{ day.meals.length }} Mahlzeiten
@@ -92,6 +94,7 @@ import moment from "moment";
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useMealStore } from "@/modules/meal/store/index";
+import NutriSlim from "@/components/score/NutriSlim.vue";
 
 import {} from "@headlessui/vue";
 

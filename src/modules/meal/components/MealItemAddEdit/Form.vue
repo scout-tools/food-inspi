@@ -92,8 +92,12 @@ const isEdit = computed(() => {
 
 function onDeleteClicked() {
   mealStore.deleteMealItem(props.items.id).then((response) => {
-    let id = Number(route.params.id);
-    goToRoute(id);
+  let id = Number(route.params.id);
+  let eventDayId = Number(route.params.eventDayId);
+        goToRecipe("EventDay", {
+          id,
+          eventDayId,
+        });
   });
 }
 

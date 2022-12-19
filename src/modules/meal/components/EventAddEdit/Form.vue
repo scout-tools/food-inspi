@@ -8,6 +8,13 @@
       :errors="errors.name?.$errors"
     />
     <BaseField
+      component="TextArea"
+      label="Beschreibung"
+      techName="description"
+      v-model="state.description"
+      :errors="errors.description?.$errors"
+    />
+    <BaseField
       component="Number"
       v-model="state.normPortions"
       techName="normPortions"
@@ -15,12 +22,28 @@
       :errors="errors.normPortions?.$errors"
     />
     <BaseField
+      component="Select"
+      v-model="state.activityFactor"
+      techName="activityFactor"
+      label="Aktivität"
+      :items="physicalActivities"
+      :errors="errors.activityFactor?.$errors"
+    />
+    <BaseField
       v-if="!isEdit"
-      component="Date"
-      label="Datum"
-      techName="date"
-      v-model="state.date"
-      :errors="errors.date?.$errors"
+      component="DateTime"
+      label="Start-Datum"
+      techName="startDate"
+      v-model="state.startDate"
+      :errors="errors.startDate?.$errors"
+    />
+    <BaseField
+      v-if="!isEdit"
+      component="DateTime"
+      label="End-Datum"
+      techName="endDate"
+      v-model="state.endDate"
+      :errors="errors.endDate?.$errors"
     />
     <PrimaryButton
       @click="onSaveClicked"
@@ -53,9 +76,12 @@ import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
 const state = reactive({
   id: null,
-  name: '',
+  name: "",
+  description: "",
   normPortions: 1,
-  date: null,
+  startDate: null,
+  endDate: null,
+  activityFactor: null,
 });
 
 const rules = {
@@ -64,7 +90,16 @@ const rules = {
   },
   normPortions: {
     required,
-  }
+  },
+  startDate: {
+    required,
+  },
+  endDate: {
+    required,
+  },
+  activityFactor: {
+    required,
+  },
 };
 
 const props = defineProps({
@@ -83,6 +118,9 @@ const isEdit = computed(() => {
   return !!props.items?.id;
 });
 
+const physicalActivities = computed(() => {
+  return mealStore.physicalActivity;
+});
 
 function onDeleteClicked() {
   mealStore.deleteEvent(props.items).then((response) => {
@@ -102,27 +140,33 @@ function onSaveClicked() {
 
   // new
   if (!isEdit.value) {
-    mealStore.createEvent({
-      name: state.name,
-      normPortions: state.normPortions,
-      date: state.date
-    }).then((response: any) => {
-      router.push({
-        name: "EventDay",
-        params: {
-          id: response.data.id,
-          eventDayId: response.data.mealDays[0].id,
-        },
+    mealStore
+      .createEvent({
+        name: state.name,
+        description: state.description,
+        normPortions: state.normPortions,
+        startDate: state.startDate,
+        endDate: state.endDate,
+        activityFactor: state.activityFactor.id,
+      })
+      .then((response: any) => {
+        debugger;
+        goToRecipe(response.data.id)
       });
-    });
   } else {
-    mealStore.updateEvent({
-      id: state.id,
-      name: state.name,
-      normPortions: state.normPortions,
-    }).then((response: any) => {
-      goToRecipe(response.data.id)
-    });
+    mealStore
+      .updateEvent({
+        id: state.id,
+        name: state.name,
+        description: state.description,
+        normPortions: state.normPortions,
+        startDate: state.startDate,
+        endDate: state.endDate,
+        activityFactor: state.activityFactor.id,
+      })
+      .then((response: any) => {
+        goToRecipe(response.data.id);
+      });
   }
 }
 
@@ -145,13 +189,26 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 onMounted(() => {
-  if (isEdit.value) {
-    state.id = props.items?.id;
-    state.name = props.items?.name;
-    state.normPortions = props.items?.normPortions;
-  } else {
-    state.name = null;
-    state.normPortions = 1;
-  }
+  mealStore.fetchPhysicalActivity();
+  setTimeout(function () {
+    if (isEdit.value) {
+      state.id = props.items?.id;
+      state.name = props.items?.name;
+      state.description = props.items?.description;
+      state.normPortions = props.items?.normPortions;
+      state.startDate = props.items?.startDate;
+      state.endDate = props.items?.endDate;
+      state.activityFactor = physicalActivities.value.filter(
+        (item) => item.id === props.items?.activityFactor
+      )[0];
+    } else {
+      state.name = null;
+      state.description = null;
+      state.normPortions = 1;
+      state.startDate = null;
+      state.endDate = null;
+      state.activityFactor = null;
+    }
+  }, 300);
 });
 </script>

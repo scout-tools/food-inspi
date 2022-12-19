@@ -5,4 +5,7 @@ export default {
   fetchMealTypes() {
     return axios.get(`${BASE_URL}/food/meal-types`);
   },
+  fetchPhysicalActivity() {
+    return axios.get(`${BASE_URL}/food/physical-activity`);
+  },
 };

@@ -1,8 +1,16 @@
 <template>
   <div>
     <BaseField
+      component="Select"
+      v-model="state.mealType"
+      techName="mealType"
+      label="Essens Typ"
+      :items="mealTypes"
+      :errors="errors.mealType?.$errors"
+    />
+    <BaseField
       component="Text"
-      label="Name des Essens"
+      label="Name des Essens (optional)"
       techName="name"
       v-model="state.name"
       :errors="errors.name?.$errors"
@@ -14,14 +22,7 @@
       v-model="state.dayPartFactor"
       :errors="errors.dayPartFactor?.$errors"
     />
-    <BaseField
-      component="Select"
-      v-model="state.mealType"
-      techName="mealType"
-      label="Essens Typ"
-      :items="mealTypes"
-      :errors="errors.mealType?.$errors"
-    />
+
     <PrimaryButton
       @click="onSaveClicked"
       :label="!isEdit ? 'Menu hinzufügen' : 'Menu bearbeiten'"
@@ -63,9 +64,6 @@ const state = reactive({
 
 
 const rules = {
-  name: {
-    required,
-  },
   dayPartFactor: {
     required,
   },

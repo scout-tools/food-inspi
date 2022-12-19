@@ -46,7 +46,7 @@
             focus:ring-offset-2
           "
         >
-          Einkaufsliste
+          Einkaufsliste ansehen
         </button>
           </router-link>
         <button
@@ -72,7 +72,7 @@
             focus:ring-offset-2
           "
         >
-          Bearbeiten
+          Veranstaltung bearbeiten
         </button>
       </div>
     </div>

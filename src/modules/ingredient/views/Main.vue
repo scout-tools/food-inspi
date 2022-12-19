@@ -34,8 +34,9 @@
             <div class="hidden md:block">
               <div>
                 <p class="mt-1 flex items-center text-sm text-gray-500">
-                  <NutriSlim :nutriClass="item.nutriClass" />
+                  
                 </p>
+                <NutriSlim :nutriClass="1" />
               </div>
             </div>
           </div>
@@ -51,6 +52,7 @@ import { TagIcon } from "@heroicons/vue/20/solid";
 import List from "@/components/base/list/Main.vue";
 import { useRoute } from "vue-router";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
+import NutriSlim from "@/components/score/NutriSlim.vue";
 
 const ingredientStore = useIngredientStore();
 

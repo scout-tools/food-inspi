@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     Basic: typeof import('./src/components/overlay/Basic.vue')['default']
     Currency: typeof import('./src/components/field/Currency.vue')['default']
     Date: typeof import('./src/components/field/Date.vue')['default']
+    DateTime: typeof import('./src/components/field/DateTime.vue')['default']
     Delete: typeof import('./src/components/modal/Delete.vue')['default']
     Header: typeof import('./src/components/breadcrumbs/Header.vue')['default']
     Main: typeof import('./src/components/base/list/Main.vue')['default']

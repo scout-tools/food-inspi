@@ -4,7 +4,7 @@
       <div>
         <div>
           <h3 class="text-lg font-medium leading-6 text-gray-900">
-            {{ props.meal.name }}
+            {{ props.meal.name }} ({{ props.meal.dayPartFactor * 100 }} % Tagesanteil)
           </h3>
           <p class="mt-1 max-w-2xl text-sm text-gray-500">
             {{ props.meal.getMealTypeDisplay }}
@@ -17,10 +17,11 @@
           <dl class="sm:divide-y sm:divide-gray-200">
             <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
               <dt class="text-sm font-medium text-gray-500">
-                Soll-Tagesbedarf
+                Energieanteil des Ziel Tagesanteils
               </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                {{ props.meal.dayPartFactor * 100 }} %
+              <dd class="mt-1 text-sm text-red-500 sm:col-span-2 sm:mt-0"
+              :class="props.meal.dayPartEnergyKj <= 0.90 || props.meal.dayPartEnergyKj >= 1.1 ? 'text-red-500' : 'text-green-500'">
+                {{ (props.meal.dayPartEnergyKj * 100).toFixed(0) }} %
               </dd>
             </div>
             <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
@@ -30,15 +31,9 @@
               </dd>
             </div>
             <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
-              <dt class="text-sm font-medium text-gray-500">Trockengewicht</dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                {{ (props.meal.weightG / 1000).toFixed(2) }} Kg
-              </dd>
-            </div>
-            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
               <dt class="text-sm font-medium text-gray-500">Nutri Punkte</dt>
               <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                {{ props.meal.nutriPoints.toFixed(0) }}
+                <NutriSlim :nutriClass="props.meal.nutriClass" />
               </dd>
             </div>
             <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
@@ -73,8 +68,8 @@
                       <span class="ml-2 w-0 flex-1 truncate"
                         >{{ mealItem.factor }} x {{ mealItem.recipe.name }} ({{
                           mealItem.energyKj
-                        }}
-                        kJ)</span
+                        }} kJ, {{ (mealItem.priceEur).toFixed(2)}}
+                        €)</span
                       >
                     </div>
                     <div class="ml-4 flex-shrink-0">
@@ -120,6 +115,8 @@
 </template>
 
 <script lang="ts" setup>
+import NutriSlim from "@/components/score/NutriSlim.vue";
+
 import {
   Menu,
   MenuButton,

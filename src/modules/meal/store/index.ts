@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 
 import MealApi from "@/modules/meal/services/meal";
+import MealApiDay from "@/modules/meal/services/meal-day";
 import MealItemApi from "@/modules/meal/services/meal-item";
 import EventApi from "@/modules/meal/services/event";
 import ChoiseApi from "@/modules/meal/services/choice";
@@ -19,7 +20,9 @@ export const useMealStore = defineStore("meal", {
       mealType: ''
     }],
     _mealTypes: [],
-    _shoppingList: []
+    _mealDay: {},
+    _shoppingList: [],
+    _physicalActivity: []
   }),
 
   actions: {
@@ -32,7 +35,17 @@ export const useMealStore = defineStore("meal", {
         console.log(error);
       }
     },
+    async fetchPhysicalActivity() {
+      try {
+        const response = await ChoiseApi.fetchPhysicalActivity();
+        this._physicalActivity = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
     async fetchEvents(params = {}) {
+      this._events = [];
       try {
         const response = await EventApi.fetchAll(params);
         this._events = response.data;
@@ -54,6 +67,15 @@ export const useMealStore = defineStore("meal", {
       try {
         const response = await EventApi.fetchById(id);
         this._event = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchMealDayById(id: number) {
+      try {
+        const response = await MealApiDay.fetchById(id);
+        this._mealDay = response.data;
       } catch (error) {
         alert(error);
         console.log(error);
@@ -170,12 +192,17 @@ export const useMealStore = defineStore("meal", {
     event: (state) => {
       return state._event;
     },
+    mealDay: (state) => {
+      return state._mealDay;
+    },
     mealTypes: (state) => {
       return state._mealTypes;
     },
     shoppingList: (state) => {
       return state._shoppingList;
     },
-
+    physicalActivity: (state) => {
+      return state._physicalActivity;
+    },
   },
 });

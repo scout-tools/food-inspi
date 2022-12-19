@@ -46,12 +46,13 @@
         <b>{{ normPersonFactor.toFixed(1) }}</b> fache einer Norm-Portion.)
       </h2>
       <h2>
-        {{ getMassByAge(state.age, gender?.value).toFixed(1) }} Kg
-        {{ getHeightByAge(state.age, gender?.value).toFixed(1) }} cm
+        {{ getMassByAge(state.age, state.gender?.value).toFixed(1) }} Kg
+        {{ getHeightByAge(state.age, state.gender?.value).toFixed(1) }} cm
       </h2>
       <br />
-      <h1 class="py-2"><b>Norm-Person </b>Männlich, 15 Jahre, {{ getHeightByAge(15, 1) }} cm, {{ getMassByAge(15, 1) }} Kg ,  Zeltlager</h1>
-      <h2 class="py-2">{{ getEnergyPerDay(15, 1, 1.8) }} kJ</h2>
+      <h1 class="py-2"><b>Norm-Person </b>Männlich, 15 Jahre, {{ getHeightByAge(normAge, normGender) }} cm, {{ getMassByAge(normAge, normGender) }} Kg ,  Zeltlager</h1>
+      <h1 class="py-2"><b>Norm-Person </b>Weiblich, 14 Jahre, {{ getHeightByAge(14, 2) }} cm, {{ getMassByAge(14, 2) }} Kg , Wandern</h1>
+      <h2 class="py-2">{{ normPersonReferenceEnergy }} kJ</h2>
     </div>
     <apexchart
       type="line"
@@ -184,6 +185,18 @@ function getMassByAge(age: number, genderId: number) {
   return mass;
 }
 
+const normAge = 15;
+const normGender = 1;
+const normActivity = 1.8;
+
+const normPersonReferenceEnergy = computed(() => {
+  return getEnergyPerDay(
+    normAge,
+    normGender,
+    normActivity
+  );
+});
+
 function getEnergyPerDay(
   age: number,
   genderId: any,
@@ -208,7 +221,7 @@ function getEnergyPerDay(
   energyKj = energyKj * 4.2;
 
   if (norm) {
-    output = Math.round((energyKj / getEnergyPerDay(15, 1, 1.8)) * 100) / 100;
+    output = Math.round((energyKj / normPersonReferenceEnergy.value) * 100) / 100;
   } else {
     output = energyKj;
   }
@@ -306,17 +319,6 @@ const options = computed(() => {
   };
 });
 
-const series = [
-  {
-    name: "männlich",
-    data: ageArray.map((age) => getEnergyPerDay(age, 1, 1.8, true)),
-  },
-  {
-    name: "weiblich",
-    data: ageArray.map((age) => getEnergyPerDay(age, 2, 1.8, true)),
-  },
-];
-
 const genders = [
   {
     name: "männlich",
@@ -347,9 +349,20 @@ const activities = [
   },
 ];
 
+const series = [
+  {
+    name: "männlich",
+    data: ageArray.map((age) => getEnergyPerDay(age, genders[0].value, activities[1].value, true)),
+  },
+  {
+    name: "weiblich",
+    data: ageArray.map((age) => getEnergyPerDay(age, genders[1].value, activities[1].value, true)),
+  },
+];
+
 const state = reactive({
   gender: genders[0],
-  age: 15,
+  age: normAge,
   activity: activities[1],
 });
 

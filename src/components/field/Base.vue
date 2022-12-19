@@ -22,6 +22,7 @@ import Select from "@/components/field/Select.vue";
 import AutoComplete from "@/components/field/AutoComplete.vue";
 import Currency from "@/components/field/Currency.vue";
 import Date from "@/components/field/Date.vue";
+import DateTime from "@/components/field/DateTime.vue";
 
 const components = {
   Text,
@@ -33,6 +34,7 @@ const components = {
   AutoComplete,
   Currency,
   Date,
+  DateTime,
 };
 
 // I do NOT want to use [CompA, CompA] because my inputs are strings
@@ -46,6 +48,7 @@ const componentTreeName = [
   "AutoComplete",
   "Currency",
   "Date",
+  "DateTime",
 ];
 const emit = defineEmits(["update:modelValue"]);
 const updateValue = (event) => {
