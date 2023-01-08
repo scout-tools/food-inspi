@@ -26,7 +26,7 @@
                           aria-hidden="true"
                         />
                         <span class="truncate"
-                          > {{ (day.energyKj/11595 * 100).toFixed(0)}} % ({{ day.energyKj }} kJ / 11.595 kJ)</span
+                          > {{ (day.energyKj/(11765 * day.maxDayPartFactor) * 100).toFixed(0)}} % ({{ day.energyKj }} kJ / {{ 11765 * day.maxDayPartFactor }} kJ)</span
                         >
                       </p>
                       <p class="mt-2 flex items-center text-sm text-gray-500">
@@ -90,6 +90,7 @@
 
 <script setup lang="ts">
 import moment from "moment";
+import 'moment/locale/de';
 
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
@@ -105,6 +106,8 @@ import {
   CurrencyEuroIcon,
   HeartIcon,
 } from "@heroicons/vue/20/solid";
+
+moment.locale('de');
 
 const sidebarOpen = ref(false);
 

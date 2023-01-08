@@ -47,7 +47,7 @@ import List from "@/components/base/list/Main.vue";
 
 import { TagIcon } from "@heroicons/vue/20/solid";
 
-import { onMounted, computed, watch } from "vue";
+import { onMounted, computed, watch, ref } from "vue";
 import { useRecipeStore } from "@/modules/recipe/store/index.ts";
 
 const recipeStore = useRecipeStore();
@@ -97,6 +97,25 @@ const filters = [
     options: [
       { value: "beverage", label: "Flüssig", checked: false },
       { value: "solid", label: "Fest", checked: false },
+    ],
+  },
+  {
+    id: "status",
+    name: "Status",
+    options: [
+      { value: "verified", label: 'Verified by Inspi', checked: false },
+      { value: "user_conent", label: 'Benutzer erstellt', checked: false },
+      { value: "user_public", label: 'Benutzer Öffentlich', checked: false },
+    ],
+  },
+  {
+    id: "meal_type", 
+    name: "Mahlzeit Typ",
+    options: [
+      { value: "breakfast", label: 'Frühstück', checked: false },
+      { value: "lunch_warm", label: 'Menu (warm)', checked: false },
+      { value: "lunch_cold", label: 'Menu (kalt)', checked: false },
+      { value: "snack", label: 'Snack', checked: false },
     ],
   },
 ];
