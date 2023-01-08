@@ -1,57 +1,23 @@
 <template>
   <div>
     <section aria-labelledby="recent-heading" class="mt-16">
-      <h2 id="recent-heading" class="sr-only">Recent orders</h2>
       <div class="mx-auto max-w-7xl sm:px-2 lg:px-8">
         <div class="mx-auto max-w-2xl space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
           <div
             :key="item.number"
             class="
               border-t border-b border-gray-200
-              bg-white
-              shadow-sm
+              bg-gray-50
+              px-4
+              py-6
+              shadow
               sm:rounded-lg sm:border
             "
           >
-            <h3 class="sr-only">
-              Order placed on
-              <time :datetime="item.createdDatetime">{{
-                item.createdDate
-              }}</time>
-            </h3>
-
-            <div
-              class="
-                flex
-                items-center
-                border-b border-gray-200
-                p-4
-                sm:grid sm:grid-cols-4 sm:gap-x-6 sm:p-6
-              "
-            >
-              <dl
-                class="
-                  grid
-                  flex-1
-                  grid-cols-3
-                  gap-x-6
-                  text-sm
-                  sm:col-span-3 sm:grid-cols-3
-                  lg:col-span-3
-                "
-              >
-                <div>
-                  <dt class="font-medium text-gray-900">Name</dt>
-                  <dd class="mt-1 text-gray-500">{{ item.name }}</dd>
-                </div>
-                <div>
-                  <dt class="font-medium text-gray-900">Anzahl</dt>
-                  <dd class="mt-1 text-gray-500">
-                    {{ recipeDetail[item.value] }} {{ item.unit }}
-                  </dd>
-                </div>
-              </dl>
-
+            <h2 class="text-lg font-medium leading-6 text-gray-900">
+              {{ item.name }} - {{ recipeDetail[item.value] }} {{ item.unit }}
+            </h2>
+            <div class="mt-5 border-t border-gray-200">
               <Menu as="div" class="relative flex justify-end lg:hidden">
                 <div class="flex items-center">
                   <MenuButton
@@ -123,22 +89,9 @@
                   </MenuItems>
                 </transition>
               </Menu>
-
-              <div
-                class="
-                  hidden
-                  lg:col-span-2
-                  lg:flex
-                  lg:items-center
-                  lg:justify-end
-                  lg:space-x-4
-                "
-              ></div>
             </div>
-
-            <h4 class="sr-only">Items</h4>
             <ul role="list" class="divide-y divide-gray-200">
-              <li class="p-4 sm:p-6">
+              <li class="p-2">
                 <div class="items-center sm:items-start">
                   <div class="overflow-hidden rounded-lg">
                     <div
@@ -177,10 +130,10 @@
                               ? 'bg-orange-100 text-orange-800'
                               : 'bg-red-100 text-red-800'
                           "
-                          >
-                          {{ hint.name }} ({{ hint.minMax}}. {{hint.value}} {{item.unit}})
-                        </span
                         >
+                          {{ hint.name }} ({{ hint.minMax }}. {{ hint.value }}
+                          {{ item.unit }})
+                        </span>
                       </dd>
                       <dd
                         v-else
@@ -201,7 +154,33 @@
                         >
                       </dd>
                     </div>
-                    <NutritionalsBoxPlot2 :item="item" />
+                    <div class="py-5 border-t border-gray-200">
+                      <NutritionalsBoxPlot2 :item="item" />
+                    </div>
+                    <div class="py-5 border-t border-gray-200">
+                      <h4 class="my-2">Top Produkte für {{ item.name }}:</h4>
+                        <span
+                          v-for="hint in sortItems(
+                            recipeDetail,
+                            item.value
+                          )"
+                          :key="hint.name"
+                          class="
+                            mx-1
+                            inline-flex
+                            rounded-full
+                            px-2
+                            text-sm
+                            font-semibold
+                            leading-5
+                            bg-blue-100
+                            text-blue-800
+                          "
+                        >
+                          {{ hint.name }} {{ (hint.value).toFixed(1) }}
+                          {{ item.unit }})
+                        </span>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -249,5 +228,21 @@ function filterRecipeDetail(items, value) {
     }
   }
   return returnItems;
+}
+
+function sortItems(items, value) {
+  const returnArray =  []
+  items.recipeItems.forEach(element => {
+    if (element[value] > 0) {
+      returnArray.push({
+        name: element.portion.ingredient.name,
+        value: element[value]
+      });
+    }
+  });
+  const sortedReturnArray = returnArray.sort(
+      (p1, p2) => (p1.value < p2.value) ? 1 : (p1.value > p2.value) ? -1 : 0);
+return sortedReturnArray.slice(0, 3);
+
 }
 </script>

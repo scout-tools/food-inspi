@@ -76,7 +76,9 @@
             class="border-b border-gray-200"
           >
             <td class="py-4 pl-4 pr-3 text-sm sm:pl-6 md:pl-0">
-              <div class="font-medium text-gray-900">{{ project.portion.ingredient.name }}</div>
+              <div class="font-medium text-gray-900">
+                {{ project.portion.ingredient.name }}
+              </div>
             </td>
             <td
               class="
@@ -159,7 +161,7 @@
                 md:pr-0
               "
             >
-              {{ getSumByKey(props.recipeItems, 'price').toFixed(2) }} €
+              {{ getSumByKey(props.recipeItems, "price").toFixed(2) }} €
             </td>
           </tr>
         </tfoot>
@@ -188,14 +190,16 @@ const projects = [
 ];
 
 const getSumByKey = (arr, key) => {
-  return arr.reduce((accumulator, current) => accumulator + Number(current[key]), 0)
-}
-
+  return arr.reduce(
+    (accumulator, current) => accumulator + Number(current[key]),
+    0
+  );
+};
 
 const props = defineProps({
   label: { type: String, required: true },
-  value: { type: String, required: true},
-  unit: { type: String, required: false, default: "g"},
-  recipeItems: { type: Array, required: false, default: []}
+  value: { type: String, required: true },
+  unit: { type: String, required: false, default: "g" },
+  recipeItems: { type: Array, required: false, default: [] },
 });
 </script>

@@ -1,12 +1,23 @@
 <template>
-  <div>
-    <div>
-      <PriceList
-        label="Engergie"
-        :value="recipeDetail.energyKj"
-        unit="kJ"
-        :recipeItems="recipeItems"
-      />
+  <div class="mx-auto max-w-7xl sm:px-2 lg:px-8 mt-16">
+    <div class="mx-auto max-w-2xl space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
+      <div
+        class="
+          border-t border-b border-gray-200
+          bg-gray-50
+          px-4
+          py-6
+          shadow
+          sm:rounded-lg sm:border
+        "
+      >
+        <PriceList
+          label="Engergie"
+          :value="recipeDetail.energyKj"
+          unit="kJ"
+          :recipeItems="recipeItems"
+        />
+      </div>
     </div>
   </div>
 </template>

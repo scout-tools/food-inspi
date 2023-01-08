@@ -92,14 +92,6 @@ const filters = [
     ],
   },
   {
-    id: "physical_viscosity",
-    name: "Festigkeit",
-    options: [
-      { value: "beverage", label: "Flüssig", checked: false },
-      { value: "solid", label: "Fest", checked: false },
-    ],
-  },
-  {
     id: "status",
     name: "Status",
     options: [
