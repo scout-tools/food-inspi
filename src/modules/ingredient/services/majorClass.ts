@@ -1,19 +1,15 @@
 import axios from "axios";
 const BASE_URL = import.meta.env.VITE_APP_API;
-const SERVICE = 'food/recipe'
+const SERVICE = 'food/major-class'
 
 export default {
 
   fetchAll(params: any) {
-    return axios.get(`${BASE_URL}/food/recipe-read/`, {
+    return axios.get(`${BASE_URL}/${SERVICE}/`, {
       params: params,
     });
   },
-  fetchVerified(params: any) {
-    return axios.get(`${BASE_URL}/food/recipe-read-verified/`, {
-      params: params,
-    });
-  },
+
   fetchById(id: any) {
     return axios.get(`${BASE_URL}/${SERVICE}/${id}/`);
   },
@@ -23,13 +19,10 @@ export default {
   },
 
   update(id: any, data: any) {
-    return axios.put(`${BASE_URL}/${SERVICE}/${id}/`, data);
+    return axios.put(`${BASE_URL}/${SERVICE}/${id}`, data);
   },
 
   delete(id: any) {
     return axios.delete(`${BASE_URL}/${SERVICE}/${id}`)
-  },
-  clone(id: any) {
-    return axios.post(`${BASE_URL}/${SERVICE}-clone/`, { id })
   },
 };

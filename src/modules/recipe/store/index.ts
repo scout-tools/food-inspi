@@ -69,7 +69,7 @@ export const useRecipeStore = defineStore("recipe", {
     },
     async updateRecipe(data: object) {
       try {
-        return await RecipeApi.update(data);
+        return await RecipeApi.update(data?.id, data);
       } catch (error) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);

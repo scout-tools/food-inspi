@@ -9,6 +9,7 @@
     @update:modelValue="updateValueDirekt"
     :errors="props.errors"
     :options="{ currency: 'EUR' }"
+    :cols="props.cols"
   ></component>
 </template>
 

@@ -1,11 +1,13 @@
 <template>
   <div>
-    <RecipeItemList
-      @openRecipeItemAdd="openRecipeItemAdd"
-      @openRecipeItemUpdate="openRecipeItemUpdate"
-      :recipeItems="recipeItems"
-      :editable="isEditable"
-    />
+    <div>
+      <PriceList
+        label="Engergie"
+        :value="recipeDetail.energyKj"
+        unit="kJ"
+        :recipeItems="recipeItems"
+      />
+    </div>
   </div>
 </template>
 

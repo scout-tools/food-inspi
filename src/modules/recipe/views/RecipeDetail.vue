@@ -4,7 +4,27 @@
       <!-- Breadcrumb -->
       <Breadcrumbs :pages="pages" />
       <article>
-        <RecipeOverview :recipeItems="recipeDetail.recipeItems" />
+        <RecipeOverview
+          :recipeItems="recipeDetail.recipeItems"
+          @openRecipeItemUpdate="onOpenRecipeItemUpdate"
+          @openRecipeItemAdd="openRecipeItemAdd"
+        />
+
+        <RecipeOverviewNutri
+          :recipeItems="recipeDetail.recipeItems"
+          @openRecipeItemUpdate="onOpenRecipeItemUpdate"
+          @openRecipeItemAdd="openRecipeItemAdd"
+        />
+        <RecipeOverview2
+          :recipeItems="recipeDetail.recipeItems"
+          @openRecipeItemUpdate="onOpenRecipeItemUpdate"
+          @openRecipeItemAdd="openRecipeItemAdd"
+        />
+        <RecipeOverview3
+          :recipeItems="recipeDetail.recipeItems"
+          @openRecipeItemUpdate="onOpenRecipeItemUpdate"
+          @openRecipeItemAdd="openRecipeItemAdd"
+        />
         <div
           class="
             px-2
@@ -14,6 +34,13 @@
           "
         >
           <div class="min-w-0 flex-1"></div>
+          <!-- <div class="mt-4 flex-2 sm:mt-0 sm:ml-4">
+            <PrimaryButton
+              color="blue"
+              label="Bearbeiten"
+              @click="onSimulateClicked(recipeDetail.id)"
+            />
+          </div> -->
           <div class="mt-4 flex-2 sm:mt-0 sm:ml-4">
             <PrimaryButton
               color="blue"
@@ -33,6 +60,9 @@ import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import PrimaryButton from "@/components/button/Primary.vue";
 import RecipeItemList from "@/modules/recipe/components/RecipeItemList.vue";
 import RecipeOverview from "@/modules/recipe/components/RecipeMainOverview.vue";
+import RecipeOverview2 from "@/modules/recipe/components/RecipeMainOverview2.vue";
+import RecipeOverview3 from "@/modules/recipe/components/RecipeMainOverview3.vue";
+import RecipeOverviewNutri from "@/modules/recipe/components/RecipeMainOverviewNutri.vue";
 import { useRoute } from "vue-router";
 import { useRecipeStore } from "@/modules/recipe/store/index.ts";
 import { useRouter } from "vue-router";

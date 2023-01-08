@@ -249,6 +249,3 @@ const saltG = recipes.value.map((object) => object["saltG"]);
   ];
 });
 </script>
-
-<style>
-</style>

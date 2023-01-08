@@ -1,119 +1,128 @@
 <template>
-  <Breadcrumbs :pages="pages" />
-  <main
-    class="
-      relative
-      h-screen
-      z-40
-      flex-1
-      focus:outline-none
-      overflow-y-auto
-      pb-12
-    "
-  >
-    <article class="flex-shrink-0 border border-gray-200 ma-12">
-      <form class="space-y-8 divide-y px-3 py-4 divide-gray-200 xl:px-64">
-        <div class="space-y-8 divide-y divide-gray-200">
-          <h2 class="text-h1 font-medium text-gray-900">Zutaten</h2>
-          <div class="pt-8">
-            <div>
-              <h3 class="text-lg font-medium leading-6 text-gray-900">
-                Eckdaten
-              </h3>
-              <p class="mt-1 text-sm text-gray-500">
-                Daten die über jede Zutat bekannt sein müssen
-              </p>
-            </div>
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <Base
-                component="Text"
-                :label="'Name der Zutat (erforderlich)'"
-                techName="name"
-                v-model="state.name"
-                :errors="errors.name && errors.name.$errors"
-              />
-              <Base
-                component="TextArea"
-                :label="'Weiterer Beschreibener Text'"
-                techName="description"
-                v-model="state.description"
-                :errors="errors.description && errors.description.$errors"
-              />
-              <Base
-                component="Number"
-                :label="'Physikalische Dichte'"
-                techName="physicalDensity"
-                v-model="state['physicalDensity']"
-                :errors="errors.physicalDensity && errors.physicalDensity.$errors"
-                hint="Um Volumen in Gewicht umzurechnen."
-              />
+  <div>
+    <Breadcrumbs :pages="pages" />
+    <main
+      class="
+        relative
+        h-screen
+        z-40
+        flex-1
+        focus:outline-none
+        overflow-y-auto
+        pb-12
+      "
+    >
+      <article class="flex-shrink-0 border border-gray-200 ma-12">
+        <form class="space-y-8 divide-y px-3 py-4 divide-gray-200 xl:px-64">
+          <div class="space-y-8 divide-y divide-gray-200">
+            <h2 class="text-h1 font-medium text-gray-900">Zutaten</h2>
+            <div class="pt-8">
+              <div>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">
+                  Eckdaten
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">
+                  Daten die über jede Zutat bekannt sein müssen
+                </p>
+              </div>
+              <div class="mt-6 grid grid-cols-3 gap-y-6 gap-x-4 sm:grid-cols-3">
+                <Base
+                  component="Text"
+                  :label="'Name der Zutat (erforderlich)'"
+                  techName="name"
+                  v-model="state.name"
+                  :errors="errors.name && errors.name.$errors"
+                />
+                <Base
+                  component="TextArea"
+                  :label="'Weiterer Beschreibener Text'"
+                  techName="description"
+                  v-model="state.description"
+                  :errors="errors.description && errors.description.$errors"
+                />
+                <Base
+                  component="Number"
+                  :label="'Physikalische Dichte'"
+                  techName="physicalDensity"
+                  v-model="state['physicalDensity']"
+                  :errors="
+                    errors.physicalDensity && errors.physicalDensity.$errors
+                  "
+                  hint="Um Volumen in Gewicht umzurechnen."
+                  :cols="1"
+                />
 
-              <Base
-                component="Radio"
-                :label="'Essen oder Getränk'"
-                techName="physicalViscosity"
-                hint="Für den Nutri Score"
-                v-model="state['physicalViscosity']"
-                :choices="[
-                  { id: 'solid', title: 'Essen' },
-                  { id: 'beverage', title: 'Getränk' },
-                ]"
-              />
+                <Base
+                  component="Radio"
+                  :label="'Essen oder Getränk'"
+                  techName="physicalViscosity"
+                  hint="Für den Nutri Score"
+                  v-model="state['physicalViscosity']"
+                  :choices="[
+                    { id: 'solid', title: 'Essen' },
+                    { id: 'beverage', title: 'Getränk' },
+                  ]"
+                />
+              </div>
+            </div>
+
+            <div class="pt-8">
+              <div>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">
+                  Inhaltsstoffe
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">
+                  Wenn du keine FDC-ID hast, kannst du alles selbst eintragen.
+                </p>
+              </div>
+              <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <Base
+                  :cols="3"
+                  component="Select"
+                  techName="majorClass"
+                  v-model="state['majorClass']"
+                  label="Hauptkategorie"
+                  :items="majorClasses"
+                  hint="Wähle eine Hauptkategorie für deine Zutat."
+                  :errors="errors.majorClass && errors.majorClass.$errors"
+                />
+              </div>
+              <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <Base
+                  component="Number"
+                  v-for="nutrient in nutrientList"
+                  :key="nutrient.label"
+                  :techName="nutrient.techName"
+                  v-model="state[nutrient.techName]"
+                  :label="nutrient.label"
+                  :hint="nutrient.hint"
+                  :errors="
+                    errors[nutrient.techName] &&
+                    errors[nutrient.techName].$errors
+                  "
+                />
+              </div>
             </div>
           </div>
 
-          <div class="pt-8">
-            <div>
-              <h3 class="text-lg font-medium leading-6 text-gray-900">
-                Inhaltsstoffe
-              </h3>
-              <p class="mt-1 text-sm text-gray-500">
-                Wenn du keine FDC-ID hast, kannst du alles selbst eintragen.
-              </p>
-            </div>
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <Base
-                component="Text"
-                techName="majorClass"
-                v-model="state['majorClass']"
-                label="Hauptkategorie"
-                hint="Wähle eine Hauptkategorie für deine Zutat."
-                :errors="errors.majorClass && errors.majorClass.$errors"
-              />
-            </div>
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <Base
-                component="Number"
-                v-for="nutrient in nutrientList"
-                :key="nutrient.label"
-                :techName="nutrient.techName"
-                 v-model="state[nutrient.techName]"
-                :label="nutrient.label"
-                :hint="nutrient.hint"
-                :errors="errors[nutrient.techName] && errors[nutrient.techName].$errors"
+          <div class="pt-5 pb-12">
+            <div class="flex justify-end">
+              <PrimaryButton
+                @click="onButtonClicked"
+                label="Speichern"
+                :isLoading="isLoading"
               />
             </div>
           </div>
-        </div>
-
-        <div class="pt-5 pb-12">
-          <div class="flex justify-end">
-            <PrimaryButton
-              @click="onButtonClicked"
-              label="Speichern"
-              :isLoading="isLoading"
-              
-            />
-          </div>
-        </div>
-      </form>
-    </article>
-  </main>
+        </form>
+      </article>
+    </main>
+  </div>
 </template>
 
 
 <script setup lang="ts">
-import { reactive, watch, ref } from "vue";
+import { ref, watch, onMounted, computed } from "vue";
 import Base from "@/components/field/Base.vue";
 import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import PrimaryButton from "@/components/button/Primary.vue";
@@ -143,8 +152,8 @@ const nutrientList = [
     label: "Einweiß in Gramm (g)",
   },
   {
-    techName: "saltG",
-    label: "Salz in Gramm (g)",
+    techName: "sodiumMg",
+    label: "Natrium in Milligramm (mg)",
   },
   {
     techName: "fibreG",
@@ -157,26 +166,31 @@ const pages = computed(() => {
     { name: "Zutaten", link: "IngredientMain", current: false },
     {
       name: "Zutat ändern",
-      link: '',
+      link: "",
       current: true,
     },
   ];
 });
 
 const state = ref({
+  id: null,
   name: null,
   description: null,
   physicalDensity: 1,
-  physicalViscosity: 'solid',
-  fdcId: 2262074,
+  physicalViscosity: "solid",
+  fdcId: null,
   // tags: null,
   energyKj: null,
   fatSatG: null,
   fibreG: null,
   proteinG: null,
   saltG: null,
+  sodiumMg: null,
   sugarG: null,
-  majorClass: 'undefined',
+  majorClass: {
+    name: "Bitte wählen",
+    value: "undefined",
+  },
 });
 
 const rules = {
@@ -209,23 +223,44 @@ function onButtonClicked() {
     return;
   }
   isLoading.value = true;
-  ingredientStore.updateIngredient(state.value).then((response) => {
-    if (response && response.status === 200) {
-      router.push({
-        name: "IngredientNutrients",
-        params: { id: response.data.id }
-      });
-      commonStore.showSuccess("Zutat erfolgreich geändert");
-    }
-    else if(response && response.status === 400) {
-      commonStore.showSuccess(`Die Anfrage ist Fehlerhaft.${response.data}`);
-    } else {
-      console.log(response);
-    }
-  }).finally(() => {
+  ingredientStore
+    .updateIngredient({
+      id: state.value.id,
+      name: state.value.name,
+      description: state.value.description,
+      physicalDensity: state.value.physicalDensity,
+      physicalViscosity: state.value.physicalViscosity,
+      fdcId: state.value.fdcId,
+      energyKj: state.value.energyKj,
+      fatSatG: state.value.fatSatG,
+      fibreG: state.value.fibreG,
+      proteinG: state.value.proteinG,
+      saltG: state.value.saltG,
+      sugarG: state.value.sugarG,
+      sodiumMg: state.value.sodiumMg,
+      majorClass: state?.value.majorClass?.value,
+    })
+    .then((response) => {
+      if (response && response.status === 200) {
+        router.push({
+          name: "IngredientNutrients",
+          params: { id: response.data.id },
+        });
+        commonStore.showSuccess("Zutat erfolgreich geändert");
+      } else if (response && response.status === 400) {
+        commonStore.showSuccess(`Die Anfrage ist Fehlerhaft.${response.data}`);
+      } else {
+        console.log(response);
+      }
+    })
+    .finally(() => {
       isLoading.value = false;
-  });
+    });
 }
+
+const majorClasses = computed(() => {
+  return ingredientStore.majorClasses;
+});
 
 watch(
   () => ingredientStore.ingredientDetail,
@@ -233,11 +268,26 @@ watch(
     if (value.id) {
       state.value = value;
     }
+    if (value?.majorClass && typeof value?.majorClass !== "object") {
+      state.value.majorClass = majorClasses.value.filter(
+        (item) => item.value === value.majorClass
+      )[0];
+    }
+    if (typeof value?.majorClass === "object") {
+      state.value.majorClass = majorClasses.value.filter(
+        (item) => item.value === value.majorClass.value
+      )[0];
+    }
   },
   { immediate: true, deep: true }
 );
+
 onMounted(() => {
-  const id = route.params.id;
-  ingredientStore.fetchIngredientById(id)
+  ingredientStore.fetchMajorClasses();
+
+  setTimeout(function () {
+    const id = route.params.id;
+    ingredientStore.fetchIngredientById(id);
+  }, 100);
 });
 </script>

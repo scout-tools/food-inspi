@@ -73,7 +73,6 @@ moment.updateLocale("de", localization);
 
 import { ref, watch, onMounted, computed } from "vue";
 import EmptyItem from "@/modules/recipe/components/simulator/EmptyItem.vue";
-import RecipeOverview from "@/modules/recipe/components/RecipeMainOverview.vue";
 import MealList from "@/modules/meal/components/MealList.vue";
 import MealListEmpty from "@/modules/meal/components/MealListEmpty.vue";
 import Container from "@/modules/meal/components/Container.vue";

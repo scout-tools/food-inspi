@@ -47,7 +47,7 @@ const pages = computed(() => {
     { name: "Zutaten", link: "IngredientMain" },
     {
       name: `${ingredientDetail.value.name}`,
-      link: `IngredientNutrients`
+      link: `IngredientNutrients`,
     },
   ];
 });

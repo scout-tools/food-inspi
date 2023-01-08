@@ -18,7 +18,7 @@
                 {{ item.name }}
               </p>
               <p class="truncate text-sm font-medium text-black-600">
-                {{ item.pricePerKg }} € / Kg
+                {{ (item.pricePerKg).toFixed(2) }} € / Kg
               </p>
               <p class="truncate text-sm font-medium text-black-600">
                 {{ item.portions.length }} Portionen
@@ -36,7 +36,7 @@
                 <p class="mt-1 flex items-center text-sm text-gray-500">
                   
                 </p>
-                <NutriSlim :nutriClass="1" />
+                <NutriSlim :nutriClass="item.nutriClass" />
               </div>
             </div>
           </div>

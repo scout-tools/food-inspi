@@ -1,11 +1,6 @@
 <template>
-  <div>
-    <RecipeItemList
-      @openRecipeItemAdd="openRecipeItemAdd"
-      @openRecipeItemUpdate="openRecipeItemUpdate"
-      :recipeItems="recipeItems"
-      :editable="isEditable"
-    />
+  <div v-for="item in items" :key="item.id">
+    <RecipeOverviewItem :item="item" :recipeDetail="recipeDetail" />
   </div>
 </template>
 
@@ -13,7 +8,8 @@
 import { onMounted, computed } from "vue";
 import RecipeItemList from "@/modules/recipe/components/RecipeItemList.vue";
 import PriceList from "@/modules/recipe/components/PriceList.vue";
-import NutritionalsBoxPlot from "@//modules/recipe/components/chart/NutritionalsBoxPlot.vue";
+import RecipeOverviewItem from "@/modules/recipe/components/RecipeOverviewItem/Main.vue";
+import NutritionalsBoxPlot from "@/modules/recipe/components/chart/NutritionalsBoxPlot.vue";
 import ListItem from "@/modules/recipe/components/ListItem.vue";
 import { useRoute } from "vue-router";
 import { useRecipeStore } from "@/modules/recipe/store/index.ts";
@@ -24,6 +20,45 @@ const props = defineProps({
   isEditable: { type: Boolean, required: false, default: false },
 });
 
+const items = [
+  {
+    id: 1,
+    name: "Energie",
+    value: "energyKj",
+    unit: "kJ",
+  },
+  {
+    id: 2,
+    name: "Zucker",
+    value: "sugarG",
+    unit: "g",
+  },
+  {
+    id: 3,
+    name: "gesä. Fett",
+    value: "fatSatG",
+    unit: "g",
+  },
+  {
+    id: 4,
+    name: "Natrium",
+    value: "sodiumMg",
+    unit: "mg",
+  },
+  {
+    id: 5,
+    name: "Eiweiß",
+    value: "proteinG",
+    unit: "g",
+  },
+  {
+    id: 6,
+    name: "Ballaststoffe",
+    value: "fibreG",
+    unit: "g",
+  },
+];
+
 const emit = defineEmits(["openRecipeItemUpdate", "openRecipeItemAdd"]);
 
 const openRecipeItemUpdate = (reciptItem: Object) => {
@@ -32,6 +67,7 @@ const openRecipeItemUpdate = (reciptItem: Object) => {
 const openRecipeItemAdd = () => {
   emit("openRecipeItemAdd");
 };
+
 
 const recipeStore = useRecipeStore();
 

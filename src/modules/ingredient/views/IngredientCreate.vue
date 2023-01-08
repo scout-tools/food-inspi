@@ -1,4 +1,5 @@
 <template>
+<div>
   <Breadcrumbs :pages="pages" />
   <main
     class="
@@ -24,7 +25,7 @@
                 Daten die über jede Zutat bekannt sein müssen
               </p>
             </div>
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+            <div class="mt-6 grid grid-cols-3">
               <Base
                 component="Text"
                 :label="'Name der Zutat (erforderlich)'"
@@ -86,16 +87,18 @@
                 Wenn du keine FDC-ID hast, kannst du alles selbst eintragen.
               </p>
             </div>
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <Base
-                component="Text"
-                techName="majorClass"
-                v-model="state['majorClass']"
-                label="Hauptkategorie"
-                hint="Wähle eine Hauptkategorie für deine Zutat."
-                :errors="errors.majorClass && errors.majorClass.$errors"
-              />
-            </div>
+              <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <Base
+                  :cols="3"
+                  component="Select"
+                  techName="majorClass"
+                  v-model="state['majorClass']"
+                  label="Hauptkategorie"
+                  :items="majorClasses"
+                  hint="Wähle eine Hauptkategorie für deine Zutat."
+                  :errors="errors.majorClass && errors.majorClass.$errors"
+                />
+              </div>
             <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
               <Base
                 component="Number"
@@ -124,6 +127,7 @@
       </form>
     </article>
   </main>
+</div>
 </template>
 
 
@@ -159,8 +163,8 @@ const nutrientList = [
     label: "Einweiß in Gramm (g)",
   },
   {
-    techName: "saltG",
-    label: "Salz in Gramm (g)",
+    techName: "sodiumMg",
+    label: "Natrium in Milligramm (mg)",
   },
   {
     techName: "fibreG",
@@ -179,20 +183,24 @@ const pages = computed(() => {
   ];
 });
 
-const state = reactive({
+const state = ref({
   name: null,
   description: null,
   physicalDensity: 1,
-  physicalViscosity: 'solid',
-  fdcId: 2262074,
+  physicalViscosity: "solid",
+  fdcId: null,
   // tags: null,
   energyKj: null,
   fatSatG: null,
   fibreG: null,
   proteinG: null,
   saltG: null,
+  sodiumMg: null,
   sugarG: null,
-  majorClass: 'undefined',
+  majorClass: {
+    name: "Bitte wählen",
+    value: "undefined",
+  },
 });
 
 const rules = {
@@ -209,7 +217,7 @@ const rules = {
 
 const v$ = useVuelidate(rules, state);
 
-const fdcEnabled = ref(true);
+const fdcEnabled = ref(false);
 const errors = ref([]);
 const isLoading = ref(false);
 
@@ -229,7 +237,21 @@ function onButtonClicked() {
     return;
   }
   isLoading.value = true;
-  ingredientStore.createIngredient(state).then((response) => {
+  ingredientStore.createIngredient({
+      name: state.value.name,
+      description: state.value.description,
+      physicalDensity: state.value.physicalDensity,
+      physicalViscosity: state.value.physicalViscosity,
+      fdcId: state.value.fdcId,
+      energyKj: state.value.energyKj,
+      fatSatG: state.value.fatSatG,
+      fibreG: state.value.fibreG,
+      proteinG: state.value.proteinG,
+      saltG: state.value.saltG,
+      sugarG: state.value.sugarG,
+      sodiumMg: state.value.sodiumMg,
+      majorClass: state?.value.majorClass?.value,
+  }).then((response) => {
     if (response && response.status === 201) {
       router.push({
         name: "IngredientNutrients",
@@ -246,4 +268,12 @@ function onButtonClicked() {
       isLoading.value = false;
   });
 }
+
+const majorClasses = computed(() => {
+  return ingredientStore.majorClasses;
+});
+
+onMounted(() => {
+  ingredientStore.fetchMajorClasses();
+});
 </script>

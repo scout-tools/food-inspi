@@ -87,7 +87,7 @@
                 sm:table-cell
               "
             >
-              {{ project.pricePerKg }} €/Kg
+              {{ project.pricePerKg.toFixed(2) }} €/Kg
             </td>
             <td
               class="
@@ -110,7 +110,7 @@
                 md:pr-0
               "
             >
-              {{ project.price }} €
+              {{ project.price.toFixed(2) }} €
             </td>
           </tr>
         </tbody>

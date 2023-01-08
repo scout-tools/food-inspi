@@ -15,40 +15,14 @@
       :errors="errors.description?.$errors"
     />
     <BaseField
-      component="Number"
-      v-model="state.normPortions"
-      techName="normPortions"
-      label="Anzahl Portionen"
-      :errors="errors.normPortions?.$errors"
-    />
-    <BaseField
       component="Select"
-      v-model="state.activityFactor"
-      techName="activityFactor"
-      label="Aktivität"
-      :items="physicalActivities"
-      :errors="errors.activityFactor?.$errors"
+      v-model="state.mealType"
+      techName="mealType"
+      label="Essens Typ"
+      :items="mealTypes"
+      :errors="errors.mealType?.$errors"
     />
-    <BaseField
-      v-if="!isEdit"
-      component="DateTime"
-      label="Start-Datum"
-      techName="startDate"
-      v-model="state.startDate"
-      :errors="errors.startDate?.$errors"
-    />
-    <BaseField
-      v-if="!isEdit"
-      component="DateTime"
-      label="End-Datum"
-      techName="endDate"
-      v-model="state.endDate"
-      :errors="errors.endDate?.$errors"
-    />
-    <PrimaryButton
-      @click="onSaveClicked"
-      :label="!isEdit ? 'Veranst. hinzufügen' : 'Veranst. bearbeiten'"
-    />
+    <PrimaryButton @click="onSaveClicked" :label="'Veranst. hinzufügen'" />
     <PrimaryButton
       v-if="isEdit"
       class="mx-2 my-2"
@@ -78,26 +52,17 @@ const state = reactive({
   id: null,
   name: "",
   description: "",
-  normPortions: 1,
-  startDate: null,
-  endDate: null,
-  activityFactor: null,
+  mealType: 1,
 });
 
 const rules = {
   name: {
     required,
   },
-  normPortions: {
+  description: {
     required,
   },
-  startDate: {
-    required,
-  },
-  endDate: {
-    required,
-  },
-  activityFactor: {
+  mealType: {
     required,
   },
 };
@@ -113,13 +78,14 @@ const errors = ref([]);
 const isLoading = ref(false);
 
 const mealStore = useMealStore();
+const recipeStore = useRecipeStore();
 
 const isEdit = computed(() => {
   return !!props.items?.id;
 });
 
-const physicalActivities = computed(() => {
-  return mealStore.physicalActivity;
+const mealTypes = computed(() => {
+  return mealStore.mealTypes;
 });
 
 function onDeleteClicked() {
@@ -137,48 +103,26 @@ function onSaveClicked() {
     commonStore.showError("Bitte Felder überprüfen");
     return;
   }
-
-  // new
-  if (!isEdit.value) {
-    mealStore
-      .createEvent({
-        name: state.name,
-        description: state.description,
-        normPortions: state.normPortions,
-        startDate: state.startDate,
-        endDate: state.endDate,
-        activityFactor: state.activityFactor.id,
-      })
-      .then((response: any) => {
-        goToRecipe(response.data.id)
-      });
-  } else {
-    mealStore
-      .updateEvent({
-        id: state.id,
-        name: state.name,
-        description: state.description,
-        normPortions: state.normPortions,
-        startDate: state.startDate,
-        endDate: state.endDate,
-        activityFactor: state.activityFactor.id,
-      })
-      .then((response: any) => {
-        goToRecipe(response.data.id);
-      });
-  }
+  recipeStore
+    .updateRecipe({
+      id: state.id,
+      name: state.name,
+      description: state.description,
+      mealType: state.mealType?.id,
+      status: 'user_public'
+    })
+    .then((response: any) => {
+      goToRecipe(response.data.id);
+    });
 }
 
 function goToRecipe(id: number) {
   router.push({
-    name: "EventDefault",
+    name: "RecipeDetail",
     params: {
       id: id,
     },
   });
-  if (router.currentRoute.value.name === "EventDefault") {
-    router.go(router.currentRoute.value);
-  }
 }
 
 import { useRoute } from "vue-router";
@@ -188,25 +132,19 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 onMounted(() => {
-  mealStore.fetchPhysicalActivity();
+  mealStore.fetchMealTypes();
   setTimeout(function () {
     if (isEdit.value) {
       state.id = props.items?.id;
       state.name = props.items?.name;
       state.description = props.items?.description;
-      state.normPortions = props.items?.normPortions;
-      state.startDate = props.items?.startDate;
-      state.endDate = props.items?.endDate;
-      state.activityFactor = physicalActivities.value.filter(
-        (item) => item.id === props.items?.activityFactor
+      state.mealType = mealTypes.value.filter(
+        (item) => item.id === props.items?.mealType
       )[0];
     } else {
       state.name = null;
       state.description = null;
-      state.normPortions = 1;
-      state.startDate = null;
-      state.endDate = null;
-      state.activityFactor = null;
+      state.mealType = null;
     }
   }, 300);
 });

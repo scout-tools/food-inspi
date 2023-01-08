@@ -5,7 +5,7 @@
       class="block text-sm font-medium text-gray-700"
       >{{ props.label }}</label
     >
-    <div class="mt-1 sm:col-span-2 sm:mt-0">
+    <div class="mt-1">
       <textarea
         :value="props.modelValue"
         @input="updateValue"
@@ -34,6 +34,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref, watch } from "vue";
+
 import { ExclamationCircleIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps({
@@ -41,6 +43,7 @@ const props = defineProps({
   errors: { type: Array, required: false, default: [] },
   label: { type: String, required: true },
   hint: { type: String, required: false, default: "" },
+  cols: { type: Number, required: false, default: 3}
 });
 
 const hasError = computed(() => {

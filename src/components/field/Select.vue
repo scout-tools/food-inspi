@@ -1,4 +1,5 @@
 <template>
+<div :class="`sm:col-span-${cols}`">
   <Listbox
     as="div"
     :disabled="disabled"
@@ -118,6 +119,7 @@
       {{ props.hint }}
     </p>
   </Listbox>
+</div>
 </template>
 
 <script setup lang="ts">
