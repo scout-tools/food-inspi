@@ -112,7 +112,7 @@
                 md:pr-0
               "
             >
-              {{ (project.pricePerKg * (project.weightG / 1000)).toFixed(2) }} €/Kg
+              {{ (project.price).toFixed(2) }} €
             </td>
           </tr>
         </tbody>
@@ -161,7 +161,7 @@
                 md:pr-0
               "
             >
-              {{ getSumByKey(props.recipeItems, "price").toFixed(2) }} €
+              {{ (getSumByKey(props.recipeItems, "price")).toFixed(2) }} €
             </td>
           </tr>
         </tfoot>
