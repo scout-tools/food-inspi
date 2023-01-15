@@ -18,7 +18,7 @@
                 {{ item.name }}
               </p>
               <p class="truncate text-sm font-medium text-black-600">
-                {{ (item.pricePerKg).toFixed(2) }} € / Kg
+                <!-- {{ (item.pricePerKg).toFixed(2) }} € / Kg -->
               </p>
               <p class="truncate text-sm font-medium text-black-600">
                 {{ item.portions.length }} Portionen

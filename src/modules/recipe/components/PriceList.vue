@@ -89,7 +89,7 @@
                 sm:table-cell
               "
             >
-              {{ project.pricePerKg.toFixed(2) }} €/Kg
+              {{ (project.pricePerKg).toFixed(2) }} €/Kg
             </td>
             <td
               class="
@@ -112,7 +112,7 @@
                 md:pr-0
               "
             >
-              {{ project.price.toFixed(2) }} €
+              {{ (project.pricePerKg * (project.weightG / 1000)).toFixed(2) }} €/Kg
             </td>
           </tr>
         </tbody>
@@ -171,23 +171,6 @@
 </template>
 
 <script setup lang="ts">
-const projects = [
-  {
-    id: 1,
-    name: "New Advertising Campaign",
-    hours: "12.0",
-    rate: "$75.00",
-    price: "$900.00",
-  },
-  {
-    id: 2,
-    name: "New Adsadaign",
-    hours: "12.0",
-    rate: "$75.00",
-    price: "$900.00",
-  },
-  // More projects...
-];
 
 const getSumByKey = (arr, key) => {
   return arr.reduce(
@@ -197,9 +180,6 @@ const getSumByKey = (arr, key) => {
 };
 
 const props = defineProps({
-  label: { type: String, required: true },
-  value: { type: String, required: true },
-  unit: { type: String, required: false, default: "g" },
   recipeItems: { type: Array, required: false, default: [] },
 });
 </script>

@@ -7,7 +7,7 @@ import EventApi from "@/modules/meal/services/event";
 import ChoiseApi from "@/modules/meal/services/choice";
 import ShoppingListApi from "@/modules/meal/services/shopping-list";
 
-import { useCommonStore } from "@/modules/common/store/index.ts";
+import { useCommonStore } from "@/modules/common/store/index";
 const commonStore = useCommonStore();
 
 export const useMealStore = defineStore("meal", {
@@ -64,6 +64,7 @@ export const useMealStore = defineStore("meal", {
       }
     },
     async fetchEventById(id: number) {
+      this._event = {};
       try {
         const response = await EventApi.fetchById(id);
         this._event = response.data;
@@ -73,6 +74,7 @@ export const useMealStore = defineStore("meal", {
       }
     },
     async fetchMealDayById(id: number) {
+      this._mealDay = {};
       try {
         const response = await MealApiDay.fetchById(id);
         this._mealDay = response.data;
@@ -84,7 +86,7 @@ export const useMealStore = defineStore("meal", {
     async createEvent(data: object) {
       try {
         return await EventApi.create(data);
-      } catch (error) {
+      } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);
         } else if (error.response.status === 500) {
@@ -95,7 +97,7 @@ export const useMealStore = defineStore("meal", {
     async updateEvent(data: object) {
       try {
         return await EventApi.update(data);
-      } catch (error) {
+      } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);
         } else if (error.response.status === 500) {
@@ -112,7 +114,7 @@ export const useMealStore = defineStore("meal", {
     async createMeal(data: object) {
       try {
         return await MealApi.create(data);
-      } catch (error) {
+      } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);
         } else if (error.response.status === 500) {
@@ -123,7 +125,7 @@ export const useMealStore = defineStore("meal", {
     async updateMeal(data: object) {
       try {
         return await MealApi.update(data);
-      } catch (error) {
+      } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);
         } else if (error.response.status === 500) {
@@ -134,7 +136,7 @@ export const useMealStore = defineStore("meal", {
     async deleteMeal(id: number) {
       try {
         return await MealApi.delete(id);
-      } catch (error) {
+      } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);
         } else if (error.response.status === 500) {
@@ -145,7 +147,7 @@ export const useMealStore = defineStore("meal", {
     async createMealItem(data: object) {
       try {
         return await MealItemApi.create(data);
-      } catch (error) {
+      } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);
         } else if (error.response.status === 500) {
@@ -156,7 +158,7 @@ export const useMealStore = defineStore("meal", {
     async updateMealItem(data: object) {
       try {
         return await MealItemApi.update(data);
-      } catch (error) {
+      } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);
         } else if (error.response.status === 500) {
@@ -167,7 +169,7 @@ export const useMealStore = defineStore("meal", {
     async deleteMealItem(data: object) {
       try {
         return await MealItemApi.delete(data);
-      } catch (error) {
+      } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);
         } else if (error.response.status === 500) {
@@ -179,7 +181,7 @@ export const useMealStore = defineStore("meal", {
       try {
         const response = await ShoppingListApi.fetchAll(params);
         this._shoppingList = response.data;
-      } catch (error) {
+      } catch (error: any) {
         alert(error);
         console.log(error);
       }

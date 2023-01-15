@@ -100,9 +100,7 @@
                           lg:pl-8
                         "
                       >
-                        {{ item.package.name }} ({{
-                          item.package.portion.name
-                        }})
+                        {{ item.package.name }}
                       </td>
                       <td
                         class="

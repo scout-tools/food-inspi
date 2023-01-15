@@ -12,9 +12,6 @@
         "
       >
         <PriceList
-          label="Engergie"
-          :value="recipeDetail.energyKj"
-          unit="kJ"
           :recipeItems="recipeItems"
         />
       </div>

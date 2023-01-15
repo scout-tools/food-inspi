@@ -1,13 +1,14 @@
 <template>
-  <div v-for="item in items" :key="item.id">
-    <RecipeOverviewItem :item="item" :recipeDetail="recipeDetail" />
+  <div>
+    <div v-for="item in items" :key="item.id">
+      <RecipeOverviewItem :item="item" :recipeDetail="recipeDetail" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, computed } from "vue";
 import RecipeItemList from "@/modules/recipe/components/RecipeItemList.vue";
-import PriceList from "@/modules/recipe/components/PriceList.vue";
 import RecipeOverviewItem from "@/modules/recipe/components/RecipeOverviewItem/Main.vue";
 import NutritionalsBoxPlot from "@/modules/recipe/components/chart/NutritionalsBoxPlot.vue";
 import ListItem from "@/modules/recipe/components/ListItem.vue";
@@ -67,7 +68,6 @@ const openRecipeItemUpdate = (reciptItem: Object) => {
 const openRecipeItemAdd = () => {
   emit("openRecipeItemAdd");
 };
-
 
 const recipeStore = useRecipeStore();
 
