@@ -123,7 +123,7 @@ const event = computed(() => {
 
 onMounted(() => {
   const id = route.params.id;
-  mealStore.fetchEventById(id);
+  // mealStore.fetchEventById(id);
 });
 </script>
 

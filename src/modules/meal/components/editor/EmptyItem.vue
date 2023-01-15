@@ -191,6 +191,6 @@ async function onSimulateClicked(id) {
 }
 
 onMounted(() => {
-  mealStore.fetchEvents();
+  mealStore.fetchEventsSmall();
 });
 </script>
