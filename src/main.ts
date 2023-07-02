@@ -1,10 +1,14 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+
 import VueApexCharts from "vue3-apexcharts";
 import App from "./App.vue";
 import router from "./router";
+import keycloak from "@/modules/auth/keycloak";
 import { createHead } from "@vueuse/head";
 import "./assets/index.postcss";
+
+import auth from "./plugin/auth"
 
 const head = createHead();
 const app = createApp(App);
@@ -22,7 +26,11 @@ const app = createApp(App);
 //   alert(`Das System ist Fehlerhaft und muss neugestartet werden. Fehler:: ${event.reason}`)
 // });
 
-app.use(createPinia());
+auth.interceptorsSetup();
+
+const pinia = createPinia()
+app.use(pinia);
+app.use(keycloak);
 app.use(router);
 app.use(head);
 app.use(VueApexCharts);

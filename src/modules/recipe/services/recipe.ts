@@ -14,6 +14,16 @@ export default {
       params: params,
     });
   },
+  fetchPublicRecipies(params: any) {
+    return axios.get(`${BASE_URL}/food/recipe-read-user/`, {
+      params: params,
+    });
+  },
+  fetchMyRecipies(params: any) {
+    return axios.get(`${BASE_URL}/food/my-recipe-read/`, {
+      params: params,
+    });
+  },
   fetchById(id: any) {
     return axios.get(`${BASE_URL}/${SERVICE}/${id}/`);
   },

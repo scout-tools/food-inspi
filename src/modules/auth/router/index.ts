@@ -14,4 +14,9 @@ export default [
     path: "/:catchAll(.*)", // Unrecognized path automatically matches 404
     redirect: '/404',
   },
+  {
+    path: "/login",
+    name: "Login",
+    component: () => import(/* webpackChunkName: "Login" */ "@/modules/auth/views/Login.vue"),
+  },
 ];

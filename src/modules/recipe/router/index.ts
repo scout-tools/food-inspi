@@ -35,11 +35,32 @@ export default [
   {
     path: "/simulator/start",
     name: "SimulatorStart",
+    redirect: { name: "RecipeApproved", query: { meal_type: 'lunch_warm'}},
     component: () => import(/* webpackChunkName: "SimulatorStart" */ "@/modules/recipe/views/SimulatorStart.vue"),
+    children: [
+      {
+        path: "approved",
+        name: "RecipeApproved",
+        component: () =>
+          import(/* webpackChunkName: "RecipeApproved" */ "@/modules/recipe/views/tabs/Approved.vue"),
+      },
+      {
+        path: "user-public",
+        name: "RecipeUserPublic",
+        component: () =>
+          import(/* webpackChunkName: "RecipeUserPublic" */ "@/modules/recipe/views/tabs/UserPublic.vue"),
+      },
+      {
+        path: "my-recipes",
+        name: "RecipeMyRecipes",
+        component: () =>
+          import(/* webpackChunkName: "RecipeMyRecipes" */ "@/modules/recipe/views/tabs/MyRecipes.vue"),
+      },
+    ],
   },
   {
     path: "/simulator/:id",
     name: "SimulatorMain",
     component: () => import(/* webpackChunkName: "SimulatorMain" */ "@/modules/recipe/views/SimulatorMain.vue"),
   },
-];
+]

@@ -105,7 +105,7 @@
                       sm:pl-6
                     "
                   >
-                    {{ event.name }}
+                    {{ event?.event?.name }}
                   </td>
                   <td
                     class="

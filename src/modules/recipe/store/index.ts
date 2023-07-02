@@ -10,8 +10,10 @@ export const useRecipeStore = defineStore("recipe", {
   state: () => ({
     _recipes: [],
     _recipesVerified: [],
+    _recipesPublic: [],
     _recipeDetail: {},
     _recipeItem: {},
+    _myRecipies: {},
     _createRecipeData: [{
       stepId: 1,
       name: '',
@@ -42,6 +44,24 @@ export const useRecipeStore = defineStore("recipe", {
       try {
         const response = await RecipeApi.fetchVerified(params);
         this._recipesVerified = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchPublicRecipies(params = {}) {
+      try {
+        const response = await RecipeApi.fetchPublicRecipies(params);
+        this._recipesPublic = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchMyRecipies(params = {}) {
+      try {
+        const response = await RecipeApi.fetchMyRecipies(params);
+        this._myRecipies = response.data;
       } catch (error) {
         alert(error);
         console.log(error);
@@ -132,6 +152,12 @@ export const useRecipeStore = defineStore("recipe", {
     },
     recipesVerified: (state) => {
       return state._recipesVerified;
+    },
+    recipesPublic: (state) => {
+      return state._recipesPublic;
+    },
+    myRecipies: (state) => {
+      return state._myRecipies;
     },
     recipeDetail: (state) => {
       return state._recipeDetail;
