@@ -1,7 +1,7 @@
 <template>
   <TabWrapper>
     <!-- Tabs -->
-    <div class="sm:hidden" v-if="isAuth">
+    <div class="sm:hidden">
       <label for="tabs" class="sr-only">Select a tab</label>
       <select
         id="tabs"
@@ -20,7 +20,8 @@
         </option>
       </select>
     </div>
-    <div class="hidden sm:block" v-if="isAuth">
+    <div class="hidden sm:block">
+      <PrimaryButton @click="onEventAddClicked">Neues Event</PrimaryButton>
       <div class="border-b border-gray-200">
         <nav class="mt-2 -mb-px flex space-x-8" aria-label="Tabs">
           <router-link
@@ -50,25 +51,25 @@
       </div>
     </div>
     <SimpleList
-      v-if="isAuth"
-      :items="recipesFiltered"
+      :items="eventFiltered"
       :isLoading="isLoading"
-      detailPageLink="RecipeDetail"
+      detailPageLink="EventDefault"
     >
       <template v-slot:notEmpty="slotProps">
-        <RecipeListItem :item="slotProps.item" />
+        <MealListItem :item="slotProps.item" />
       </template>
       <template v-slot:empty>
         <h1>Leer</h1>
       </template>
     </SimpleList>
-    <div v-else>
-      <h1>Du bist nicht eingeloggt.</h1>
-      <PrimaryButton class="mx-3 my-3" @click="onLoginclicked">Einloggen</PrimaryButton>
-    </div>
+    <EventAddEdit
+      :open="openEventAddEdit"
+      @close="onEventAddEditClose"
+      header="Veranstaltung"
+    />
   </TabWrapper>
 </template>
-
+  
 <script setup lang="ts">
 import { ref, watch, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
@@ -84,29 +85,36 @@ import RequestListButton from "@/modules/group/components/RequestListButton.vue"
 import SimpleList from "@/components/list/SimpleList.vue";
 import TabWrapper from "@/components/base/TabWrapper.vue";
 import RecipeListItem from "@/modules/recipe/components/RecipeListItem.vue";
+import MealListItem from "@/modules/meal/components/MealListItem.vue";
 import EventListItemEmpty from "@/modules/event/components/EventListItemEmpty.vue";
 import { useEventStore } from "@/modules/event/store";
-import PrimaryButton from "@/components/button/Primary.vue"
-
-function onLoginclicked() {
-	authStore.login()
-}
+import EventAddEdit from "@/modules/meal/components/EventAddEdit/EventAddEdit.vue";
+import PrimaryButton from "@/components/button/Primary.vue";
 
 const router = useRouter();
 
 import { useRecipeStore } from "@/modules/recipe/store/index";
 const recipeStore = useRecipeStore();
 
+import { useMealStore } from "@/modules/meal/store/index";
+const mealStore = useMealStore();
+
 const isLoading = computed(() => {
-  return recipeStore.isLoading;
+  return mealStore.isLoading;
 });
 
-const recipesFiltered = computed(() => {
+const events = computed(() => {
+  return mealStore.events;
+});
+
+const eventFiltered = computed(() => {
   const query = { ...router.currentRoute.value.query };
-  return recipes.value.filter((q) => q.mealType === query.meal_type);
+  return events.value;
 });
 
 const selectedValue = ref("Aktive Anmeldephase");
+const openEventAddEdit = ref(false);
+
 
 function onChange(event) {
   const linkName = tabs.value.find((item) => item.name === selectedValue.value)[
@@ -121,59 +129,23 @@ const tabs = computed(() => {
   const query = { ...router.currentRoute.value.query };
 
   return [
-    {
-      name: "Warm",
-      linkName: { name: "RecipeMyRecipes", query: {  meal_type: "lunch_warm" } },
-      count: recipes.value.filter((q) => q.mealType === "lunch_warm").length,
-      current: query.meal_type === "lunch_warm",
-    },
-    {
-      name: "Kalt",
-      linkName: { name: "RecipeMyRecipes", query: { meal_type: "lunch_cold" } },
-      count: recipes.value.filter((q) => q.mealType === "lunch_cold").length,
-      current: query.meal_type === "lunch_cold",
-    },
-    {
-      name: "Nachtisch",
-      linkName: { name: "RecipeMyRecipes", query: { meal_type: "snack" } },
-      count: recipes.value.filter((q) => q.mealType === "snack").length,
-      current: query.meal_type === "snack",
-    },
-    {
-      name: "Frühstück",
-      linkName: { name: "RecipeMyRecipes", query: { meal_type: "breakfast" } },
-      count: recipes.value.filter((q) => q.mealType === "breakfast").length,
-      current: query.meal_type === "breakfast",
-    },
-    {
-      name: "Getränk",
-      linkName: { name: "RecipeMyRecipes", query: { meal_type: "drink" } },
-      count: recipes.value.filter((q) => q.mealType === "drink").length,
-      current: query.mealType === "drink",
-    },
   ];
 });
 
-import { useAuthStore } from "@/modules/auth/store/index.ts";
-const authStore = useAuthStore();
-
-const isAuth = computed(() => {
-  return authStore.isAuth;
-});
-
-
-
-const recipes = computed(() => {
-  return recipeStore.myRecipies;
-});
-
 function refresh() {
-  recipeStore.fetchMyRecipies();
+  mealStore.fetchEventsSmall();
 }
 
+function onEventAddClicked() {
+  openEventAddEdit.value = true;
+}
+
+function onEventAddEditClose() {
+  openEventAddEdit.value = false;
+}
 
 onMounted(() => {
   refresh();
 });
-
 </script>
+

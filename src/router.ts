@@ -41,13 +41,13 @@ function sleep(ms: number) {
 
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
-  if (
-    to.matched.some((record) => {
-      record.path.includes("landing");
-    })
-  ) {
-    next();
-  }
+  // if (
+  //   to.matched.some((record) => {
+  //     record.path.includes("landing");
+  //   })
+  // ) {
+  //   next();
+  // }
 
   while (!authStore.isKeycloakInit) {
     // eslint-disable-next-line no-await-in-loop

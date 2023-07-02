@@ -2,7 +2,28 @@ export default [
   {
     path: "/event/start",
     name: "MealDayStart",
+    redirect: { name: "MyEvents", query: { meal_type: 'lunch_warm'}},
     component: () => import(/* webpackChunkName: "MealDayStart" */ "@/modules/meal/views/MealDayStart.vue"),
+    children: [
+      {
+        path: "my-events",
+        name: "MyEvents",
+        component: () =>
+          import(/* webpackChunkName: "MyEvents" */ "@/modules/meal/views/tabs/MyEvents.vue"),
+      },
+      {
+        path: "public-events",
+        name: "PublicEvents",
+        component: () =>
+          import(/* webpackChunkName: "PublicEvents" */ "@/modules/meal/views/tabs/PublicEvents.vue"),
+      },
+      {
+        path: "my-recipes",
+        name: "ApprovedEvents",
+        component: () =>
+          import(/* webpackChunkName: "ApprovedEvents" */ "@/modules/meal/views/tabs/ApprovedEvents.vue"),
+      },
+    ],
   },
   {
     path: "/event/:id",

@@ -1,12 +1,20 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import VueApexCharts from "vue3-apexcharts";
 import App from "./App.vue";
 import router from "./router";
-import keycloak from "@/modules/auth/keycloak";
 import { createHead } from "@vueuse/head";
 import "./assets/index.postcss";
+import keycloak from "@/modules/auth/keycloak";
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
+
+import dayjs from 'dayjs'
+import 'dayjs/locale/de';
+import LocalizedFormat from 'dayjs/plugin/localizedFormat';
+dayjs.locale('de')
+dayjs.extend(LocalizedFormat);
+
 
 import auth from "./plugin/auth"
 
@@ -26,13 +34,16 @@ const app = createApp(App);
 //   alert(`Das System ist Fehlerhaft und muss neugestartet werden. Fehler:: ${event.reason}`)
 // });
 
-auth.interceptorsSetup();
-
 const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 app.use(pinia);
-app.use(keycloak);
 app.use(router);
 app.use(head);
+app.use(keycloak);
 app.use(VueApexCharts);
+
+auth.interceptorsSetup();
+
+app.config.globalProperties.$dayjs = dayjs
 
 app.mount("#app");

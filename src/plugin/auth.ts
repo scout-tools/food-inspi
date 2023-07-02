@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { useAuthStore } from "@/modules/auth/store/index.ts";
+import { useAuthStore } from "@/modules/auth/store/index";
 
 
 export default {

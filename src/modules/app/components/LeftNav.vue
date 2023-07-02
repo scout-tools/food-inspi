@@ -207,8 +207,24 @@
                 {{ item.name }}
               </router-link>
               <router-link
+                v-if="!isAuth"
+                class="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                :class="[
+                  'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                  'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                ]"
+                :to="{}"
+                @click="onLoginClicked"
+              >
+                <ArrowRightIcon
+                  class="mr-4 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                  aria-hidden="true"
+                />
+                Login
+              </router-link>
+              <router-link
                 v-if="isAuth"
-                class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                class="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                 :class="[
                   'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                   'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
@@ -345,20 +361,13 @@ const secondaryNavigation = computed(() => {
       route: "hint",
       isAuth: true,
     },
-    {
-      name: "Einstellungen",
-      linkName: "Settings",
-      route: "settings",
-      icon: CogIcon,
-      isAuth: true,
-    },
-    {
-      name: "Login",
-      linkName: "Login",
-      route: "login",
-      icon: ArrowRightIcon,
-      isAuth: false,
-    },
+    // {
+    //   name: "Einstellungen",
+    //   linkName: "Settings",
+    //   route: "settings",
+    //   icon: CogIcon,
+    //   isAuth: true,
+    // },
   ].filter(
     (item) => (!item.isAuth || isAuth.value) && (item.isAuth || !isAuth.value)
   );

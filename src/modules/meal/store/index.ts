@@ -22,7 +22,8 @@ export const useMealStore = defineStore("meal", {
     _mealTypes: [],
     _mealDay: {},
     _shoppingList: [],
-    _physicalActivity: []
+    _physicalActivity: [],
+    _isLoading: true,
   }),
 
   actions: {
@@ -56,10 +57,12 @@ export const useMealStore = defineStore("meal", {
     },
     async fetchEventsSmall(params = {}) {
       try {
+        this._isLoading = true;
         const response = await EventApi.fetchSmall(params);
+        this._isLoading = false;
         this._events = response.data;
       } catch (error) {
-        alert(error);
+        this._isLoading = false;
         console.log(error);
       }
     },
@@ -205,6 +208,9 @@ export const useMealStore = defineStore("meal", {
     },
     physicalActivity: (state) => {
       return state._physicalActivity;
+    },
+    isLoading: (state) => {
+      return state._isLoading;
     },
   },
 });

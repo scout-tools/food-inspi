@@ -1,6 +1,5 @@
 <template>
   <div class="flex h-full">
-    <Banner />
     <LeftNav v-if="isKeycloakInit">
       <router-view />
     </LeftNav>
@@ -13,10 +12,11 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from "@/modules/auth/store/index";
+import { useAuthStore } from "@/modules/auth/store/index.ts";
 import { computed, onUpdated, ref } from "vue";
 
 import LeftNav from "@/modules/app/components/LeftNav.vue";
+import BaseLayout from "@/modules/app/components/BaseLayout.vue";
 import Success from "@/modules/common/components/Success.vue";
 import Error from "@/modules/common/components/Error.vue";
 import LoadingItem from "@/components/list/LoadingItem.vue";
@@ -31,6 +31,7 @@ const isAuth = computed(() => {
   return authStore.isAuth;
 });
 
+
 import { usePersonalDataStore } from "@/modules/settings/store/personal-data";
 const personalDataStore = usePersonalDataStore();
 
@@ -40,5 +41,8 @@ function getNotifications() {
   }
 }
 
-onUpdated(() => {});
+onUpdated(() => {
+  getNotifications();
+  setInterval(() => getNotifications(), 10000);
+});
 </script>
