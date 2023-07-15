@@ -94,6 +94,10 @@ function onOpenRecipeItemUpdate(reciptItem: Object) {
   openRecipeItem.value = reciptItem;
 }
 
+function onRecipeItemUpdateClose() {
+  openRecipeItemUpdate.value = false;
+}
+
 const openRecipeUpdate = ref(false);
 
 

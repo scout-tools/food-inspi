@@ -1,5 +1,5 @@
 <template>
-  <div :class="`sm:col-span-${cols}`">
+  <div  class="my-2" :class="`sm:col-span-${cols}`">
     <SwitchGroup as="div" class="flex items-center">
       <Switch
         :value="modelValue"

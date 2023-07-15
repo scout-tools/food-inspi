@@ -18,7 +18,7 @@
                   >
                     <div>
                       <p class="truncate text-sm font-medium text-blue-600">
-                        {{ moment(day.date).format("dddd") }}
+                        {{ $dayjs(day.date).format("dddd") }}
                       </p>
                       <p class="mt-2 flex items-center text-sm text-gray-500">
                         <BoltIcon
@@ -55,7 +55,7 @@
                         <p class="text-sm text-gray-900">
                           {{ " " }}
                           <time :datetime="day.date">{{
-                            moment(day.date).format("LL")
+                            $dayjs(day.date).format("LL")
                           }}</time>
                         </p>
                         <p class="mt-2 flex items-center text-sm text-gray-500">
@@ -118,7 +118,7 @@ const mealStore = useMealStore();
 const buttonList = [{ name: "Neue Zutat", linkName: "IngredientCreate" }];
 
 const event = computed(() => {
-  return mealStore.event;
+  return mealStore.mealEvent;
 });
 
 onMounted(() => {

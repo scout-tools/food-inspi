@@ -205,6 +205,19 @@ import {
   MenuItems,
 } from "@headlessui/vue";
 
+import {
+  ChatBubbleLeftEllipsisIcon,
+  CodeBracketIcon,
+  EllipsisVerticalIcon,
+  EyeIcon,
+  FlagIcon,
+  HandThumbUpIcon,
+  MagnifyingGlassIcon,
+  PlusIcon,
+  ShareIcon,
+  StarIcon,
+} from "@heroicons/vue/20/solid";
+
 const props = defineProps({
   item: Object,
   recipeDetail: Object,
@@ -232,7 +245,7 @@ function filterRecipeDetail(items, value) {
 
 function sortItems(items, value) {
   const returnArray =  []
-  items.recipeItems.forEach(element => {
+  items?.recipeItems?.forEach(element => {
     if (element[value] > 0) {
       returnArray.push({
         name: element.portion.ingredient.name,

@@ -1,14 +1,15 @@
 <template>
   <div>
     <BaseField
-      component="Text"
-      label="Name"
-      techName="name"
-      v-model="state.name"
-      :errors="errors.name?.$errors"
+      component="Select"
+      label="Veranstaltung"
+      techName="event"
+      v-model="state.event"
+      :errors="errors.event?.$errors"
+      :items="events"
     />
     <BaseField
-      component="TextArea"
+      component="Text"
       label="Beschreibung"
       techName="description"
       v-model="state.description"
@@ -30,20 +31,25 @@
       :errors="errors.activityFactor?.$errors"
     />
     <BaseField
-      v-if="!isEdit"
-      component="DateTime"
-      label="Start-Datum"
-      techName="startDate"
-      v-model="state.startDate"
-      :errors="errors.startDate?.$errors"
+      component="Number"
+      label="Reserve-Faktor"
+      techName="reserve_factor"
+      v-model="state.reserveFactor"
+      :errors="errors.reserveFactor?.$errors"
     />
     <BaseField
-      v-if="!isEdit"
-      component="DateTime"
-      label="End-Datum"
-      techName="endDate"
-      v-model="state.endDate"
-      :errors="errors.endDate?.$errors"
+      component="Toggle"
+      label="Öffentlich"
+      techName="isPublic"
+      v-model="state.isPublic"
+      :errors="errors.isPublic?.$errors"
+    />
+    <BaseField
+      component="Toggle"
+      label="Verifiziert"
+      techName="isApproved"
+      v-model="state.isApproved"
+      :errors="errors.isApproved?.$errors"
     />
     <PrimaryButton
       @click="onSaveClicked"
@@ -76,28 +82,35 @@ import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
 const state = reactive({
   id: null,
-  name: "",
-  description: "",
+  event: null,
+  description: '',
   normPortions: 1,
-  startDate: null,
-  endDate: null,
-  activityFactor: null,
+  activityFactor: 1.0,
+  reserveFactor: 1.0,
+  isPublic: false,
+  isApproved: false,
 });
 
 const rules = {
-  name: {
+  event: {
+    required,
+  },
+  description: {
     required,
   },
   normPortions: {
     required,
   },
-  startDate: {
-    required,
-  },
-  endDate: {
-    required,
-  },
   activityFactor: {
+    required,
+  },
+  reserveFactor: {
+    required,
+  },
+  isPublic: {
+    required,
+  },
+  isApproved: {
     required,
   },
 };
@@ -122,6 +135,10 @@ const physicalActivities = computed(() => {
   return mealStore.physicalActivity;
 });
 
+const events = computed(() => {
+  return mealStore.events;
+});
+
 function onDeleteClicked() {
   mealStore.deleteEvent(props.items).then((response) => {
     router.push({
@@ -142,26 +159,28 @@ function onSaveClicked() {
   if (!isEdit.value) {
     mealStore
       .createEvent({
-        name: state.name,
+        event: state.event.id,
         description: state.description,
         normPortions: state.normPortions,
-        startDate: state.startDate,
-        endDate: state.endDate,
         activityFactor: state.activityFactor.id,
+        reserveFactor: state.reserveFactor,
+        isPublic: state.isPublic,
+        isApproved: state.isApproved,
       })
       .then((response: any) => {
-        goToRecipe(response.data.id)
+        goToRecipe(response.data.id);
       });
   } else {
     mealStore
       .updateEvent({
         id: state.id,
-        name: state.name,
+        event: state.event.id,
         description: state.description,
         normPortions: state.normPortions,
-        startDate: state.startDate,
-        endDate: state.endDate,
         activityFactor: state.activityFactor.id,
+        reserveFactor: state.reserveFactor,
+        isPublic: state.isPublic,
+        isApproved: state.isApproved,
       })
       .then((response: any) => {
         goToRecipe(response.data.id);
@@ -187,27 +206,32 @@ const route = useRoute();
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-onMounted(() => {
-  mealStore.fetchPhysicalActivity();
-  setTimeout(function () {
-    if (isEdit.value) {
-      state.id = props.items?.id;
-      state.name = props.items?.name;
-      state.description = props.items?.description;
-      state.normPortions = props.items?.normPortions;
-      state.startDate = props.items?.startDate;
-      state.endDate = props.items?.endDate;
-      state.activityFactor = physicalActivities.value.filter(
-        (item) => item.id === props.items?.activityFactor
-      )[0];
-    } else {
-      state.name = null;
-      state.description = null;
-      state.normPortions = 1;
-      state.startDate = null;
-      state.endDate = null;
-      state.activityFactor = null;
-    }
-  }, 300);
+onMounted(async () => {
+  await Promise.all([
+    mealStore.fetchPhysicalActivity(),
+    mealStore.fetchEvents(),
+  ]);
+
+  if (isEdit.value) {
+    state.id = props.items?.id;
+    state.description = props.items?.description;
+    state.event = events.value.filter(
+      (item) => item.id === props.items?.event?.id
+    )[0];
+    state.normPortions = props.items?.normPortions;
+    state.activityFactor = physicalActivities.value.filter(
+      (item) => item.id === props.items?.activityFactor
+    )[0];
+    state.reserveFactor = props.items?.reserveFactor;
+    state.isPublic = props.items?.isPublic;
+    state.isApproved = props.items?.isApproved;
+  } else {
+    state.event = null;
+    state.normPortions = 1;
+    state.activityFactor = physicalActivities.value[1];
+    state.reserveFactor = 1;
+    state.isPublic = false;
+    state.isApproved = false;
+  }
 });
 </script>

@@ -35,7 +35,7 @@ export const useAuthStore = defineStore("authStore", {
     },
     logout() {
       const APP_URL = import.meta.env.VITE_APP_URL;
-      const logoutOptions = { redirectUri: `${APP_URL}/landing` };
+      const logoutOptions = { redirectUri: `${APP_URL}/` };
       keycloak.logout(logoutOptions)
     },
   },

@@ -7,8 +7,8 @@
             Tagesübersicht
           </h2>
           <p class="mt-3 text-lg text-gray-500 sm:mt-4">
-            {{ moment(mealDay.date).format("dddd") }} -
-            {{ moment(mealDay.date).format("LL") }}
+            {{ $dayjs(mealDay.date).format("dddd") }} -
+            {{ $dayjs(mealDay.date).format("LL") }}
           </p>
         </div>
       </div>
@@ -126,7 +126,7 @@
                       text-blue-600
                     "
                   >
-                    {{ mealDay.priceEur }} €
+                    {{ (mealDay.priceEur).toFixed(2) }} €
                   </dd>
                 </div>
                 <div
@@ -178,7 +178,7 @@
         @onAddMealItemClicked="onAddMealItemClicked"
         @onMenuItemUpdate="onMealItemUpdate"
       />
-      <MealListEmpty @onAddClicked="onAddMealClicked" />
+      <MealListEmpty v-if="event?.allowEdit" @onAddClicked="onAddMealClicked" />
     </ul>
     <MealAddEdit
       :open="openMealForm"
@@ -207,6 +207,7 @@ import NutriSlim from "@/components/score/NutriSlim.vue";
 
 import { useRoute } from "vue-router";
 import { useMealStore } from "@/modules/meal/store/index";
+const mealStore = useMealStore();
 
 const route = useRoute();
 
@@ -256,7 +257,7 @@ function onMealItemClose() {
 // -
 
 const event = computed(() => {
-  return mealStore.event;
+  return mealStore.mealEvent;
 });
 
 const mealDay = computed(() => {
@@ -265,7 +266,6 @@ const mealDay = computed(() => {
 
 const buttonList = [{ name: "Neue Zutat", linkName: "IngredientCreate" }];
 
-const mealStore = useMealStore();
 
 function getMeal(event) {
   if (event && event.mealDays && event.mealDays.length > 0) {

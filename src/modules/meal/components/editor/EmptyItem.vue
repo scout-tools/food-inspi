@@ -175,7 +175,7 @@ const router = useRouter();
 const mealStore = useMealStore();
 
 const events = computed(() => {
-  return mealStore.events;
+  return mealStore.mealEvent;
 });
 const emit = defineEmits(["onAddClicked"]);
 

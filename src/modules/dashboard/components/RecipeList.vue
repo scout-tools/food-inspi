@@ -9,6 +9,7 @@
         :key="transaction.id"
       >
         <router-link
+          v-if="transaction.id"
           :to="{ name: 'RecipeDetail', params: { id: transaction.id } }"
           class="block bg-white px-4 py-4 hover:bg-gray-50"
         >
@@ -22,7 +23,7 @@
                 <span class="truncate">{{ transaction.name }}</span>
 
                 <time :datetime="transaction.createdAt">{{
-                  moment(transaction.createdAt).format("ll")
+                  $dayjs(transaction.createdAt).format("ll")
                 }}</time>
               </span>
             </span>
@@ -142,7 +143,7 @@
                     text-sm text-gray-900
                   "
                 >
-                  <div class="flex">
+                  <div class="flex" v-if="transaction.id">
                     <router-link
                       :to="{
                         name: 'RecipeDetail',
@@ -177,10 +178,10 @@
                   "
                 >
                   <time :datetime="transaction.createdAt">{{
-                    moment(transaction.createdAt).format("ll")
+                    $dayjs(transaction.createdAt).format("ll")
                   }}</time>
                 </td>
-                <td>
+                <td v-if="transaction.id">
                     <router-link
                       :to="{
                         name: 'RecipeDetail',
