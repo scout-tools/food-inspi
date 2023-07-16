@@ -126,7 +126,7 @@
                       text-blue-600
                     "
                   >
-                    {{ (mealDay.priceEur).toFixed(2) }} €
+                    {{ (mealDay?.priceEur || 0).toFixed(2) }} €
                   </dd>
                 </div>
                 <div

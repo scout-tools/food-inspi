@@ -68,7 +68,7 @@
                       <span class="ml-2 w-0 flex-1 truncate"
                         >{{ mealItem.factor }} x {{ mealItem.recipe.name }} ({{
                           mealItem.energyKj
-                        }} kJ, {{ (mealItem.priceEur).toFixed(2)}}
+                        }} kJ, {{ (mealItem.priceEur || 0).toFixed(2)}}
                         €)</span
                       >
                     </div>
