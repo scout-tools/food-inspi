@@ -4,6 +4,7 @@ import MealApi from "@/modules/meal/services/meal";
 import MealApiDay from "@/modules/meal/services/meal-day";
 import MealItemApi from "@/modules/meal/services/meal-item";
 import EventApi from "@/modules/meal/services/event";
+import MealEventApi from "@/modules/meal/services/meal-event";
 import ChoiseApi from "@/modules/meal/services/choice";
 import ShoppingListApi from "@/modules/meal/services/shopping-list";
 
@@ -12,17 +13,21 @@ const commonStore = useCommonStore();
 
 export const useMealStore = defineStore("meal", {
   state: () => ({
-    _event: {},
-    _events: [{
+    _mealEvent: {},
+    _mealEvents: [{
       stepId: 1,
       name: '',
       description: '',
       mealType: ''
     }],
+    _event: {},
+    _events: [{
+    }],
     _mealTypes: [],
     _mealDay: {},
     _shoppingList: [],
-    _physicalActivity: []
+    _physicalActivity: [],
+    _isLoading: true,
   }),
 
   actions: {
@@ -44,8 +49,18 @@ export const useMealStore = defineStore("meal", {
         console.log(error);
       }
     },
+    async fetchMealEvents(params = {}) {
+      this._mealEvents = [];
+      try {
+        const response = await MealEventApi.fetchAll(params);
+        this._mealEvents = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
     async fetchEvents(params = {}) {
-      this._events = [];
+      this._mealEvents = [];
       try {
         const response = await EventApi.fetchAll(params);
         this._events = response.data;
@@ -55,19 +70,58 @@ export const useMealStore = defineStore("meal", {
       }
     },
     async fetchEventsSmall(params = {}) {
+      this._mealEvents = [];
       try {
-        const response = await EventApi.fetchSmall(params);
-        this._events = response.data;
+        this._isLoading = true;
+        const response = await MealEventApi.fetchSmall(params);
+        this._isLoading = false;
+        this._mealEvents = response.data;
       } catch (error) {
-        alert(error);
+        this._isLoading = false;
+        console.log(error);
+      }
+    },
+    async fetchMyEvents(params = {}) {
+      this._mealEvents = [];
+      try {
+        this._isLoading = true;
+        const response = await MealEventApi.fetchMyEvents(params);
+        this._isLoading = false;
+        this._mealEvents = response.data;
+      } catch (error) {
+        this._isLoading = false;
+        console.log(error);
+      }
+    },
+    async fetchPublicEvents(params = {}) {
+      this._mealEvents = [];
+      try {
+        this._isLoading = true;
+        const response = await MealEventApi.fetchPublicEvents(params);
+        this._isLoading = false;
+        this._mealEvents = response.data;
+      } catch (error) {
+        this._isLoading = false;
+        console.log(error);
+      }
+    },
+    async fetchApprovedEvents(params = {}) {
+      this._mealEvents = [];
+      try {
+        this._isLoading = true;
+        const response = await MealEventApi.fetchApprovedEvents(params);
+        this._isLoading = false;
+        this._mealEvents = response.data;
+      } catch (error) {
+        this._isLoading = false;
         console.log(error);
       }
     },
     async fetchEventById(id: number) {
-      this._event = {};
+      this._mealEvent = {};
       try {
-        const response = await EventApi.fetchById(id);
-        this._event = response.data;
+        const response = await MealEventApi.fetchById(id);
+        this._mealEvent = response.data;
       } catch (error) {
         alert(error);
         console.log(error);
@@ -85,7 +139,7 @@ export const useMealStore = defineStore("meal", {
     },
     async createEvent(data: object) {
       try {
-        return await EventApi.create(data);
+        return await MealEventApi.create(data);
       } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);
@@ -96,7 +150,7 @@ export const useMealStore = defineStore("meal", {
     },
     async updateEvent(data: object) {
       try {
-        return await EventApi.update(data);
+        return await MealEventApi.update(data);
       } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);
@@ -107,7 +161,7 @@ export const useMealStore = defineStore("meal", {
     },
     async deleteEvent(data: object) {
       try {
-        return await EventApi.delete(data);
+        return await MealEventApi.delete(data);
       } catch (error) {
       }
     },
@@ -191,8 +245,11 @@ export const useMealStore = defineStore("meal", {
     events: (state) => {
       return state._events;
     },
-    event: (state) => {
-      return state._event;
+    mealEvents: (state) => {
+      return state._mealEvents;
+    },
+    mealEvent: (state) => {
+      return state._mealEvent;
     },
     mealDay: (state) => {
       return state._mealDay;
@@ -205,6 +262,9 @@ export const useMealStore = defineStore("meal", {
     },
     physicalActivity: (state) => {
       return state._physicalActivity;
+    },
+    isLoading: (state) => {
+      return state._isLoading;
     },
   },
 });

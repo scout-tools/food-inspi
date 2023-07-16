@@ -28,15 +28,7 @@
           leave-to="-translate-x-full"
         >
           <DialogPanel
-            class="
-              relative
-              flex
-              w-full
-              max-w-xs
-              flex-1 flex-col
-              bg-white
-              focus:outline-none
-            "
+            class="relative flex w-full max-w-xs flex-1 flex-col bg-white focus:outline-none"
           >
             <TransitionChild
               as="template"
@@ -50,19 +42,7 @@
               <div class="absolute top-0 right-0 -mr-12 pt-2">
                 <button
                   type="button"
-                  class="
-                    ml-1
-                    flex
-                    h-10
-                    w-10
-                    items-center
-                    justify-center
-                    rounded-full
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-inset
-                    focus:ring-white
-                  "
+                  class="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                   @click="sidebarOpen = false"
                 >
                   <span class="sr-only">Close sidebar</span>
@@ -120,18 +100,7 @@
                     :key="item.name"
                     :to="{ name: item.linkName }"
                     @click="onButtonClicked"
-                    class="
-                      group
-                      flex
-                      items-center
-                      rounded-md
-                      px-2
-                      py-2
-                      text-base
-                      font-medium
-                      text-gray-600
-                      hover:bg-gray-50 hover:text-gray-900
-                    "
+                    class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                     :class="[
                       item.linkName === currentRoute
                         ? 'bg-gray-200 text-gray-900'
@@ -144,14 +113,7 @@
                   >
                     <component
                       :is="item.icon"
-                      class="
-                        mr-4
-                        h-6
-                        w-6
-                        flex-shrink-0
-                        text-gray-400
-                        group-hover:text-gray-500
-                      "
+                      class="mr-4 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
                     {{ item.name }}
@@ -177,13 +139,7 @@
     <div class="flex w-64 flex-col">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div
-        class="
-          flex
-          min-h-0
-          flex-1 flex-col
-          border-r border-gray-200
-          bg-gray-100
-        "
+        class="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-gray-100"
       >
         <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
           <div class="flex flex-shrink-0 items-center px-4">
@@ -232,18 +188,7 @@
                 :key="item.name"
                 :to="{ name: item.linkName }"
                 @click="onButtonClicked"
-                class="
-                  group
-                  flex
-                  items-center
-                  rounded-md
-                  px-2
-                  py-2
-                  text-sm
-                  font-medium
-                  text-gray-600
-                  hover:bg-gray-50 hover:text-gray-900
-                "
+                class="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                 :class="[
                   currentRoute.includes(item.route)
                     ? 'bg-gray-200 text-gray-900'
@@ -256,17 +201,42 @@
               >
                 <component
                   :is="item.icon"
-                  class="
-                    mr-3
-                    h-6
-                    w-6
-                    flex-shrink-0
-                    text-gray-400
-                    group-hover:text-gray-500
-                  "
+                  class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                   aria-hidden="true"
                 />
                 {{ item.name }}
+              </router-link>
+              <router-link
+                v-if="!isAuth"
+                class="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                :class="[
+                  'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                  'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                ]"
+                :to="{}"
+                @click="onLoginClicked"
+              >
+                <ArrowRightIcon
+                  class="mr-4 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                  aria-hidden="true"
+                />
+                Login
+              </router-link>
+              <router-link
+                v-if="isAuth"
+                class="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                :class="[
+                  'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                  'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                ]"
+                :to="{}"
+                @click="onLogoutClicked"
+              >
+                <ArrowLeftIcon
+                  class="mr-4 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                  aria-hidden="true"
+                />
+                Logout
               </router-link>
             </div>
           </nav>
@@ -277,15 +247,7 @@
   <div v-bind="$attrs" class="flex min-w-0 flex-1 flex-col overflow-hidden">
     <div class="lg:hidden">
       <div
-        class="
-          flex
-          items-center
-          justify-between
-          border-b border-gray-200
-          bg-gray-50
-          px-4
-          py-1.5
-        "
+        class="flex items-center justify-between border-b border-gray-200 bg-gray-50 px-4 py-1.5"
       >
         <router-link :to="{ name: 'SimulatorStart' }">
           <img
@@ -297,21 +259,7 @@
         <div>
           <button
             type="button"
-            class="
-              -mr-3
-              inline-flex
-              h-12
-              w-12
-              items-center
-              justify-center
-              rounded-md
-              text-gray-500
-              hover:text-gray-900
-              focus:outline-none
-              focus:ring-2
-              focus:ring-inset
-              focus:ring-blue-600
-            "
+            class="-mr-3 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600"
             @click="sidebarOpen = true"
           >
             <span class="sr-only">Open sidebar</span>
@@ -397,27 +345,32 @@ const secondaryNavigation = computed(() => {
       linkName: "RecipesMain",
       icon: Bars3Icon,
       route: "recipe",
+      isAuth: true,
     },
     {
       name: "Zutaten",
       linkName: "IngredientMain",
       icon: MagnifyingGlassCircleIcon,
       route: "ingredient",
+      isAuth: true,
     },
     {
       name: "Regeln",
       linkName: "HintMain",
       icon: ScaleIcon,
       route: "hint",
-    },
-    {
-      name: "Einstellungen",
-      linkName: "Settings",
-      route: "settings",
-      icon: CogIcon,
       isAuth: true,
     },
-  ].filter((item) => !item.isAuth || isAuth.value);
+    // {
+    //   name: "Einstellungen",
+    //   linkName: "Settings",
+    //   route: "settings",
+    //   icon: CogIcon,
+    //   isAuth: true,
+    // },
+  ].filter(
+    (item) => (!item.isAuth || isAuth.value) && (item.isAuth || !isAuth.value)
+  );
 });
 const sidebarOpen = ref(false);
 

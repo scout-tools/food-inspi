@@ -42,7 +42,7 @@ function onEventClosedClicked() {
 }
 
 const event = computed(() => {
-  return mealStore.event;
+  return mealStore.mealEvent;
 });
 
 

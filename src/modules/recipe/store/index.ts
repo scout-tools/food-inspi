@@ -10,8 +10,11 @@ export const useRecipeStore = defineStore("recipe", {
   state: () => ({
     _recipes: [],
     _recipesVerified: [],
+    _recipesPublic: [],
     _recipeDetail: {},
     _recipeItem: {},
+    _myRecipies: [],
+    _isLoading: true,
     _createRecipeData: [{
       stepId: 1,
       name: '',
@@ -31,7 +34,9 @@ export const useRecipeStore = defineStore("recipe", {
     },
     async fetchRecipes(params = {}) {
       try {
+        this._isLoading = true;
         const response = await RecipeApi.fetchAll(params);
+        this._isLoading = false;
         this._recipes = response.data;
       } catch (error) {
         alert(error);
@@ -40,8 +45,32 @@ export const useRecipeStore = defineStore("recipe", {
     },
     async fetchVerified(params = {}) {
       try {
+        this._isLoading = true;
         const response = await RecipeApi.fetchVerified(params);
+        this._isLoading = false;
         this._recipesVerified = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchPublicRecipies(params = {}) {
+      this._isLoading = true;
+      try {
+        const response = await RecipeApi.fetchPublicRecipies(params);
+        this._isLoading = false;
+        this._recipesPublic = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchMyRecipies(params = {}) {
+      try {
+        this._isLoading = true;
+        const response = await RecipeApi.fetchMyRecipies(params);
+        this._isLoading = false;
+        this._myRecipies = response.data;
       } catch (error) {
         alert(error);
         console.log(error);
@@ -133,6 +162,12 @@ export const useRecipeStore = defineStore("recipe", {
     recipesVerified: (state) => {
       return state._recipesVerified;
     },
+    recipesPublic: (state) => {
+      return state._recipesPublic;
+    },
+    myRecipies: (state) => {
+      return state._myRecipies;
+    },
     recipeDetail: (state) => {
       return state._recipeDetail;
     },
@@ -142,5 +177,8 @@ export const useRecipeStore = defineStore("recipe", {
     createRecipeData: (state) => {
       return state._createRecipeData;
     },
+    isLoading: (state) => {
+      return state._isLoading;
+    }
   },
 });

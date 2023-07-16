@@ -4,12 +4,12 @@
       <div>
         <div>
           <h3 class="text-lg font-medium leading-6 text-gray-900">
-            {{ props.meal.name }} ({{ props.meal.dayPartFactor * 100 }} % Tagesanteil)
+            {{ props.meal.name }} ({{ (props.meal.dayPartFactor * 100).toFixed(0) }} % Tagesanteil)
           </h3>
           <p class="mt-1 max-w-2xl text-sm text-gray-500">
             {{ props.meal.getMealTypeDisplay }}
           </p>
-          <button @click="onUpdateMealClicked(props.meal)" class="text-sm text-blue-600 hover:text-blue-500">
+          <button v-if="event?.allowEdit" @click="onUpdateMealClicked(props.meal)" class="text-sm text-blue-600 hover:text-blue-500">
             Menü bearbeiten
           </button>
         </div>
@@ -74,6 +74,7 @@
                     </div>
                     <div class="ml-4 flex-shrink-0">
                       <button
+                        v-if="event.allowEdit"
                         class="font-medium text-blue-600 hover:text-blue-500"
                         @click="onMenuItemUpdate(mealItem)"
                       >
@@ -90,6 +91,7 @@
           <div class="flex text-sm">
             <span class="inline-flex items-center text-sm">
               <button
+                v-if="event.allowEdit"
                 @click="
                   onAddMealItemClicked({
                     meal: props.meal.id,
@@ -116,6 +118,7 @@
 
 <script lang="ts" setup>
 import NutriSlim from "@/components/score/NutriSlim.vue";
+import { ref, watch, onMounted, computed } from "vue";
 
 import {
   Menu,
@@ -171,4 +174,11 @@ const onMenuItemUpdate = (items) => {
 const onAddMealItemClicked = (items) => {
   emit("onAddMealItemClicked", items);
 };
+
+import { useMealStore } from "@/modules/meal/store/index";
+const mealStore = useMealStore();
+
+const event = computed(() => {
+  return mealStore.mealEvent;
+});
 </script>

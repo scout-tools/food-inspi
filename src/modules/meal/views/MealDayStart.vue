@@ -1,35 +1,36 @@
 <template>
-  <div class="2xl:px-64 xl:px-30">
-    <EmptyItem @onAddClicked="onEventAddClicked" />
-    <EventAddEdit
-      :open="openEventAddEdit"
-      @close="onEventAddEditClose"
-      header="Veranstaltung"
-    />
-  </div>
+  <PageWrapper>
+    <MyTabGroup :tabs="tabs" />
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, computed } from "vue";
-import EmptyItem from "@/modules/meal/components/editor/EmptyItem.vue";
-import EventAddEdit from "@/modules/meal/components/EventAddEdit/EventAddEdit.vue";
+import { computed } from "vue";
 import { useRoute } from "vue-router";
-import { useMealStore } from "@/modules/meal/store/index";
+
+import MyTabGroup from "@/components/menu/TabGroup.vue";
+import PageWrapper from "@/components/base/PageWrapper.vue";
 
 const route = useRoute();
 
-const openEventAddEdit = ref(false);
-
-const mealStore = useMealStore();
-const events = computed(() => {
-  return mealStore.events;
+const tabs = computed(() => {
+  return [
+    {
+      name: "Meine Events",
+      linkName: { name: "MyEvents", query: { meal_type: 'lunch_warm'} },
+      current: route.name === "MyEvents",
+    },
+    {
+      name: "Öffentliche Events",
+      linkName: { name: "PublicEvents", query: { meal_type: 'lunch_warm'}  },
+      current:
+        route.name === "PublicEvents"
+    },
+    {
+      name: "Referenz Events",
+      linkName: { name: "ApprovedEvents", query: { meal_type: 'lunch_warm'}},
+      current: route.name === "ApprovedEvents",
+    },
+  ];
 });
-
-function onEventAddClicked() {
-  openEventAddEdit.value = true;
-}
-
-function onEventAddEditClose() {
-  openEventAddEdit.value = false;
-}
 </script>

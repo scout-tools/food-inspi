@@ -12,11 +12,14 @@
       "
     >
       <div class="pb-5">
-        <h3 class="text-2xl font-bold leading-6 text-gray-900">
-          {{ props.event.name }}
+        <h3 class="text-lg leading-6 text-gray-900">
+          {{ props.event?.event?.name }}
         </h3>
+        <h4 class="text-md leading-3 text-gray-900">
+          {{ props.event?.description }}
+        </h4>
         <p class="mt-2 max-w-4xl text-lg text-gray-500">
-          Für {{ props.event.normPortions }} Normpersonen
+          Für {{ props.event?.normPortions }} Normpersonen
         </p>
       </div>
       <div v-if="!isShoppingRoute" class="mt-3 flex sm:mt-0 sm:ml-4">
@@ -50,6 +53,7 @@
         </button>
           </router-link>
         <button
+          v-if="props.event.allowEdit"
           @click="onEditClicked(props.event)"
           type="button"
           class="
@@ -215,13 +219,12 @@ const isShoppingRoute = computed(() => {
 });
 
 const pages = computed(() => {
-  console.log({ id: props.event.id });
   return [
     { name: "Alle Veranstaltungen", link: "MealDayStart", current: false },
     {
-      name: props.event.name,
+      name: `${props.event?.description} - ${props.event?.event?.name}`,
       link: "EventDefault",
-      params: props.event.params,
+      params: props.event?.id,
       current: false,
     },
   ];
