@@ -23,16 +23,6 @@ export default [
         name: "SettingsPassword",
         component: () => import(/* webpackChunkName: "SettingsPassword" */ "@/modules/settings/views/tabs/Password.vue"),
       },
-      {
-        path: "notifications",
-        name: "SettingsNotifications",
-        component: () => import(/* webpackChunkName: "SettingsNotifications" */ "@/modules/settings/views/tabs/Notifications.vue"),
-      },
-      {
-        path: "myGroups",
-        name: "SettingsMyGroups",
-        component: () => import(/* webpackChunkName: "SettingsMyGroups" */ "@/modules/settings/views/tabs/MyGroups.vue"),
-      },
     ],
   },
 ];
