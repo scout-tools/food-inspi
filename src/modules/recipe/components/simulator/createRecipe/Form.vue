@@ -1,40 +1,55 @@
 <template>
   <div>
-    <BaseField
-      component="Text"
-      label="Name"
-      techName="name"
-      v-model="state.name"
-      :errors="errors.name?.$errors"
-    />
-    <BaseField
-      component="TextArea"
-      label="Beschreibung"
-      techName="description"
-      v-model="state.description"
-      :errors="errors.description?.$errors"
-    />
-    <BaseField
-      component="Select"
-      v-model="state.mealType"
-      techName="mealType"
-      label="Essens Typ"
-      :items="mealTypes"
-      :errors="errors.mealType?.$errors"
-    />
-    <PrimaryButton @click="onSaveClicked" :label="'Veranst. hinzufügen'" />
-    <PrimaryButton
-      v-if="isEdit"
-      class="mx-2 my-2"
-      @click="onDeleteClicked()"
-      color="red"
-      label="Veranst löschen"
-    />
+    <div v-if="!loading">
+      <BaseField
+        component="Text"
+        label="Rezeptname"
+        techName="name"
+        v-model="state.name"
+        :errors="errors.name?.$errors"
+      />
+      <BaseField
+        component="TextArea"
+        label="Kurzbeschreibung"
+        techName="description"
+        v-model="state.description"
+        :errors="errors.description?.$errors"
+      />
+      <BaseField
+        component="Select"
+        v-model="state.mealType"
+        techName="mealType"
+        label="Essens Typ"
+        :items="mealTypes"
+        :errors="errors.mealType?.$errors"
+      />
+      <BaseField
+        component="Select"
+        v-model="state.status"
+        techName="status"
+        label="Status"
+        :items="recipedStatuses"
+        :errors="errors.status?.$errors"
+      />
+      <PrimaryButton
+        @click="onSaveClicked"
+        :label="isEdit ? 'speichern' : 'erstellen'"
+      />
+      <PrimaryButton
+        v-if="isEdit"
+        class="mx-2 my-2"
+        @click="onDeleteClicked()"
+        color="red"
+        label="löschen"
+      />
+    </div>
+    <LoadingItem v-else/>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useCommonStore } from "@/modules/common/store/index.ts";
+import LoadingItem from "@/components/list/LoadingItem.vue";
 const commonStore = useCommonStore();
 
 import { reactive, onMounted, ref, watch, computed } from "vue";
@@ -53,16 +68,17 @@ const state = reactive({
   name: "",
   description: "",
   mealType: 1,
+  status: 1,
 });
 
 const rules = {
   name: {
     required,
   },
-  description: {
+  mealType: {
     required,
   },
-  mealType: {
+  status: {
     required,
   },
 };
@@ -75,7 +91,7 @@ const v$ = useVuelidate(rules, state);
 
 const ingredient = ref(null);
 const errors = ref([]);
-const isLoading = ref(false);
+const isLoading = ref(true);
 
 const mealStore = useMealStore();
 const recipeStore = useRecipeStore();
@@ -86,6 +102,10 @@ const isEdit = computed(() => {
 
 const mealTypes = computed(() => {
   return mealStore.mealTypes;
+});
+
+const recipedStatuses = computed(() => {
+  return mealStore.recipedStatuses;
 });
 
 function onDeleteClicked() {
@@ -108,8 +128,8 @@ function onSaveClicked() {
       id: state.id,
       name: state.name,
       description: state.description,
-      mealType: state.mealType?.id,
-      status: 'user_public'
+      mealType: state.mealType?.value,
+      status: state.status.value,
     })
     .then((response: any) => {
       goToRecipe(response.data.id);
@@ -123,6 +143,9 @@ function goToRecipe(id: number) {
       id: id,
     },
   });
+  if (router.currentRoute.value.name === "RecipeDetail") {
+    router.go(router.currentRoute.value);
+  }
 }
 
 import { useRoute } from "vue-router";
@@ -131,21 +154,33 @@ const route = useRoute();
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-onMounted(() => {
-  mealStore.fetchMealTypes();
-  setTimeout(function () {
-    if (isEdit.value) {
-      state.id = props.items?.id;
-      state.name = props.items?.name;
-      state.description = props.items?.description;
-      state.mealType = mealTypes.value.filter(
-        (item) => item.id === props.items?.mealType
-      )[0];
-    } else {
-      state.name = null;
-      state.description = null;
-      state.mealType = null;
-    }
-  }, 300);
+const loading = computed(() => {
+  return isLoading.value;
+});
+
+onMounted(async () => {
+  isLoading.value = true;
+  await Promise.all([
+    mealStore.fetchMealTypes(),
+    mealStore.fetchRecipeStatuses(),
+  ]);
+  if (isEdit.value) {
+    isLoading.value = true;
+    state.id = props.items?.id;
+    state.name = props.items?.name;
+    state.description = props.items?.description;
+    state.mealType = mealTypes.value.filter(
+      (item) => item.value === props.items?.mealType
+    )[0];
+    state.status = recipedStatuses.value.filter(
+      (item) => item.value === props.items?.status
+    )[0];
+  } else {
+    state.name = null;
+    state.description = null;
+    state.mealType = null;
+    state.status = null;
+  }
+  isLoading.value = false;
 });
 </script>

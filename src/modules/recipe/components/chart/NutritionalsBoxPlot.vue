@@ -43,9 +43,9 @@ const hasData = computed(() => {
 
 onMounted(() => {
   const id = route.params.id;
-  recipeStore.fetchRecipeById(id);
+  // recipeStore.fetchRecipeById(id);
 
-  recipeStore.fetchVerified();
+  // recipeStore.fetchVerified();
 });
 
 const options = computed(() => {

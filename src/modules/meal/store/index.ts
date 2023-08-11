@@ -27,6 +27,7 @@ export const useMealStore = defineStore("meal", {
     _mealDay: {},
     _shoppingList: [],
     _physicalActivity: [],
+    _recipedStatuses: [],
     _isLoading: true,
   }),
 
@@ -35,6 +36,15 @@ export const useMealStore = defineStore("meal", {
       try {
         const response = await ChoiseApi.fetchMealTypes();
         this._mealTypes = response.data;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchRecipeStatuses() {
+      try {
+        const response = await ChoiseApi.fetchRecipeStatuses();
+        this._recipedStatuses = response.data;
       } catch (error) {
         alert(error);
         console.log(error);
@@ -220,6 +230,17 @@ export const useMealStore = defineStore("meal", {
         }
       }
     },
+    async updateMealDay(data: object) {
+      try {
+        return await MealApiDay.update(data);
+      } catch (error: any) {
+        if (error.response.status === 400) {
+          commonStore.showError(error.response.data);
+        } else if (error.response.status === 500) {
+          commonStore.showError('Schwerer Server Fehler');
+        }
+      }
+    },
     async deleteMealItem(data: object) {
       try {
         return await MealItemApi.delete(data);
@@ -259,6 +280,9 @@ export const useMealStore = defineStore("meal", {
     },
     shoppingList: (state) => {
       return state._shoppingList;
+    },
+    recipedStatuses: (state) => {
+      return state._recipedStatuses;
     },
     physicalActivity: (state) => {
       return state._physicalActivity;

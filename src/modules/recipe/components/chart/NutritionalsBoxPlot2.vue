@@ -36,9 +36,9 @@ const props = defineProps({
 
 onMounted(() => {
   const id = route.params.id;
-  recipeStore.fetchRecipeById(id);
+  // recipeStore.fetchRecipeById(id);
 
-  recipeStore.fetchVerified();
+  // recipeStore.fetchVerified();
 });
 
 const valueList = computed(() => {

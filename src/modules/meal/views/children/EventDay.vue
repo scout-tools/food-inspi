@@ -6,6 +6,9 @@
           <h2 class="text-2xl font-bold tracking-tight text-gray-900">
             Tagesübersicht
           </h2>
+          <button v-if="event?.allowEdit" @click="onMealDayUpdate(mealDay)" class="text-sm text-blue-600 hover:text-blue-500">
+            Tag bearbeiten
+          </button>
           <p class="mt-3 text-lg text-gray-500 sm:mt-4">
             {{ $dayjs(mealDay.date).format("dddd") }} -
             {{ $dayjs(mealDay.date).format("LL") }}
@@ -192,6 +195,12 @@
       :items="mealItemData"
       header="Neue Rezept zum Menü hinzufügen"
     />
+    <MealDayAddEdit
+      :open="openMealDayForm"
+      @close="onMealDayClose"
+      :items="mealDayData"
+      header="Tag editieren"
+    />
   </div>
 </template>
 
@@ -235,9 +244,23 @@ function onMealFormClose() {
 // MenuItem Sidebar
 
 import MealItemAddEdit from "@/modules/meal/components/MealItemAddEdit/MealItemAddEdit.vue";
+import MealDayAddEdit from "@/modules/meal/components/MealDayAddEdit/MealDayAddEdit.vue";
 
 const openMealItemForm = ref(false);
+const openMealDayForm = ref(false);
 const mealItemData = ref({});
+const mealDayData = ref({});
+
+
+function onMealDayUpdate(items: Object) {
+  openMealDayForm.value = true;
+  mealDayData.value = items;
+}
+
+function onMealDayClose() {
+  openMealDayForm.value = false;
+  mealDayData.value = {};
+}
 
 function onAddMealItemClicked(items: Object) {
   openMealItemForm.value = true;
@@ -272,6 +295,10 @@ function getMeal(event) {
     return event?.mealDays[0].meals;
   }
   return [];
+}
+
+function onUpdateMealDayClicked() {
+  debugger;
 }
 
 onMounted(() => {

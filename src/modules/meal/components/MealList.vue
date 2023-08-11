@@ -94,7 +94,7 @@
                 v-if="event.allowEdit"
                 @click="
                   onAddMealItemClicked({
-                    meal: props.meal.id,
+                    meal: props.meal,
                   })
                 "
                 type="button"
