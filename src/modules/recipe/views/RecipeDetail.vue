@@ -4,6 +4,22 @@
       <!-- Breadcrumb -->
       <Breadcrumbs :pages="pages" />
       <div v-if="!loading">
+        <dl class="mx-5 my-5  grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <div
+            v-for="item in stats"
+            :key="item.name"
+            class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6"
+          >
+            <dt class="truncate text-sm font-medium text-gray-500">
+              {{ item.name }}
+            </dt>
+            <dd
+              class="mt-1 text-xl font-semibold tracking-tight text-gray-900"
+            >
+              {{ item.stat || '-  ' }}
+            </dd>
+          </div>
+        </dl>
         <RecipeOverview
           :recipeItems="recipeDetail.recipeItems"
           @openRecipeItemUpdate="onOpenRecipeItemUpdate"
@@ -55,7 +71,7 @@
           </div>
         </div>
       </div>
-      <LoadingItem v-else/>
+      <LoadingItem v-else />
     </main>
     <CreateRecipe
       :open="openRecipeUpdate"
@@ -159,4 +175,10 @@ onMounted(async () => {
 
   isLoading.value = false;
 });
+
+const stats = computed(() => [
+  { name: "Rezeptname", stat: recipeDetail.value?.name },
+  { name: "Beschreibung", stat: recipeDetail.value?.description },
+  { name: "Menütyp", stat: recipeDetail.value?.getMealTypeDisplay },
+]);
 </script>

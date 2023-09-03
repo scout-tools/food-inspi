@@ -9,6 +9,7 @@
       :buttonList="buttonList"
       mainPageLink="RecipesMain"
       detailPageLink="RecipeDetail"
+      :isLoading="isLoading"
     >
       <template #listitem="{ item }">
         <div class="flex min-w-0 flex-1 items-center">
@@ -54,6 +55,11 @@ const recipeStore = useRecipeStore();
 const recipes = computed(() => {
   return recipeStore.recipes;
 });
+
+const isLoading = computed(() => {
+  return !recipeStore.recipes && recipeStore.isLoading && recipeStore.recipes.length === 0;
+});
+
 
 const route = useRoute();
 

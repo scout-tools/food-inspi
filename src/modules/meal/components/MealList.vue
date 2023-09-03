@@ -4,12 +4,19 @@
       <div>
         <div>
           <h3 class="text-lg font-medium leading-6 text-gray-900">
-            {{ props.meal.name }} ({{ (props.meal.dayPartFactor * 100).toFixed(0) }} % Tagesanteil)
+            {{ props.meal.name }} ({{
+              (props.meal.dayPartFactor * 100).toFixed(0)
+            }}
+            % Tagesanteil)
           </h3>
           <p class="mt-1 max-w-2xl text-sm text-gray-500">
             {{ props.meal.getMealTypeDisplay }}
           </p>
-          <button v-if="event?.allowEdit" @click="onUpdateMealClicked(props.meal)" class="text-sm text-blue-600 hover:text-blue-500">
+          <button
+            v-if="event?.allowEdit"
+            @click="onUpdateMealClicked(props.meal)"
+            class="text-sm text-blue-600 hover:text-blue-500"
+          >
             Menü bearbeiten
           </button>
         </div>
@@ -19,8 +26,15 @@
               <dt class="text-sm font-medium text-gray-500">
                 Energieanteil des Ziel Tagesanteils
               </dt>
-              <dd class="mt-1 text-sm text-red-500 sm:col-span-2 sm:mt-0"
-              :class="props.meal.dayPartEnergyKj <= 0.90 || props.meal.dayPartEnergyKj >= 1.1 ? 'text-red-500' : 'text-green-500'">
+              <dd
+                class="mt-1 text-sm text-red-500 sm:col-span-2 sm:mt-0"
+                :class="
+                  props.meal.dayPartEnergyKj <= 0.9 ||
+                  props.meal.dayPartEnergyKj >= 1.1
+                    ? 'text-red-500'
+                    : 'text-green-500'
+                "
+              >
                 {{ (props.meal.dayPartEnergyKj * 100).toFixed(0) }} %
               </dd>
             </div>
@@ -41,37 +55,41 @@
               <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                 <ul
                   role="list"
-                  class="
-                    divide-y divide-gray-200
-                    rounded-md
-                    border border-gray-200
-                  "
+                  class="divide-y divide-gray-200 rounded-md border border-gray-200"
                 >
                   <li
-                    class="
-                      flex
-                      items-center
-                      justify-between
-                      py-3
-                      pl-3
-                      pr-4
-                      text-sm
-                    "
+                    class="flex items-center justify-between py-3 pl-3 pr-4 text-sm"
                     v-for="mealItem in props.meal.mealItems"
                     :key="mealItem.id"
                   >
+                  <router-link
+                        :to="{
+                          name: 'RecipeDetail',
+                          params: { id: mealItem.recipe.id },
+                        }"
+                      >
                     <div class="flex w-0 flex-1 items-center">
-                      <PaperClipIcon
+                      <StarIcon
                         class="h-5 w-5 flex-shrink-0 text-gray-400"
                         aria-hidden="true"
                       />
-                      <span class="ml-2 w-0 flex-1 truncate"
-                        >{{ mealItem.factor }} x {{ mealItem.recipe.name }} ({{
-                          mealItem.energyKj
-                        }} kJ, {{ (mealItem.priceEur || 0).toFixed(2)}}
-                        €)</span
-                      >
+
+                      <div>
+                        <span class="ml-2 w-0 flex-1 truncate"
+                          >{{ mealItem.factor }} x
+                          {{ mealItem.recipe.name }} ({{
+                            mealItem.energyKj
+                          }}
+                          kJ, {{ (mealItem.priceEur || 0).toFixed(2) }}
+                          €)
+                        </span>
+                      </div>
+                      <LinkIcon
+                        class="h-5 w-5 flex-shrink-0 text-gray-400 mx-1"
+                        aria-hidden="true"
+                      />
                     </div>
+                  </router-link>
                     <div class="ml-4 flex-shrink-0">
                       <button
                         v-if="event.allowEdit"
@@ -98,12 +116,7 @@
                   })
                 "
                 type="button"
-                class="
-                  inline-flex
-                  font-medium
-                  text-blue-600
-                  hover:text-blue-500
-                "
+                class="inline-flex font-medium text-blue-600 hover:text-blue-500"
               >
                 <PlusIcon class="h-5 w-5" aria-hidden="true" />
                 <span> Rezept zum Menü Hinzufügen</span>
@@ -141,6 +154,7 @@ import {
   ShareIcon,
   StarIcon,
   PencilIcon,
+  LinkIcon,
 } from "@heroicons/vue/20/solid";
 import {
   ArrowTrendingUpIcon,

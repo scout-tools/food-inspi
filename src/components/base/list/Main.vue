@@ -1,16 +1,8 @@
 <template>
-  <main
-    class="relative h-screen z-40 flex-1 focus:outline-none overflow-y-auto"
-  >
-    <article class="flex-shrink-0 border border-gray-200 ma-12">
+  <main class="relative h-screen flex-1 focus:outline-none overflow-y-auto">
+    <article class="flex-shrink-0 ma-12">
       <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-        <div
-          class="
-            border-b border-gray-200
-            pb-5
-            sm:flex sm:items-center sm:justify-between
-          "
-        >
+        <div class="pb-5 sm:flex sm:items-center sm:justify-between">
           <h3 class="text-lg font-medium leading-6 text-gray-900">
             {{ name }}
           </h3>
@@ -20,15 +12,7 @@
             <div class="flex rounded-md shadow-sm">
               <div class="relative flex-grow focus-within:z-10">
                 <div
-                  class="
-                    pointer-events-none
-                    absolute
-                    inset-y-0
-                    left-0
-                    flex
-                    items-center
-                    pl-3
-                  "
+                  class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
                 >
                   <MagnifyingGlassIcon
                     class="h-5 w-5 text-gray-400"
@@ -40,35 +24,22 @@
                   name="mobile-search-candidate"
                   id="mobile-search-candidate"
                   v-model="searchInput"
-                  class="
-                    block
-                    w-full
-                    rounded-none rounded-l-md
-                    border-gray-300
-                    pl-10
-                    focus:border-blue-500 focus:ring-blue-500
-                    sm:hidden
-                  "
-                  placeholder="Search"
+                  class="block w-full rounded-none rounded-l-md border-gray-300 pl-10 focus:border-blue-500 focus:ring-blue-500 sm:hidden"
+                  placeholder="Suche"
                 />
                 <input
                   type="text"
                   name="desktop-search-candidate"
                   id="desktop-search-candidate"
                   v-model="searchInput"
-                  class="
-                    hidden
-                    w-full
-                    rounded-none rounded-l-md
-                    border-gray-300
-                    pl-10
-                    focus:border-blue-500 focus:ring-blue-500
-                    sm:block sm:text-sm
-                  "
+                  class="hidden w-full rounded-none rounded-l-md border-gray-300 pl-10 focus:border-blue-500 focus:ring-blue-500 sm:block sm:text-sm"
                   placeholder="Suche"
                 />
               </div>
-              <ToolDropdown :buttonList="buttonList" />
+              <ToolDropdown
+                v-if="buttonList && buttonList.length > 0"
+                :buttonList="buttonList"
+              />
             </div>
           </div>
         </div>
@@ -78,11 +49,7 @@
       <div class="bg-white">
         <!-- Mobile filter dialog -->
         <TransitionRoot as="template" :show="open">
-          <Dialog
-            as="div"
-            class="relative z-40 sm:hidden"
-            @close="open = false"
-          >
+          <Dialog as="div" class="relative sm:hidden" @close="open = false">
             <TransitionChild
               as="template"
               enter="transition-opacity ease-linear duration-300"
@@ -95,7 +62,7 @@
               <div class="fixed inset-0 bg-black bg-opacity-25" />
             </TransitionChild>
 
-            <div class="fixed inset-0 z-40 flex">
+            <div class="fixed inset-0 flex">
               <TransitionChild
                 as="template"
                 enter="transition ease-in-out duration-300 transform"
@@ -106,37 +73,13 @@
                 leave-to="translate-x-full"
               >
                 <DialogPanel
-                  class="
-                    relative
-                    ml-auto
-                    flex
-                    h-full
-                    w-full
-                    max-w-xs
-                    flex-col
-                    overflow-y-auto
-                    bg-white
-                    py-4
-                    pb-12
-                    shadow-xl
-                  "
+                  class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl"
                 >
                   <div class="flex items-center justify-between px-4">
                     <h2 class="text-lg font-medium text-gray-900">Filters</h2>
                     <button
                       type="button"
-                      class="
-                        -mr-2
-                        flex
-                        h-10
-                        w-10
-                        items-center
-                        justify-center
-                        rounded-md
-                        bg-white
-                        p-2
-                        text-gray-400
-                      "
+                      class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
                       @click="open = false"
                     >
                       <span class="sr-only">Close menu</span>
@@ -155,16 +98,7 @@
                     >
                       <h3 class="-mx-2 -my-3 flow-root">
                         <DisclosureButton
-                          class="
-                            flex
-                            w-full
-                            items-center
-                            justify-between
-                            bg-white
-                            px-2
-                            py-3
-                            text-sm text-gray-400
-                          "
+                          class="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400"
                         >
                           <span class="font-medium text-gray-900">{{
                             section.name
@@ -194,14 +128,7 @@
                               type="checkbox"
                               :checked="option.checked"
                               @change="updateFilters(option, section)"
-                              class="
-                                h-4
-                                w-4
-                                rounded
-                                border-gray-300
-                                text-blue-600
-                                focus:ring-blue-500
-                              "
+                              class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                             />
                             <label
                               :for="`filter-mobile-${section.id}-${optionIdx}`"
@@ -225,41 +152,16 @@
 
           <div class="border-b border-gray-200 bg-white pb-4">
             <div
-              class="
-                mx-auto
-                flex
-                max-w-7xl
-                items-center
-                justify-between
-                px-4
-                sm:px-6
-                lg:px-8
-              "
+              class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
             >
               <Menu as="div" class="relative inline-block text-left">
                 <div>
                   <MenuButton
-                    class="
-                      group
-                      inline-flex
-                      justify-center
-                      text-sm
-                      font-medium
-                      text-gray-700
-                      hover:text-gray-900
-                    "
+                    class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
                   >
                     {{ activeSort }}
                     <ChevronDownIcon
-                      class="
-                        -mr-1
-                        ml-1
-                        h-5
-                        w-5
-                        flex-shrink-0
-                        text-gray-400
-                        group-hover:text-gray-500
-                      "
+                      class="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
                   </MenuButton>
@@ -274,19 +176,7 @@
                   leave-to-class="transform opacity-0 scale-95"
                 >
                   <MenuItems
-                    class="
-                      absolute
-                      left-0
-                      z-10
-                      mt-2
-                      w-40
-                      origin-top-left
-                      rounded-md
-                      bg-white
-                      shadow-2xl
-                      ring-1 ring-black ring-opacity-5
-                      focus:outline-none
-                    "
+                    class="absolute left-0 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
                   >
                     <div class="py-1">
                       <MenuItem
@@ -314,14 +204,7 @@
 
               <button
                 type="button"
-                class="
-                  inline-block
-                  text-sm
-                  font-medium
-                  text-gray-700
-                  hover:text-gray-900
-                  sm:hidden
-                "
+                class="inline-block text-sm font-medium text-gray-700 hover:text-gray-900 sm:hidden"
                 @click="open = true"
               >
                 Filter
@@ -338,15 +221,7 @@
                       class="relative inline-block px-4 text-left"
                     >
                       <PopoverButton
-                        class="
-                          group
-                          inline-flex
-                          justify-center
-                          text-sm
-                          font-medium
-                          text-gray-700
-                          hover:text-gray-900
-                        "
+                        class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
                       >
                         <span>{{ section.name }}</span>
                         <!-- <span
@@ -365,15 +240,7 @@
                           >1</span
                         > -->
                         <ChevronDownIcon
-                          class="
-                            -mr-1
-                            ml-1
-                            h-5
-                            w-5
-                            flex-shrink-0
-                            text-gray-400
-                            group-hover:text-gray-500
-                          "
+                          class="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                           aria-hidden="true"
                         />
                       </PopoverButton>
@@ -387,19 +254,7 @@
                         leave-to-class="transform opacity-0 scale-95"
                       >
                         <PopoverPanel
-                          class="
-                            absolute
-                            right-0
-                            z-10
-                            mt-2
-                            origin-top-right
-                            rounded-md
-                            bg-white
-                            p-4
-                            shadow-2xl
-                            ring-1 ring-black ring-opacity-5
-                            focus:outline-none
-                          "
+                          class="absolute right-0 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
                         >
                           <form class="space-y-4">
                             <div
@@ -414,25 +269,11 @@
                                 type="checkbox"
                                 :checked="option.checked"
                                 @change="updateFilters(option, section)"
-                                class="
-                                  h-4
-                                  w-4
-                                  rounded
-                                  border-gray-300
-                                  text-blue-600
-                                  focus:ring-blue-500
-                                "
+                                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                               />
                               <label
                                 :for="`filter-${section.id}-${optionIdx}`"
-                                class="
-                                  ml-3
-                                  whitespace-nowrap
-                                  pr-6
-                                  text-sm
-                                  font-medium
-                                  text-gray-900
-                                "
+                                class="ml-3 whitespace-nowrap pr-6 text-sm font-medium text-gray-900"
                                 >{{ option.label }}</label
                               >
                             </div>
@@ -449,14 +290,7 @@
           <!-- Active filters -->
           <div class="bg-gray-100">
             <div
-              class="
-                mx-auto
-                max-w-7xl
-                py-3
-                px-4
-                sm:flex sm:items-center sm:px-6
-                lg:px-8
-              "
+              class="mx-auto max-w-7xl py-3 px-4 sm:flex sm:items-center sm:px-6 lg:px-8"
             >
               <h3 class="text-sm font-medium text-gray-500">
                 Filter
@@ -476,20 +310,7 @@
                         activeFilters.options
                       )"
                       :key="activeFilter"
-                      class="
-                        m-1
-                        inline-flex
-                        items-center
-                        rounded-full
-                        border border-gray-200
-                        bg-white
-                        py-1.5
-                        pl-3
-                        pr-2
-                        text-sm
-                        font-medium
-                        text-gray-900
-                      "
+                      class="m-1 inline-flex items-center rounded-full border border-gray-200 bg-white py-1.5 pl-3 pr-2 text-sm font-medium text-gray-900"
                     >
                       <span>
                         {{ activeFilters.name }}: {{ activeFilter.label }}</span
@@ -497,17 +318,7 @@
                       <button
                         type="button"
                         @click="updateFilters(activeFilter, activeFilters)"
-                        class="
-                          ml-1
-                          inline-flex
-                          h-4
-                          w-4
-                          flex-shrink-0
-                          rounded-full
-                          p-1
-                          text-gray-400
-                          hover:bg-gray-200 hover:text-gray-500
-                        "
+                        class="ml-1 inline-flex h-4 w-4 flex-shrink-0 rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-500"
                       >
                         <span class="sr-only"
                           >Filter entfernen für {{ activeFilter.label }}</span
@@ -537,11 +348,17 @@
       <!-- Directory list -->
       <div class="min-h-0 flex-1 overflow-scroll" aria-label="Directory">
         <div
+          v-if="!isLoading"
           class="overflow-hidden bg-white shadow sm:rounded-md overflow-scroll"
         >
-          <ul role="list" v-if="items.length" class="divide-y divide-gray-200">
-            <li v-for="item in items" :key="item.id">
-              <router-link
+          <ul
+            role="list"
+            v-if="items?.length || isLoading"
+            class="divide-y divide-gray-200"
+          >
+            <li v-for="item in items" :key="item">
+              <component
+                :is="detailPageLink ? 'router-link' : 'div'"
                 :to="{
                   name: props.detailPageLink,
                   params: {
@@ -551,22 +368,31 @@
                 class="block hover:bg-gray-50"
               >
                 <div class="flex items-center px-4 py-4 sm:px-6">
-                  <slot name="listitem" v-bind:item="item"></slot>
-                  <button @click="onDetailPageClicked(item.id, detailPageLink)">
+                  <div class="grow">
+                    <slot
+                      name="listitem"
+                      v-bind:item="item"
+                      class="weight-max"
+                    ></slot>
+                  </div>
+                  <div v-if="props.detailPageLink" class="flex-none">
                     <ChevronRightIcon
                       class="h-5 w-5 text-gray-400"
                       aria-hidden="true"
                     />
-                  </button>
+                  </div>
                 </div>
-              </router-link>
+              </component>
             </li>
           </ul>
-          <ul v-else >
+          <ul v-else>
             <li>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500 px-2 py-2">Bitte suche nach einer Gruppe</p>
+              <LoadingItem/>
             </li>
           </ul>
+        </div>
+        <div v-else>
+          <LoadingItem />
         </div>
       </div>
     </article>
@@ -605,7 +431,6 @@ import {
   MagnifyingGlassCircleIcon,
   BarsArrowUpIcon,
   MapIcon,
-  CheckCircleIcon,
   MegaphoneIcon,
   SquaresPlusIcon,
   ChevronDownIcon,
@@ -637,6 +462,7 @@ import { computed, onBeforeMount, watch } from "vue";
 import { useRouter } from "vue-router";
 
 import ToolDropdown from "@/components/base/list/components/ToolDropdown.vue";
+import LoadingItem from "@/components/list/LoadingItem.vue";
 
 const props = defineProps({
   name: String,
@@ -646,6 +472,7 @@ const props = defineProps({
   mainPageLink: String,
   detailPageLink: String,
   buttonList: Array,
+  isLoading: Boolean,
 });
 
 onBeforeMount(() => {
@@ -658,7 +485,9 @@ onBeforeMount(() => {
       const filterItem = filterCategory.options.filter(
         (item) => item.value === value
       )[0];
-      filterItem.checked = true;
+      if (filterItem && filterItem.checked) {
+        filterItem.checked = true;
+      }
     }
     if (key === "search") {
       searchInput.value = value;
@@ -678,7 +507,7 @@ function filteredChecked(ary) {
 function updateFilters(option, section) {
   query = { ...router.currentRoute.value.query };
 
-  if (option.search) {
+  if (option.search || option.search == "") {
     query.search = option.search;
   }
   if (option.current === false) {
@@ -705,7 +534,6 @@ function updateFilters(option, section) {
 }
 
 const searchInput = ref("");
-
 
 const activeSort = ref("A-Z");
 

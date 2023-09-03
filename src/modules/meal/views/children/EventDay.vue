@@ -1,4 +1,6 @@
 <template>
+  <div>
+<div v-if="!isLoading">
   <div class="mx-auto mt-6 max-w-5xl px-4 sm:px-6 lg:px-8">
     <div class="bg-gray-50 pt-4 sm:pt-4">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -202,6 +204,11 @@
       header="Tag editieren"
     />
   </div>
+</div>
+  <div v-else>
+    <LoadingItem/>
+  </div>
+</div>
 </template>
 
 <script setup lang="ts">
@@ -296,6 +303,10 @@ function getMeal(event) {
   }
   return [];
 }
+
+const isLoading = computed(() => {
+  return !mealDay.value.date
+});
 
 function onUpdateMealDayClicked() {
   debugger;

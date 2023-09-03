@@ -9,6 +9,7 @@
       :buttonList="buttonList"
       mainPageLink="HintMain"
       detailPageLink="HintDetail"
+      :isLoading="isLoading"
     >
       <template #listitem="{ item }">
         <div class="flex min-w-0 flex-1 items-center">

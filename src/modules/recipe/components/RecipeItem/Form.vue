@@ -1,41 +1,46 @@
 <template>
   <div>
-    <BaseField
-      v-if="!isEdit"
-      component="AutoComplete"
-      label="Zutat"
-      techName="ingredient"
-      v-model="ingredient"
-      :items="ingredients"
-      :errors="errors.ingredient?.$errors"
-    />
-    <BaseField
-      component="Select"
-      v-model="state.portion"
-      techName="portion"
-      :disabled="!ingredient"
-      label="Portion"
-      :items="portions"
-      :errors="errors.portion?.$errors"
-    />
-    <BaseField
-      component="Number"
-      :label="'Anzahl'"
-      techName="quantity"
-      v-model="state.quantity"
-      :errors="errors.quantity?.$errors"
-    />
-    <PrimaryButton
-      @click="onSaveClicked"
-      :label="!isEdit ? 'Zutat hinzufügen' : 'Zutat bearbeiten'"
-    />
-    <PrimaryButton
-      v-if="isEdit"
-      class="mx-2 my-2"
-      @click="onDeleteClicked()"
-      color="red"
-      label="Zutat löschen"
-    />
+    <div v-if="!isLoading">
+      <BaseField
+        v-if="!isEdit"
+        component="AutoComplete"
+        label="Zutat"
+        techName="ingredient"
+        v-model="ingredient"
+        :items="ingredients"
+        :errors="errors.ingredient?.$errors"
+      />
+      <BaseField
+        component="Select"
+        v-model="state.portion"
+        techName="portion"
+        :disabled="!ingredient"
+        label="Portion"
+        :items="portions"
+        :errors="errors.portion?.$errors"
+      />
+      <BaseField
+        component="Number"
+        :label="'Anzahl'"
+        techName="quantity"
+        v-model="state.quantity"
+        :errors="errors.quantity?.$errors"
+      />
+      <PrimaryButton
+        @click="onSaveClicked"
+        :label="!isEdit ? 'Zutat hinzufügen' : 'Zutat bearbeiten'"
+      />
+      <PrimaryButton
+        v-if="isEdit"
+        class="mx-2 my-2"
+        @click="onDeleteClicked()"
+        color="red"
+        label="Zutat löschen"
+      />
+    </div>
+    <div v-else>
+      <LoadingItem />
+    </div>
   </div>
 </template>
 
@@ -76,7 +81,7 @@ const v$ = useVuelidate(rules, state);
 
 const ingredient = ref(null);
 const errors = ref([]);
-const isLoading = ref(false);
+const isLoading = ref(true);
 
 const ingredientStore = useIngredientStore();
 const recipeStore = useRecipeStore();
@@ -149,7 +154,12 @@ function onSaveClicked() {
     });
   }
   // new
-  if (!isNaN(recipeId) && route.name === "SimulatorMain" && !isEdit.value) {
+  if (
+    !isNaN(recipeId) &&
+    (route.name === "SimulatorMain" || route.name === "RecipeDetail") &&
+    !isEdit.value
+  ) {
+    debugger;
     recipeStore
       .createRecipeItem({
         recipe: recipeId,
@@ -165,11 +175,15 @@ function onSaveClicked() {
         });
       })
       .then((response3: any) => {
-        goToRecipe(recipeId);
+        goToRecipe(recipeId, route.name === "SimulatorMain");
       });
   }
   // edit
-  if (!isNaN(recipeId) && route.name === "SimulatorMain" && isEdit.value) {
+  if (
+    !isNaN(recipeId) &&
+    (route.name === "SimulatorMain" || route.name === "RecipeDetail") &&
+    isEdit.value
+  ) {
     recipeStore
       .updateRecipeItem({
         id: props.reciptItem?.id,
@@ -186,19 +200,22 @@ function onSaveClicked() {
         });
       })
       .then((response2: any) => {
-        goToRecipe(recipeId);
+        goToRecipe(recipeId, route.name === "SimulatorMain");
       });
   }
 }
 
-function goToRecipe(recipeId: number) {
+function goToRecipe(recipeId: number, isSimulator = true) {
   router.push({
-    name: "SimulatorMain",
+    name: isSimulator ? "SimulatorMain" : "RecipeDetail",
     params: {
       id: recipeId,
     },
   });
-  if (router.currentRoute.value.name === "SimulatorMain") {
+  if (
+    router.currentRoute.value.name === "SimulatorMain" ||
+    router.currentRoute.value.name === "RecipeDetail"
+  ) {
     router.go(router.currentRoute.value);
   }
 }
@@ -209,15 +226,17 @@ const route = useRoute();
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-onMounted(() => {
+onMounted(async () => {
   if (isEdit.value) {
-    ingredientStore.fetchPortions();
+    await ingredientStore.fetchPortions();
     state.quantity = props.reciptItem?.quantity;
     state.portion = props.reciptItem?.portion.id;
   } else {
     state.portion = null;
     state.quantity = 1;
   }
-  ingredientStore.fetchIngredients();
+  await ingredientStore.fetchIngredients();
+
+  isLoading.value = false;
 });
 </script>

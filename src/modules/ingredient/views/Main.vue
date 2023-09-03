@@ -9,6 +9,7 @@
       :buttonList="buttonList"
       mainPageLink="IngredientMain"
       detailPageLink="IngredientNutrients"
+      :isLoading="isLoading"
     >
       <template #listitem="{ item }">
         <div class="flex min-w-0 flex-1 items-center">
@@ -62,6 +63,10 @@ const route = useRoute();
 
 const ingredients = computed(() => {
   return ingredientStore.ingredients;
+});
+
+const isLoading = computed(() => {
+  return !ingredientStore.ingredients;
 });
 
 onMounted(() => {
