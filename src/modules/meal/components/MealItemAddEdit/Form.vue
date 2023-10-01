@@ -65,7 +65,7 @@ const state = reactive({
     name: "",
     id: 1,
   },
-  factor: 0.33,
+  factor: 1,
 });
 
 const rules = {
@@ -121,7 +121,9 @@ function onDeleteClicked() {
 watch(
   () => state.mealType,
   () => {
-    updateData(state?.mealType?.value);
+    if (state?.mealType?.value || isEdit.value) {
+      updateData(state?.mealType?.value);
+    }
   },
   { immediate: true, deep: true }
 );
@@ -168,6 +170,7 @@ function onSaveClicked() {
         });
       });
   }
+  isLoading.value = false;
 }
 
 function goToRecipe(route: string, params: any) {
@@ -186,10 +189,10 @@ const route = useRoute();
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-async function updateData(mealType: string = "") {
+async function updateData(mealType) {
   isLoading.value = true;
   let params = {};
-  if (mealType != "") {
+  if (mealType) {
     params = {
       meal_type: mealType,
     };
@@ -207,18 +210,20 @@ async function updateData(mealType: string = "") {
     }
   } else {
     if (mealType == "") {
-      state.mealType = mealTypes.value.filter(
-        (item) => item.value === props.items?.meal.mealType
-      )[0];
+      state.meal = props.items?.meal?.id;
+      state.recipe = null;
+      state.factor = 1;
     }
-    state.meal = props.items?.meal?.id;
-    state.recipe = null;
-    state.factor = 1;
   }
   isLoading.value = false;
 }
 
-onMounted(() => {
-  mealStore.fetchMealTypes(), updateData();
+onMounted(async () => {
+  await mealStore.fetchMealTypes();
+  updateData(props.items?.meal.mealType);
+  state.mealType = mealTypes.value.filter(
+    (item) => item.value === props.items?.meal.mealType
+  )[0];
+  isLoading.value = false;
 });
 </script>
