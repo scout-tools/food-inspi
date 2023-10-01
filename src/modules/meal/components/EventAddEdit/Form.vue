@@ -168,7 +168,6 @@ function onSaveClicked() {
         isApproved: state.isApproved,
       })
       .then((response: any) => {
-        debugger;
         goToRecipe(response.data.id);
       });
   } else {

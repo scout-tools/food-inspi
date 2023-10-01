@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!isLoading">
+    <div>
       <BaseField
         v-if="!isEdit"
         component="AutoComplete"
@@ -10,7 +10,9 @@
         :items="ingredients"
         :errors="errors.ingredient?.$errors"
       />
+      <h3 class="my-4" v-else>{{ ingredient?.name }}</h3>
       <BaseField
+        v-if="!isLoading && ingredient && ingredient.id"
         component="Select"
         v-model="state.portion"
         techName="portion"
@@ -20,15 +22,21 @@
         :errors="errors.portion?.$errors"
       />
       <BaseField
+      v-if="!isLoading && ingredient && ingredient.id"
         component="Number"
-        :label="'Anzahl'"
+        :label="`Anzahl von ${state.portion?.name}`"
         techName="quantity"
         v-model="state.quantity"
         :errors="errors.quantity?.$errors"
       />
+      <div v-if="isLoading">
+        <LoadingItem />
+      </div>
       <PrimaryButton
+        class="mx-0 my-2"
         @click="onSaveClicked"
         :label="!isEdit ? 'Zutat hinzufügen' : 'Zutat bearbeiten'"
+        :isLoading="isLoading"
       />
       <PrimaryButton
         v-if="isEdit"
@@ -36,11 +44,12 @@
         @click="onDeleteClicked()"
         color="red"
         label="Zutat löschen"
+        :isLoading="isLoading"
       />
     </div>
-    <div v-else>
+    <!-- <div v-else>
       <LoadingItem />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -55,6 +64,7 @@ import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import PrimaryButton from "@/components/button/Primary.vue";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
 import { useRecipeStore } from "@/modules/recipe/store/index.ts";
+import { debounce } from "lodash";
 
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
@@ -81,7 +91,7 @@ const v$ = useVuelidate(rules, state);
 
 const ingredient = ref(null);
 const errors = ref([]);
-const isLoading = ref(true);
+const isLoading = ref(false);
 
 const ingredientStore = useIngredientStore();
 const recipeStore = useRecipeStore();
@@ -91,7 +101,11 @@ const ingredients = computed(() => {
 });
 
 watch(ingredient, (value) => {
-  ingredientStore.fetchPortions({ ingredient__id: value?.id });
+  isLoading.value = true;
+  if (value?.id) {
+    search(value);
+  }
+
 });
 
 const portions = computed(() => {
@@ -103,6 +117,7 @@ const isEdit = computed(() => {
 });
 
 watch(ingredientStore, (items) => {
+  isLoading.value = true;
   if (items && items.portions && items.portions.length) {
     if (props.reciptItem?.portion?.id) {
       state.portion = items.portions.filter(
@@ -112,7 +127,14 @@ watch(ingredientStore, (items) => {
       state.portion = items.portions[0];
     }
   }
+  isLoading.value = false;
 });
+
+const search = debounce(async (value) => {
+  isLoading.value = true;
+  ingredientStore.fetchPortions({ ingredient__id: value?.id });
+  isLoading.value = false;
+}, 1000);
 
 function onDeleteClicked() {
   recipeStore.deleteRecipeItem(props.reciptItem.id).then((response) => {
@@ -227,7 +249,7 @@ const router = useRouter();
 
 onMounted(async () => {
   if (isEdit.value) {
-    await ingredientStore.fetchPortions();
+    ingredient.value = props.reciptItem?.portion?.ingredient;
     state.quantity = props.reciptItem?.quantity;
     state.portion = props.reciptItem?.portion.id;
   } else {
