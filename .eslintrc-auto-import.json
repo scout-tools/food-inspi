@@ -62,6 +62,26 @@
     "useSlots": true,
     "useStore": true,
     "watch": true,
-    "watchEffect": true
+    "watchEffect": true,
+    "Component": true,
+    "ComponentPublicInstance": true,
+    "ComputedRef": true,
+    "ExtractDefaultPropTypes": true,
+    "ExtractPropTypes": true,
+    "ExtractPublicPropTypes": true,
+    "InjectionKey": true,
+    "PropType": true,
+    "Ref": true,
+    "VNode": true,
+    "WritableComputedRef": true,
+    "isProxy": true,
+    "isReactive": true,
+    "onBeforeRouteLeave": true,
+    "onBeforeRouteUpdate": true,
+    "toValue": true,
+    "useLink": true,
+    "useSeoMeta": true,
+    "watchPostEffect": true,
+    "watchSyncEffect": true
   }
 }

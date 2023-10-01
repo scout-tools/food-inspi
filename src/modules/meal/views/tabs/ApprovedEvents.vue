@@ -26,12 +26,9 @@ import {
 } from "@heroicons/vue/24/outline";
 import { useTaskStore } from "@/modules/task/store/index";
 import { useDashboardStore } from "@/modules/dashboard/store/index";
-import RequestListButton from "@/modules/group/components/RequestListButton.vue";
 import SimpleList from "@/components/list/SimpleList.vue";
 import TabWrapper from "@/components/base/TabWrapper.vue";
-import RecipeListItem from "@/modules/recipe/components/RecipeListItem.vue";
 import MealListItem from "@/modules/meal/components/MealListItem.vue";
-import EventListItemEmpty from "@/modules/event/components/EventListItemEmpty.vue";
 import { useEventStore } from "@/modules/event/store";
 
 const router = useRouter();

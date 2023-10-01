@@ -16,7 +16,6 @@ import { useAuthStore } from "@/modules/auth/store/index.ts";
 import { computed, onUpdated, ref } from "vue";
 
 import LeftNav from "@/modules/app/components/LeftNav.vue";
-import BaseLayout from "@/modules/app/components/BaseLayout.vue";
 import Success from "@/modules/common/components/Success.vue";
 import Error from "@/modules/common/components/Error.vue";
 import LoadingItem from "@/components/list/LoadingItem.vue";
