@@ -56,6 +56,7 @@
                 <ul
                   role="list"
                   class="divide-y divide-gray-200 rounded-md border border-gray-200"
+                  v-if="props.meal.mealItems.length"
                 >
                   <li
                     class="flex items-center justify-between py-3 pl-3 pr-4 text-sm"
@@ -67,6 +68,7 @@
                           name: 'RecipeDetail',
                           params: { id: mealItem.recipe.id },
                         }"
+                        target="_blank"
                       >
                     <div class="flex w-0 flex-1 items-center">
                       <StarIcon
@@ -74,7 +76,6 @@
                         aria-hidden="true"
                       />
 
-                      <div>
                         <span class="ml-2 w-0 flex-1 truncate"
                           >{{ mealItem.factor }} x
                           {{ mealItem.recipe.name }} ({{
@@ -83,7 +84,6 @@
                           kJ, {{ (mealItem.priceEur || 0).toFixed(2) }}
                           €)
                         </span>
-                      </div>
                       <LinkIcon
                         class="h-5 w-5 flex-shrink-0 text-gray-400 mx-1"
                         aria-hidden="true"
@@ -99,6 +99,11 @@
                         bearbeiten
                       </button>
                     </div>
+                  </li>
+                </ul>
+                <ul v-else>
+                  <li>
+                    Bitte füge ein Rezept hinzu.
                   </li>
                 </ul>
               </dd>

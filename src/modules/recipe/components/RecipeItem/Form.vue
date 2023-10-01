@@ -159,7 +159,6 @@ function onSaveClicked() {
     (route.name === "SimulatorMain" || route.name === "RecipeDetail") &&
     !isEdit.value
   ) {
-    debugger;
     recipeStore
       .createRecipeItem({
         recipe: recipeId,

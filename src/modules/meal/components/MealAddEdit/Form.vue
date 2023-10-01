@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!isLoading">
     <BaseField
       component="Select"
       v-model="state.mealType"
@@ -35,6 +35,7 @@
       label="Menu löschen"
     />
   </div>
+  <LoadingItem v-else />
 </template>
 
 <script setup lang="ts">
@@ -54,14 +55,13 @@ import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
 const state = reactive({
-  name: 'Test',
+  name: "Test",
   mealDay: 1,
   mealType: {
-    value: 'test',
+    value: "test",
   },
   dayPartFactor: 0.33,
 });
-
 
 const rules = {
   dayPartFactor: {
@@ -80,7 +80,7 @@ const v$ = useVuelidate(rules, state);
 
 const ingredient = ref(null);
 const errors = ref([]);
-const isLoading = ref(false);
+const isLoading = ref(true);
 
 const ingredientStore = useIngredientStore();
 const recipeStore = useRecipeStore();
@@ -95,19 +95,18 @@ const mealTypes = computed(() => {
 });
 
 const isEdit = computed(() => {
-  return !!props.items?.id
+  return !!props.items?.id;
 });
-
 
 function onDeleteClicked() {
   let id = Number(route.params.id);
   let eventDayId = Number(route.params.eventDayId);
 
   mealStore.deleteMeal(props.items.id).then((response) => {
-        goToRecipe("EventDay", {
-          id,
-          eventDayId,
-        });
+    goToRecipe("EventDay", {
+      id,
+      eventDayId,
+    });
   });
 }
 
@@ -145,7 +144,7 @@ function onSaveClicked() {
       .then((response3: any) => {
         goToRecipe("EventDay", {
           id,
-          eventDayId: response3.data.mealDay
+          eventDayId: response3.data.mealDay,
         });
       });
   }
@@ -162,9 +161,9 @@ function onSaveClicked() {
       .then((response2: any) => {
         goToRecipe("EventDay", {
           id,
-          eventDayId: response2.data.mealDay
+          eventDayId: response2.data.mealDay,
         });
-      })
+      });
   }
 }
 
@@ -184,22 +183,21 @@ const route = useRoute();
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-
-
-onMounted(() => {
-  mealStore.fetchMealTypes()
-  setTimeout(function () {
-    if (isEdit.value) {
-      state.name = props.items?.name;
-      state.mealDay = props.items?.mealDay;
-      state.dayPartFactor = props.items?.dayPartFactor;
-      state.mealType = mealTypes.value.filter(item => item.value === props.items?.mealType)[0];
-    } else {
-      state.name = '';
-      state.mealDay = 1;
-      state.dayPartFactor = 0.33;
-      state.mealType = mealTypes[0]
-    }
-  }, 300);
+onMounted(async () => {
+  await mealStore.fetchMealTypes();
+  if (isEdit.value) {
+    state.name = props.items?.name;
+    state.mealDay = props.items?.mealDay;
+    state.dayPartFactor = props.items?.dayPartFactor;
+    state.mealType = mealTypes.value.filter(
+      (item) => item.value === props.items?.mealType
+    )[0];
+  } else {
+    state.name = "";
+    state.mealDay = 1;
+    state.dayPartFactor = 0.33;
+    state.mealType = mealTypes[0];
+  }
+  isLoading.value = false;
 });
 </script>

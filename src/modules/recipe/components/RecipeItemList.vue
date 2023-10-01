@@ -13,9 +13,19 @@
           >
             <div class="flex w-0 flex-1 items-center">
               <NutriSlim :nutriClass="item.nutriClass" />
-              <span class="ml-2 w-0 flex-1 truncate"
-                >{{ getFormatedText(item) }}</span
-              >
+              <div class="flex w-0 flex-1 items-center">
+                <router-link
+                  :to="{
+                    name: 'IngredientNutrients',
+                    params: { id: item?.portion?.ingredient?.id },
+                  }"
+                  target="_blank"
+                >
+                  <span class="ml-2 w-0 flex-1 truncate">
+                    {{ getFormatedText(item) }}
+                  </span>
+                </router-link>
+              </div>
               <span
                 v-if="item.nutriPoints < -0.5"
                 class="ml-2 h-5 w-5 text-green-600"
@@ -53,6 +63,7 @@ import {
   PlusCircleIcon,
   FaceSmileIcon,
   FaceFrownIcon,
+  LinkIcon,
 } from "@heroicons/vue/20/solid";
 import PrimaryButton from "@/components/button/Primary.vue";
 import NutriSlim from "@/components/score/NutriSlim.vue";
@@ -74,12 +85,12 @@ const openRecipeItemAdd = () => {
 };
 
 function getFormatedText(item: Object) {
-  let text = ''
-  text = `${text} ${Math.round(item?.quantity * item?.portion.weightG)} g
-                ${item?.portion.ingredient.name } `
-  if (item.portion.measuringUnit.name !== 'g') {
-      text = `${text} / ${item?.quantity}  ${item?.portion.measuringUnit.name }`
+  let text = "";
+  text = `${text} ${Math.round(item?.quantity * item?.portion?.weightG)} g
+                ${item?.portion?.ingredient?.name} `;
+  if (item.portion?.measuringUnit?.name !== "g") {
+    text = `${text} / ${item?.quantity}  ${item?.portion?.measuringUnit?.name}`;
   }
-  return text
+  return text;
 }
 </script>

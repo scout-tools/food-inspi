@@ -16,7 +16,7 @@
         v-model="state.maxDayPartFactor"
         :errors="errors.maxDayPartFactor?.$errors"
       />
-      <PrimaryButton @click="onSaveClicked" :label="'Rezept bearbeiten'" />
+      <PrimaryButton @click="onSaveClicked" :label="'Tag bearbeiten'" />
     </div>
     <LoadingItem v-else />
   </div>
@@ -127,15 +127,12 @@ const router = useRouter();
 async function updateData() {
   isLoading.value = true;
 
-  debugger;
-
   await Promise.all([mealStore.fetchPhysicalActivity()]);
   state.maxDayPartFactor = props.items?.maxDayPartFactor;
   state.activityFactor = physicalActivities.value.filter(
       (item) => item.id === props.items?.activityFactor
     )[0];
   isLoading.value = false;
-  debugger;
 }
 
 onMounted(() => {

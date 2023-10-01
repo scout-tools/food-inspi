@@ -4,23 +4,23 @@
           <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
             <div>
               <p class="truncate text-sm font-medium text-blue-600">
-                {{ props.item.name }}
+                {{ props.item?.name }}
               </p>
               <p class="truncate text-sm font-medium text-gray-500">
-                {{ props.item.price.toFixed(2) }} €
+                {{ props.item?.priceEur?.toFixed(2) }} €
               </p>
               <p class="mt-2 flex items-center text-sm text-gray-500">
                 <TagIcon
                   class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                   aria-hidden="true"
                 />
-                <span class="truncate">{{ props.item.getMealTypeDisplay }}</span>
+                <span class="truncate">{{ props.item?.getMealTypeDisplay }}</span>
               </p>
             </div>
             <div class="hidden md:block">
               <div>
                 <p class="mt-1 flex items-center text-sm text-gray-500">
-                  <NutriSlim :nutriClass="props.item.nutriClass" />
+                  <NutriSlim :nutriClass="props.item?.nutriClass" />
                 </p>
               </div>
             </div>

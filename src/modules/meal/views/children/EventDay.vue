@@ -63,8 +63,8 @@
                     %
                   </dd>
                   <dd class="order-2 text-sm tracking-tight text-blue-500">
-                    {{ mealDay.energyKj }} kJ /
-                    {{ 11765 * mealDay.maxDayPartFactor }} kJ
+                    {{ (mealDay.energyKj).toFixed(0) }} kJ /
+                    {{ (11765 * mealDay.maxDayPartFactor).toFixed(0) }} kJ
                   </dd>
                 </div>
                 <div
@@ -309,7 +309,6 @@ const isLoading = computed(() => {
 });
 
 function onUpdateMealDayClicked() {
-  debugger;
 }
 
 onMounted(() => {

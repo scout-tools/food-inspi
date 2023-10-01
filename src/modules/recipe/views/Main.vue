@@ -19,7 +19,7 @@
                 {{ item.name }}
               </p>
               <p class="truncate text-sm font-medium text-gray-500">
-                {{ item.price.toFixed(2) }} €
+                {{ item.priceEur.toFixed(2) }} €
               </p>
               <p class="mt-2 flex items-center text-sm text-gray-500">
                 <TagIcon

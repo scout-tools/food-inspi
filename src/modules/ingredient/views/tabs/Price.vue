@@ -110,7 +110,7 @@
                           text-sm text-gray-900
                         "
                       >
-                        {{ item.priceEur }} € ({{ item.pricePerKg }} €/ Kg)
+                        {{ item.priceEur.toFixed(2)  }} € ({{ item.pricePerKg.toFixed(2) }} €/ Kg)
                       </td>
                       <td
                         class="

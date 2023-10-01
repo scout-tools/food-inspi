@@ -38,7 +38,7 @@
         label="Rezept löschen"
       />
     </div>
-    <LoadingItem v-else/>
+    <LoadingItem v-else />
   </div>
 </template>
 
@@ -157,7 +157,7 @@ function onSaveClicked() {
     mealStore
       .updateMealItem({
         id: props.items?.id,
-        meal: props.items?.meal.id,
+        meal: props.items?.meal,
         recipe: state.recipe.id,
         factor: Number(state.factor),
       })
@@ -194,19 +194,23 @@ async function updateData(mealType: string = "") {
       meal_type: mealType,
     };
   }
-  await Promise.all([
-    recipeStore.fetchRecipes(params),
-  ]);
-
+  await Promise.all([recipeStore.fetchRecipes(params)]);
 
   if (isEdit.value) {
     state.meal = props.items?.meal?.id;
     state.recipe = props.items?.recipe;
     state.factor = props.items?.factor;
+    if (mealType == "") {
+      state.mealType = mealTypes.value.filter(
+        (item) => item.value === props.items?.recipe.mealType
+      )[0];
+    }
   } else {
-    state.mealType = mealTypes.value.filter(
-      (item) => item.value === props.items?.meal.mealType
-    )[0];
+    if (mealType == "") {
+      state.mealType = mealTypes.value.filter(
+        (item) => item.value === props.items?.meal.mealType
+      )[0];
+    }
     state.meal = props.items?.meal?.id;
     state.recipe = null;
     state.factor = 1;
@@ -215,7 +219,6 @@ async function updateData(mealType: string = "") {
 }
 
 onMounted(() => {
-  mealStore.fetchMealTypes(),
-  updateData();
+  mealStore.fetchMealTypes(), updateData();
 });
 </script>

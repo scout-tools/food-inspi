@@ -26,7 +26,7 @@
                           aria-hidden="true"
                         />
                         <span class="truncate"
-                          > {{ (day.energyKj/(11765 * day.maxDayPartFactor) * 100).toFixed(0)}} % ({{ day.energyKj }} kJ / {{ 11765 * day.maxDayPartFactor }} kJ)</span
+                          > {{ (day.energyKj/(11765 * day.maxDayPartFactor) * 100).toFixed(0)}} % ({{ day.energyKj.toFixed(0) }} kJ / {{ (11765 * day.maxDayPartFactor).toFixed(2) }} kJ)</span
                         >
                       </p>
                       <p class="mt-2 flex items-center text-sm text-gray-500">
@@ -46,7 +46,7 @@
                           aria-hidden="true"
                         />
                         <span class="truncate"
-                          >{{ day.priceEur }} €</span
+                          >{{ day.priceEur.toFixed(2) }} €</span
                         >
                       </p>
                     </div>
