@@ -63,20 +63,35 @@
                     v-for="mealItem in props.meal.mealItems"
                     :key="mealItem.id"
                   >
-                    <router-link
-                      :to="{
-                        name: 'RecipeDetail',
-                        params: { id: mealItem.recipe.id },
-                      }"
-                      target="_blank"
-                    >
+                  <router-link
+                        :to="{
+                          name: 'RecipeDetail',
+                          params: { id: mealItem.recipe.id },
+                        }"
+                        target="_blank"
+                      >
+                    <div class="flex w-0 flex-1 items-center">
+                      <StarIcon
+                        class="h-5 w-5 flex-shrink-0 text-gray-400"
+                        aria-hidden="true"
+                      />
 
-                      <span class="ml-2 w-0 flex-0"
-                        >{{ mealItem.factor }} x {{ mealItem.recipe.name }} (
-                        kJ, {{ (mealItem.priceEur || 0).toFixed(2) }}
-                        €)
-                      </span>
-                    </router-link>
+                      <div>
+                        <span class="ml-2 w-0 flex-1 truncate"
+                          >{{ mealItem.factor }} x
+                          {{ mealItem.recipe.name }} ({{
+                            mealItem.energyKj
+                          }}
+                          kJ, {{ (mealItem.priceEur || 0).toFixed(2) }}
+                          €)
+                        </span>
+                      </div>
+                      <LinkIcon
+                        class="h-5 w-5 flex-shrink-0 text-gray-400 mx-1"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  </router-link>
                     <div class="ml-4 flex-shrink-0">
                       <button
                         v-if="event.allowEdit"
@@ -89,7 +104,9 @@
                   </li>
                 </ul>
                 <ul v-else>
-                  <li>Bitte füge ein Rezept hinzu.</li>
+                  <li>
+                    Bitte füge ein Rezept hinzu.
+                  </li>
                 </ul>
               </dd>
             </div>
