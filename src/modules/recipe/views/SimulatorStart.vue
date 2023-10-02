@@ -17,19 +17,26 @@ const tabs = computed(() => {
   return [
     {
       name: "Inspi's Rezepte",
-      linkName: { name: "RecipeApproved", query: { meal_type: 'lunch_warm'} },
+      linkName: { name: "RecipeApproved", query: { meal_type: "lunch_warm" } },
       current: route.name === "RecipeApproved",
     },
     {
       name: "Öffenliche Rezepte",
-      linkName: { name: "RecipeUserPublic", query: { meal_type: 'lunch_warm'}  },
-      current:
-        route.name === "RecipeUserPublic"
+      linkName: {
+        name: "RecipeUserPublic",
+        query: { meal_type: "lunch_warm" },
+      },
+      current: route.name === "RecipeUserPublic",
     },
     {
       name: "Meine Rezepte",
-      linkName: { name: "RecipeMyRecipes", query: { meal_type: 'lunch_warm'}},
+      linkName: { name: "RecipeMyRecipes", query: { meal_type: "lunch_warm" } },
       current: route.name === "RecipeMyRecipes",
+    },
+    {
+      name: "Neu",
+      linkName: { name: "RecipeRecipeNew" },
+      current: route.name === "RecipeRecipeNew",
     },
   ];
 });

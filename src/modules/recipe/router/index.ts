@@ -12,25 +12,7 @@ export default [
   {
     path: '/recipe/create',
     name: 'RecipeCreate',
-    redirect: { name: 'RecipeCreateIngredient'},
     component: () => import(/* webpackChunkName: "RecipeCreate" */ "@/modules/recipe/views/RecipeCreate.vue"),
-      children: [
-        {
-          path: "ingredi",
-          name: "RecipeCreateIngredient",
-          component: () => import(/* webpackChunkName: "RecipeCreateIngredient" */ "@/modules/recipe/views/createRecipeTabs/Ingredient.vue"),
-        },
-        {
-          path: "basics",
-          name: "RecipeCreateBasics",
-          component: () => import(/* webpackChunkName: "RecipeCreateBasics" */ "@/modules/recipe/views/createRecipeTabs/Basics.vue"),
-        },
-        {
-          path: "summary",
-          name: "RecipeCreateSummary",
-          component: () => import(/* webpackChunkName: "RecipeCreateSummary" */ "@/modules/recipe/views/createRecipeTabs/Summary.vue"),
-        },
-      ],
   },
   {
     path: "/simulator/start",
@@ -51,10 +33,16 @@ export default [
           import(/* webpackChunkName: "RecipeUserPublic" */ "@/modules/recipe/views/tabs/UserPublic.vue"),
       },
       {
-        path: "my-recipes",
+        path: "my-reci",
         name: "RecipeMyRecipes",
         component: () =>
           import(/* webpackChunkName: "RecipeMyRecipes" */ "@/modules/recipe/views/tabs/MyRecipes.vue"),
+      },
+      {
+        path: "new",
+        name: "RecipeRecipeNew",
+        component: () =>
+          import(/* webpackChunkName: "RecipeRecipeNew" */ "@/modules/recipe/views/tabs/New.vue"),
       },
     ],
   },
