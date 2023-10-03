@@ -47,7 +47,13 @@
         </ul>
         <button v-if="props.editable" @click="openRecipeItemAdd()">
           <PlusCircleIcon
-            class="mx-2 my-2 h-10 w-10 text-green-600"
+            class="mx-1 my-2 h-10 w-10 text-green-600"
+            aria-hidden="true"
+          />
+        </button>
+        <button v-if="props.editable" @click="openRecipeFactor()">
+          <ReceiptPercentIcon
+            class="mx-1 my-2 h-10 w-10 text-yellow-400"
             aria-hidden="true"
           />
         </button>
@@ -64,6 +70,7 @@ import {
   FaceSmileIcon,
   FaceFrownIcon,
   LinkIcon,
+  ReceiptPercentIcon,
 } from "@heroicons/vue/20/solid";
 import PrimaryButton from "@/components/button/Primary.vue";
 import NutriSlim from "@/components/score/NutriSlim.vue";
@@ -74,7 +81,11 @@ const props = defineProps({
   editable: { type: Boolean, required: false, default: false },
 });
 
-const emit = defineEmits(["openRecipeItemUpdate", "openRecipeItemAdd"]);
+const emit = defineEmits([
+  "openRecipeItemUpdate",
+  "openRecipeItemAdd",
+  "openRecipeFactor",
+]);
 
 const openRecipeItemUpdate = (reciptItem) => {
   emit("openRecipeItemUpdate", reciptItem);
@@ -84,12 +95,20 @@ const openRecipeItemAdd = () => {
   emit("openRecipeItemAdd");
 };
 
+const openRecipeFactor = () => {
+  emit("openRecipeFactor");
+};
+
 function getFormatedText(item: Object) {
   let text = "";
-  text = `${text} ${Math.round(item?.quantity * item?.portion?.weightG)} g
+  text = `${text} ${Math.round(
+    item?.quantity.toFixed(0) * item?.portion?.weightG
+  )} g
                 ${item?.portion?.ingredient?.name} `;
   if (item.portion?.measuringUnit?.name !== "g") {
-    text = `${text} / ${item?.quantity}  ${item?.portion?.measuringUnit?.name}`;
+    text = `${text} / ${item?.quantity.toFixed(0)}  ${
+      item?.portion?.measuringUnit?.name
+    }`;
   }
   return text;
 }

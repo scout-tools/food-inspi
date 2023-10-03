@@ -29,7 +29,6 @@ const recipeStore = useRecipeStore();
 
 function createBlankSimulator() {
   recipeStore.createRecipe({}).then((response) => {
-    debugger;
     router.push({
       name: "SimulatorMain",
       params: { id: response?.data.id },

@@ -10,7 +10,9 @@
             % Tagesanteil)
           </h3>
           <p class="mt-1 max-w-2xl text-sm text-gray-500">
-            {{ props.meal.getMealTypeDisplay }}
+            {{ props.meal?.getMealTypeDisplay }}
+            {{ $dayjs(props.meal?.timeStart, "HH:mm:ss").format("LT") }} -
+            {{ $dayjs(props.meal?.timeEnd, "HH:mm:ss").format("LT") }}
           </p>
           <button
             v-if="event?.allowEdit"

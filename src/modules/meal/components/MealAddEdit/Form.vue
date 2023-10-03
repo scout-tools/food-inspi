@@ -22,6 +22,20 @@
       v-model="state.dayPartFactor"
       :errors="errors.dayPartFactor?.$errors"
     />
+    <BaseField
+      component="Time"
+      label="Start Uhrzeit"
+      techName="timeStart"
+      v-model="state.timeStart"
+      :errors="errors.timeStart?.$errors"
+    />
+    <BaseField
+      component="Time"
+      label="End Uhrzeit"
+      techName="timeEnd"
+      v-model="state.timeEnd"
+      :errors="errors.timeEnd?.$errors"
+    />
 
     <PrimaryButton
       @click="onSaveClicked"
@@ -57,6 +71,8 @@ import { required, email, minLength, maxLength } from "@vuelidate/validators";
 const state = reactive({
   name: "Test",
   mealDay: 1,
+  timeStart: null,
+  timeEnd: null,
   mealType: {
     value: "test",
   },
@@ -68,6 +84,12 @@ const rules = {
     required,
   },
   mealType: {
+    required,
+  },
+  timeStart: {
+    required,
+  },
+  timeEnd: {
     required,
   },
 };
@@ -140,6 +162,8 @@ function onSaveClicked() {
         mealDay: eventDayId,
         dayPartFactor: Number(state.dayPartFactor),
         mealType: state.mealType?.value,
+        timeStart: state.timeStart,
+        timeEnd: state.timeEnd,
       })
       .then((response3: any) => {
         goToRecipe("EventDay", {
@@ -157,6 +181,8 @@ function onSaveClicked() {
         mealDay: eventDayId,
         dayPartFactor: Number(state.dayPartFactor),
         mealType: state.mealType?.value,
+        timeStart: state.timeStart,
+        timeEnd: state.timeEnd,
       })
       .then((response2: any) => {
         goToRecipe("EventDay", {
@@ -188,6 +214,8 @@ onMounted(async () => {
   if (isEdit.value) {
     state.name = props.items?.name;
     state.mealDay = props.items?.mealDay;
+    state.timeStart = props.items?.timeStart,
+    state.timeEnd = props.items?.timeEnd,
     state.dayPartFactor = props.items?.dayPartFactor;
     state.mealType = mealTypes.value.filter(
       (item) => item.value === props.items?.mealType
@@ -197,6 +225,8 @@ onMounted(async () => {
     state.mealDay = 1;
     state.dayPartFactor = 0.33;
     state.mealType = mealTypes[0];
+    state.timeStart = null,
+    state.timeEnd = null
   }
   isLoading.value = false;
 });

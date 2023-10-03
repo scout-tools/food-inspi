@@ -13,9 +13,7 @@ const router = useRouter();
 const recipeStore = useRecipeStore();
 
 onMounted(() => {
-  debugger;
   recipeStore.createRecipe({}).then((response) => {
-    debugger;
     router.push({
       name: "SimulatorMain",
       params: { id: response?.data.id },

@@ -3,6 +3,7 @@
     <RecipeItemList
       @openRecipeItemAdd="openRecipeItemAdd"
       @openRecipeItemUpdate="openRecipeItemUpdate"
+      @openRecipeFactor="openRecipeFactor"
       :recipeItems="recipeItems"
       :editable="isEditable"
     />
@@ -23,13 +24,16 @@ const props = defineProps({
   isEditable: { type: Boolean, required: false, default: false },
 });
 
-const emit = defineEmits(["openRecipeItemUpdate", "openRecipeItemAdd"]);
+const emit = defineEmits(["openRecipeItemUpdate", "openRecipeItemAdd", "openRecipeFactor"]);
 
 const openRecipeItemUpdate = (reciptItem: Object) => {
   emit("openRecipeItemUpdate", reciptItem);
 };
 const openRecipeItemAdd = () => {
   emit("openRecipeItemAdd");
+};
+const openRecipeFactor = () => {
+  emit("openRecipeFactor");
 };
 
 const recipeStore = useRecipeStore();

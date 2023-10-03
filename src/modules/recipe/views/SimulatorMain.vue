@@ -7,6 +7,7 @@
       :recipeItems="recipeDetail.recipeItems"
       @openRecipeItemUpdate="onOpenRecipeItemUpdate"
       @openRecipeItemAdd="openRecipeItemAdd"
+      @openRecipeFactor="openRecipeFactor"
       isEditable="true"
     />
 
@@ -35,12 +36,7 @@
       header="Zutat"
     />
     <div
-      class="
-        px-2
-        py-2
-        sm:flex sm:items-center sm:justify-between sm:px-6
-        lg:px-8
-      "
+      class="px-2 py-2 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
     >
       <div class="min-w-0 flex-1"></div>
       <div class="mt-4 flex-2 sm:mt-0 sm:ml-4">
@@ -56,6 +52,11 @@
       @close="onRecipeUpdateClose"
       :items="recipeDetail"
     />
+    <RecipeFactorForm
+      :open="openRecipeFactorForm"
+      @close="onRecipeFactorFormClose"
+      header="Rezeptfaktor"
+    />
   </div>
 </template>
 
@@ -68,15 +69,26 @@ import RecipeOverview2 from "@/modules/recipe/components/RecipeMainOverview2.vue
 import RecipeOverview3 from "@/modules/recipe/components/RecipeMainOverview3.vue";
 import RecipeOverviewNutri from "@/modules/recipe/components/RecipeMainOverviewNutri.vue";
 import RecipeItemUpdate from "@/modules/recipe/components/RecipeItem/RecipeItem.vue";
+import RecipeFactorForm from "@/modules/recipe/components/recipeFactor/RecipeFactorForm.vue";
 import { useRoute } from "vue-router";
 import { useRecipeStore } from "@/modules/recipe/store/index";
 
-import CreateRecipe from '@/modules/recipe/components/simulator/createRecipe/CreateRecipe.vue'
+import CreateRecipe from "@/modules/recipe/components/simulator/createRecipe/CreateRecipe.vue";
 
 const route = useRoute();
 
 const openRecipeItemUpdate = ref(false);
 const openRecipeItem = ref({});
+
+const openRecipeFactorForm = ref(false);
+
+function openRecipeFactor() {
+  openRecipeFactorForm.value = true;
+}
+
+function onRecipeFactorFormClose() {
+  openRecipeFactorForm.value = false;
+}
 
 const recipeStore = useRecipeStore();
 
@@ -99,7 +111,6 @@ function onRecipeItemUpdateClose() {
 }
 
 const openRecipeUpdate = ref(false);
-
 
 function onRecipeUpdateClose() {
   openRecipeUpdate.value = false;

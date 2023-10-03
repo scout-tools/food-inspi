@@ -34,6 +34,7 @@ declare module 'vue' {
     TabWrapper: typeof import('./src/components/base/TabWrapper.vue')['default']
     Text: typeof import('./src/components/field/Text.vue')['default']
     TextArea: typeof import('./src/components/field/TextArea.vue')['default']
+    Time: typeof import('./src/components/field/Time.vue')['default']
     Toggle: typeof import('./src/components/field/Toggle.vue')['default']
     ToolDropdown: typeof import('./src/components/base/list/components/ToolDropdown.vue')['default']
   }

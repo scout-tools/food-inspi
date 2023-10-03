@@ -24,9 +24,9 @@
           :recipeItems="recipeDetail.recipeItems"
           @openRecipeItemUpdate="onOpenRecipeItemUpdate"
           @openRecipeItemAdd="openRecipeItemAdd"
+          @openRecipeFactor="openRecipeFactor"
           :isEditable="recipeDetail.allowEdit"
         />
-
         <RecipeOverviewNutri
           :recipeItems="recipeDetail.recipeItems"
           @openRecipeItemUpdate="onOpenRecipeItemUpdate"
@@ -47,6 +47,11 @@
           :reciptItem="openRecipeItem"
           @close="onRecipeItemUpdateClose"
           header="Zutat"
+        />
+        <RecipeFactorForm
+          :open="openRecipeFactorForm"
+          @close="onRecipeFactorFormClose"
+          header="Rezeptfaktor"
         />
         <div
           class="px-2 py-2 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
@@ -136,16 +141,26 @@ function onRecipeUpdateClose() {
 import { ref, watch, onMounted, computed } from "vue";
 import EmptyItem from "@/modules/recipe/components/simulator/EmptyItem.vue";
 import RecipeItemUpdate from "@/modules/recipe/components/RecipeItem/RecipeItem.vue";
+import RecipeFactorForm from "@/modules/recipe/components/recipeFactor/RecipeFactorForm.vue";
 import { useRoute } from "vue-router";
 import { useRecipeStore } from "@/modules/recipe/store/index";
 
 const openRecipeItemUpdate = ref(false);
+const openRecipeFactorForm = ref(false);
 const openRecipeItem = ref({});
 const isLoading = ref(true);
 
 function openRecipeItemAdd() {
   openRecipeItem.value = {};
   openRecipeItemUpdate.value = true;
+}
+
+function openRecipeFactor() {
+  openRecipeFactorForm.value = true;
+}
+
+function onRecipeFactorFormClose() {
+  openRecipeFactorForm.value = false;
 }
 
 function onOpenRecipeItemUpdate(reciptItem: Object) {

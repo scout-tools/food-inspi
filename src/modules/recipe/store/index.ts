@@ -107,6 +107,11 @@ export const useRecipeStore = defineStore("recipe", {
         }
       }
     },
+    async multiplyRecipeItems(data: object) {
+      try {
+        return await RecipeApi.multiplyRecipeItems(data);
+      } catch (error) {}
+    },
     async deleteRecipe(data: object) {
       try {
         return await RecipeApi.delete(data);

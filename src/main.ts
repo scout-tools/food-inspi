@@ -10,10 +10,12 @@ import keycloak from "@/modules/auth/keycloak";
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 import dayjs from 'dayjs'
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import 'dayjs/locale/de';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 dayjs.locale('de')
 dayjs.extend(LocalizedFormat);
+dayjs.extend(customParseFormat);
 
 
 import auth from "./plugin/auth"
