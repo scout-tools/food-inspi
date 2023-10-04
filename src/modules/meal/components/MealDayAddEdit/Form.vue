@@ -18,32 +18,30 @@
 import { useCommonStore } from "@/modules/common/store/index.ts";
 const commonStore = useCommonStore();
 
-import { reactive, onMounted, ref, watch, computed } from "vue";
+import { reactive, onMounted, ref, computed } from "vue";
 import BaseField from "@/components/field/Base.vue";
-import Select from "@/components/field/Select.vue";
-import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import PrimaryButton from "@/components/button/Primary.vue";
 import LoadingItem from "@/components/list/LoadingItem.vue";
 
-import { useIngredientStore } from "@/modules/ingredient/store/index";
-import { useRecipeStore } from "@/modules/recipe/store/index";
 import { useMealStore } from "@/modules/meal/store/index";
 
 import { useVuelidate } from "@vuelidate/core";
-import { required, email, minLength, maxLength } from "@vuelidate/validators";
+import { required } from "@vuelidate/validators";
+
+import { useRoute } from "vue-router";
+const route = useRoute();
+
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const state = reactive({
   id: 1,
   mealEvent: null,
-  activityFactor: null,
   maxDayPartFactor: null,
   date: null,
 });
 
 const rules = {
-  activityFactor: {
-    required,
-  },
   maxDayPartFactor: {
     required,
   },
@@ -55,7 +53,6 @@ const props = defineProps({
 
 const v$ = useVuelidate(rules, state);
 
-const ingredient = ref(null);
 const errors = ref([]);
 const isLoading = ref(false);
 
@@ -64,14 +61,6 @@ const loading = computed(() => {
 });
 
 const mealStore = useMealStore();
-
-const physicalActivities = computed(() => {
-  return mealStore.physicalActivity;
-});
-
-const isEdit = computed(() => {
-  return !!props.items?.id;
-});
 
 function onSaveClicked() {
   v$.value.$validate();
@@ -88,7 +77,6 @@ function onSaveClicked() {
     .updateMealDay({
       id: props.items?.id,
       mealEvent: props.items?.mealEvent,
-      activityFactor: state.activityFactor.id,
       maxDayPartFactor: state.maxDayPartFactor,
       date: props.items?.date,
     })
@@ -110,20 +98,11 @@ function goToRecipe(route: string, params: any) {
   }
 }
 
-import { useRoute } from "vue-router";
-const route = useRoute();
-
-import { useRouter } from "vue-router";
-const router = useRouter();
-
 async function updateData() {
   isLoading.value = true;
 
   await Promise.all([mealStore.fetchPhysicalActivity()]);
   state.maxDayPartFactor = props.items?.maxDayPartFactor;
-  state.activityFactor = physicalActivities.value.filter(
-      (item) => item.id === props.items?.activityFactor
-    )[0];
   isLoading.value = false;
 }
 
