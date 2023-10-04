@@ -30,8 +30,15 @@
             focus:ring-blue-500
             sm:text-sm
           "
+          @focus="$event.target.select()"
           @change="updateSearch($event.target.value)"
-          :display-value="(person) => person?.name"
+          :display-value="
+            (person) => {
+              return person && typeof person === 'object' && !isEmpty(person)
+                ? getItemText(person)
+                : 'Hier Suchtext eingeben!';
+            }
+          "
         />
         <ComboboxButton
           :disabled="disabled"
@@ -50,7 +57,7 @@
         </ComboboxButton>
 
         <ComboboxOptions
-          v-if="filteredPeople.length > 0"
+          v-if="filteredPeople?.length > 0"
           :disabled="disabled"
           class="
             absolute
@@ -84,7 +91,7 @@
               ]"
             >
               <span :class="['block truncate', selected && 'font-semibold']">
-                {{ person.name }}
+                {{ getItemText(person) }}
               </span>
 
               <span
@@ -101,6 +108,9 @@
         </ComboboxOptions>
       </div>
     </Combobox>
+    <p class="mt-2 text-sm text-red-500" id="email-description">
+      {{ props.errors[0] && props.errors[0].$message }}
+    </p>
     <p
       v-if="props.hint"
       class="mt-2 text-sm text-gray-500"
@@ -131,6 +141,8 @@ const props = defineProps({
   cols: { type: Number, required: false, default: 3 },
   items: { type: Array, required: true },
   disabled: { type: Boolean, required: false, default: false },
+  lookupListDisplay: { type: Array, required: false, default: ["name"] },
+  searchField: { type: Array, required: false, default: ["name"] },
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -147,8 +159,29 @@ const query = ref("");
 const filteredPeople = computed(() => {
   return query.value === ""
     ? props.items
-    : props.items.filter((person) => {
-        return person.name.toLowerCase().includes(query.value.toLowerCase());
+    : props.items.filter((item) => {
+        const selectedItem = item[props.searchField]
+          ? item[props.searchField]
+          : item["person"][props.searchField];
+        return selectedItem.toLowerCase().includes(query.value.toLowerCase());
       });
 });
+
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
+
+function getItemText(item) {
+  let template = "";
+  props.lookupListDisplay.forEach((field, i) => {
+    if (field.charAt(0) === "$") {
+      template += field.substring(1, field.length);
+    } else if (i === 0) {
+      template += item[field];
+    } else {
+      template = `${template} ${item[field]}`;
+    }
+  });
+  return template;
+}
 </script>

@@ -110,6 +110,7 @@ export const useMealStore = defineStore("meal", {
         const response = await MealEventApi.fetchPublicEvents(params);
         this._isLoading = false;
         this._mealEvents = response.data;
+        return response;
       } catch (error) {
         this._isLoading = false;
         console.log(error);
@@ -150,6 +151,17 @@ export const useMealStore = defineStore("meal", {
     async createEvent(data: object) {
       try {
         return await MealEventApi.create(data);
+      } catch (error: any) {
+        if (error.response.status === 400) {
+          commonStore.showError(error.response.data);
+        } else if (error.response.status === 500) {
+          commonStore.showError('Schwerer Server Fehler');
+        }
+      }
+    },
+    async cloneMeal(data: object) {
+      try {
+        return await MealApi.clone(data);
       } catch (error: any) {
         if (error.response.status === 400) {
           commonStore.showError(error.response.data);

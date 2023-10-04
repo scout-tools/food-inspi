@@ -13,20 +13,54 @@
           <h4 class="text-md leading-3 text-gray-900">
             {{ props.event?.description }}
           </h4>
-          <p class="mt-2 max-w-4xl text-lg text-gray-500">
+          <p class="mt-2 max-w-4xl text-md text-gray-500">
             Für {{ props.event?.normPortions }} Normpersonen
           </p>
+          <p class="mt-2 max-w-4xl text-md text-gray-500">
+            Energie: {{ props.event?.energyKj.toFixed(0) }} kJ /
+            {{ props.event?.energyKjSum.toFixed(0) }} kJ ({{
+              (
+                (props.event?.energyKj / props.event?.energyKjSum) *
+                100
+              ).toFixed(0)
+            }}
+            %)
+          </p>
+          <p class="mt-2 max-w-4xl text-md text-gray-500">
+            Gesamt: {{ props.event?.priceEur.toFixed(2) }} €
+          </p>
+          <p class="mt-2 max-w-4xl text-md text-gray-500">
+            Reservefaktor:
+            {{ (props.event?.reserveFactor * 100 - 100).toFixed(2) }} %
+          </p>
+          <p class="mt-2 max-w-4xl text-md text-gray-500">
+            Nutri-Store: {{ props.event?.nutriClass }}
+          </p>
+          <p class="mt-2 max-w-4xl text-md text-gray-500">
+            Aktivität: {{ props.event?.activityFactor.name }}
+          </p>
         </div>
-        <div v-if="!isShoppingRoute" class="mt-3 flex sm:mt-0 sm:ml-4">
+        <div v-if="!isShoppingRoute" class="mx-3 flex">
           <router-link
             class="text-sm font-medium text-gray-500 hover:text-gray-700"
+            :to="{ name: 'EventPlan' }"
+          >
+            <button
+              type="button"
+              class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Essensplan
+            </button>
+          </router-link>
+          <router-link
+            class="text-sm mx-2 font-medium text-gray-500 hover:text-gray-700"
             :to="{ name: 'EventShoppingCart' }"
           >
             <button
               type="button"
               class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-              Einkaufsliste ansehen
+              Einkaufsliste
             </button>
           </router-link>
           <button
@@ -49,7 +83,7 @@
       </main>
     </div>
     <div v-else>
-      <LoadingItem/>
+      <LoadingItem />
     </div>
   </div>
 </template>
@@ -60,13 +94,6 @@ import { useRoute } from "vue-router";
 
 import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import LoadingItem from "@/components/list/LoadingItem.vue";
-
-const getDailyFactor = computed(() => {
-  if (props?.event?.mealDays?.length > 0) {
-    return props.event.mealDays[0].energyKj / 11765;
-  }
-  return 0;
-});
 
 const emit = defineEmits(["onDeleteClicked", "onEditClicked"]);
 
@@ -80,7 +107,7 @@ function onEditClicked(items: any) {
 const route = useRoute();
 
 const isShoppingRoute = computed(() => {
-  return route.name === "EventShoppingCart";
+  return route.name === "EventShoppingCart" || route.name === "EventPlan";
 });
 
 const isLoading = computed(() => {

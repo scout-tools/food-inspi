@@ -56,7 +56,7 @@
                     {{
                       (
                         (mealDay.energyKj /
-                          (11765 * mealDay.maxDayPartFactor)) *
+                          (mealDay.energyKjSum)) *
                         100
                       ).toFixed(0)
                     }}
@@ -64,7 +64,7 @@
                   </dd>
                   <dd class="order-2 text-sm tracking-tight text-blue-500">
                     {{ (mealDay.energyKj).toFixed(0) }} kJ /
-                    {{ (11765 * mealDay.maxDayPartFactor).toFixed(0) }} kJ
+                    {{ (mealDay.energyKjSum).toFixed(0) }} kJ
                   </dd>
                 </div>
                 <div
@@ -181,6 +181,7 @@
         :key="meal.id"
         @onItemUpdate="onMealUpdate"
         @onAddMealItemClicked="onAddMealItemClicked"
+        @onMealCloneClicked="onMealCloneClicked"
         @onMenuItemUpdate="onMealItemUpdate"
       />
       <MealListEmpty v-if="event?.allowEdit" @onAddClicked="onAddMealClicked" />
@@ -196,6 +197,12 @@
       @close="onMealItemClose"
       :items="mealItemData"
       header="Neue Rezept zum Menü hinzufügen"
+    />
+    <MealClone
+      :open="openMealCloneForm"
+      @close="onMealCloneClosed"
+      :items="mealCloneFormData"
+      header="Menü klonen"
     />
     <MealDayAddEdit
       :open="openMealDayForm"
@@ -251,12 +258,15 @@ function onMealFormClose() {
 // MenuItem Sidebar
 
 import MealItemAddEdit from "@/modules/meal/components/MealItemAddEdit/MealItemAddEdit.vue";
+import MealClone from "@/modules/meal/components/mealClone/MealClone.vue";
 import MealDayAddEdit from "@/modules/meal/components/MealDayAddEdit/MealDayAddEdit.vue";
 
 const openMealItemForm = ref(false);
 const openMealDayForm = ref(false);
+const openMealCloneForm = ref(false);
 const mealItemData = ref({});
 const mealDayData = ref({});
+const mealCloneFormData = ref({});
 
 
 function onMealDayUpdate(items: Object) {
@@ -272,6 +282,16 @@ function onMealDayClose() {
 function onAddMealItemClicked(items: Object) {
   openMealItemForm.value = true;
   mealItemData.value = items;
+}
+
+function onMealCloneClicked(items: Object) {
+  openMealCloneForm.value = true;
+  mealCloneFormData.value = items;
+}
+
+function onMealCloneClosed() {
+  mealCloneFormData.value = {};
+  openMealCloneForm.value = false;
 }
 
 function onMealItemUpdate(items: Object) {

@@ -44,6 +44,12 @@ export default [
           import(/* webpackChunkName: "EventShoppingCart" */ "@/modules/meal/views/children/ShoppingCart.vue"),
       },
       {
+        path: "plan",
+        name: "EventPlan",
+        component: () =>
+          import(/* webpackChunkName: "EventPlan" */ "@/modules/meal/views/children/Plan.vue"),
+      },
+      {
         path: "day/:eventDayId",
         name: "EventDay",
         component: () =>

@@ -132,6 +132,23 @@
               </button>
             </span>
           </div>
+          <div class="flex text-sm">
+            <span class="inline-flex items-center text-sm">
+              <button
+                v-if="event.allowEdit"
+                @click="
+                  onMealCloneClicked({
+                    meal: props.meal,
+                  })
+                "
+                type="button"
+                class="inline-flex font-medium text-blue-600 hover:text-blue-500"
+              >
+                <DocumentDuplicateIcon class="h-5 w-5" aria-hidden="true" />
+                <span> Menu aus anderer Veranstaltung kopieren</span>
+              </button>
+            </span>
+          </div>
         </div>
       </div>
     </article>
@@ -174,6 +191,7 @@ import {
   UserGroupIcon,
   XMarkIcon,
   ShoppingCartIcon,
+  DocumentDuplicateIcon,
 } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
@@ -184,6 +202,7 @@ const emit = defineEmits([
   "onItemUpdate",
   "onMenuItemUpdate",
   "onAddMealItemClicked",
+  "onMealCloneClicked",
 ]);
 
 const onUpdateMealClicked = (items) => {
@@ -196,6 +215,10 @@ const onMenuItemUpdate = (items) => {
 
 const onAddMealItemClicked = (items) => {
   emit("onAddMealItemClicked", items);
+};
+
+const onMealCloneClicked = (items) => {
+  emit("onMealCloneClicked", items);
 };
 
 import { useMealStore } from "@/modules/meal/store/index";

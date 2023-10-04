@@ -1,14 +1,39 @@
 <template>
   <div>
-    <div v-if="!loading">
+    <div v-if="!isLoading">
       <BaseField
-        component="Number"
-        label="Tagesaktor"
-        techName="maxDayPartFactor"
-        v-model="state.maxDayPartFactor"
-        :errors="errors.maxDayPartFactor?.$errors"
+        component="AutoComplete"
+        label="Veranstaltungen"
+        techName="event"
+        v-model="state.event"
+        :items="events"
+        :errors="errors.event?.$errors"
+        :lookupListDisplay="['description']"
+        :searchField="['description']"
       />
-      <PrimaryButton @click="onSaveClicked" :label="'Tag bearbeiten'" />
+      <BaseField
+        v-if="state.event"
+        component="AutoComplete"
+        label="Tag"
+        techName="eventDay"
+        v-model="state.eventDay"
+        :items="eventDays"
+        :errors="errors.eventDay?.$errors"
+        :lookupListDisplay="['date']"
+        :searchField="['date']"
+      />
+      <BaseField
+        v-if="state.eventDay"
+        component="AutoComplete"
+        label="Menü"
+        techName="meal"
+        v-model="state.meal"
+        :items="meals"
+        :errors="errors.meal?.$errors"
+        :lookupListDisplay="['name', 'getMealTypeDisplay']"
+        :searchField="['name', 'getMealTypeDisplay']"
+      />
+      <PrimaryButton @click="onSaveClicked" :label="'Menü übernehmen'" />
     </div>
     <LoadingItem v-else />
   </div>
@@ -33,45 +58,38 @@ import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
 const state = reactive({
-  id: 1,
-  mealEvent: null,
-  activityFactor: null,
-  maxDayPartFactor: null,
-  date: null,
+  event: null,
+  eventDay: null,
+  meal: null,
 });
 
 const rules = {
-  activityFactor: {
+  event: {
     required,
   },
-  maxDayPartFactor: {
+  eventDay: {
+    required,
+  },
+  meal: {
     required,
   },
 };
 
-const props = defineProps({
-  items: { type: Object, required: true },
-});
-
 const v$ = useVuelidate(rules, state);
 
-const ingredient = ref(null);
 const errors = ref([]);
+const events = ref([]);
 const isLoading = ref(false);
 
-const loading = computed(() => {
-  return isLoading.value;
+const eventDays = computed(() => {
+  return state.event.mealDays;
 });
 
-const mealStore = useMealStore();
-
-const physicalActivities = computed(() => {
-  return mealStore.physicalActivity;
+const meals = computed(() => {
+  return state.eventDay?.meals;
 });
 
-const isEdit = computed(() => {
-  return !!props.items?.id;
-});
+const recipeStore = useRecipeStore();
 
 function onSaveClicked() {
   v$.value.$validate();
@@ -84,13 +102,11 @@ function onSaveClicked() {
   let id = Number(route.params.id);
   let eventDayId = Number(route.params.eventDayId);
   isLoading.value = true;
+
   mealStore
-    .updateMealDay({
-      id: props.items?.id,
-      mealEvent: props.items?.mealEvent,
-      activityFactor: state.activityFactor.id,
-      maxDayPartFactor: state.maxDayPartFactor,
-      date: props.items?.date,
+    .cloneMeal({
+      mealId: props.items.meal.id,
+      clone_meal_id: state?.meal?.id,
     })
     .then((response2: any) => {
       goToRecipe("EventDay", {
@@ -98,6 +114,7 @@ function onSaveClicked() {
         eventDayId,
       });
     });
+  isLoading.value = false;
 }
 
 function goToRecipe(route: string, params: any) {
@@ -110,24 +127,25 @@ function goToRecipe(route: string, params: any) {
   }
 }
 
+const props = defineProps({
+  items: { type: Object, required: true },
+});
+
 import { useRoute } from "vue-router";
 const route = useRoute();
 
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-async function updateData() {
+import { useMealStore } from "@/modules/meal/store/index";
+const mealStore = useMealStore();
+
+onMounted(async () => {
   isLoading.value = true;
+  const response = await mealStore.fetchPublicEvents();
 
-  await Promise.all([mealStore.fetchPhysicalActivity()]);
-  state.maxDayPartFactor = props.items?.maxDayPartFactor;
-  state.activityFactor = physicalActivities.value.filter(
-      (item) => item.id === props.items?.activityFactor
-    )[0];
+  events.value = response.data;
+
   isLoading.value = false;
-}
-
-onMounted(() => {
-  updateData();
 });
 </script>

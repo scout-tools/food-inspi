@@ -339,6 +339,7 @@ const secondaryNavigation = computed(() => {
       linkName: "FaqMain",
       icon: MagnifyingGlassCircleIcon,
       route: "faq",
+      isAuth: false,
     },
     {
       name: "Rezepte",
@@ -369,7 +370,7 @@ const secondaryNavigation = computed(() => {
     //   isAuth: true,
     // },
   ].filter(
-    (item) => (!item.isAuth || isAuth.value) && (item.isAuth || !isAuth.value)
+    (item) => (!item.isAuth) || (item.isAuth && isAuth.value)
   );
 });
 const sidebarOpen = ref(false);
