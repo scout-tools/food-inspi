@@ -220,7 +220,7 @@ onMounted(async () => {
     )[0];
     state.normPortions = props.items?.normPortions;
     state.activityFactor = physicalActivities.value.filter(
-      (item) => item.id === props.items?.activityFactor
+      (item) => item.id === props.items?.activityFactor.id
     )[0];
     state.reserveFactor = props.items?.reserveFactor;
     state.isPublic = props.items?.isPublic;
