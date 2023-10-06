@@ -11,7 +11,7 @@
           <MealListItem :item="slotProps.item" />
         </template>
         <template v-slot:empty>
-          <h1>Leer</h1>
+          <h1>Du hast noch keine Veranstaltung erstellt.</h1>
         </template>
       </SimpleList>
       <EventAddEdit

@@ -76,7 +76,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, onMounted } from "vue";
 import { ScaleIcon } from "@heroicons/vue/24/outline";
 
 import RecipeList from "@/modules/dashboard/components/RecipeList.vue";

@@ -1,8 +1,15 @@
 <template>
   <div>
+    <a
+      href="https://dpvonline.cloud/event-new/start"
+      target="_blank"
+      class="underline text-sky-400"
+    >
+      Neue Veranstaltung anlegen
+    </a>
     <BaseField
       component="Select"
-      label="Veranstaltung"
+      label="Veranstaltung aus dem Anmelde-tool"
       techName="event"
       v-model="state.event"
       :errors="errors.event?.$errors"
@@ -19,7 +26,7 @@
       component="Number"
       v-model="state.normPortions"
       techName="normPortions"
-      label="Anzahl Portionen"
+      label="Anzahl Norm-Portionen"
       :errors="errors.normPortions?.$errors"
     />
     <BaseField
@@ -83,7 +90,7 @@ import { required, email, minLength, maxLength } from "@vuelidate/validators";
 const state = reactive({
   id: null,
   event: null,
-  description: '',
+  description: "",
   normPortions: 1,
   activityFactor: 1.0,
   reserveFactor: 1.0,

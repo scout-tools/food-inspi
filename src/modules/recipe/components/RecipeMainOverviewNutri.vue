@@ -11,10 +11,6 @@
 
 <script setup lang="ts">
 import { onMounted, computed } from "vue";
-import RecipeItemList from "@/modules/recipe/components/RecipeItemList.vue";
-import RecipeOverviewItem from "@/modules/recipe/components/RecipeOverviewItem/Main.vue";
-import NutritionalsBoxPlot from "@/modules/recipe/components/chart/NutritionalsBoxPlot.vue";
-import ListItem from "@/modules/recipe/components/ListItem.vue";
 import { useRoute } from "vue-router";
 import { useRecipeStore } from "@/modules/recipe/store/index.ts";
 

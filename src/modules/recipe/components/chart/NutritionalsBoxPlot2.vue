@@ -17,7 +17,6 @@ const route = useRoute();
 
 const recipeStore = useRecipeStore();
 
-
 const recipes = computed(() => {
   return recipeStore.recipesVerified;
 });
@@ -43,16 +42,17 @@ onMounted(() => {
 
 const valueList = computed(() => {
   const value = recipes.value.map((object) => object[props.item.value]);
-  value.push(recipeDetail.value[props.item.value])
+  value.push(recipeDetail.value[props.item.value]);
   value.sort(function (a, b) {
     return a - b;
   });
+  console.log(value);
   return value;
-})
+});
 
 const refName = computed(() => {
-  return `boxPlotRef${props.item.name}`
-})
+  return `boxPlotRef${props.item.name}`;
+});
 const options = computed(() => {
   return {
     annotations: {
@@ -90,8 +90,7 @@ const options = computed(() => {
         },
       },
       axis: {
-        lines: {
-        },
+        lines: {},
       },
     },
     chart: {
@@ -105,7 +104,7 @@ const options = computed(() => {
       boxPlot: {
         colors: {
           upper: "#668855",
-          lower: "#5170A5",
+          lower: "#668855",
         },
       },
     },
@@ -114,7 +113,11 @@ const options = computed(() => {
       align: "left",
     },
     xaxis: {
-      max: Math.max.apply(Math, valueList.value),
+      min: 0,
+      max: Math.max(
+        Math.max.apply(Math, valueList.value),
+        recipeDetail.value[props.item.value] + 10
+      ),
       tickAmount: 4,
     },
   };
