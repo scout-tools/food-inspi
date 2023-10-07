@@ -75,6 +75,7 @@ import { useHintStore } from "@/modules/hint/store/index.ts";
 const hintStore = useHintStore();
 
 const searchValue = ref();
+const isLoading = ref(true);
 
 const route = useRoute();
 
@@ -82,9 +83,7 @@ const hints = computed(() => {
   return hintStore.hints;
 });
 
-onMounted(() => {
-  hintStore.fetchHints(route.query);
-});
+onMounted(() => {});
 
 watch(
   () => route.query,
@@ -96,6 +95,8 @@ watch(
 
 function updateSearch(params) {
   hintStore.fetchHints(params);
+
+  isLoading.value = false;
 }
 
 const sortOptions = [];

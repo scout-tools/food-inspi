@@ -1,9 +1,9 @@
 <template>
   <div class="2xl:px-64 xl:px-30">
-    <GroupSearchList/>
+    <HintSearchList />
   </div>
 </template>
 
 <script setup lang="ts">
-import GroupSearchList from "@/modules/hint/components/HintSearchList.vue";
+import HintSearchList from "@/modules/hint/components/HintSearchList.vue";
 </script>

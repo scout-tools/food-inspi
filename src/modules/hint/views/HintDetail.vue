@@ -84,7 +84,9 @@ const pages = computed(() => {
 });
 
 const hasData = computed(() => {
-  return !!series?.value[0]?.data[0]?.y.length && hint.value.value && isReady.value;
+  return (
+    !!series?.value[0]?.data[0]?.y.length && hint.value.value && isReady.value
+  );
 });
 
 const snakeToCamel = (str) =>
@@ -154,15 +156,14 @@ const hint = computed(() => {
 });
 
 const recipes = computed(() => {
-  return recipeStore.recipes;
+  return recipeStore.recipesVerified;
 });
 
-onMounted(() => {
+onMounted(async () => {
   const id = route.params.id;
-  hintStore.fetchHintById(id);
-  recipeStore.fetchRecipes();
-  setTimeout(function () {
-    isReady.value = true;
-  }, 300);
+  await hintStore.fetchHintById(id);
+  await recipeStore.fetchVerified();
+
+  isReady.value = true;
 });
 </script>
