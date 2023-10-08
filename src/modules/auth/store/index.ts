@@ -22,10 +22,7 @@ export const useAuthStore = defineStore("authStore", {
       var currentLocation = window.location;
 
       const APP_URL = import.meta.env.VITE_APP_URL;
-      let loginOptions = { redirectUri: `${APP_URL}/dashboard` };
-      if (currentLocation?.pathname !== '/landing') {
-        loginOptions = { redirectUri: `${APP_URL}${currentLocation?.pathname}` };
-      }
+      const loginOptions = { redirectUri: `${APP_URL}${currentLocation?.pathname}` };
 
       if (init) {
         keycloak.login(loginOptions)
@@ -35,7 +32,7 @@ export const useAuthStore = defineStore("authStore", {
     },
     logout() {
       const APP_URL = import.meta.env.VITE_APP_URL;
-      const logoutOptions = { redirectUri: `${APP_URL}/` };
+      const logoutOptions = { redirectUri: `${APP_URL}` };
       keycloak.logout(logoutOptions)
     },
   },

@@ -36,18 +36,22 @@ function setStoreValues() {
 }
 
 function onReady(authenticated: boolean) {
+  console.log('onReady')
   setStoreValues();
 }
 
 function onAuthError(error: KeycloakError) {
+  console.log('onAuthError')
   setStoreValues();
 }
 
 function onAuthLogout() {
+  console.log('onAuthLogout')
   setStoreValues();
 }
 
 function onTokenExpired() {
+  console.log('onTokenExpired')
   keycloak
     .updateToken(30)
     .then(() => {
@@ -59,19 +63,25 @@ function onTokenExpired() {
 }
 
 function onActionUpdate(status: "success" | "cancelled" | "error") {
+  console.log('onActionUpdate')
   setStoreValues();
 }
 
 function onAuthRefreshError() {
+  console.log('onAuthRefreshError')
   setStoreValues();
 }
 
 function onAuthRefreshSuccess() {
+  console.log('onAuthRefreshSuccess')
   setStoreValues();
 }
 
 function onAuthSuccess() {
-  setStoreValues();
+  console.log('onAuthSuccess')
+  if (!keycloak.authenticated) {
+    location.reload()
+  }
 }
 
 export default function () {
