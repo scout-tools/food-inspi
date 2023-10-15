@@ -121,10 +121,6 @@ const event = computed(() => {
   return mealStore.mealEvent;
 });
 
-onMounted(() => {
-  const id = route.params.id;
-  // mealStore.fetchEventById(id);
-});
 </script>
 
 

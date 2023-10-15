@@ -1,7 +1,7 @@
 <template>
   <div class="2xl:px-64 xl:px-30">
     <Container
-      :event="event"
+      :event="eventData"
       @onDeleteClicked="onEventClosedClicked"
       @onEditClicked="onEventUpdateClicked"
     >
@@ -29,6 +29,7 @@ import { useMealStore } from "@/modules/meal/store/index";
 const route = useRoute();
 
 const openEventAddEdit = ref(false);
+const isLoading = ref(false);
 const eventData = ref({});
 
 function onEventUpdateClicked(items: Object) {
@@ -41,18 +42,14 @@ function onEventClosedClicked() {
   eventData.value = {};
 }
 
-const event = computed(() => {
-  return mealStore.mealEvent;
-});
-
-
 const mealStore = useMealStore();
 
-const sidebarOpen = ref(false);
-
-onMounted(() => {
+onMounted(async() => {
+  isLoading.value = true;
   const id = route.params.id;
-  mealStore.fetchEventById(id);
+  const response = await mealStore.fetchEventById(id);
+  eventData.value = response.data;
+  isLoading.value = false;
 });
 
 </script>

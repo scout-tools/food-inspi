@@ -311,7 +311,8 @@ const event = computed(() => {
 });
 
 const mealDay = computed(() => {
-  return mealStore.mealDay;
+  const eventDayId = route.params.eventDayId;
+  return mealStore?.mealEvent?.mealDays?.find((mealDay) => mealDay.id == eventDayId);
 });
 
 const buttonList = [{ name: "Neue Zutat", linkName: "IngredientCreate" }];
@@ -331,10 +332,6 @@ const isLoading = computed(() => {
 function onUpdateMealDayClicked() {
 }
 
-onMounted(() => {
-  const id = route.params.eventDayId;
-  mealStore.fetchMealDayById(id);
-});
 
 import {
   Dialog,

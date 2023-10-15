@@ -19,13 +19,28 @@ export default {
       params: params,
     });
   },
+  fetchMyEventsSmall(params: any) {
+    return axios.get(`${BASE_URL}/food/my-event-small-read/`, {
+      params: params,
+    });
+  },
   fetchPublicEvents(params: any) {
     return axios.get(`${BASE_URL}/food/public-event-read/`, {
       params: params,
     });
   },
+  fetchPublicEventsSmall(params: any) {
+    return axios.get(`${BASE_URL}/food/public-event-small-read/`, {
+      params: params,
+    });
+  },
   fetchApprovedEvents(params: any) {
     return axios.get(`${BASE_URL}/food/approved-event-read/`, {
+      params: params,
+    });
+  },
+  fetchApprovedEventsSmall(params: any) {
+    return axios.get(`${BASE_URL}/food/approved-event-small-read/`, {
       params: params,
     });
   },

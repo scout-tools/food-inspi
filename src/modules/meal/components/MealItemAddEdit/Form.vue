@@ -189,41 +189,38 @@ const route = useRoute();
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-async function updateData(mealType) {
+async function updateData(mealType: any) {
   isLoading.value = true;
   let params = {};
   if (mealType) {
     params = {
       meal_type: mealType,
     };
+  } else {
+    state.mealType = mealTypes.value.filter(
+      (item) => item.value === props.items?.recipe.mealType
+    )[0];
+    return;
   }
-  await Promise.all([recipeStore.fetchRecipes(params)]);
+  await recipeStore.fetchRecipes(params);
 
   if (isEdit.value) {
     state.meal = props.items?.meal?.id;
     state.recipe = props.items?.recipe;
     state.factor = props.items?.factor;
-    if (mealType == "") {
-      state.mealType = mealTypes.value.filter(
-        (item) => item.value === props.items?.recipe.mealType
-      )[0];
-    }
   } else {
-    if (mealType == "") {
-      state.meal = props.items?.meal?.id;
-      state.recipe = null;
-      state.factor = 1;
-    }
+    state.meal = props.items?.meal?.id;
+    state.recipe = null;
+    state.factor = 1;
   }
   isLoading.value = false;
 }
 
 onMounted(async () => {
-  await mealStore.fetchMealTypes();
+  isLoading.value = true;
+  if (mealTypes.value.length === 0) {
+    await mealStore.fetchMealTypes();
+  }
   updateData(props.items?.meal.mealType);
-  state.mealType = mealTypes.value.filter(
-    (item) => item.value === props.items?.meal.mealType
-  )[0];
-  isLoading.value = false;
 });
 </script>

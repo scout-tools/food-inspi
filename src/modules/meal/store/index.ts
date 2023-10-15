@@ -103,6 +103,14 @@ export const useMealStore = defineStore("meal", {
         console.log(error);
       }
     },
+    async fetchMyEventsSmall(params = {}) {
+      try {
+        const response = await MealEventApi.fetchMyEventsSmall(params);
+        return response;
+      } catch (error) {
+        return error;
+      }
+    },
     async fetchPublicEvents(params = {}) {
       this._mealEvents = [];
       try {
@@ -114,6 +122,14 @@ export const useMealStore = defineStore("meal", {
       } catch (error) {
         this._isLoading = false;
         console.log(error);
+      }
+    },
+    async fetchPublicEventsSmall(params = {}) {
+      try {
+        const response = await MealEventApi.fetchPublicEventsSmall(params);
+        return response;
+      } catch (error) {
+        return error;
       }
     },
     async fetchApprovedEvents(params = {}) {
@@ -128,11 +144,20 @@ export const useMealStore = defineStore("meal", {
         console.log(error);
       }
     },
+    async fetchApprovedEventsSmall(params = {}) {
+      try {
+        const response = await MealEventApi.fetchApprovedEventsSmall(params);
+        return response;
+      } catch (error) {
+        return error;
+      }
+    },
     async fetchEventById(id: number) {
       this._mealEvent = {};
       try {
         const response = await MealEventApi.fetchById(id);
         this._mealEvent = response.data;
+        return response;
       } catch (error) {
         alert(error);
         console.log(error);

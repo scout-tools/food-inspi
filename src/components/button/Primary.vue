@@ -14,11 +14,12 @@
       font-medium
       text-white
       shadow-sm
+      focus:outline-none
     "
     :class="
       isLoading
-        ? `px-8 py-3 text-white bg-${color}-300 rounded focus:outline-none bg-${color}-600`
-        : `focus:outline-none focus:ring-2 focus:ring-${color}-500 focus:ring-offset-2 hover:bg-${color}-700 bg-${color}-600`
+        ? `bg-${color}-300 rounded bg-${color}-600`
+        : `focus:ring-2 focus:ring-${color}-500 focus:ring-offset-2 hover:bg-${color}-700 bg-${color}-600`
     "
   >
     <ArrowPathIcon
