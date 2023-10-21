@@ -1,7 +1,8 @@
 <template>
   <TabWrapper>
-    <PrimaryButton @click="onEventAddClicked">Neues Event</PrimaryButton>
+    <PrimaryButton v-if="isAuth" @click="onEventAddClicked">Neues Event</PrimaryButton>
     <SimpleList
+      v-if="isAuth"
       :items="eventFiltered"
       :isLoading="isLoading"
       detailPageLink="EventDefault"
@@ -16,6 +17,9 @@
         >
       </template>
     </SimpleList>
+    <div>
+      <h1 v-if="!isAuth">Du musst dich einloggen, um deine Veranstaltungen zu sehen.</h1>
+    </div>
     <EventAddEdit
       :open="openEventAddEdit"
       @close="onEventAddEditClose"
