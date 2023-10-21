@@ -1,9 +1,10 @@
 <template>
-  <div class="2xl:px-64 xl:px-30">
+  <PageWrapper>
     <HintSearchList />
-  </div>
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
 import HintSearchList from "@/modules/hint/components/HintSearchList.vue";
+import PageWrapper from "@/components/base/PageWrapper.vue";
 </script>

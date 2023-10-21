@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-64 xl:px-30">
+  <PageWrapper>
     <div class="text-center">
       <h2 class="mt-2 text-lg font-medium text-gray-900">Simulator</h2>
     </div>
@@ -57,7 +57,7 @@
       @close="onRecipeFactorFormClose"
       header="Rezeptfaktor"
     />
-  </div>
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
@@ -72,6 +72,7 @@ import RecipeItemUpdate from "@/modules/recipe/components/RecipeItem/RecipeItem.
 import RecipeFactorForm from "@/modules/recipe/components/recipeFactor/RecipeFactorForm.vue";
 import { useRoute } from "vue-router";
 import { useRecipeStore } from "@/modules/recipe/store/index";
+import PageWrapper from "@/components/base/PageWrapper.vue";
 
 import CreateRecipe from "@/modules/recipe/components/simulator/createRecipe/CreateRecipe.vue";
 

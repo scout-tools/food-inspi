@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-64 xl:px-30">
+  <PageWrapper>
     <List
       :name="'Zutaten'"
       :items="ingredients"
@@ -44,7 +44,7 @@
         </div>
       </template>
     </List>
-  </div>
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
@@ -54,6 +54,7 @@ import List from "@/components/base/list/Main.vue";
 import { useRoute } from "vue-router";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
 import NutriSlim from "@/components/score/NutriSlim.vue";
+import PageWrapper from "@/components/base/PageWrapper.vue";
 
 const ingredientStore = useIngredientStore();
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-64 xl:px-30">
+  <PageWrapper>
     <main class="relative z-0 flex-1 overflow-y-auto focus:outline-none">
       <!-- Breadcrumb -->
       <Breadcrumbs :pages="pages" />
@@ -83,7 +83,7 @@
       @close="onRecipeUpdateClose"
       :items="recipeDetail"
     />
-  </div>
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
@@ -95,6 +95,7 @@ import RecipeOverview2 from "@/modules/recipe/components/RecipeMainOverview2.vue
 import RecipeOverview3 from "@/modules/recipe/components/RecipeMainOverview3.vue";
 import RecipeOverviewNutri from "@/modules/recipe/components/RecipeMainOverviewNutri.vue";
 import LoadingItem from "@/components/list/LoadingItem.vue";
+import PageWrapper from "@/components/base/PageWrapper.vue";
 
 import CreateRecipe from "@/modules/recipe/components/simulator/createRecipe/CreateRecipe.vue";
 import { useRouter } from "vue-router";

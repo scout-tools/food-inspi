@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-64 xl:px-30">
+  <PageWrapper">
     <Breadcrumbs :pages="pages" />
     <main class="relative z-40 flex-1 focus:outline-none">
       <article v-if="hint.name">
@@ -57,7 +57,7 @@
       </article>
       <div class="xl:hidden" v-else>Bitte Wähle eine Zutat</div>
     </main>
-  </div>
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
@@ -65,6 +65,7 @@ import { ref, watch, onMounted, computed, getCurrentInstance } from "vue";
 import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import { useHintStore } from "@/modules/hint/store/index";
 import { useRecipeStore } from "@/modules/recipe/store/index";
+import PageWrapper from "@/components/base/PageWrapper.vue";
 
 import { useRoute } from "vue-router";
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-64 xl:px-30">
+  <PageWrapper">
     <Breadcrumbs :pages="pages" />
     <main class="relative z-40 flex-1 focus:outline-none">
       <article v-if="ingredientDetail.name">
@@ -30,7 +30,7 @@
       </article>
       <div class="xl:hidden" v-else>Bitte Wähle eine Zutat</div>
     </main>
-  </div>
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
@@ -39,6 +39,7 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/vue";
 import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import { useRoute } from "vue-router";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
+import PageWrapper from "@/components/base/PageWrapper.vue";
 
 const route = useRoute();
 

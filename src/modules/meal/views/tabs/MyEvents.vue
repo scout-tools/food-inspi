@@ -12,7 +12,7 @@
       </template>
       <template v-slot:empty>
         <h1>Du hast noch keine Veranstaltung erstellt.</h1>
-        <PrimaryButton v-if="isAuth" class="mx-3 my-3" @click="onLoginclicked"
+        <PrimaryButton v-if="!isAuth" class="mx-3 my-3" @click="onLoginclicked"
           >Einloggen</PrimaryButton
         >
       </template>

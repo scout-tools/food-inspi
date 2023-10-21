@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-64 xl:px-30">
+  <PageWrapper>
     <List
       :name="'Rezepte'"
       :items="recipes"
@@ -40,11 +40,12 @@
         </div>
       </template>
     </List>
-  </div>
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
 import List from "@/components/base/list/Main.vue";
+import PageWrapper from "@/components/base/PageWrapper.vue";
 
 import { TagIcon } from "@heroicons/vue/20/solid";
 

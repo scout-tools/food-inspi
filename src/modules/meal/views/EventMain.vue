@@ -1,5 +1,5 @@
 <template>
-  <div class="2xl:px-64 xl:px-30">
+  <PageWrapper>
     <Container
       :event="eventData"
       @onDeleteClicked="onEventClosedClicked"
@@ -13,7 +13,7 @@
       @close="onEventClosedClicked"
       header="Veranstaltung"
     />
-  </div>
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +21,7 @@
 import { ref, watch, onMounted, computed } from "vue";
 import Container from "@/modules/meal/components/Container.vue";
 import EventAddEdit from "@/modules/meal/components/EventAddEdit/EventAddEdit.vue";
+import PageWrapper from "@/components/base/PageWrapper.vue";
 
 
 import { useRoute } from "vue-router";

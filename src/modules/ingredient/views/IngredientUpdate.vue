@@ -13,7 +13,7 @@
       "
     >
       <article class="flex-shrink-0 border border-gray-200 ma-12">
-        <form class="space-y-8 divide-y px-3 py-4 divide-gray-200 xl:px-64">
+        <form class="space-y-8 divide-y px-3 py-4 divide-gray-200">
           <div class="space-y-8 divide-y divide-gray-200">
             <h2 class="text-h1 font-medium text-gray-900">Zutaten</h2>
             <div class="pt-8">
@@ -128,6 +128,7 @@ import Breadcrumbs from "@/components/breadcrumbs/Header.vue";
 import PrimaryButton from "@/components/button/Primary.vue";
 import Success from "@/modules/common/components/Success.vue";
 import { useIngredientStore } from "@/modules/ingredient/store/index.ts";
+import PageWrapper from "@/components/base/PageWrapper.vue";
 
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
