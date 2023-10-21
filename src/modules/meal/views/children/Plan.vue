@@ -64,7 +64,6 @@ const mealItems = computed(() => {
         getMealTypeDisplay: meal.getMealTypeDisplay,
         mealItems: meal.mealItems,
       });
-      debugger;
       id = id + 1;
     });
   });

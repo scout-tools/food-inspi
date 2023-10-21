@@ -43,6 +43,7 @@ function onReady(authenticated: boolean) {
 function onAuthError(error: KeycloakError) {
   console.log('onAuthError')
   setStoreValues();
+  location.reload()
 }
 
 function onAuthLogout() {

@@ -22,14 +22,14 @@ export const useAuthStore = defineStore("authStore", {
       var currentLocation = window.location;
 
       const APP_URL = import.meta.env.VITE_APP_URL;
-      const loginOptions = { redirectUri: `${APP_URL}${currentLocation?.pathname}` };
+      const loginOptions = {};
 
       keycloak.login(loginOptions)
 
     },
     logout() {
       const APP_URL = import.meta.env.VITE_APP_URL;
-      const logoutOptions = { redirectUri: `${APP_URL}` };
+      const logoutOptions = {};
       keycloak.logout(logoutOptions)
     },
   },
