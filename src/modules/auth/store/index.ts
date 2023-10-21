@@ -19,18 +19,19 @@ export const useAuthStore = defineStore("authStore", {
   actions: {
     login(init : boolean = false) {
       const router = useRouter()
-      var currentLocation = window.location;
+      const currentLocation = window.location;
 
       const APP_URL = import.meta.env.VITE_APP_URL;
-      const loginOptions = { redirectUri: `${APP_URL}` };
+      const loginOptions = { redirectUri: `${APP_URL}${currentLocation?.pathname}` };
       console.log(loginOptions);
 
       keycloak.login(loginOptions)
 
     },
     logout() {
+      const currentLocation = window.location;
       const APP_URL = import.meta.env.VITE_APP_URL;
-      const logoutOptions = { redirectUri: `${APP_URL}` };
+      const logoutOptions = { redirectUri: `${APP_URL}${currentLocation?.pathname}` };
       keycloak.logout(logoutOptions)
     },
   },
