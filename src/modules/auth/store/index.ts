@@ -22,7 +22,8 @@ export const useAuthStore = defineStore("authStore", {
       var currentLocation = window.location;
 
       const APP_URL = import.meta.env.VITE_APP_URL;
-      const loginOptions = {};
+      const loginOptions = { redirectUri: `${APP_URL}` };
+      console.log(loginOptions);
 
       keycloak.login(loginOptions)
 
