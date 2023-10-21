@@ -40,8 +40,4 @@ const recipeDetail = computed(() => {
   return recipeStore.recipeDetail;
 });
 
-onMounted(() => {
-  const id = route.params.id;
-  recipeStore.fetchRecipeById(id);
-});
 </script>

@@ -77,7 +77,7 @@ function updateSearch(params) {
 }
 
 onMounted(() => {
-  recipeStore.fetchRecipes(route.query);
+  // recipeStore.fetchRecipes(route.query);
 });
 
 const sortOptions = [

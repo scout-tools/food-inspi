@@ -70,10 +70,6 @@ const isLoading = computed(() => {
   return !ingredientStore.ingredients;
 });
 
-onMounted(() => {
-  ingredientStore.fetchIngredients(route.query);
-});
-
 watch(
   () => route.query,
   () => {
