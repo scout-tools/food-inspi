@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper">
+  <PageWrapper>
     <Breadcrumbs :pages="pages" />
     <main class="relative z-40 flex-1 focus:outline-none">
       <article v-if="ingredientDetail.name">
