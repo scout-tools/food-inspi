@@ -23,6 +23,7 @@
       :to="{ name: 'RecipeDetail', params: { id: item.recipe?.id } }"
       target="_blank"
     >
+      <p v-if="item.id !== props?.item?.mealItems[0].id"></p>
       {{ item.recipe.name }}
     </router-link>
     <h4 v-if="props?.item?.mealItems.length == 0">Keine Rezepte vorhanden</h4>
