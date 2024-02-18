@@ -18,6 +18,9 @@ export default {
   update(data: any) {
     return axios.put(`${BASE_URL}/${SERVICE}/${data.id}/`, data);
   },
+  updatePartical(data: any) {
+    return axios.patch(`${BASE_URL}/${SERVICE}/${data.id}/`, data);
+  },
   delete(id: any) {
     return axios.delete(`${BASE_URL}/${SERVICE}/${id}`)
   },

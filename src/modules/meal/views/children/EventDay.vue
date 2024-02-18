@@ -181,6 +181,7 @@
         :key="meal.id"
         @onItemUpdate="onMealUpdate"
         @onAddMealItemClicked="onAddMealItemClicked"
+        @onAdjustBuffetClicked="onAdjustBuffetClicked"
         @onMealCloneClicked="onMealCloneClicked"
         @onMenuItemUpdate="onMealItemUpdate"
       />
@@ -209,6 +210,12 @@
       @close="onMealDayClose"
       :items="mealDayData"
       header="Tag editieren"
+    />
+    <AdjustBuffetEdit
+      :open="openAdjustBuffet"
+      @close="openAdjustBuffetClosed"
+      :items="adjustBuffetData"
+      header="Buffet anpassen"
     />
   </div>
 </div>
@@ -255,18 +262,32 @@ function onMealFormClose() {
   mealData.value = {};
 }
 
+import { useCommonStore } from "@/modules/common/store/index.ts";
+const commonStore = useCommonStore();
+
+function openAdjustBuffetClosed() {
+  const eventId = route.params.id;
+  openAdjustBuffet.value = false;
+  adjustBuffetData.value = {};
+  mealStore.fetchEventById(eventId);
+  commonStore.showSuccess("Buffet erfolgreich angepasst");
+}
+
 // MenuItem Sidebar
 
 import MealItemAddEdit from "@/modules/meal/components/MealItemAddEdit/MealItemAddEdit.vue";
 import MealClone from "@/modules/meal/components/mealClone/MealClone.vue";
 import MealDayAddEdit from "@/modules/meal/components/MealDayAddEdit/MealDayAddEdit.vue";
+import AdjustBuffetEdit from "@/modules/meal/components/adjustBuffetEdit/AdjustBuffetEdit.vue";
 
 const openMealItemForm = ref(false);
 const openMealDayForm = ref(false);
 const openMealCloneForm = ref(false);
+const openAdjustBuffet = ref(false)
 const mealItemData = ref({});
 const mealDayData = ref({});
 const mealCloneFormData = ref({});
+const adjustBuffetData = ref({});
 
 
 function onMealDayUpdate(items: Object) {
@@ -282,6 +303,11 @@ function onMealDayClose() {
 function onAddMealItemClicked(items: Object) {
   openMealItemForm.value = true;
   mealItemData.value = items;
+}
+
+function onAdjustBuffetClicked(items: Object) {
+  openAdjustBuffet.value = true;
+  adjustBuffetData.value = items;
 }
 
 function onMealCloneClicked(items: Object) {
@@ -352,6 +378,7 @@ import {
   XMarkIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  ReceiptPercentIcon,
 } from "@heroicons/vue/24/outline";
 import {
   EnvelopeIcon,
@@ -359,6 +386,8 @@ import {
   MagnifyingGlassIcon,
   PhoneIcon,
 } from "@heroicons/vue/20/solid";
+import { al } from "vitest/dist/reporters-5f784f42";
+import common from "mocha/lib/interfaces/common";
 
 const eventFields = [
   {

@@ -25,4 +25,7 @@ export default {
   clone(data: any) {
     return axios.post(`${BASE_URL}/${SERVICE}-clone/`, data)
   },
+  scaleMeal(data: any) {
+    return axios.post(`${BASE_URL}/${SERVICE}-scale/`, data)
+  }
 };

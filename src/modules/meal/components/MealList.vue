@@ -37,7 +37,22 @@
                     : 'text-green-500'
                 "
               >
-                {{ (props.meal.dayPartEnergyKj * 100).toFixed(0) }} %
+                <div class="flex">
+                  <div class="flex-none">
+                    {{ (props.meal.dayPartEnergyKj * 100).toFixed(0) }} %
+                  </div>
+                  <div class="flex-none">
+                    <button
+                      v-if="props.meal.dayPartEnergyKj !== 0.0"
+                      @click="onScaleMealClicked(props.meal.id)"
+                    >
+                      <ReceiptPercentIcon
+                        class="mx-4 h-6 w-6 font-black text-green-600"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+                </div>
               </dd>
             </div>
             <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
@@ -61,39 +76,37 @@
                   v-if="props.meal.mealItems.length"
                 >
                   <li
-                    class="flex items-center justify-between py-3 pl-3 pr-4 text-sm"
+                    class="flex grow items-center justify-between py-3 pl-3 pr-4 text-sm"
                     v-for="mealItem in props.meal.mealItems"
                     :key="mealItem.id"
                   >
-                  <router-link
-                        :to="{
-                          name: 'RecipeDetail',
-                          params: { id: mealItem.recipe.id },
-                        }"
-                        target="_blank"
-                      >
-                    <div class="flex w-0 flex-1 items-center">
-                      <StarIcon
-                        class="h-5 w-5 flex-shrink-0 text-gray-400"
-                        aria-hidden="true"
-                      />
+                    <router-link
+                      class="grow"
+                      :to="{
+                        name: 'RecipeDetail',
+                        params: { id: mealItem.recipe.id },
+                      }"
+                      target="_blank"
+                    >
+                      <div class="flex flex-1">
+                        <StarIcon
+                          class="h-5 w-5 flex-none text-gray-400"
+                          aria-hidden="true"
+                        />
 
-                      <div>
-                        <span class="ml-2 w-0 flex-1 truncate"
-                          >{{ mealItem.factor }} x
-                          {{ mealItem.recipe.name }} ({{
+                        <p class="pl-2 grow text-ellipsis overflow-hidden">
+                          {{ mealItem.factor }} x {{ mealItem.recipe.name }} ({{
                             mealItem.energyKj
                           }}
                           kJ, {{ (mealItem.priceEur || 0).toFixed(2) }}
                           €)
-                        </span>
+                        </p>
+                        <LinkIcon
+                          class="h-5 w-5 flex-none text-gray-400 mx-1"
+                          aria-hidden="true"
+                        />
                       </div>
-                      <LinkIcon
-                        class="h-5 w-5 flex-shrink-0 text-gray-400 mx-1"
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </router-link>
+                    </router-link>
                     <div class="ml-4 flex-shrink-0">
                       <button
                         v-if="event.allowEdit"
@@ -106,9 +119,7 @@
                   </li>
                 </ul>
                 <ul v-else>
-                  <li>
-                    Bitte füge ein Rezept hinzu.
-                  </li>
+                  <li>Bitte füge ein Rezept hinzu.</li>
                 </ul>
               </dd>
             </div>
@@ -129,6 +140,23 @@
               >
                 <PlusIcon class="h-5 w-5" aria-hidden="true" />
                 <span> Rezept zum Menü Hinzufügen</span>
+              </button>
+            </span>
+          </div>
+          <div class="flex text-sm">
+            <span class="inline-flex items-center text-sm">
+              <button
+                v-if="event.allowEdit && props.meal?.mealType === 'breakfast'"
+                @click="
+                  onAdjustBuffetClicked({
+                    meal: props.meal,
+                  })
+                "
+                type="button"
+                class="inline-flex font-medium text-blue-600 hover:text-blue-500"
+              >
+                <AdjustmentsHorizontalIcon class="h-5 w-5" aria-hidden="true" />
+                <span> Buffetoption </span>
               </button>
             </span>
           </div>
@@ -192,6 +220,8 @@ import {
   XMarkIcon,
   ShoppingCartIcon,
   DocumentDuplicateIcon,
+  AdjustmentsHorizontalIcon,
+  ReceiptPercentIcon,
 } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
@@ -203,6 +233,7 @@ const emit = defineEmits([
   "onMenuItemUpdate",
   "onAddMealItemClicked",
   "onMealCloneClicked",
+  "onAdjustBuffetClicked",
 ]);
 
 const onUpdateMealClicked = (items) => {
@@ -217,6 +248,10 @@ const onAddMealItemClicked = (items) => {
   emit("onAddMealItemClicked", items);
 };
 
+const onAdjustBuffetClicked = (items) => {
+  emit("onAdjustBuffetClicked", items);
+};
+
 const onMealCloneClicked = (items) => {
   emit("onMealCloneClicked", items);
 };
@@ -227,4 +262,23 @@ const mealStore = useMealStore();
 const event = computed(() => {
   return mealStore.mealEvent;
 });
+
+import { useCommonStore } from "@/modules/common/store/index.ts";
+const commonStore = useCommonStore();
+
+import { useRoute } from "vue-router";
+const route = useRoute();
+
+async function onScaleMealClicked() {
+  const eventId = route.params.id;
+  const response = await mealStore.scaleMeal({
+    id: props.meal?.id,
+  });
+  if (response.status === 201) {
+    mealStore.fetchEventById(eventId);
+    commonStore.showSuccess("Menü erfolgreich skaliert");
+  } else {
+    commonStore.showError("Fehler beim Skalieren des Menüs");
+  }
+}
 </script>

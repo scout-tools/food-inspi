@@ -101,9 +101,9 @@ const openRecipeFactor = () => {
 
 function getFormatedText(item: Object) {
   let text = "";
-  text = `${text} ${Math.round(
+  text = `${text} ${
     item?.quantity.toFixed(2) * item?.portion?.weightG
-  )} g ${item?.portion?.ingredient?.name} `;
+  } g ${item?.portion?.ingredient?.name} `;
 
   if (item.portion?.measuringUnit?.name !== "g") {
     text = `${text} / ${item?.quantity.toFixed(1)}  ${

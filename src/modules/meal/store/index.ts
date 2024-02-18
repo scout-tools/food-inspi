@@ -267,6 +267,28 @@ export const useMealStore = defineStore("meal", {
         }
       }
     },
+    async updatePartical(data: object) {
+      try {
+        return await MealItemApi.updatePartical(data);
+      } catch (error: any) {
+        if (error.response.status === 400) {
+          commonStore.showError(error.response.data);
+        } else if (error.response.status === 500) {
+          commonStore.showError('Schwerer Server Fehler');
+        }
+      }
+    },
+    async scaleMeal(data: object) {
+      try {
+        return await MealApi.scaleMeal(data);
+      } catch (error: any) {
+        if (error.response.status === 400) {
+          commonStore.showError(error.response.data);
+        } else if (error.response.status === 500) {
+          commonStore.showError('Schwerer Server Fehler');
+        }
+      }
+    },
     async updateMealDay(data: object) {
       try {
         return await MealApiDay.update(data);
