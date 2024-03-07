@@ -42,7 +42,7 @@
         </div>
         <div v-if="!isShoppingRoute" class="mx-3 flex">
           <router-link
-            class="text-sm font-medium text-gray-500 hover:text-gray-700"
+            class="text-sm mx-1 font-medium text-gray-500 hover:text-gray-700"
             :to="{ name: 'EventPlan' }"
           >
             <button
@@ -53,7 +53,18 @@
             </button>
           </router-link>
           <router-link
-            class="text-sm mx-2 font-medium text-gray-500 hover:text-gray-700"
+            class="text-sm mx-1 font-medium text-gray-500 hover:text-gray-700"
+            :to="{ name: 'EventCookingPlan' }"
+          >
+            <button
+              type="button"
+              class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Kochplan
+            </button>
+          </router-link>
+          <router-link
+            class="text-sm mx-1 font-medium text-gray-500 hover:text-gray-700"
             :to="{ name: 'EventShoppingCart' }"
           >
             <button
@@ -69,7 +80,7 @@
             type="button"
             class="ml-3 inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
-            Veranstaltung bearbeiten
+            bearbeiten
           </button>
         </div>
       </div>

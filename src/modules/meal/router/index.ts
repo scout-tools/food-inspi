@@ -50,6 +50,12 @@ export default [
           import(/* webpackChunkName: "EventPlan" */ "@/modules/meal/views/children/Plan.vue"),
       },
       {
+        path: "cookingPlan",
+        name: "EventCookingPlan",
+        component: () =>
+          import(/* webpackChunkName: "CookingPlan" */ "@/modules/meal/views/children/CookingPlan.vue"),
+      },
+      {
         path: "day/:eventDayId",
         name: "EventDay",
         component: () =>

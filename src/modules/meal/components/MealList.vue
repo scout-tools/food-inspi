@@ -9,11 +9,16 @@
             }}
             % Tagesanteil)
           </h3>
-          <p class="mt-1 max-w-2xl text-sm text-gray-500">
+          <div class="mt-1 max-w-2xl text-sm text-gray-500">
             {{ props.meal?.getMealTypeDisplay }}
-            {{ $dayjs(props.meal?.timeStart, "HH:mm:ss").format("LT") }} -
-            {{ $dayjs(props.meal?.timeEnd, "HH:mm:ss").format("LT") }}
-          </p>
+            <div v-if="props.meal?.timeStart !== '00:00:00' || props.meal?.timeEnd !== '00:00:00'">
+              {{ $dayjs(props.meal?.timeStart, "HH:mm:ss").format("LT") }} -
+              {{ $dayjs(props.meal?.timeEnd, "HH:mm:ss").format("LT") }}
+            </div>
+            <div v-else>
+              Ganztägig
+            </div>
+          </div>
           <button
             v-if="event?.allowEdit"
             @click="onUpdateMealClicked(props.meal)"

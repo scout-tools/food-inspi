@@ -7,6 +7,7 @@ import EventApi from "@/modules/meal/services/event";
 import MealEventApi from "@/modules/meal/services/meal-event";
 import ChoiseApi from "@/modules/meal/services/choice";
 import ShoppingListApi from "@/modules/meal/services/shopping-list";
+import MealPlanApi from "@/modules/meal/services/meal-plan";
 
 import { useCommonStore } from "@/modules/common/store/index";
 const commonStore = useCommonStore();
@@ -315,6 +316,14 @@ export const useMealStore = defineStore("meal", {
       try {
         const response = await ShoppingListApi.fetchAll(params);
         this._shoppingList = response.data;
+      } catch (error: any) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchMealCookingPlan(params = {}) {
+      try {
+        return await MealPlanApi.fetchCookingPlan(params);
       } catch (error: any) {
         alert(error);
         console.log(error);
