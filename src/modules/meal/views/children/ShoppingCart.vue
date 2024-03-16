@@ -23,13 +23,6 @@
                 <div
                   class="relative flex items-center space-x-3 px-6 py-5 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 hover:bg-gray-50"
                 >
-                  <input
-                    id="comments"
-                    aria-describedby="comments-description"
-                    name="comments"
-                    type="checkbox"
-                    class="mr-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
                   <div class="min-w-0 flex-1">
                     <!-- Extend touch target to entire panel -->
                     <span class="absolute inset-0" aria-hidden="true" />
@@ -38,7 +31,7 @@
                       {{ shoppingList[letter][item][0].recipeName }})
                     </p>
                     <p class="truncate text-sm text-gray-500">
-                      {{ shoppingList[letter][item][0].weightShow }}
+                      {{ shoppingList[letter][item][0].weightShow }} - {{ shoppingList[letter][item][0].price }} €
                     </p>
                   </div>
                 </div>
