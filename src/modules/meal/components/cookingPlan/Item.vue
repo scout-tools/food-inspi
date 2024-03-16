@@ -4,11 +4,16 @@
   >
     <div class="flex items-center justify-between mb-4">
       <h5 class="text-xl font-bold leading-none text-gray-900">
-        {{ item.name }} - {{ item.getMealTypeDisplay }} - {{ totalWeigth(item, item.normPersons) }} g
+        {{ item.name }} - {{ item.getMealTypeDisplay }} -
+        {{ totalWeigth(item, item.normPersons) }} g
       </h5>
     </div>
     <div class="flow-root">
-      <ul role="list" class="divide-y divide-gray-200" v-if="item?.portions?.length">
+      <ul
+        role="list"
+        class="divide-y divide-gray-200"
+        v-if="item?.portions?.length"
+      >
         <li class="py-3 sm:py-4" v-for="i in item?.portions" :key="i.id">
           <div class="flex items-center">
             <div class="flex-1 min-w-0 ms-4">
@@ -20,7 +25,10 @@
             <div
               class="inline-flex items-center text-base font-semibold text-gray-900"
             >
-            {{ i.weightG * item.normPersons.toFixed(0) }} g ({{ i.weightG.toFixed(0) }} g)
+              {{ (i.weightG * item.normPersons).toFixed(0) }} g ({{
+                i.weightG ? i.weightG.toFixed(2) : "0"
+              }}
+              g)
             </div>
           </div>
         </li>
@@ -33,9 +41,11 @@
 </template>
 
 <script setup lang="ts">
-
 function totalWeigth(item: any, normPerson: number = 1) {
-  return item?.portions?.reduce((acc, portion) => acc + portion.weightG * normPerson, 0);
+  return item?.portions?.reduce(
+    (acc, portion) => acc + portion.weightG * normPerson,
+    0
+  );
 }
 
 const props = defineProps({
