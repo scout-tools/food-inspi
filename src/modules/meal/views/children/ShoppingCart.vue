@@ -31,7 +31,8 @@
                       {{ shoppingList[letter][item][0].recipeName }})
                     </p>
                     <p class="truncate text-sm text-gray-500">
-                      {{ shoppingList[letter][item][0].weightShow }} - {{ shoppingList[letter][item][0].price }} €
+                      {{ shoppingList[letter][item][0].weightShow }} -
+                      {{ shoppingList[letter][item][0].price.toFixed(2) }} €
                     </p>
                   </div>
                 </div>

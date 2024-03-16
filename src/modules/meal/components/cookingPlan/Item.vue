@@ -4,7 +4,7 @@
   >
     <div class="flex items-center justify-between mb-4">
       <h5 class="text-xl font-bold leading-none text-gray-900">
-        {{ item.name }} - {{ item.mealType }} ({{ totalWeigth(item, item.normPersons) }} g)
+        {{ item.name }} - {{ item.getMealTypeDisplay }} - {{ totalWeigth(item, item.normPersons) }} g
       </h5>
     </div>
     <div class="flow-root">
@@ -20,7 +20,7 @@
             <div
               class="inline-flex items-center text-base font-semibold text-gray-900"
             >
-            {{ i.weightG.weightG_Sum * item.normPersons }} g
+            {{ i.weightG * item.normPersons.toFixed(0) }} g ({{ i.weightG.toFixed(0) }} g)
             </div>
           </div>
         </li>
@@ -35,7 +35,7 @@
 <script setup lang="ts">
 
 function totalWeigth(item: any, normPerson: number = 1) {
-  return item?.portions?.reduce((acc, portion) => acc + portion.weightG.weightG_Sum * normPerson, 0);
+  return item?.portions?.reduce((acc, portion) => acc + portion.weightG * normPerson, 0);
 }
 
 const props = defineProps({
