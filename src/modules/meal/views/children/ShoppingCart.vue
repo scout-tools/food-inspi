@@ -32,7 +32,7 @@
                     </p>
                     <p class="truncate text-sm text-gray-500">
                       {{ shoppingList[letter][item][0].weightShow }} -
-                      {{ shoppingList[letter][item][0].price.toFixed(2) }} €
+                      {{ shoppingList[letter][item][0] }} €
                     </p>
                   </div>
                 </div>
