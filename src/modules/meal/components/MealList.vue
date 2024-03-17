@@ -11,13 +11,16 @@
           </h3>
           <div class="mt-1 max-w-2xl text-sm text-gray-500">
             {{ props.meal?.getMealTypeDisplay }}
-            <div v-if="props.meal?.timeStart !== '00:00:00' || props.meal?.timeEnd !== '00:00:00'">
+            <div
+              v-if="
+                props.meal?.timeStart !== '00:00:00' ||
+                props.meal?.timeEnd !== '00:00:00'
+              "
+            >
               {{ $dayjs(props.meal?.timeStart, "HH:mm:ss").format("LT") }} -
               {{ $dayjs(props.meal?.timeEnd, "HH:mm:ss").format("LT") }}
             </div>
-            <div v-else>
-              Ganztägig
-            </div>
+            <div v-else>Ganztägig</div>
           </div>
           <button
             v-if="event?.allowEdit"
@@ -151,7 +154,6 @@
           <div class="flex text-sm">
             <span class="inline-flex items-center text-sm">
               <button
-                v-if="event.allowEdit && props.meal?.mealType === 'breakfast'"
                 @click="
                   onAdjustBuffetClicked({
                     meal: props.meal,
@@ -161,14 +163,14 @@
                 class="inline-flex font-medium text-blue-600 hover:text-blue-500"
               >
                 <AdjustmentsHorizontalIcon class="h-5 w-5" aria-hidden="true" />
-                <span> Buffetoption </span>
+                <span> Portionen </span>
               </button>
             </span>
           </div>
           <div class="flex text-sm">
             <span class="inline-flex items-center text-sm">
               <button
-                v-if="event.allowEdit"
+                v-if="event?.allowEdit"
                 @click="
                   onMealCloneClicked({
                     meal: props.meal,
